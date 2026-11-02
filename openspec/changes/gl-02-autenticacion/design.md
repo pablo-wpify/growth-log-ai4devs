@@ -146,11 +146,19 @@ se pueden construir con `generates_token_for` sin otra gema.
      los intentos, exitosos o fallidos. La clave usa el SHA-256 de
      `request.remote_ip`, no la IP en claro.
    - **Por correo:** contador propio, 5 **intentos fallidos** cada 15
-     minutos. La clave usa el SHA-256 del correo normalizado con la misma
-     regla que `User` (sin espacios alrededor y en minúsculas), así que las
-     variantes de mayúsculas cuentan juntas. Con 5 fallos en la ventana, el
-     siguiente intento recibe 429 sin evaluarse. Un inicio de sesión
-     exitoso borra el contador de su correo.
+     minutos, estricto también con peticiones simultáneas. Cada intento
+     **reserva** un lugar con un incremento atómico antes de buscar la
+     cuenta o comparar la contraseña; solo se evalúan las credenciales si la
+     reserva queda dentro del límite (valor 5 o menor). Un intento fallido
+     conserva su reserva, que es el fallo contado; un inicio de sesión
+     exitoso borra el contador de su correo. La clave usa el SHA-256 del
+     correo normalizado con la misma regla que `User` (sin espacios
+     alrededor y en minúsculas), así que las variantes cuentan juntas.
+     La primera versión implementada comprobaba el contador, evaluaba y
+     recién después contaba el fallo: con 8 peticiones simultáneas, las 8
+     llegaban a evaluar credenciales. Se corrigió antes de publicar.
+   - **Por IP:** `rate_limit` incrementa y después compara, sobre el mismo
+     incremento atómico, así que también es estricto bajo concurrencia.
 
    **Ventanas:** fijas. Empiezan con el primer intento contado y se
    reinician cuando vencen. Al superar cualquiera de los dos límites, estado
@@ -263,7 +271,7 @@ Todo lo de esta tabla se ejecutó en local el 02/11/2026; nada es remoto.
 | A2 | Comprobado (local) | `bin/rails routes` y `route_protection_spec`: sin rutas de registro ni de contraseñas |
 | A3 | Comprobado (local) | `sessions_spec`: 303 a la página de inicio y una sesión; correo con mayúsculas y espacios; vuelta a la página pedida con `GET` y `HEAD` |
 | A4 | Comprobado (local) | `sessions_spec`: contraseña incorrecta, correo desconocido y cuenta desactivada con el mismo estado (422), el mismo mensaje y sin sesión. No se mide ni se afirma igualdad de tiempos |
-| A5 | Comprobado (local) | `rate_limit_spec` (10 ejemplos): 11.º intento por IP, también contando éxitos; 6.º por correo desde IP distintas y con variantes; recuperación a los 3 y 15 minutos; reinicio tras un éxito; otras IP y correos no afectados; claves sin correo ni IP en claro. `rate_limit_store_spec`: 4 procesos × 25 incrementos = 100, 5 de 5 corridas (con `FileStore`: 58 y 50) |
+| A5 | Comprobado (local) | `email_limit_concurrency_spec`: 8 peticiones simultáneas reales para un correo, con la evaluación retenida en una barrera; solo 5 evalúan credenciales (422) y 3 reciben 429 sin evaluar, 5 de 5 corridas. Con la implementación anterior evaluaban las 8. `rate_limit_spec` (10 ejemplos): 11.º intento por IP, también contando éxitos; 6.º por correo desde IP distintas y con variantes; recuperación a los 3 y 15 minutos; reinicio tras un éxito; otras IP y correos no afectados; claves sin correo ni IP en claro. `rate_limit_store_spec`: 4 procesos × 25 incrementos = 100, 5 de 5 corridas (con `FileStore`: 58 y 50) |
 | A6 | Comprobado (local) | `sessions_spec`: tras cerrar sesión no queda fila y la cookie reenviada redirige al inicio de sesión |
 | A7 | Comprobado (local) | `session_spec` (bordes exactos) y `session_expiry_spec`: renovación solo pasados 5 min; 2 h sin actividad; cookie conservada rechazada a las 12 h; máximo absoluto por los datos guardados con cookie vigente; limpieza al iniciar sesión |
 | A8 | Comprobado (local) | `session_expiry_spec`: cuenta desactivada con sesión abierta, redirección y fila borrada |
@@ -272,7 +280,7 @@ Todo lo de esta tabla se ejecutó en local el 02/11/2026; nada es remoto.
 | A11 | Comprobado (local) | `user_spec`: hash `$2a$` sin la contraseña en ninguna columna; 14 y 15 caracteres, también con `ñ`; 72 bytes con emoji aceptado y 76 rechazado. `parameter_filtering_spec`: contraseña y correo filtrados. Log de desarrollo sin parámetros `password` sin filtrar |
 | A12 | Comprobado (local) | `crear_administrador_spec` (9 ejemplos): creación, correo y nombre pedidos, contraseñas distintas, contraseña corta, sin lectura desde variables, repetición sin modificar cuentas, tarea de Rake, espera del bloqueo y negativa (mutación sin bloqueo: falla), dos ejecuciones simultáneas con un solo administrador. En una pseudoterminal real: 0 apariciones de la contraseña en la salida e inicio de sesión correcto contra el servidor local |
 | A13 | Comprobado (local) | `git grep`: sin contraseñas literales reutilizables ni hashes fijos; seeds sin cuentas; la contraseña local de la base no aparece |
-| A14 | Comprobado (local); **Pendiente (remota)** | `bin/ci` código 0: RuboCop sin infracciones, sin avisos (base `a58f1d0`), importmap limpio, Brakeman 0 advertencias, RSpec 73 ejemplos y 0 fallos (dos corridas). Reversión de las 3 migraciones en test. `openspec validate --all --strict`. El CI de GitHub no se ejecutó |
+| A14 | Comprobado (local); **Pendiente (remota)** | `bin/ci` código 0: RuboCop sin infracciones, sin avisos (base `a58f1d0`), importmap limpio, Brakeman 0 advertencias, RSpec 73 ejemplos y 0 fallos (dos corridas); tras la corrección del límite por correo, 74 ejemplos y 0 fallos. Reversión de las 3 migraciones en test. `openspec validate --all --strict`. El CI de GitHub no se ejecutó |
 
 **Desvíos e incidencias registrados:**
 - Grupo 2: la primera corrida de `user_spec` falló por migraciones pendientes,
@@ -283,13 +291,19 @@ Todo lo de esta tabla se ejecutó en local el 02/11/2026; nada es remoto.
 - Brakeman señaló confusión de verbo (`request.get?` sin `HEAD`): se corrigió
   el código y se agregó una prueba; no se ignoró la advertencia.
 - Tarea 7.3: el primer intento pasó la contraseña por tubería antes de que
-  la tarea desactivara el eco, y la terminal la repitió en la salida, que se
-  mostró en la sesión de trabajo. Era una cuenta ficticia de desarrollo: se
-  borró, se tachó la evidencia y se repitió con una contraseña nueva escrita
-  solo después de cada pedido (0 apariciones). Esa segunda cuenta también se
-  borró, porque su contraseña no quedó guardada.
+  la tarea desactivara el eco; la terminal la repitió en la salida, y esa
+  salida se mostró en la sesión de trabajo. La contraseña era aleatoria y
+  exclusiva de una cuenta ficticia de desarrollo (`ana.admin@example.test`),
+  que se eliminó. Se tachó en el archivo local de evidencia, lo que **no
+  elimina su exposición histórica** en el registro de la sesión de trabajo.
+  No se usó en ninguna otra cuenta ni sistema. La prueba se repitió con una
+  contraseña nueva escrita solo después de cada pedido (0 apariciones); esa
+  segunda cuenta también se eliminó, porque su contraseña no quedó guardada.
 - La prueba de dos ejecuciones simultáneas sin coordinar pasa también sin el
   bloqueo (no fuerza la carrera); la garantía la da la prueba determinista.
+- Límite por correo bajo concurrencia: la primera implementación no cumplía
+  el máximo de 5 con peticiones simultáneas (evaluaba las 8); corregida con
+  una reserva atómica y una prueba determinista, antes de publicar.
 
 ## Risks / Trade-offs
 
@@ -298,9 +312,9 @@ Todo lo de esta tabla se ejecutó en local el 02/11/2026; nada es remoto.
 - [Una escritura en la base por intento de inicio de sesión] → aceptable
   para el volumen del MVP; con mucho tráfico, el límite podría moverse
   delante de la aplicación (ADR-7).
-- [Carrera entre comprobar y contar en el límite por correo] → dos
-  intentos simultáneos pueden pasar la comprobación antes de que se cuenten:
-  el límite puede excederse en pocos intentos, no indefinidamente.
+- [Reserva de un intento que falla por un error inesperado] → la reserva
+  queda contada como fallo; el límite se vuelve más estricto, nunca más
+  laxo.
 - [Granularidad de la actividad] → la inactividad puede vencer hasta 5
   minutos antes de las 2 horas exactas; se documenta.
 - [Límite por correo usado para impedir el acceso de otra persona] → **no se

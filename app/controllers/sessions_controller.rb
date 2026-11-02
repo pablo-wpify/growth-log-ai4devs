@@ -13,8 +13,9 @@ class SessionsController < ApplicationController
     store: LoginAttemptStore.new,
     with: -> { render_too_many_attempts }
 
-  # Por correo: se evalúa antes de buscar la cuenta o comparar la contraseña.
-  before_action :reject_throttled_email, only: :create
+  # Por correo: reserva atómica antes de buscar la cuenta o comparar la
+  # contraseña; sin lugar dentro del límite, 429 sin evaluar credenciales.
+  before_action :reserve_email_attempt, only: :create
 
   def new
   end
@@ -27,7 +28,7 @@ class SessionsController < ApplicationController
       start_new_session_for user
       redirect_to after_authentication_url, status: :see_other
     else
-      email_throttle.record_failure!
+      # El fallo ya quedó contado por la reserva de reserve_email_attempt.
       flash.now[:alert] = FAILURE_MESSAGE
       render :new, status: :unprocessable_content
     end
@@ -43,8 +44,8 @@ class SessionsController < ApplicationController
       @email_throttle ||= EmailLoginThrottle.new(params[:email_address])
     end
 
-    def reject_throttled_email
-      render_too_many_attempts if email_throttle.blocked?
+    def reserve_email_attempt
+      render_too_many_attempts unless email_throttle.reserve_attempt
     end
 
     def render_too_many_attempts

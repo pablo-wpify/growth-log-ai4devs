@@ -32,6 +32,8 @@ nunca contraseñas literales reutilizables ni datos reales.
 - [x] 5.1 Escribir `spec/requests/rate_limit_spec.rb` y verificar que falla
 - [x] 5.2 (Implementado con la tabla `login_attempt_counters`, ver decisión 8: `FileStore` no es atómico entre procesos.) Configurar el almacén compartido, el límite por IP con clave SHA-256, el contador de fallos por correo normalizado con clave SHA-256 y su reinicio tras un éxito, y vaciar el almacén antes de cada ejemplo; verificar que la prueba pasa
 
+- [x] 5.3 Escribir `spec/requests/email_limit_concurrency_spec.rb` (peticiones simultáneas con la evaluación retenida en una barrera) y verificar que falla con la implementación anterior (evaluaba 8); implementar la reserva atómica previa a la evaluación y verificar que como máximo 5 evalúan y el resto recibe 429
+
 ## 6. Rutas protegidas
 
 - [x] 6.1 Escribir `spec/requests/route_protection_spec.rb` (rechazo antes de la acción con doble que falla si se ejecuta, sin efectos en la base, sin rutas de registro ni de contraseñas) y verificar que falla por las rutas de Turbo y `/cable`

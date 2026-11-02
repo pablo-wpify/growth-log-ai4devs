@@ -67,6 +67,10 @@ hasta que la ventana termine.
 - **WHEN** hubo 5 intentos fallidos para un correo dentro de 15 minutos, desde direcciones IP distintas, y llega un sexto intento
 - **THEN** la respuesta tiene estado 429 y no se crea ninguna sesión, aunque las credenciales sean válidas
 
+#### Scenario: Intentos simultáneos
+- **WHEN** llegan a la vez más de 5 intentos para un mismo correo sin fallos previos en la ventana
+- **THEN** como máximo 5 evalúan las credenciales y el resto recibe 429 sin evaluarlas
+
 #### Scenario: Variantes del mismo correo
 - **WHEN** los intentos fallidos usan el mismo correo con distintas mayúsculas o espacios alrededor
 - **THEN** cuentan para el mismo límite
