@@ -3,10 +3,11 @@
 > Primer ticket de la entrega 2 de Growth Log. Cambio de OpenSpec:
 > [`gl-01-base-producto`](../../openspec/changes/gl-01-base-producto/proposal.md).
 >
-> **Estado (02/11/2026): implementado en local, no completo.** `bin/ci` falla
-> en la auditoría de gemas (G6: 15 avisos, uno alto en `rack`). Pendientes:
-> G7 (CI remoto) y G10 desde un clon limpio. Resultados en el registro de
-> evidencia de `design.md`.
+> **Estado (02/11/2026): implementado y verificado en local, no completo.**
+> La auditoría de gemas (G6) falló con 15 avisos y quedó corregida por
+> [GL-01a](GL-01a-avisos-seguridad.md); `bin/ci` termina en verde.
+> Pendiente: G7 (CI remoto). Resultados en el registro de evidencia de
+> `design.md`.
 
 ## Problema
 

@@ -38,7 +38,7 @@ fallo: detenerse, registrarlo y no corregir fuera del alcance.
 
 - [x] 5.1 Verificar con `bundle exec rspec spec/db/seeds_spec.rb` que la creación de datos sigue limitada a desarrollo
 - [x] 5.2 Verificar la suite única (`test ! -e test`, railtie comentado) y el fallo deliberado con respaldo, `trap` de restauración, `sha256sum -c`, `cmp` y una nueva corrida en verde (G14)
-- [ ] 5.3 **Falla: `bundler-audit` encuentra 15 avisos (ver G6 en design.md); no se actualizan versiones en GL-01.** Ejecutar `bin/bundler-audit update` y registrar la fecha de la base; ejecutar `bin/ci` y verificar que termina sin errores; introducir una infracción de estilo temporal, verificar que falla e indica el paso, y revertirla (G6)
+- [x] 5.3 (Primero falló por 15 avisos; corregido por GL-01a, ver G6 en design.md.) Ejecutar `bin/bundler-audit update` y registrar la fecha de la base; ejecutar `bin/ci` y verificar que termina sin errores; introducir una infracción de estilo temporal, verificar que falla e indica el paso, y revertirla (G6)
 - [x] 5.4 Verificar que `git grep -n -i -e ensayo -e EnsayoOpenspec -- . ':!README.md' ':!prompts.md' ':!anexos/' ':!ensayo/' ':!docs/' ':!openspec/'` termina con código 1 (G1)
 - [x] 5.5 Verificar que no cambiaron versiones (`git diff 32759ef -- Gemfile Gemfile.lock .ruby-version`), la documentación de la entrega 1, la procedencia, `.claude/` ni `~/.tool-versions` (`sha256sum -c`), y que los servicios existentes siguen igual (G3, G11, G13, G16)
 - [x] 5.6 Verificar que `config/master.key` y `.env` no están en `git ls-files`, que `git grep` no encuentra la contraseña local y que la única contraseña versionada es la de prueba del workflow (G8)
