@@ -16,7 +16,7 @@ MUST ser la del servicio de PostgreSQL del CI, exclusivamente de prueba.
 - **THEN** `config/master.key` no está versionada y está excluida
 
 #### Scenario: Credenciales locales
-- **WHEN** se busca en los archivos versionados la contraseña de la base local del ensayo
+- **WHEN** se busca en los archivos versionados la contraseña de la base local del producto
 - **THEN** no aparece
 
 #### Scenario: Contraseñas versionadas
