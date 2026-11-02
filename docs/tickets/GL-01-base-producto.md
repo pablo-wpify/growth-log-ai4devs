@@ -3,11 +3,11 @@
 > Primer ticket de la entrega 2 de Growth Log. Cambio de OpenSpec:
 > [`gl-01-base-producto`](../../openspec/changes/gl-01-base-producto/proposal.md).
 >
-> **Estado (02/11/2026): implementado y verificado en local, no completo.**
+> **Estado (02/11/2026): implementado y verificado, pendiente de archivo.**
 > La auditoría de gemas (G6) falló con 15 avisos y quedó corregida por
-> [GL-01a](GL-01a-avisos-seguridad.md); `bin/ci` termina en verde.
-> Pendiente: G7 (CI remoto). Resultados en el registro de evidencia de
-> `design.md`.
+> [GL-01a](GL-01a-avisos-seguridad.md). G7: el CI de GitHub pasó en la
+> [ejecución 41528484840](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41528484840)
+> sobre `2631edb`. Resultados en el registro de evidencia de `design.md`.
 
 ## Problema
 

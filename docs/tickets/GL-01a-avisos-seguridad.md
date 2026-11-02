@@ -73,4 +73,4 @@ estas condiciones propias de la corrección.
 | S4 | Con la base de avisos actualizada, `bundler-audit` no informa avisos y `bin/ci` termina con código 0 | `bin/bundler-audit update`, `bin/ci` |
 | S5 | `openspec validate --all --strict` pasa | comando |
 
-Pendiente remoto: G7 de GL-01 (CI en GitHub), sin cambios.
+G7 de GL-01 (CI en GitHub): comprobado en la ejecución 41528484840 sobre `2631edb`, con `scan_ruby` sin vulnerabilidades.

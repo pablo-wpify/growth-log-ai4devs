@@ -62,4 +62,4 @@ versionado).
 | S4 | Comprobado (local) | base de avisos `a58f1d0` (2026-11-02, 1329 avisos); `bin/bundler-audit`: «No vulnerabilities found», código 0; `bin/ci`: todos los pasos en verde, código 0 (RuboCop sin infracciones, importmap sin avisos, Brakeman 0 advertencias, RSpec 4 ejemplos y 0 fallos) | 2026-11-02 |
 | S5 | Comprobado (local) | `openspec validate --all --strict`: 7 de 7 válidos | 2026-11-02 |
 | G6 de GL-01 | Comprobado (local) | ver S4 | 2026-11-02 |
-| G7 de GL-01 | Pendiente (remota) | sin push autorizado | — |
+| G7 de GL-01 | Comprobado (remota) | ejecución 41528484840 sobre `2631edb`: los cuatro jobs en `success`, `scan_ruby` sin vulnerabilidades (ver el registro de GL-01) | 2026-11-02 |

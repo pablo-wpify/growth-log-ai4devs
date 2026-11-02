@@ -45,7 +45,7 @@ fallo: detenerse, registrarlo y no corregir fuera del alcance.
 
 ## 6. CI en el repositorio del producto
 
-- [ ] 6.1 Con autorización explícita para push, hacer push de `feature/entrega-2-pp` a `growth-log-publico` y verificar que `scan_ruby`, `scan_js`, `lint` y `test` terminan en `success`; registrar el enlace y el commit (G7). Hasta entonces, GL-01 no se declara completo
+- [x] 6.1 Con autorización explícita para push, hacer push de `feature/entrega-2-pp` a `growth-log-publico` y verificar que `scan_ruby`, `scan_js`, `lint` y `test` terminan en `success`; registrar el enlace y el commit (G7). Hasta entonces, GL-01 no se declara completo
 
 ## Workflow follow-up
 
