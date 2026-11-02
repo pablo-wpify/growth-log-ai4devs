@@ -3,7 +3,8 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    # feature/entrega-2-pp: rama de entrega; corre el CI sin crear main ni abrir un PR (GL-01, D-GL01-2).
+    branches: [ main, feature/entrega-2-pp ]
 
 jobs:
   scan_ruby:

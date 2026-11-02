@@ -2,6 +2,11 @@
 
 > Primer ticket de la entrega 2 de Growth Log. Cambio de OpenSpec:
 > [`gl-01-base-producto`](../../openspec/changes/gl-01-base-producto/proposal.md).
+>
+> **Estado (02/11/2026): implementado en local, no completo.** `bin/ci` falla
+> en la auditoría de gemas (G6: 15 avisos, uno alto en `rack`). Pendientes:
+> G7 (CI remoto) y G10 desde un clon limpio. Resultados en el registro de
+> evidencia de `design.md`.
 
 ## Problema
 
@@ -147,7 +152,7 @@ ensayo y Clima API.
 
 | # | Criterio | Cómo se comprueba | Dónde |
 |---|---|---|---|
-| G1 | Fuera de los artefactos de procedencia y de planificación, ningún archivo versionado contiene «ensayo» ni `EnsayoOpenspec` | `git grep -n -i -e ensayo -e EnsayoOpenspec` excluyendo `ensayo/`, `openspec/changes/archive/`, `docs/` y `openspec/changes/gl-01-base-producto/`: código 1 | local |
+| G1 | Ningún archivo de código, configuración ni pruebas contiene «ensayo» ni `EnsayoOpenspec`. Quedan fuera la documentación de la entrega 1, que usa «Ensayo» como apellido ficticio en los mocks, y la procedencia y planificación (`ensayo/`, `docs/`, `openspec/`). Las specs base heredadas de E1 se corrigen al archivar GL-01 | `git grep -n -i -e ensayo -e EnsayoOpenspec` excluyendo `README.md`, `prompts.md`, `anexos/`, `ensayo/`, `docs/` y `openspec/`: código 1; después de archivar GL-01, la misma búsqueda sobre `openspec/specs/`: código 1 | local |
 | G2 | La aplicación se llama `GrowthLog` y se presenta como «Growth Log» | `bin/rails runner 'puts Rails.application.class.module_parent_name'`; revisión del layout y del manifiesto | local |
 | G3 | Versiones aceptadas, sin cambios de gemas ni prereleases | `ruby -v`, `bin/rails -v`; `git diff 32759ef -- Gemfile Gemfile.lock .ruby-version` vacío; versiones de `rspec-*` y prereleases con `Bundler::LockfileParser` | local |
 | G4 | `bin/rails db:prepare` y `RAILS_ENV=test bin/rails db:prepare` crean o actualizan `growth_log_development` y `growth_log_test` en el PostgreSQL 18.6 del producto, y se pueden repetir | dos ejecuciones de cada uno; listado de bases del contenedor | local |

@@ -104,11 +104,28 @@ ensayo o en Clima API.
 Se completa durante la implementación. El directorio de evidencias, creado
 con `mktemp -d` fuera del repositorio, no se versiona.
 
-| Criterio | Estado | Comando o fuente | Fecha |
+Directorio de evidencias: `~/growth-log-evidencias/gl-01.Vw4rmY14`
+(fuera del repositorio, no versionado). Base `cf44c0c` más los cambios de
+GL-01 en el árbol de trabajo.
+
+| Criterio | Estado | Resultado | Fecha |
 |---|---|---|---|
-| G1 a G6, G8, G9, G11 a G16 | Pendiente | — | — |
-| G7 | Pendiente (remota) | — | — |
-| G10 | Pendiente; desde un clon limpio, Pendiente (clon limpio) | — | — |
+| G1 | Comprobado (local) | `git grep` con las exclusiones del ticket: código 1. Las specs base heredadas de E1 todavía mencionan el ensayo; se corrigen al archivar GL-01 | 2026-11-02 |
+| G2 | Comprobado (local) | `module_parent_name` → `GrowthLog`; layout y manifiesto «Growth Log» por revisión | 2026-11-02 |
+| G3 | Comprobado (local) | Ruby 4.0.9, Rails 8.1.4, Bundler 4.0.20, `pg` 1.7.0, `rspec-rails` 8.0.4, `rspec-core` 3.13.6, `rspec-expectations` 3.13.5, `rspec-mocks` 3.13.8, `rspec-support` 3.13.7; sin prereleases; `Gemfile`, lockfile y `.ruby-version` sin cambios desde `32759ef` | 2026-11-02 |
+| G4 | Comprobado (local) | `db:prepare` dos veces en desarrollo y en test, código 0; existen `growth_log_development` y `growth_log_test` en `growthlog-pg` | 2026-11-02 |
+| G5 | Comprobado (local) | spec de conexión: 1 ejemplo, 0 fallos; con un puerto sin servidor (55449), código 1; con contraseña incorrecta, `password authentication failed` | 2026-11-02 |
+| G6 | **Falla (local)** | base de avisos actualizada (`a58f1d0`, 2026-11-02, 1329 avisos). `bin/ci`: estilo, importmap, Brakeman (0 advertencias), base de test y RSpec pasan; **`bundler-audit` falla con 15 avisos**: `rack` 3.2.7 (1 alto, 2 medios, 1 bajo), `loofah` 2.25.2 (4 medios, 2 sin clasificar), `nokogiri` 1.19.4 (1 bajo, 2 sin clasificar) y `rails-html-sanitizer` 1.7.1 (2 medios). Con una infracción de estilo temporal, `bin/ci` falla en «Style: Ruby» (código 1) y el archivo se restaura idéntico | 2026-11-02 |
+| G7 | Pendiente (remota) | sin push autorizado. Con los avisos de G6, `scan_ruby` también fallaría | — |
+| G8 | Comprobado (local) | `config/master.key` y `.env` no versionados; la contraseña local no aparece (`git grep -F`, código 1); las únicas contraseñas versionadas son las de prueba del CI | 2026-11-02 |
+| G9 | Comprobado (local) | `openspec validate --all --strict`: todo válido | 2026-11-02 |
+| G10 | Comprobado (local) en el árbol de trabajo; Pendiente (clon limpio) | pasos 1 y 3 a 7 de la guía ejecutados tal como están escritos, salvo el servidor, levantado con `-d` para automatizar; los pasos 2 y 3 (crear `.env` y el contenedor) se hicieron con las tareas 1.6 y 1.7. `bin/ci` falla por G6 | 2026-11-02 |
+| G11 | Comprobado (local) | `sha256sum -c` de 36 archivos protegidos sin cambios; `git diff 3723f7f -- README.md prompts.md anexos` vacío | 2026-11-02 |
+| G12 | Comprobado (local) | con `ASDF_RUBY_VERSION=3.4.7`, `bundle exec ruby -e …` termina con código 1 y `Bundler::RubyVersionMismatch: Your Ruby version is 3.4.7, but your Gemfile specified 4.0.9`; sin la variable imprime `4.0.9`, código 0 | 2026-11-02 |
+| G13 | Comprobado (local) | `.tool-versions`, `.ruby-version` y lockfile en 4.0.9; `Gemfile` sin literal; los cuatro `setup-ruby` sin `ruby-version` (leen `.ruby-version`); sin `.tool-versions`, el proyecto usaba Ruby 3.4.7, y con él asdf selecciona 4.0.9; `~/.tool-versions` sin cambios y sin `~/.asdfrc`; `RBENV_VERSION` y `rvm_ruby_string` vacías | 2026-11-02 |
+| G14 | Comprobado (local) | no existe `test/`; railtie comentado; con la expectativa de `/up` en 201, 1 fallo y código 1; restaurado por `trap`, `sha256sum -c` y `cmp` idénticos; nueva corrida 4 ejemplos, 0 fallos | 2026-11-02 |
+| G15 | Comprobado (inspección) | jobs `lint`, `scan_js`, `scan_ruby`, `test`; disparadores `pull_request` y push a `main` y `feature/entrega-2-pp`; cada paso de `config/ci.rb` tiene equivalente (Setup lo cubre `setup-ruby` con caché) | 2026-11-02 |
+| G16 | Comprobado (local) | `growthlog-pg` publica solo `127.0.0.1:55440`; los únicos cambios en contenedores y volúmenes son `growthlog-pg` y `growthlog-pgdata` | 2026-11-02 |
 
 **Antecedentes, que no cuentan como evidencia de GL-01:** E1 en el ensayo
 (A1 a A8; A6 en la ejecución 40779743471 de

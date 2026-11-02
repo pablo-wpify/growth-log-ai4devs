@@ -5,26 +5,28 @@ context: |
   All artifacts must be written in es.
   Keep OpenSpec structural headings and SHALL/MUST keywords in English.
 
-  Proyecto: Growth Log. Este repositorio es una copia aislada y descartable
-  para ensayar OpenSpec; la fuente de cada cambio es su ticket en ensayo/.
-  La documentación del producto está en README.md y anexos/ (solo lectura en
-  este ensayo): plan incremental en anexos/anexo-g-plan-incremental.md (E1 a
-  E4, I1 a I9), decisiones de arquitectura en
-  anexos/anexo-d-decisiones-arquitectura.md, stack y requisitos en las
-  secciones 2.2 a 2.6 del README, matriz de confiabilidad en
-  anexos/anexo-b-matriz-confiabilidad.md.
+  Proyecto: Growth Log, monolito Rails con PostgreSQL. La fuente de cada
+  cambio es su ticket en docs/tickets/. La documentación de la entrega 1
+  (README.md, prompts.md y anexos/) es de solo lectura salvo pedido
+  explícito: plan incremental en anexos/anexo-g-plan-incremental.md, ADR en
+  anexos/anexo-d-decisiones-arquitectura.md, decisiones de privacidad en
+  anexos/anexo-c-riesgos-decisiones.md, criterios en anexos/anexo-a-historias.md.
+  ensayo/ y openspec/changes/archive/2026-11-02-e1-base-rails son
+  procedencia del ensayo: no se modifican y sus verificaciones no cuentan
+  como verificaciones del producto. Decisiones del producto: docs/decisiones/.
 
-  Decisiones aceptadas por Pablo para el ensayo: Ruby 4.0.9, Rails 8.1.4,
-  RSpec, PostgreSQL 18.6 en local y en el CI, monolito Rails (ADR-1).
-  Abiertas y fuera del ensayo: ADR-2 a ADR-8 salvo ADR-1; ADR-6 (E2E) y
-  ADR-7 (despliegue) no se resuelven aquí.
+  Decisiones aprobadas: D1, D2, D5, AM-1 a AM-5 y criterios 3.9, 4.11 y 4.12
+  (entrega 1); ADR-1 (monolito Rails), Ruby 4.0.9, Rails 8.1.4,
+  PostgreSQL 18.6, RSpec y las decisiones D-GL01-1 a D-GL01-4 (GL-01).
+  Abiertas: ADR-2, ADR-3, ADR-5 a ADR-8, la lista de dimensiones, D3 y D4.
 
   Restricciones:
-  - No agregar autenticación, invitaciones, feedback, modelos del dominio,
-    despliegue ni funciones que el ticket no pida.
+  - No agregar funciones que el ticket no pida.
+  - No actualizar versiones dentro de un cambio que no lo pida.
   - Sin credenciales locales o reales en el repositorio: la base se configura
-    por variables de entorno. La única contraseña versionada es la del
-    servicio de PostgreSQL del CI, exclusivamente de prueba.
+    por variables DATABASE_* desde un .env ignorado. La única contraseña
+    versionada es la del servicio de PostgreSQL del CI, exclusivamente de
+    prueba.
   - Un criterio que solo se verifica en GitHub Actions queda pendiente hasta
     ejecutarlo; no se declara completo ni se archiva el cambio mientras siga
     pendiente.

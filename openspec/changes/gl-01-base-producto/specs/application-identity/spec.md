@@ -31,5 +31,5 @@ artefactos que documentan su procedencia.
 - **THEN** es `GrowthLog`
 
 #### Scenario: Sin rastros del ensayo
-- **WHEN** se buscan «ensayo» y `EnsayoOpenspec` en los archivos versionados, excluyendo el ticket y el cambio de E1, los tickets y este cambio
+- **WHEN** se buscan «ensayo» y `EnsayoOpenspec` en los archivos de código, configuración y pruebas, excluyendo la documentación de la entrega 1 y los artefactos de procedencia y planificación
 - **THEN** no hay resultados
