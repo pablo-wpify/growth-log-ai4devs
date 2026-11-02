@@ -100,6 +100,41 @@ RAILS_ENV=test bin/rails db:prepare
 Crean o actualizan `growth_log_development` y `growth_log_test`. Se pueden
 repetir. Los seeds solo crean datos en desarrollo.
 
+## 4b. Administrador inicial
+
+Las cuentas no se registran solas: no hay registro público. La primera
+cuenta administradora se crea con una tarea que pide la contraseña dos
+veces **sin mostrarla**. El correo y el nombre se pueden pasar como
+variables o se piden en la terminal:
+
+```sh
+EMAIL=ana.admin@example.test NOMBRE="Ana Admin" bin/rails growth_log:crear_administrador
+```
+
+- La contraseña necesita al menos 15 caracteres y como máximo 72 bytes,
+  sin reglas de composición.
+- La tarea se niega si ya existe un administrador activo, y dos
+  ejecuciones simultáneas crean uno solo.
+- La contraseña nunca se pasa por argumentos ni por variables de entorno.
+  Sin terminal, se lee de la entrada estándar (útil para automatizar).
+- Usá datos ficticios en desarrollo. Las siguientes cuentas llegan con las
+  invitaciones (GL-04).
+
+Para iniciar sesión, levantá el servidor (paso 7) y entrá en
+`http://localhost:3000`: sin sesión, cualquier página lleva a
+«Iniciar sesión». La sesión vence tras 2 horas sin actividad y a las 12
+horas como máximo.
+
+**Límites de intentos.** 10 intentos por IP cada 3 minutos y 5 intentos
+fallidos por correo cada 15 minutos. Los contadores se guardan en la tabla
+`login_attempt_counters` de la misma base, compartida por todos los
+procesos; no hace falta configurar nada más. Si en desarrollo te bloqueás,
+esperá a que venza la ventana o vaciá la tabla:
+
+```sh
+bin/rails runner 'LoginAttemptCounter.delete_all'
+```
+
 ## 5. Pruebas
 
 ```sh
@@ -142,5 +177,5 @@ Debe responder `HTTP/1.1 200 OK`.
 
 ## Lo que todavía no hay
 
-Autenticación, cuentas, personas ni feedback: llegan en los tickets
-siguientes de la entrega 2.
+Invitaciones, permisos sobre recursos, personas ni feedback: llegan en los
+tickets siguientes de la entrega 2.

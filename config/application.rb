@@ -23,6 +23,13 @@ module GrowthLog
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
+    # GL-02 (D-GL02-7): sin app nativa ni canales, no se exponen las rutas de
+    # navegación nativa de Turbo ni se monta Action Cable. Volver a montarlo
+    # exige autenticar la conexión, en su propio cambio.
+    config.turbo.draw_routes = false
+    config.action_cable.mount_path = nil
+
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

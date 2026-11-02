@@ -85,9 +85,8 @@ de su correo.
 
 ### Requirement: Almacén de los límites compartido entre procesos
 Los contadores de los límites SHALL guardarse en un almacén compartido por
-todos los procesos de la aplicación en una misma instancia, con
-incrementos atómicos, y MUST NOT guardar el correo ni la dirección IP en
-claro en las claves.
+todos los procesos de la aplicación, con incrementos atómicos, y MUST NOT
+guardar el correo ni la dirección IP en claro en las claves.
 
 #### Scenario: Dos procesos
 - **WHEN** dos procesos de la misma instancia cuentan intentos para la misma clave
@@ -100,9 +99,10 @@ claro en las claves.
 ### Requirement: Sesión con vencimiento
 Una sesión SHALL vencer tras 2 horas sin actividad y, en cualquier caso, 12
 horas después de iniciarse. Ambos vencimientos MUST comprobarse en el
-servidor en cada petición, con los datos guardados de la sesión y no con el
-vencimiento de la cookie. Una sesión vencida MUST rechazarse y eliminarse
-del servidor.
+servidor en cada petición, con los datos guardados de la sesión y no solo
+con el vencimiento de la cookie. Una sesión vencida MUST rechazarse; su
+registro se elimina cuando se presenta o cuando su cuenta inicia una nueva
+sesión.
 
 #### Scenario: Actividad dentro del plazo
 - **WHEN** una sesión hace una petición antes de cumplir 2 horas sin actividad y 12 horas desde su inicio
@@ -113,8 +113,16 @@ del servidor.
 - **THEN** la petición redirige al inicio de sesión y la sesión ya no existe en el servidor
 
 #### Scenario: Vencimiento absoluto
-- **WHEN** una sesión con actividad constante hace una petición más de 12 horas después de iniciarse
+- **WHEN** una sesión con actividad constante hace una petición 12 horas o más después de iniciarse, aunque se reenvíe la cookie
+- **THEN** la petición redirige al inicio de sesión
+
+#### Scenario: Máximo absoluto comprobado con los datos del servidor
+- **WHEN** la sesión guardada superó las 12 horas y la cookie todavía no venció
 - **THEN** la petición redirige al inicio de sesión y la sesión ya no existe en el servidor
+
+#### Scenario: Limpieza al iniciar sesión
+- **WHEN** una cuenta inicia una sesión nueva
+- **THEN** sus sesiones vencidas se eliminan del servidor
 
 ### Requirement: Cierre de sesión
 Cerrar sesión SHALL eliminar la sesión del servidor y borrar la cookie. Una

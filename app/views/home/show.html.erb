@@ -1,0 +1,5 @@
+<% content_for :title, "Growth Log" %>
+
+<h1>Growth Log</h1>
+<p>Sesión iniciada como <%= Current.user.name %>.</p>
+<%= button_to "Cerrar sesión", session_path, method: :delete %>

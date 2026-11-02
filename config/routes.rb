@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # GL-02: solo iniciar y cerrar sesión; sin registro ni recuperación de contraseña.
+  resource :session, only: %i[ new create destroy ]
+  root "home#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

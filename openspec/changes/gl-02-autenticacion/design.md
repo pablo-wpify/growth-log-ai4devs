@@ -119,7 +119,13 @@ se pueden construir con `generates_token_for` sin otra gema.
    vencimiento de la cookie (12 h) es solo una ayuda para el navegador. La
    cookie `session_id` está firmada, es `httponly`, `same_site: :lax`,
    `secure` cuando la petición es HTTPS (en producción, siempre, por
-   `assume_ssl` y `force_ssl`) y vence a las 12 horas.
+   `assume_ssl` y `force_ssl`) y vence a las 12 horas. Rails firma el
+   vencimiento junto con el valor: una cookie reenviada después de las 12
+   horas se rechaza por la firma, aunque alguien la haya conservado. Como en
+   ese caso el servidor no sabe a qué fila correspondía, la fila se borra
+   cuando la cuenta inicia una nueva sesión (`user.sessions.expired`). Las
+   filas de cuentas que no vuelven a entrar quedan hasta una limpieza
+   periódica, que es una mejora posterior; no sirven para entrar.
 5. **Inicio de sesión.** Ante éxito, `reset_session` (descarta la sesión
    anónima de Rails y evita la fijación), crea la fila de `sessions` y
    redirige con 303. Ante cualquier fallo vuelve a mostrar el formulario
@@ -147,8 +153,7 @@ se pueden construir con `generates_token_for` sin otra gema.
      exitoso borra el contador de su correo.
 
    **Ventanas:** fijas. Empiezan con el primer intento contado y se
-   reinician cuando vencen: `FileStore` conserva el vencimiento original
-   del primer incremento. Al superar cualquiera de los dos límites, estado
+   reinician cuando vencen. Al superar cualquiera de los dos límites, estado
    429 y «Demasiados intentos. Probá de nuevo en unos minutos.». No se
    bloquean cuentas.
 
@@ -158,17 +163,29 @@ se pueden construir con `generates_token_for` sin otra gema.
    de ese otro riesgo. Mitigaciones posteriores posibles: aviso al
    administrador, MFA o una vía de acceso alternativa.
 
-   **Almacén compartido:** un `ActiveSupport::Cache::FileStore` propio de
-   los límites, en `tmp/rate_limits/<entorno>`, configurado en
-   `config.x.rate_limit_store`. Sus incrementos usan `flock`, así que son
-   atómicos entre todos los procesos y hilos de una misma instancia.
-   - **Local (desarrollo):** `tmp/rate_limits/development`, ignorado por
-     Git; `bin/rails tmp:clear` lo vacía.
-   - **Test:** `tmp/rate_limits/test`, vaciado antes de cada ejemplo.
-   - **Producción:** `tmp/rate_limits/production` en el disco de la
-     instancia. Vale para una instancia, que es la propuesta inicial del
-     README. Con varias instancias hay que reemplazarlo por un almacén de
-     red (Solid Cache o Redis): eso es una decisión de ADR-7.
+   **Almacén compartido: tabla `login_attempt_counters` de PostgreSQL**
+   (`key` como clave primaria, `count`, `expires_at`), usada a través de
+   `LoginAttemptStore`, que ofrece la parte de la interfaz de
+   `ActiveSupport::Cache` que usan `rate_limit` y el contador por correo. El
+   incremento es un único `INSERT … ON CONFLICT DO UPDATE … RETURNING`:
+   atómico entre procesos y también entre instancias. Si la fila venció, el
+   mismo `UPSERT` reinicia el conteo y la ventana. Cada incremento borra
+   antes las filas vencidas (índice en `expires_at`), así que la tabla no
+   crece sin límite.
+   - **Local y test:** la misma tabla en `growth_log_development` y
+     `growth_log_test`; en test, cada ejemplo la deja vacía al revertir su
+     transacción.
+   - **Producción:** la misma tabla en la base de producción; no depende
+     del disco de la instancia ni de un caché.
+
+   **Cambio respecto del diseño aprobado:** la propuesta original usaba un
+   `FileStore` en `tmp/rate_limits`. La prueba con procesos reales lo
+   refutó: con 4 procesos y 100 incrementos, el contador terminó en 58 y
+   en 50. `FileStore` bloquea con `flock` el archivo de la clave, pero
+   escribe con un archivo temporal y renombrado, así que los procesos
+   terminan bloqueando archivos distintos. La tabla cumple el requisito
+   aprobado («almacén compartido entre procesos») sin dependencias nuevas;
+   la prueba entre procesos pasó 5 de 5 veces.
 
    Con un proxy delante, `remote_ip` depende de declarar los proxies de
    confianza (ADR-7).
@@ -235,13 +252,55 @@ demuestran igualdad de tiempos**, que no se mide en este ticket.
 | `spec/requests/parameter_filtering_spec.rb` | peticiones | el log de un intento de inicio de sesión no contiene la contraseña |
 | `spec/tasks/crear_administrador_spec.rb` | tarea y servicio | creación correcta con entrada simulada; contraseñas distintas; contraseña corta; repetición con un administrador ya activo; dos ejecuciones concurrentes en conexiones distintas crean un solo administrador; la salida no contiene la contraseña |
 
+## Registro de evidencia
+
+Directorio de evidencias: `~/growth-log-evidencias/gl-02.kEsYcV2c` (no versionado).
+Todo lo de esta tabla se ejecutó en local el 02/11/2026; nada es remoto.
+
+| Criterio | Estado | Resultado |
+|---|---|---|
+| A1 | Comprobado (local) | `route_protection_spec`: las 5 rutas declaradas; sin sesión, todas las que no son excepción redirigen antes de la acción (un doble falla si se ejecuta) y sin cambios en `users`, `sessions` ni `login_attempt_counters`. Antes de D-GL02-7 fallaba por `/cable` y las 3 rutas de Turbo. Mutación: con `allow_unauthenticated_access` en la página de inicio, la prueba falla con «GET / ejecutó HomeController#show sin sesión» |
+| A2 | Comprobado (local) | `bin/rails routes` y `route_protection_spec`: sin rutas de registro ni de contraseñas |
+| A3 | Comprobado (local) | `sessions_spec`: 303 a la página de inicio y una sesión; correo con mayúsculas y espacios; vuelta a la página pedida con `GET` y `HEAD` |
+| A4 | Comprobado (local) | `sessions_spec`: contraseña incorrecta, correo desconocido y cuenta desactivada con el mismo estado (422), el mismo mensaje y sin sesión. No se mide ni se afirma igualdad de tiempos |
+| A5 | Comprobado (local) | `rate_limit_spec` (10 ejemplos): 11.º intento por IP, también contando éxitos; 6.º por correo desde IP distintas y con variantes; recuperación a los 3 y 15 minutos; reinicio tras un éxito; otras IP y correos no afectados; claves sin correo ni IP en claro. `rate_limit_store_spec`: 4 procesos × 25 incrementos = 100, 5 de 5 corridas (con `FileStore`: 58 y 50) |
+| A6 | Comprobado (local) | `sessions_spec`: tras cerrar sesión no queda fila y la cookie reenviada redirige al inicio de sesión |
+| A7 | Comprobado (local) | `session_spec` (bordes exactos) y `session_expiry_spec`: renovación solo pasados 5 min; 2 h sin actividad; cookie conservada rechazada a las 12 h; máximo absoluto por los datos guardados con cookie vigente; limpieza al iniciar sesión |
+| A8 | Comprobado (local) | `session_expiry_spec`: cuenta desactivada con sesión abierta, redirección y fila borrada |
+| A9 | Comprobado (local) | `csrf_spec` con la protección activada: inicio y cierre sin token, 422; el formulario incluye el token |
+| A10 | Comprobado (local) | `sessions_spec`: cambia el identificador de la sesión anónima (mutación sin `reset_session`: falla); cookie `HttpOnly`, `SameSite=Lax`, `Secure` por HTTPS, vence a las 12 h; sin `Secure` por HTTP |
+| A11 | Comprobado (local) | `user_spec`: hash `$2a$` sin la contraseña en ninguna columna; 14 y 15 caracteres, también con `ñ`; 72 bytes con emoji aceptado y 76 rechazado. `parameter_filtering_spec`: contraseña y correo filtrados. Log de desarrollo sin parámetros `password` sin filtrar |
+| A12 | Comprobado (local) | `crear_administrador_spec` (9 ejemplos): creación, correo y nombre pedidos, contraseñas distintas, contraseña corta, sin lectura desde variables, repetición sin modificar cuentas, tarea de Rake, espera del bloqueo y negativa (mutación sin bloqueo: falla), dos ejecuciones simultáneas con un solo administrador. En una pseudoterminal real: 0 apariciones de la contraseña en la salida e inicio de sesión correcto contra el servidor local |
+| A13 | Comprobado (local) | `git grep`: sin contraseñas literales reutilizables ni hashes fijos; seeds sin cuentas; la contraseña local de la base no aparece |
+| A14 | Comprobado (local); **Pendiente (remota)** | `bin/ci` código 0: RuboCop sin infracciones, sin avisos (base `a58f1d0`), importmap limpio, Brakeman 0 advertencias, RSpec 73 ejemplos y 0 fallos (dos corridas). Reversión de las 3 migraciones en test. `openspec validate --all --strict`. El CI de GitHub no se ejecutó |
+
+**Desvíos e incidencias registrados:**
+- Grupo 2: la primera corrida de `user_spec` falló por migraciones pendientes,
+  no por una aserción concreta.
+- Grupo 3: la página de inicio provisoria se implementó con este grupo
+  porque las pruebas de vencimiento la necesitan.
+- Almacén de los límites: `FileStore` reemplazado por PostgreSQL (decisión 8).
+- Brakeman señaló confusión de verbo (`request.get?` sin `HEAD`): se corrigió
+  el código y se agregó una prueba; no se ignoró la advertencia.
+- Tarea 7.3: el primer intento pasó la contraseña por tubería antes de que
+  la tarea desactivara el eco, y la terminal la repitió en la salida, que se
+  mostró en la sesión de trabajo. Era una cuenta ficticia de desarrollo: se
+  borró, se tachó la evidencia y se repitió con una contraseña nueva escrita
+  solo después de cada pedido (0 apariciones). Esa segunda cuenta también se
+  borró, porque su contraseña no quedó guardada.
+- La prueba de dos ejecuciones simultáneas sin coordinar pasa también sin el
+  bloqueo (no fuerza la carrera); la garantía la da la prueba determinista.
+
 ## Risks / Trade-offs
 
 - [Código de autenticación propio] → pruebas por escenario y revisión del
   diff del generador antes de adaptarlo.
-- [`FileStore` como almacén de los límites] → compartido entre procesos de
-  una instancia; con varias instancias hace falta un almacén de red
-  (ADR-7).
+- [Una escritura en la base por intento de inicio de sesión] → aceptable
+  para el volumen del MVP; con mucho tráfico, el límite podría moverse
+  delante de la aplicación (ADR-7).
+- [Carrera entre comprobar y contar en el límite por correo] → dos
+  intentos simultáneos pueden pasar la comprobación antes de que se cuenten:
+  el límite puede excederse en pocos intentos, no indefinidamente.
 - [Granularidad de la actividad] → la inactividad puede vencer hasta 5
   minutos antes de las 2 horas exactas; se documenta.
 - [Límite por correo usado para impedir el acceso de otra persona] → **no se
@@ -258,8 +317,8 @@ demuestran igualdad de tiempos**, que no se mide en este ticket.
 
 ## Migration Plan
 
-Dos migraciones nuevas (`users`, `sessions`), reversibles; se prueban hacia
-atrás en una base descartable. Sin datos que migrar.
+Tres migraciones nuevas (`users`, `sessions`, `login_attempt_counters`),
+reversibles; se prueban hacia atrás en la base de test. Sin datos que migrar.
 
 ## Open Questions
 

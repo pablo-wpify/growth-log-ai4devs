@@ -2,7 +2,8 @@
 
 > Segundo ticket de la entrega 2 de Growth Log. Cambio de OpenSpec:
 > [`gl-02-autenticacion`](../../openspec/changes/gl-02-autenticacion/proposal.md).
-> **Estado: planificado y aprobado (02/11/2026), no implementado.**
+> **Estado (02/11/2026): implementado y verificado en local; pendiente el CI
+> remoto (A14).** Resultados en el registro de evidencia del diseño.
 
 ## Problema
 
