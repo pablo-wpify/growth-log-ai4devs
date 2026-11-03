@@ -10,6 +10,8 @@
 |---|---|---|---|
 | M29 | 2026-11-03 11:08:24 | pedido de análisis | [Inventario del registro de prompts](M29-2026-11-03-inventario-del-registro-de-prompts.md) |
 | M30 | 2026-11-03 11:14:47 | aprobación e implementación | [Recuperar y versionar los pedidos](M30-2026-11-03-recuperar-y-versionar-los-pedidos.md) |
+| M31 | 2026-11-03 11:28:56 | autorización de publicación | [Publicar el registro y abrir el PR](M31-2026-11-03-publicar-el-registro-y-abrir-el-pr.md) |
+| M32 | 2026-11-03 11:40:21 | autorización de integración | [Integrar el PR #1](M32-2026-11-03-integrar-el-pr-1.md) |
 
 ## Conversación de acompañamiento
 

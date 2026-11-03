@@ -9,8 +9,10 @@
 | Mensaje | Fecha y hora (UTC) | Tipo | Archivo |
 |---|---|---|---|
 | M28 | 2026-11-03 11:02:36 | pedido de planificación | [Planificar GL-05 mediante SDD](M28-2026-11-03-planificar-gl-05-mediante-sdd.md) |
+| M33 | 2026-11-03 14:38:10 | pedido de planificación | [Retomar GL-05 y preparar su rama](M33-2026-11-03-retomar-gl-05-y-preparar-su-rama.md) |
+| M35 | 2026-11-03 15:44:52 | aprobación e implementación | [Aprobar e implementar GL-05](M35-2026-11-03-aprobar-e-implementar-gl-05.md) |
 
-La planificación que produjo M28 está **pendiente y sin commit** en `feature/entrega-2-pp`; esta rama solo registra el pedido.
+M28 y M33 produjeron la planificación; M35 aprobó P-15 a P-17 y autorizó la implementación en la rama local `feature/GL-05-personas`.
 
 ## Conversación de acompañamiento
 

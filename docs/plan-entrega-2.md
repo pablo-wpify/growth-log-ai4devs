@@ -61,7 +61,7 @@ citaban por número):
 | 3 | GL-02 | Autenticación: sesión, administrador inicial, rutas protegidas | **cerrado** (archivado; CI [41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981)) | GL-01 | — |
 | 4 | [GL-03](tickets/GL-03-autorizacion-minima.md) | Autorización mínima del recorrido: denegar por defecto, personas y asignaciones mínimas, alcance por asignación | **cerrado** (archivado; CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236)) | GL-02 | ninguna (P-5, P-7, P-8 y P-9 aprobadas) |
 | 5 | [GL-08](tickets/GL-08-datos-ficticios.md) | Datos ficticios reproducibles para desarrollo | **cerrado** (archivado; CI [41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815)) | GL-03 | — |
-| 6 | GL-05 | «Personas» y ficha del líder: elegir una persona asignada | pendiente | GL-03, GL-08 | — |
+| 6 | [GL-05](tickets/GL-05-personas.md) | «Personas» y ficha del líder: elegir una persona asignada | **en curso**: cambio de OpenSpec abierto, rama `feature/GL-05-personas` | GL-03, GL-08 | ninguna (P-15, P-16 y P-17 aprobadas) |
 | 7 | GL-06 | Captura rápida, completar y marcar como lista | pendiente | GL-05 | P-1, P-2, P-3, P-11 |
 | 8 | GL-07 | Resumen por dimensión y cronología | pendiente | GL-06 | P-2, P-10 |
 | 9 | GL-09 | Verificación E2E del recorrido núcleo | pendiente | GL-07 | P-4 (ADR-6) |
@@ -203,7 +203,7 @@ además GL-04.
 ## 6. Decisiones pendientes de aprobación
 
 Aprobadas por Pablo: **P-5, P-7, P-8, P-9 y P-12** (02/11/2026), en los
-términos de la sección 6.1 y la sección 8, y **P-6, P-13 y P-14** (03/11/2026). Las demás siguen siendo
+términos de la sección 6.1 y la sección 8, y **P-6, P-13, P-14, P-15, P-16 y P-17** (03/11/2026). Las demás siguen siendo
 recomendaciones, **sin aprobar**.
 
 | # | Decisión | Bloquea | Recomendación | Alternativas |
@@ -222,6 +222,9 @@ recomendaciones, **sin aprobar**.
 | P-12 | Contexto del proyecto para la IA (sección 8) | — | **Aprobada:** creado `CLAUDE.md`. Crear `CLAUDE.md` en la raíz con el contenido mínimo propuesto | no crearlo y mantener solo `openspec/config.yaml` |
 | P-13 | Cómo se distinguen los registros del conjunto ficticio | GL-08 | **Aprobada (03/11/2026).** Tabla `sample_data_records` con una marca por registro creado; sin marca no se adopta nada, aunque coincida el correo ([diseño](../openspec/changes/archive/2026-11-03-gl-08-datos-ficticios/design.md#3-marcas-tabla-sample_data_records-p-13-aprobada-el-03112026)) | columna en las tablas del dominio; reconocer por correo (adopta cuentas ajenas) |
 | P-14 | Entrega de las contraseñas de las cuentas ficticias | GL-08 | **Aprobada (03/11/2026).** Cuentas creadas con una contraseña aleatoria descartada; `growth_log:contrasena_ficticia` la pide dos veces sin eco, una cuenta por vez; el agente no la ejecuta con contraseñas visibles | generarlas y guardarlas en un archivo local 0600 (deja un secreto en disco) |
+| P-15 | Página de inicio tras iniciar sesión | GL-05 | **Aprobada (03/11/2026).** El listado «Personas» reemplaza la página provisoria de GL-02; se eliminan `HomeController` y `HomePolicy`, y «Sesión iniciada como» pasa a la cabecera | mantener la página provisoria con un enlace a «Personas» |
+| P-16 | Rutas de personas | GL-05 | **Aprobada (03/11/2026).** `/personas` y `/personas/:id`, en español como la interfaz; el listado responde también en `/` | `/people` |
+| P-17 | Datos de la ficha | GL-05 | **Aprobada (03/11/2026).** Nombre, rol y equipo; «Sin rol indicado» o «Sin equipo indicado» si falta uno; sin otros líderes (1.18 diferido), fechas ni estado | omitir la línea si falta el dato |
 
 ### 6.1. Detalle de las decisiones que abren GL-03
 
@@ -417,9 +420,10 @@ No hay configuraciones personales ni permisos nuevos.
 
 ## 9. Próximo paso
 
-GL-08 está cerrado ([ticket](tickets/GL-08-datos-ficticios.md), cambio
-archivado [`2026-11-03-gl-08-datos-ficticios`](../openspec/changes/archive/2026-11-03-gl-08-datos-ficticios/proposal.md)). El
-siguiente ticket es **GL-05**, «Personas» y ficha del líder, sin decisiones
-pendientes que lo bloqueen. El aislamiento del feedback entre líderes de la
-misma persona sigue pendiente para GL-06. Las demás decisiones bloquean
-tickets posteriores y pueden aprobarse después.
+GL-05 está en curso ([ticket](tickets/GL-05-personas.md), cambio
+[`gl-05-personas`](../openspec/changes/gl-05-personas/proposal.md)).
+P-15, P-16 y P-17 están aprobadas (03/11/2026) y la implementación avanza
+en la rama local `feature/GL-05-personas`. La prueba automatizada en
+navegador sigue bloqueada por P-4 (ADR-6) y queda para GL-09; en GL-05 hay
+una comprobación manual. El aislamiento del feedback entre líderes de la
+misma persona sigue pendiente para GL-06.
