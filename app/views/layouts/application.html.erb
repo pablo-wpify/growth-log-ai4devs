@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
     <title><%= content_for(:title) || "Growth Log" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -24,6 +24,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if authenticated? %>
+      <%# Cabecera con sesión (GL-05, P-15). Sin enlaces a funciones que no existen. %>
+      <header class="site-header">
+        <nav aria-label="Principal" class="site-nav">
+          <span class="site-name">Growth Log</span>
+          <%= link_to "Personas", people_path, "aria-current": (controller_name == "people" ? "page" : nil) %>
+          <span class="site-account">Sesión iniciada como <%= Current.user.name %></span>
+          <%= button_to "Cerrar sesión", session_path, method: :delete, form_class: "sign-out" %>
+        </nav>
+      </header>
+    <% end %>
+    <main class="container">
+      <%= yield %>
+    </main>
   </body>
 </html>

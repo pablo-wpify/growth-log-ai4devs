@@ -1,0 +1,18 @@
+<% content_for :title, "Personas · Growth Log" %>
+
+<h1>Personas</h1>
+
+<% if @people.any? %>
+  <ul class="people">
+    <% @people.each do |person| %>
+      <li>
+        <%= link_to person_path(person), class: "person-row" do %>
+          <span class="person-name" data-person-name><%= person.name %></span>
+          <span class="person-meta"><%= person_role_and_team(person) %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="empty-state">Todavía no tenés personas asignadas. Cuando te asignen una, va a aparecer acá.</p>
+<% end %>

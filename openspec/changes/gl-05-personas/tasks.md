@@ -7,27 +7,27 @@ ficticios y no usan la base de desarrollo ni la tarea de GL-08.
 
 ## 1. Rutas, controlador y autorización
 
-- [ ] 1.1 Escribir `spec/requests/people_spec.rb` y ajustar `route_protection_spec.rb` y `authorization_coverage_spec.rb` con las rutas nuevas; verificar que fallan
-- [ ] 1.2 Agregar las rutas, `PeopleController` con `policy_scope` y `authorize`, y `PersonPolicy#index?`; verificar que las pruebas pasan
+- [x] 1.1 Escribir `spec/requests/people_spec.rb` y ajustar `route_protection_spec.rb` y `authorization_coverage_spec.rb` con las rutas nuevas; verificar que fallan
+- [x] 1.2 Agregar las rutas, `PeopleController` con `policy_scope` y `authorize`, y `PersonPolicy#index?`; verificar que las pruebas pasan
 
 ## 2. Página de inicio y navegación
 
-- [ ] 2.1 Escribir `spec/requests/navigation_spec.rb` y ajustar `exceptions_spec.rb` y el controlador de prueba de `authorization_mechanism_spec.rb`; verificar que fallan
-- [ ] 2.2 Cambiar la página de inicio al listado, eliminar `HomeController`, `HomePolicy` y su vista, y agregar la cabecera al layout; verificar que las pruebas pasan y que las de GL-02 siguen pasando
+- [x] 2.1 Escribir `spec/requests/navigation_spec.rb` y ajustar `exceptions_spec.rb` y el controlador de prueba de `authorization_mechanism_spec.rb`; verificar que fallan
+- [x] 2.2 Cambiar la página de inicio al listado, eliminar `HomeController`, `HomePolicy` y su vista, y agregar la cabecera al layout; verificar que las pruebas pasan y que las de GL-02 siguen pasando
 
 ## 3. Vistas y estilos
 
-- [ ] 3.1 Escribir las vistas del listado, el estado vacío y la ficha, y los estilos en `application.css`; verificar las pruebas de contenido
+- [x] 3.1 Escribir las vistas del listado, el estado vacío y la ficha, y los estilos en `application.css`; verificar las pruebas de contenido
 
 ## 4. Mutaciones
 
-- [ ] 4.1 Ejecutar y registrar las cuatro mutaciones del diseño con copia de seguridad y restauración comprobada
+- [x] 4.1 Ejecutar y registrar las cuatro mutaciones del diseño con copia de seguridad y restauración comprobada
 
 ## 5. Documentación y verificación
 
-- [ ] 5.1 Actualizar `docs/desarrollo.md` con la navegación y la comprobación manual
-- [ ] 5.2 Registrar P-15 a P-17 en `docs/decisiones/`
-- [ ] 5.3 Ejecutar `bin/bundler-audit update`, `bin/ci` y `openspec validate --all --strict`, y registrar en el diseño lo comprobado y lo pendiente, sin declarar ejecutada la comprobación en navegador
+- [x] 5.1 Actualizar `docs/desarrollo.md` con la navegación y la comprobación manual
+- [x] 5.2 Registrar P-15 a P-17 en `docs/decisiones/`
+- [x] 5.3 Ejecutar `bin/bundler-audit update`, `bin/ci` y `openspec validate --all --strict`, y registrar en el diseño lo comprobado y lo pendiente, sin declarar ejecutada la comprobación en navegador
 
 ## Workflow follow-up
 

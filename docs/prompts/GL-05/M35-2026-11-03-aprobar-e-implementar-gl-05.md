@@ -44,4 +44,23 @@ Informá commits, resultados y pasos para mi prueba manual en navegador.
 
 ## Resultado registrado (no forma parte del pedido)
 
-Se completa al terminar el pedido.
+- P-15, P-16 y P-17 aprobadas y registradas en el plan, el ticket, el
+  diseño y `docs/decisiones/2026-11-03-gl-05-personas.md`.
+- M31 y M32 recuperados literalmente de la transcripción y registrados en
+  `registro-prompts`. M34 es el resumen automático de contexto y no se
+  registra.
+- Commit de planificación `a8b87a5`; la implementación va en el commit
+  siguiente, que incluye este registro.
+- Pruebas primero: 31 de 44 ejemplos fallaron por la razón esperada antes
+  de implementar.
+- Mutaciones: las cuatro del diseño fallaron, incluida `Person.find` en
+  lugar de la búsqueda por alcance. Cada archivo se restauró con su SHA-256
+  idéntico.
+- `bin/ci` con código 0 (192 ejemplos, 0 fallas) y `openspec validate --all
+  --strict` con 15 de 15.
+- Desvío: el primer intento de mutaciones con un script de shell no ejecutó
+  las pruebas; se repitió con un script de Python y no quedó ningún archivo
+  modificado.
+- Pendiente: la comprobación manual en navegador por Pablo, el push y el CI
+  remoto, y el archivo. Sin push, PR, merge, despliegues ni archivado. Sin
+  cambios en contraseñas ni en datos locales.

@@ -28,7 +28,9 @@ RSpec.describe "Rutas protegidas por defecto", type: :request do
       [ "GET", "/session/new" ],
       [ "POST", "/session" ],
       [ "DELETE", "/session" ],
-      [ "GET", "/" ]
+      [ "GET", "/" ],
+      [ "GET", "/personas" ],
+      [ "GET", "/personas/1" ]
     )
   end
 

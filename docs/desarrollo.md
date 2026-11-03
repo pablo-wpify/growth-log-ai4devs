@@ -215,8 +215,37 @@ curl -i http://localhost:3000/up
 
 Debe responder `HTTP/1.1 200 OK`.
 
+## 8. Navegación: «Personas» y ficha (GL-05)
+
+Con sesión, la página de inicio es «Personas» (`/` y `/personas`). La
+cabecera muestra «Growth Log», el enlace «Personas», la cuenta y «Cerrar
+sesión»; no aparece en el inicio de sesión.
+
+- **Listado:** las personas activas con una asignación activa de la cuenta,
+  ordenadas por nombre, con «rol · equipo». Sin personas asignadas, un
+  mensaje lo explica. Ser administradora no agrega personas.
+- **Ficha** (`/personas/:id`): nombre, rol y equipo («Sin rol indicado» o
+  «Sin equipo indicado» si falta uno) y «← Volver a Personas». No muestra a
+  los otros líderes de la persona.
+- Una persona fuera del alcance responde 404, igual que una inexistente,
+  también por URL directa.
+
+Con los datos ficticios (4c), qué ve cada cuenta:
+
+| Cuenta | Listado | Ejemplo de 404 |
+|---|---|---|
+| Elena Boceto | Ada Ejemplo, Bruno Ejemplo (Darío está inactivo) | ficha de Carla Ejemplo |
+| Tomás Borrador | Ada Ejemplo, Carla Ejemplo | ficha de Bruno Ejemplo |
+| Inés Muestra | estado vacío | cualquier ficha |
+| Raúl Pasado | estado vacío (su asignación terminó) | ficha de Bruno Ejemplo |
+| Administradora (4b) | estado vacío, salvo que tenga asignaciones | cualquier ficha sin asignación |
+
+La prueba automatizada en navegador llega con GL-09 (P-4, ADR-6); hasta
+entonces la presentación se comprueba a mano. Los pasos están en el
+[diseño de GL-05](../openspec/changes/gl-05-personas/design.md#comprobación-en-navegador-manual-no-automatizada).
+
 ## Lo que todavía no hay
 
-Pantallas de personas, feedback, invitaciones y administración.
+Pantallas de feedback, invitaciones y administración.
 Qué llega, en qué orden y qué queda diferido está en el
 [plan de la entrega 2](plan-entrega-2.md).

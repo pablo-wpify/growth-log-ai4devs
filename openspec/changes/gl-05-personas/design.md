@@ -170,6 +170,45 @@ y se registra como manual con fecha y navegador:
 El agente no inicia sesión con cuentas ficticias porque no conoce sus
 contraseñas.
 
+### Ejecución (03/11/2026, local)
+
+**Comprobado en local**, en la rama `feature/GL-05-personas`:
+
+- **Pruebas primero:** con `people_spec`, `navigation_spec` y los ajustes de
+  la sección 6 escritos, 31 de 44 ejemplos fallaron por la razón esperada:
+  - no existían `people_path` ni `person_path`;
+  - la tabla de cobertura no coincidía con las rutas;
+  - sobraba la excepción de `HomeController#show`.
+
+  Con la implementación, los 44 pasan.
+- **Mutaciones** (evidencia local `~/growth-log-evidencias/gl-05-mutaciones.txt`;
+  cada archivo se restauró desde una copia y su SHA-256 quedó idéntico):
+
+  | # | Mutación | Resultado |
+  |---|---|---|
+  | 1 | `Person.find` en lugar de `policy_scope(Person).find` en `show` | 6 fallas por `Pundit::PolicyScopingNotPerformedError` con el actor autorizado. Las fichas ajenas siguen en 404 porque `authorize` deniega: defensa en profundidad |
+  | 2 | `Person.find` con `skip_authorization` y `skip_policy_scope` | 6 fallas de comportamiento: las fichas fuera del alcance responden 200 |
+  | 3 | listado con `Person.active` y `skip_policy_scope` | 9 fallas, entre ellas el estado vacío y la cobertura del actor sin permisos |
+  | 4 | `PersonPolicy#index?` en falso | 11 fallas: el listado responde 404 y la navegación falla |
+- **Verificación completa:** `bin/bundler-audit update` y después `bin/ci`
+  con código 0:
+  - RuboCop sin ofensas, sin vulnerabilidades y Brakeman sin avisos;
+  - 192 ejemplos y 0 fallas;
+  - `openspec validate --all --strict` con 15 de 15.
+
+**Desvío:** el primer intento de mutaciones con un script de shell no ejecutó
+las pruebas, porque zsh no separó la lista de archivos de spec, y una de las
+ediciones tuvo un error de sintaxis. Ningún archivo quedó modificado: las
+restauraciones dieron el mismo SHA. Se repitió con un script de Python, y
+ese es el resultado registrado.
+
+**Pendiente:**
+
+- la comprobación manual en navegador (E10), a cargo de Pablo, que el
+  agente no declara ejecutada;
+- el CI remoto (E11), que requiere autorizar el push;
+- la revisión humana y el archivo del cambio.
+
 ## Risks / Trade-offs
 
 - **Dos URL para el listado** (`/` y `/personas`) → simple y sin

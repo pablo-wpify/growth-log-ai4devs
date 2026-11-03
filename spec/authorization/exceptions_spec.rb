@@ -11,8 +11,7 @@ RSpec.describe "Excepciones de autorización" do
     [ "SessionsController", "create", "verify_authorized" ],
     [ "SessionsController", "create", "verify_policy_scoped" ],
     # Autorizadas, pero sin leer registros.
-    [ "SessionsController", "destroy", "verify_policy_scoped" ],
-    [ "HomeController", "show", "verify_policy_scoped" ]
+    [ "SessionsController", "destroy", "verify_policy_scoped" ]
   ].freeze
 
   SKIP_CALL = /\b(skip_after_action|skip_authorization|skip_policy_scope|skip_verify_\w+)\b/
