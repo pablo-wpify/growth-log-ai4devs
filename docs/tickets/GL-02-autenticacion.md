@@ -2,8 +2,9 @@
 
 > Segundo ticket de la entrega 2 de Growth Log. Cambio de OpenSpec:
 > [`gl-02-autenticacion`](../../openspec/changes/gl-02-autenticacion/proposal.md).
-> **Estado (02/11/2026): implementado y verificado en local; pendiente el CI
-> remoto (A14).** Resultados en el registro de evidencia del diseño.
+> **Estado (02/11/2026): implementado y verificado en local y en el CI remoto
+> ([run 41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981), SHA `9131b29`, A14); pendiente el archivado.**
+> Resultados en el registro de evidencia del diseño.
 
 ## Problema
 

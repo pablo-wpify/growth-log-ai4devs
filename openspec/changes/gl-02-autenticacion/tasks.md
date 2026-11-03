@@ -54,5 +54,5 @@ nunca contraseñas literales reutilizables ni datos reales.
 
 ## Workflow follow-up
 
-- Con autorización, push de `feature/entrega-2-pp` y verificación del CI remoto (A14, remota).
+- Hecho (02/11/2026): push de `feature/entrega-2-pp` (`39d18c3..9131b29`, sin force) y CI remoto en verde, [run 41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981), 4 de 4 jobs (A14, remota).
 - Archivar `gl-02-autenticacion` después del CI remoto y de la revisión humana.
