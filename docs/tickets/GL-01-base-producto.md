@@ -1,9 +1,11 @@
 # GL-01. Base del producto: adaptar la base Rails del ensayo
 
-> Primer ticket de la entrega 2 de Growth Log. Cambio de OpenSpec:
-> [`gl-01-base-producto`](../../openspec/changes/gl-01-base-producto/proposal.md).
+> Primer ticket de la entrega 2 de Growth Log. Cambio de OpenSpec,
+> archivado:
+> [`2026-11-02-gl-01-base-producto`](../../openspec/changes/archive/2026-11-02-gl-01-base-producto/proposal.md).
+> Secuencia: [plan de la entrega 2](../plan-entrega-2.md).
 >
-> **Estado (02/11/2026): implementado y verificado, pendiente de archivo.**
+> **Estado (02/11/2026): cerrado y archivado.**
 > La auditoría de gemas (G6) falló con 15 avisos y quedó corregida por
 > [GL-01a](GL-01a-avisos-seguridad.md). G7: el CI de GitHub pasó en la
 > [ejecución 41528484840](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41528484840)
@@ -185,5 +187,5 @@ No se marcan tareas nuevas en E1 ni se reescribe su evidencia.
 ## Relación con la entrega
 
 Tarea habilitadora E1 del Anexo G; secciones 2.2 a 2.4 del README; Anexo B,
-capas 5, 6 y 9. Primer ticket de la secuencia GL-01 a GL-07 del recorrido
-de la entrega 2.
+capas 5, 6 y 9. Primer ticket de la secuencia de la entrega 2, que vive
+en el [plan de la entrega 2](../plan-entrega-2.md).

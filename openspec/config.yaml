@@ -6,9 +6,11 @@ context: |
   Keep OpenSpec structural headings and SHALL/MUST keywords in English.
 
   Proyecto: Growth Log, monolito Rails con PostgreSQL. La fuente de cada
-  cambio es su ticket en docs/tickets/. La documentación de la entrega 1
-  (README.md, prompts.md y anexos/) es de solo lectura salvo pedido
-  explícito: plan incremental en anexos/anexo-g-plan-incremental.md, ADR en
+  cambio es su ticket en docs/tickets/. La secuencia vigente, los cambios
+  de alcance y las decisiones pendientes de la entrega 2 están solo en
+  docs/plan-entrega-2.md. La documentación de la entrega 1
+  (propuesta-mvp.md, prompts.md y anexos/) es de solo lectura salvo pedido
+  explícito: alcance completo del MVP en anexos/anexo-g-plan-incremental.md, ADR en
   anexos/anexo-d-decisiones-arquitectura.md, decisiones de privacidad en
   anexos/anexo-c-riesgos-decisiones.md, criterios en anexos/anexo-a-historias.md.
   ensayo/ y openspec/changes/archive/2026-11-02-e1-base-rails son
@@ -17,8 +19,15 @@ context: |
 
   Decisiones aprobadas: D1, D2, D5, AM-1 a AM-5 y criterios 3.9, 4.11 y 4.12
   (entrega 1); ADR-1 (monolito Rails), Ruby 4.0.9, Rails 8.1.4,
-  PostgreSQL 18.6, RSpec y las decisiones D-GL01-1 a D-GL01-4 (GL-01).
-  Abiertas: ADR-2, ADR-3, ADR-5 a ADR-8, la lista de dimensiones, D3 y D4.
+  PostgreSQL 18.6, RSpec y las decisiones D-GL01-1 a D-GL01-4 (GL-01);
+  ADR-2 y D-GL02-1 a D-GL02-7 (GL-02); recorrido núcleo priorizado y
+  alcance diferido (plan de la entrega 2, sección 1). Lo diferido sigue
+  siendo requisito pendiente.
+  Aprobadas para GL-03: ADR-3 (P-5), P-7, P-8, P-9 y P-12 (plan de la
+  entrega 2, 02/11/2026).
+  Abiertas: ADR-5 a ADR-8, D3, D4 y las demás decisiones P del plan de la
+  entrega 2 (dimensiones, señales, herramienta E2E, datos ficticios, entre
+  otras).
 
   Restricciones:
   - No agregar funciones que el ticket no pida.
@@ -31,6 +40,10 @@ context: |
     ejecutarlo; no se declara completo ni se archiva el cambio mientras siga
     pendiente.
   - Distinguir lo decidido, lo propuesto y lo verificado.
+  - Denegar por defecto: toda acción del producto verifica autorización y
+    usa consultas con alcance; probar siempre el acceso que debe fallar.
+  - No relajar reglas de privacidad (PP-1 a PP-9) sin una decisión
+    explícita registrada.
 
 # Per-artifact rules (optional)
 # Add custom rules for specific artifacts.

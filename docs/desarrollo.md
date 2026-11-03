@@ -117,8 +117,9 @@ EMAIL=ana.admin@example.test NOMBRE="Ana Admin" bin/rails growth_log:crear_admin
   ejecuciones simultáneas crean uno solo.
 - La contraseña nunca se pasa por argumentos ni por variables de entorno.
   Sin terminal, se lee de la entrada estándar (útil para automatizar).
-- Usá datos ficticios en desarrollo. Las siguientes cuentas llegan con las
-  invitaciones (GL-04).
+- Usá datos ficticios en desarrollo. Las cuentas de líderes ficticias se
+  prepararán con GL-08; las invitaciones (GL-04) están diferidas. Ver el
+  [plan de la entrega 2](plan-entrega-2.md).
 
 Para iniciar sesión, levantá el servidor (paso 7) y entrá en
 `http://localhost:3000`: sin sesión, cualquier página lleva a
@@ -177,5 +178,6 @@ Debe responder `HTTP/1.1 200 OK`.
 
 ## Lo que todavía no hay
 
-Invitaciones, permisos sobre recursos, personas ni feedback: llegan en los
-tickets siguientes de la entrega 2.
+Permisos sobre recursos, personas, feedback, invitaciones y administración.
+Qué llega, en qué orden y qué queda diferido está en el
+[plan de la entrega 2](plan-entrega-2.md).

@@ -1,9 +1,12 @@
 # GL-02. Autenticación: sesión, administrador inicial y rutas protegidas
 
-> Segundo ticket de la entrega 2 de Growth Log. Cambio de OpenSpec:
-> [`gl-02-autenticacion`](../../openspec/changes/gl-02-autenticacion/proposal.md).
-> **Estado (02/11/2026): implementado y verificado en local y en el CI remoto
-> ([run 41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981), SHA `9131b29`, A14); pendiente el archivado.**
+> Segundo ticket de la entrega 2 de Growth Log. Cambio de OpenSpec,
+> archivado:
+> [`2026-11-02-gl-02-autenticacion`](../../openspec/changes/archive/2026-11-02-gl-02-autenticacion/proposal.md).
+> Secuencia: [plan de la entrega 2](../plan-entrega-2.md).
+> **Estado (02/11/2026): cerrado y archivado** (`94e40a1`). Verificado en
+> local y en el CI remoto
+> ([run 41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981), SHA `9131b29`, A14).
 > Resultados en el registro de evidencia del diseño.
 
 ## Problema
@@ -19,7 +22,7 @@ necesita saber quién hace cada petición.
 |---|---|
 | PP-1 ([Anexo A](../../anexos/anexo-a-historias.md#política-de-privacidad-y-criterios-que-la-aplican)) | cuentas individuales; sin contraseñas fijas ni enviadas en texto plano |
 | D1 ([Anexo C](../../anexos/anexo-c-riesgos-decisiones.md#c2-decisiones-de-privacidad)) | la cuenta administradora inicial se provisiona con un procedimiento documentado, sin credenciales fijas en el repositorio |
-| AM-5 ([Anexo C](../../anexos/anexo-c-riesgos-decisiones.md#c3-reglas-que-cierran-las-ambigüedades)) | sin contraseñas fijas ni en texto plano; alta del primer administrador documentada, sin secretos en el repositorio; las invitaciones son GL-04 |
+| AM-5 ([Anexo C](../../anexos/anexo-c-riesgos-decisiones.md#c3-reglas-que-cierran-las-ambigüedades)) | sin contraseñas fijas ni en texto plano; alta del primer administrador documentada, sin secretos en el repositorio; las invitaciones son GL-04 (diferido) |
 | AM-2 y PP-7 | una cuenta desactivada no inicia sesión y sus sesiones dejan de valer (la acción de desactivar es posterior) |
 | README §4, «Acceso a las rutas» | públicas solo el inicio de sesión y el chequeo de salud; sin registro público; el resto exige sesión con una cuenta activa, también por URL directa |
 | README §2.5 | límite de intentos de inicio de sesión; HTTPS forzado; feedback y contraseñas fuera de los logs |
@@ -45,7 +48,9 @@ reabre.
 ## Exclusiones
 
 - Invitaciones, establecimiento de contraseña por enlace, asignaciones y
-  vista de administración: **GL-04**.
+  vista de administración: **GL-04**. *Actualización del 02/11/2026:* GL-04
+  quedó diferido; las tablas de asignaciones llegan con GL-03 y los datos
+  ficticios con GL-08 ([plan](../plan-entrega-2.md#3-cambios-de-alcance-registrados)).
 - Políticas sobre recursos (qué puede hacer cada cuenta): **GL-03**.
   GL-02 identifica al usuario; no decide permisos.
 - Acción de desactivar cuentas y protección del último administrador: I7.
@@ -57,7 +62,7 @@ reabre.
 
 **Generador de autenticación de Rails 8.1.4, adaptado**, más la gema
 `bcrypt` 3.1.22. Ver el análisis completo en el
-[diseño](../../openspec/changes/gl-02-autenticacion/design.md).
+[diseño](../../openspec/changes/archive/2026-11-02-gl-02-autenticacion/design.md).
 
 ## Decisiones aprobadas (02/11/2026)
 
@@ -96,7 +101,7 @@ página de inicio provisoria.
 ## Estrategia de pruebas
 
 Detalle por archivo en el
-[diseño](../../openspec/changes/gl-02-autenticacion/design.md#estrategia-de-pruebas).
+[diseño](../../openspec/changes/archive/2026-11-02-gl-02-autenticacion/design.md#estrategia-de-pruebas).
 Datos ficticios (`ana.admin@example.test`, `luis.lider@example.test`) y
 contraseñas generadas en cada prueba.
 

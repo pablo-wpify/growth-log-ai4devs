@@ -1,8 +1,9 @@
 # GL-01a. Corregir los avisos de seguridad que bloquean GL-01
 
 > Ticket derivado de [GL-01](GL-01-base-producto.md), criterio **G6**.
-> Cambio de OpenSpec:
-> [`gl-01a-avisos-seguridad`](../../openspec/changes/gl-01a-avisos-seguridad/proposal.md).
+> Cambio de OpenSpec, archivado:
+> [`2026-11-02-gl-01a-avisos-seguridad`](../../openspec/changes/archive/2026-11-02-gl-01a-avisos-seguridad/proposal.md).
+> **Estado (02/11/2026): cerrado y archivado.**
 
 ## Problema
 
