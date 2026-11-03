@@ -9,7 +9,7 @@ inicio provisoria (`GET /`), que GL-05 reemplazará por «Personas». No
 existen personas, asignaciones ni entradas.
 
 Decisiones aprobadas por Pablo el 02/11/2026
-([plan, sección 6.1](../../../docs/plan-entrega-2.md#61-detalle-de-las-decisiones-que-abren-gl-03)):
+([plan, sección 6.1](../../../../docs/plan-entrega-2.md#61-detalle-de-las-decisiones-que-abren-gl-03)):
 
 | # | Decisión |
 |---|---|

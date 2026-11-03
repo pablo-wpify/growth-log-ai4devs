@@ -59,7 +59,7 @@ citaban por número):
 | 1 | GL-01 | Base del producto | **cerrado** (archivado) | — | — |
 | 2 | GL-01a | Avisos de seguridad que bloqueaban GL-01 | **cerrado** (archivado) | GL-01 | — |
 | 3 | GL-02 | Autenticación: sesión, administrador inicial, rutas protegidas | **cerrado** (archivado; CI [41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981)) | GL-01 | — |
-| 4 | [GL-03](tickets/GL-03-autorizacion-minima.md) | Autorización mínima del recorrido: denegar por defecto, personas y asignaciones mínimas, alcance por asignación | **implementado**; CI remoto en verde ([41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236)); pendiente el archivado | GL-02 | ninguna (P-5, P-7, P-8 y P-9 aprobadas) |
+| 4 | [GL-03](tickets/GL-03-autorizacion-minima.md) | Autorización mínima del recorrido: denegar por defecto, personas y asignaciones mínimas, alcance por asignación | **cerrado** (archivado; CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236)) | GL-02 | ninguna (P-5, P-7, P-8 y P-9 aprobadas) |
 | 5 | GL-08 | Datos ficticios reproducibles para desarrollo | pendiente | GL-03 | P-6 |
 | 6 | GL-05 | «Personas» y ficha del líder: elegir una persona asignada | pendiente | GL-03, GL-08 | — |
 | 7 | GL-06 | Captura rápida, completar y marcar como lista | pendiente | GL-05 | P-1, P-2, P-3, P-11 |
@@ -370,7 +370,22 @@ A1 a A14 de GL-02, CI
 y spec `authentication`. **Autenticación no es autorización:** GL-02 no
 prueba nada sobre qué puede ver un líder con sesión.
 
-### Pendiente: autorización (GL-03 a GL-09)
+### Comprobado: mecanismo de autorización y acceso a personas (GL-03)
+
+Denegación por defecto, verificaciones de autorización y alcance con
+excepciones por acción, 404 idéntico ante acceso denegado, política y
+alcance de personas con varios líderes y una administradora, y unicidad de
+la asignación activa por par bajo concurrencia. Evidencia: criterios B1 a
+B9 de GL-03, CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236) y specs `authorization`, `people` y
+`assignments`. **Límites:** el mecanismo se probó con un controlador solo
+de prueba y la regla de personas a nivel de política y alcance; ninguna
+ruta real de personas ni de feedback existe todavía.
+
+### Pendiente: autorización de las funcionalidades (GL-05 a GL-09)
+
+Cerrar GL-03 **no** verifica la autorización de GL-05, GL-06 ni GL-07: cada
+uno la prueba con sus rutas y datos reales, y agrega sus rutas a la prueba
+de cobertura de GL-03.
 
 Datos de prueba de cada ticket: L1 y L2, líderes asignados a la misma
 persona P; L3, líder sin asignación con P; A, administradora sin
@@ -378,9 +393,9 @@ asignación; y una persona Q sin asignaciones.
 
 | Evidencia | Qué demuestra | Ticket |
 |---|---|---|
-| Prueba que recorre todas las rutas del producto con sesión y falla si una acción no verifica autorización o alcance | denegar por defecto (RN-1) | GL-03 |
-| Mutación registrada: quitar la verificación de una acción hace fallar esa prueba | que la prueba detecta el hueco | GL-03 |
-| L3 y A piden la ficha de P y la de Q por URL directa: 404 | acceso a la persona solo por asignación activa (1.19, PP-2); administrar no da acceso (PP-8) | GL-03, GL-05 |
+| Prueba que recorre todas las rutas del producto con sesión y falla si una acción no verifica autorización o alcance | denegar por defecto (RN-1) | **comprobado en GL-03**; cada ticket agrega sus rutas |
+| Mutación registrada: quitar la verificación de una acción hace fallar esa prueba | que la prueba detecta el hueco | **comprobado en GL-03** (mutación 1) |
+| L3 y A piden la ficha de P y la de Q por URL directa: 404 | acceso a la persona solo por asignación activa (1.19, PP-2); administrar no da acceso (PP-8) | regla comprobada en GL-03 a nivel de política; **URL directa pendiente en GL-05** |
 | Matriz de peticiones sobre el **borrador** y sobre la **entrada lista** de L1: detalle, edición, marcar como lista, por L2, L3 y A, con URL directa: 404 y sin cambios en la base | borrador y lista privados (PP-3, PP-4, 4.9, 4.11) | GL-06 |
 | Las respuestas a L2 no contienen el texto de la entrada de L1 | no hay fuga en el cuerpo | GL-06, GL-07 |
 | Resumen, cronología y conteo de L2 sobre P no incluyen la entrada lista de L1; los de L1 sí; un borrador no cuenta | consultas con alcance (4.11, 4.12 parcial, 3.3, 1.15 parcial) | GL-07 |
@@ -403,8 +418,7 @@ No hay configuraciones personales ni permisos nuevos.
 
 ## 9. Próximo paso
 
-**Verificar GL-03 en el CI remoto** ([ticket](tickets/GL-03-autorizacion-minima.md),
-cambio [`gl-03-autorizacion-minima`](../openspec/changes/gl-03-autorizacion-minima/proposal.md)),
-con un push autorizado, y archivarlo después de la revisión. Luego, GL-08,
-que necesita P-6. Las demás decisiones bloquean tickets posteriores y
-pueden aprobarse después.
+GL-03 está cerrado ([ticket](tickets/GL-03-autorizacion-minima.md),
+cambio archivado [`2026-11-03-gl-03-autorizacion-minima`](../openspec/changes/archive/2026-11-03-gl-03-autorizacion-minima/proposal.md)).
+El siguiente ticket es **GL-08**, que necesita la aprobación de P-6. Las
+demás decisiones bloquean tickets posteriores y pueden aprobarse después.

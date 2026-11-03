@@ -23,11 +23,13 @@ Rama `feature/entrega-2-pp`. Actualizado al 02/11/2026.
 | **Implementado y verificado** | Base del producto: Rails 8.1.4, Ruby 4.0.9, PostgreSQL 18.6, RSpec, `bin/ci` y GitHub Actions; chequeo de salud `GET /up` (GL-01) | [ticket](docs/tickets/GL-01-base-producto.md) |
 | | Corrección de 15 avisos de seguridad de gemas (GL-01a) | [ticket](docs/tickets/GL-01a-avisos-seguridad.md) |
 | | Autenticación: cuentas individuales sin registro público, inicio y cierre de sesión, sesiones con vencimiento, límites de intentos, CSRF, rutas protegidas por defecto y administrador inicial por tarea (GL-02) | [ticket](docs/tickets/GL-02-autenticacion.md); CI [41557336838](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41557336838) sobre `94e40a1` |
-| **En curso** | Autorización mínima: denegar por defecto y alcance por asignación, con personas y asignaciones sin interfaz (GL-03). Implementada y verificada en local y en el CI ([41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236)); pendiente el archivado. Todavía no protege rutas de personas ni feedback, que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md) |
+| | Autorización mínima: denegar por defecto, alcance por asignación y personas y asignaciones sin interfaz (GL-03). **No verifica todavía** la autorización de personas por URL (GL-05), del feedback (GL-06) ni del resumen (GL-07), que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md); CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236) sobre `7263efd` |
+| **Siguiente** | Datos ficticios reproducibles (GL-08), pendiente de la decisión P-6 | [plan de la entrega 2](docs/plan-entrega-2.md) |
 | **Pendiente** | Personas, feedback, resumen, verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. **Hoy la
-aplicación no registra feedback ni personas** y no admite datos reales.
+aplicación no tiene pantallas de personas ni registra feedback** y no admite
+datos reales.
 
 ## Dónde está cada cosa
 
@@ -119,8 +121,10 @@ Requisitos: [propuesta, 2.5](propuesta-mvp.md#25-seguridad). Implementado y
 especificado en [`authentication`](openspec/specs/authentication/spec.md),
 [`user-accounts`](openspec/specs/user-accounts/spec.md),
 [`initial-administrator`](openspec/specs/initial-administrator/spec.md) y
-[`secrets-handling`](openspec/specs/secrets-handling/spec.md). La
-autorización llega con GL-03.
+[`secrets-handling`](openspec/specs/secrets-handling/spec.md). Autorización
+(GL-03): [`authorization`](openspec/specs/authorization/spec.md),
+[`people`](openspec/specs/people/spec.md) y
+[`assignments`](openspec/specs/assignments/spec.md).
 
 ### 2.6. Tests
 
@@ -131,8 +135,8 @@ recorrido núcleo está en el [plan](docs/plan-entrega-2.md).
 
 ## 3. Modelo de datos
 
-Implementado: `users`, `sessions` y `login_attempt_counters`; con GL-03, en
-local, `people` y `assignments` ([db/schema.rb](db/schema.rb)). Modelo conceptual completo:
+Implementado: `users`, `sessions` y `login_attempt_counters` (GL-02), y
+`people` y `assignments` (GL-03) ([db/schema.rb](db/schema.rb)). Modelo conceptual completo:
 [propuesta, sección 3](propuesta-mvp.md#3-modelo-de-datos).
 
 ### 3.1. Diagrama del modelo de datos

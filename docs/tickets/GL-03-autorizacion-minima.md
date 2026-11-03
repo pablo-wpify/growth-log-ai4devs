@@ -2,12 +2,17 @@
 
 > Cuarto ticket de la entrega 2 de Growth Log. Lugar en la secuencia y
 > decisiones pendientes: [plan de la entrega 2](../plan-entrega-2.md).
-> Cambio de OpenSpec:
-> [`gl-03-autorizacion-minima`](../../openspec/changes/gl-03-autorizacion-minima/proposal.md).
-> **Estado (03/11/2026): implementado y verificado en local y en el CI
-> remoto ([run 41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236), SHA `7263efd`, B9); pendiente el
-> archivado.** Resultados y límites en el registro de evidencia del
-> diseño. La autorización del feedback no está comprobada: llega con GL-06.
+> Cambio de OpenSpec, archivado:
+> [`2026-11-03-gl-03-autorizacion-minima`](../../openspec/changes/archive/2026-11-03-gl-03-autorizacion-minima/proposal.md).
+> Specs vigentes: [`authorization`](../../openspec/specs/authorization/spec.md),
+> [`people`](../../openspec/specs/people/spec.md) y
+> [`assignments`](../../openspec/specs/assignments/spec.md).
+> **Estado (03/11/2026): cerrado y archivado.** Verificado en local y en el
+> CI remoto ([run 41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236), SHA `7263efd`, B9). Resultados y
+> límites en el [registro de evidencia](../../openspec/changes/archive/2026-11-03-gl-03-autorizacion-minima/design.md#registro-de-evidencia).
+> **Cerrar GL-03 no verifica la autorización de lo que todavía no existe:**
+> la URL directa de personas queda para GL-05, la autorización del feedback
+> para GL-06 y el resumen, la cronología y los conteos para GL-07.
 
 ## Problema
 
