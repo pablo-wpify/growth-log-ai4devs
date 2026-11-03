@@ -35,5 +35,5 @@ hasta que pasan. Datos ficticios y contraseñas generadas en las pruebas.
 
 ## Workflow follow-up
 
-- Con autorización, push de `feature/entrega-2-pp` y verificación del CI remoto.
+- Hecho (03/11/2026): push de `feature/entrega-2-pp` (`94e40a1..7263efd`, sin force) y CI remoto en verde, [run 41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236), 4 de 4 jobs.
 - Archivar `gl-03-autorizacion-minima` después del CI remoto y de la revisión humana.

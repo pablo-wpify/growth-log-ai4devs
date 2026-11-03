@@ -4,8 +4,9 @@
 > decisiones pendientes: [plan de la entrega 2](../plan-entrega-2.md).
 > Cambio de OpenSpec:
 > [`gl-03-autorizacion-minima`](../../openspec/changes/gl-03-autorizacion-minima/proposal.md).
-> **Estado (03/11/2026): implementado y verificado en local; pendiente el CI
-> remoto (B9).** Resultados y límites en el registro de evidencia del
+> **Estado (03/11/2026): implementado y verificado en local y en el CI
+> remoto ([run 41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236), SHA `7263efd`, B9); pendiente el
+> archivado.** Resultados y límites en el registro de evidencia del
 > diseño. La autorización del feedback no está comprobada: llega con GL-06.
 
 ## Problema

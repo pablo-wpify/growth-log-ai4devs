@@ -218,8 +218,8 @@ Datos ficticios (`@example.test`) y contraseñas generadas en cada prueba.
 ## Registro de evidencia
 
 Ejecutado en local el 03/11/2026 sobre la base `93b42ec`. Evidencias en
-el directorio local de evidencias de GL-03, fuera del repositorio.
-**Remoto: pendiente** hasta un push autorizado.
+el directorio local de evidencias de GL-03, fuera del repositorio. Remoto:
+CI de GitHub [run 41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236) sobre `7263efd`.
 
 | Criterio | Estado | Evidencia |
 |---|---|---|
@@ -231,7 +231,7 @@ el directorio local de evidencias de GL-03, fuera del repositorio.
 | B6 | Comprobado (local) | `person_policy_spec`: administradora sin asignaciones con alcance vacío; asignada a Q, solo Q |
 | B7 | Comprobado (local) | `person_spec` (5), `assignment_spec` (11), `assignment_concurrency_spec` (1, 5 de 5 corridas): restricciones de la base, varios líderes por persona y varias personas por líder, reasignación, estados independientes y segunda inserción simultánea rechazada mientras espera la fila de la primera. Mutación 5 (sin el índice único, solo en la base de test): 2 fallos; índice restaurado idéntico y `db/schema.rb` sin cambios. Migraciones revertidas y reaplicadas en test |
 | B8 | Hecho | decisión 9 de este diseño; no es una prueba |
-| B9 | Comprobado (local); **pendiente (remota)** | `bin/ci` código 0: 73 archivos sin infracciones, sin avisos (base `a58f1d0`), importmap limpio, Brakeman 0 advertencias, RSpec 120 ejemplos y 0 fallos (74 de GL-02 + 46 de GL-03). `openspec validate --all --strict`. Base de test vacía al terminar |
+| B9 | Comprobado (local y remota) | Remota: [run 41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236), evento `push`, SHA `7263efd368abf9c493ee26527e6d68f9a7fbc00c`, conclusión `success`; jobs `scan_ruby` (Brakeman 0 advertencias, bundler-audit sin avisos), `scan_js` (importmap sin paquetes vulnerables), `lint` (RuboCop sin anotaciones) y `test` (120 ejemplos, 0 fallos) en `success`. Local: `bin/ci` código 0: 73 archivos sin infracciones, sin avisos (base `a58f1d0`), importmap limpio, Brakeman 0 advertencias, RSpec 120 ejemplos y 0 fallos (74 de GL-02 + 46 de GL-03). `openspec validate --all --strict`. Base de test vacía al terminar |
 
 Dependencia: `pundit` 2.5.2; el diff de `Gemfile.lock` solo agrega
 `pundit` (que depende de `activesupport`, ya presente) y `bundler-audit`

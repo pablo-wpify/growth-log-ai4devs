@@ -23,7 +23,7 @@ Rama `feature/entrega-2-pp`. Actualizado al 02/11/2026.
 | **Implementado y verificado** | Base del producto: Rails 8.1.4, Ruby 4.0.9, PostgreSQL 18.6, RSpec, `bin/ci` y GitHub Actions; chequeo de salud `GET /up` (GL-01) | [ticket](docs/tickets/GL-01-base-producto.md) |
 | | Corrección de 15 avisos de seguridad de gemas (GL-01a) | [ticket](docs/tickets/GL-01a-avisos-seguridad.md) |
 | | Autenticación: cuentas individuales sin registro público, inicio y cierre de sesión, sesiones con vencimiento, límites de intentos, CSRF, rutas protegidas por defecto y administrador inicial por tarea (GL-02) | [ticket](docs/tickets/GL-02-autenticacion.md); CI [41557336838](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41557336838) sobre `94e40a1` |
-| **En curso** | Autorización mínima: denegar por defecto y alcance por asignación, con personas y asignaciones sin interfaz (GL-03). Implementada y verificada en local; pendiente el CI remoto. Todavía no protege rutas de personas ni feedback, que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md) |
+| **En curso** | Autorización mínima: denegar por defecto y alcance por asignación, con personas y asignaciones sin interfaz (GL-03). Implementada y verificada en local y en el CI ([41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236)); pendiente el archivado. Todavía no protege rutas de personas ni feedback, que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md) |
 | **Pendiente** | Personas, feedback, resumen, verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. **Hoy la
