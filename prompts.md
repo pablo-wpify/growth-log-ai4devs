@@ -1,5 +1,55 @@
 # prompts.md — Growth Log
 
+Índice de los registros de prompts. La entrega 2 se registra por etapa en
+[docs/prompts/](docs/prompts/); la entrega 1 se conserva abajo sin cambios.
+
+## Entrega 2
+
+**Fuente:** los mensajes originales de Pablo en la transcripción local de
+la sesión de Claude Code (no publicada), copiados literalmente. No incluye
+salidas de herramientas, respuestas del asistente, razonamientos internos
+ni la transcripción completa. Cada archivo separa los metadatos, el texto
+original y el resultado registrado.
+
+**Herramientas.** Los pedidos se enviaron a **Claude Code (CLI)**, que los
+ejecutó con **`claude-opus-5-5`** según el campo de modelo de las respuestas
+en la transcripción. **Declaración de Pablo (03/11/2026):** los pedidos se
+prepararon con ChatGPT en una conversación de acompañamiento y después se
+pegaron en Claude Code. Esa conversación no está aportada como archivo y su
+modelo no está verificado; no se reconstruye.
+
+| Etapa | Mensajes | Resultado | Registro |
+|---|---|---|---|
+| Análisis de alcance previo a los tickets | M01–M06 | respuestas en la conversación y dos archivos en `~/Descargas`, no versionados | [00-analisis-alcance](docs/prompts/00-analisis-alcance/README.md) |
+| GL-01. Base del producto (y cierre de E1) | M07–M09, M11, M12 | `cf44c0c` a `39d18c3`; CI 41528484840 y 41532204969 | [GL-01](docs/prompts/GL-01/README.md) |
+| GL-01a. Avisos de seguridad | M10 (cierre en M12) | `2631edb` | [GL-01a](docs/prompts/GL-01a/README.md) |
+| GL-02. Autenticación | M13–M15, M17, M18 | `2286d62` a `94e40a1`; CI 41551853981 y 41557336838 | [GL-02](docs/prompts/GL-02/README.md) |
+| Replanificación por el feedback de LIDR | M19–M21 | `93b42ec` | [replanificacion-lidr](docs/prompts/replanificacion-lidr/README.md) |
+| GL-03. Autorización mínima | M22–M24 (cambio pedido en M21) | `7263efd` a `092b548`; CI 41571299236 y 41571768783 | [GL-03](docs/prompts/GL-03/README.md) |
+| GL-08. Datos ficticios de desarrollo | M25–M27 | `5025694` a `eacb16e`; CI 41621619815 y 41621897764 | [GL-08](docs/prompts/GL-08/README.md) |
+| GL-05. «Personas» y ficha del líder | M28 | planificación pendiente, sin commit | [GL-05](docs/prompts/GL-05/README.md) |
+| Registro de prompts | M29, M30 | rama `docs/prompts-entrega-2` | [registro-prompts](docs/prompts/registro-prompts/README.md) |
+
+**Conteos.** La transcripción tiene 30 mensajes del usuario hasta este
+registro, numerados por posición de M01 a M30:
+
+- **M16** no es un pedido: es el resumen automático de contexto que genera
+  Claude Code al continuar la sesión. No se registra ni se usa como fuente.
+- Quedan **29 pedidos** de Pablo. El inventario anterior contaba 28 porque
+  terminaba en M29, el pedido de inventario; M30 es el pedido que aprobó
+  este registro.
+- **M03, M04 y M05** son tres envíos del mismo texto. Por eso hay
+  **27 textos distintos**, guardados en 27 archivos; el de M03 a M05 lista
+  los tres envíos con su hora.
+
+**Fidelidad y omisiones.** Cada texto es idéntico al mensaje fuente; solo se
+quitaron las etiquetas de texto pegado que agrega Claude Code. No hubo que
+omitir secretos ni datos personales en ningún pedido. Los pedidos contienen
+rutas locales de proyecto (`~/code/...`) y el nombre de la cuenta pública
+`pablo-wpify`, cuya publicación aprobó Pablo.
+
+## Entrega 1 (registro histórico)
+
 > Flujos de trabajo con asistentes de IA en la preparación de la primera
 > entrega de Growth Log, con su herramienta, modelo, fase, resultado y
 > criterio humano. El texto de cada prompt está en el [Anexo F](anexos/anexo-f-registro-prompts.md). La

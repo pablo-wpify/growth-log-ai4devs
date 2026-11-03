@@ -75,3 +75,17 @@ Verificados en GL-01 y GL-02 (02/11/2026), desde la raíz. Detalle en
   autorización explícita de Pablo para ese paso. Preparar el staging por
   nombre de archivo.
 - No modificar la rama `feature/entrega-1-pp`.
+
+## Registro de prompts
+
+- Al empezar cada tarea, guardar el pedido de Pablo en
+  `docs/prompts/<etapa>/MNN-<fecha>-<tema>.md`: metadatos, y el texto en una
+  sección «Texto original». Herramienta y modelo solo con evidencia.
+- Al terminar, registrar el resultado en una sección separada: commits, CI,
+  specs, desvíos y lo pendiente. No copiar razonamientos internos, salidas
+  completas de herramientas ni transcripciones.
+- No reproducir secretos ni datos personales: marcarlos como «[omitido:
+  motivo]». Un texto con omisiones o redactado no se declara literal
+  íntegro, y una ausencia se indica, no se reconstruye.
+- Actualizar el índice de [prompts.md](prompts.md). Los archivos de prompts
+  se versionan con la misma autorización que cualquier otro cambio.
