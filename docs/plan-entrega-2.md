@@ -60,7 +60,7 @@ citaban por número):
 | 2 | GL-01a | Avisos de seguridad que bloqueaban GL-01 | **cerrado** (archivado) | GL-01 | — |
 | 3 | GL-02 | Autenticación: sesión, administrador inicial, rutas protegidas | **cerrado** (archivado; CI [41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981)) | GL-01 | — |
 | 4 | [GL-03](tickets/GL-03-autorizacion-minima.md) | Autorización mínima del recorrido: denegar por defecto, personas y asignaciones mínimas, alcance por asignación | **cerrado** (archivado; CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236)) | GL-02 | ninguna (P-5, P-7, P-8 y P-9 aprobadas) |
-| 5 | GL-08 | Datos ficticios reproducibles para desarrollo | pendiente | GL-03 | P-6 |
+| 5 | [GL-08](tickets/GL-08-datos-ficticios.md) | Datos ficticios reproducibles para desarrollo | **siguiente**: cambio de OpenSpec abierto, sin implementar | GL-03 | ninguna (P-6, P-13 y P-14 aprobadas) |
 | 6 | GL-05 | «Personas» y ficha del líder: elegir una persona asignada | pendiente | GL-03, GL-08 | — |
 | 7 | GL-06 | Captura rápida, completar y marcar como lista | pendiente | GL-05 | P-1, P-2, P-3, P-11 |
 | 8 | GL-07 | Resumen por dimensión y cronología | pendiente | GL-06 | P-2, P-10 |
@@ -131,16 +131,13 @@ autorización.
 
 ### GL-08. Datos ficticios reproducibles
 
-- **Resultado:** un comando idempotente, solo de desarrollo, que prepara
-  personas, cuentas de líderes y asignaciones ficticias; cómo establecer la
-  contraseña de esas cuentas sin eco; documentado en `docs/desarrollo.md`.
-- **Requisitos:** se niega fuera de desarrollo; correos `@example.test` y
-  nombres inventados; sin contraseñas ni hashes versionados; repetirlo no
-  duplica datos; incluye un líder sin asignaciones y una persona con dos
-  líderes, para probar a mano las reglas de GL-03. La cuenta administradora
-  sigue creándose con `growth_log:crear_administrador`.
-- **Delta de spec explícito:** C1.
-- **Fuera de alcance:** cualquier interfaz de administración (GL-04).
+Detalle en [el ticket](tickets/GL-08-datos-ficticios.md): datos propuestos,
+credenciales y criterios D1 a D11. Tarea explícita solo en desarrollo, sin
+duplicar, sobrescribir ni borrar, sin adoptar cuentas ajenas, sin
+contraseñas ni hashes versionados; la administradora sigue creándose con
+`growth_log:crear_administrador`. Delta de spec explícito: C1. Deja
+preparado, sin comprobarlo, el caso de dos líderes de la misma persona, cuyo
+aislamiento sobre el feedback prueba GL-06.
 
 ### GL-05. «Personas» y ficha del líder
 
@@ -205,8 +202,8 @@ además GL-04.
 
 ## 6. Decisiones pendientes de aprobación
 
-Aprobadas por Pablo el 02/11/2026: **P-5, P-7, P-8, P-9 y P-12**, en los
-términos de la sección 6.1 y la sección 8. Las demás siguen siendo
+Aprobadas por Pablo: **P-5, P-7, P-8, P-9 y P-12** (02/11/2026), en los
+términos de la sección 6.1 y la sección 8, y **P-6, P-13 y P-14** (03/11/2026). Las demás siguen siendo
 recomendaciones, **sin aprobar**.
 
 | # | Decisión | Bloquea | Recomendación | Alternativas |
@@ -216,13 +213,15 @@ recomendaciones, **sin aprobar**.
 | P-3 | ¿La señal es obligatoria para marcar como lista? | GL-06 | sí: dimensión y señal obligatorias para «lista»; en borrador, ambas opcionales. **Amplía 2.6 y 3.5** | solo la dimensión, como dicen 2.6 y 3.5 hoy |
 | P-4 | ADR-6: herramienta E2E | GL-09 | pruebas de sistema de RSpec con Capybara y `selenium-webdriver` con Chrome sin interfaz: es lo que trae Rails, mantiene una sola suite y no agrega Node | Playwright (agrega Node y otro ejecutor); Cuprite (más rápido, otra gema y menos estándar) |
 | P-5 | ADR-3: mecanismo de políticas y respuesta ante un acceso no autorizado | GL-03 | **Aprobada.** Pundit 2.5.2 con políticas que deniegan por defecto, verificaciones como red ante omisiones y pruebas de comportamiento como evidencia; 404 sin revelar existencia. Detalle en 6.1 | objetos de política propios; Action Policy; 403 |
-| P-6 | Preparación de datos ficticios (C1) | GL-08 | una tarea `growth_log:datos_ficticios`, solo de desarrollo e idempotente, que crea cuentas sin contraseña utilizable, y una tarea para establecer la contraseña sin eco, con la política de D-GL02-3. Delta explícito del escenario «Repositorio sin credenciales» | `db/seeds/development.rb` con el mismo delta; preparación solo manual por consola (no es reproducible) |
+| P-6 | Preparación de datos ficticios (C1) | GL-08 | **Aprobada (03/11/2026):** tarea explícita solo en `development`; cuentas, personas y asignaciones suficientes para varios líderes y aislamiento; sin contraseñas ni hashes fijos versionados; contraseñas sin eco o generadas y entregadas localmente sin exponerlas; nada al arrancar ni al migrar | — |
 | P-7 | Qué cambia cuando termina la asignación del autor (C3) | GL-03 | **Aprobada.** Conservar PP-9 y AM-1 en las reglas desde GL-03; no bloquea el núcleo. Detalle en 6.1 | diferir todo a I5 sin acceso para el autor (incumpliría PP-9; descartado) |
 | P-8 | Unicidad de asignaciones | GL-03 | **Aprobada.** Una sola asignación **activa por par líder y persona**; nunca una sola por persona. Detalle en 6.1 | validación solo en el modelo |
 | P-9 | Estados de la persona, de la asignación y de la cuenta | GL-03, GL-05 | **Aprobada.** Tres estados independientes, con efectos separados; `people.active` desde el inicio. Detalle en 6.1 | posponer `active` hasta I7 |
 | P-10 | Cronología | GL-07 | por fecha del hecho, de la más antigua a la más reciente (como el mock 1), y los borradores propios aparecen marcados «Borrador · solo vos · fuera del resumen» | solo entradas listas en la cronología |
 | P-11 | Formulario completo «+ Feedback» (2.1, 2.2, 2.7) | GL-06 | diferirlo: el recorrido priorizado empieza en la captura rápida, y los campos y validaciones de H2 se cubren al completar | incluirlo en GL-06 |
 | P-12 | Contexto del proyecto para la IA (sección 8) | — | **Aprobada:** creado `CLAUDE.md`. Crear `CLAUDE.md` en la raíz con el contenido mínimo propuesto | no crearlo y mantener solo `openspec/config.yaml` |
+| P-13 | Cómo se distinguen los registros del conjunto ficticio | GL-08 | **Aprobada (03/11/2026).** Tabla `sample_data_records` con una marca por registro creado; sin marca no se adopta nada, aunque coincida el correo ([diseño](../openspec/changes/gl-08-datos-ficticios/design.md#3-marcas-tabla-sample_data_records-p-13-aprobada-el-03112026)) | columna en las tablas del dominio; reconocer por correo (adopta cuentas ajenas) |
+| P-14 | Entrega de las contraseñas de las cuentas ficticias | GL-08 | **Aprobada (03/11/2026).** Cuentas creadas con una contraseña aleatoria descartada; `growth_log:contrasena_ficticia` la pide dos veces sin eco, una cuenta por vez; el agente no la ejecuta con contraseñas visibles | generarlas y guardarlas en un archivo local 0600 (deja un secreto en disco) |
 
 ### 6.1. Detalle de las decisiones que abren GL-03
 
@@ -420,5 +419,7 @@ No hay configuraciones personales ni permisos nuevos.
 
 GL-03 está cerrado ([ticket](tickets/GL-03-autorizacion-minima.md),
 cambio archivado [`2026-11-03-gl-03-autorizacion-minima`](../openspec/changes/archive/2026-11-03-gl-03-autorizacion-minima/proposal.md)).
-El siguiente ticket es **GL-08**, que necesita la aprobación de P-6. Las
-demás decisiones bloquean tickets posteriores y pueden aprobarse después.
+El siguiente ticket es **GL-08** ([ticket](tickets/GL-08-datos-ficticios.md),
+cambio [`gl-08-datos-ficticios`](../openspec/changes/gl-08-datos-ficticios/proposal.md)),
+planificado, con P-6, P-13 y P-14 aprobadas. Las demás
+decisiones bloquean tickets posteriores y pueden aprobarse después.
