@@ -1,5 +1,3 @@
-require "io/console"
-
 # Interfaz de línea de comandos del administrador inicial.
 #
 # Correo y nombre salen de EMAIL y NOMBRE o se piden por la terminal (no son
@@ -43,13 +41,6 @@ class InitialAdministratorCommand
     end
 
     def ask_secret(prompt)
-      if @input.respond_to?(:tty?) && @input.tty? && IO.console
-        IO.console.getpass(prompt)
-      else
-        @output.print prompt
-        line = @input.gets
-        @output.puts
-        line&.chomp
-      end
+      SecretPrompt.new(input: @input, output: @output).ask(prompt)
     end
 end

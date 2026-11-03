@@ -24,7 +24,7 @@ Rama `feature/entrega-2-pp`. Actualizado al 02/11/2026.
 | | Corrección de 15 avisos de seguridad de gemas (GL-01a) | [ticket](docs/tickets/GL-01a-avisos-seguridad.md) |
 | | Autenticación: cuentas individuales sin registro público, inicio y cierre de sesión, sesiones con vencimiento, límites de intentos, CSRF, rutas protegidas por defecto y administrador inicial por tarea (GL-02) | [ticket](docs/tickets/GL-02-autenticacion.md); CI [41557336838](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41557336838) sobre `94e40a1` |
 | | Autorización mínima: denegar por defecto, alcance por asignación y personas y asignaciones sin interfaz (GL-03). **No verifica todavía** la autorización de personas por URL (GL-05), del feedback (GL-06) ni del resumen (GL-07), que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md); CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236) sobre `7263efd` |
-| **Siguiente** | Datos ficticios reproducibles para desarrollo (GL-08): planificado, sin implementar; P-6, P-13 y P-14 aprobadas | [ticket](docs/tickets/GL-08-datos-ficticios.md) |
+| **En curso** | Datos ficticios reproducibles para desarrollo (GL-08): tarea solo en `development`, sin contraseñas versionadas. Verificado en local; pendiente el CI remoto | [ticket](docs/tickets/GL-08-datos-ficticios.md) |
 | **Pendiente** | Personas, feedback, resumen, verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. **Hoy la

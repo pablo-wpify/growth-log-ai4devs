@@ -60,7 +60,7 @@ citaban por número):
 | 2 | GL-01a | Avisos de seguridad que bloqueaban GL-01 | **cerrado** (archivado) | GL-01 | — |
 | 3 | GL-02 | Autenticación: sesión, administrador inicial, rutas protegidas | **cerrado** (archivado; CI [41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981)) | GL-01 | — |
 | 4 | [GL-03](tickets/GL-03-autorizacion-minima.md) | Autorización mínima del recorrido: denegar por defecto, personas y asignaciones mínimas, alcance por asignación | **cerrado** (archivado; CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236)) | GL-02 | ninguna (P-5, P-7, P-8 y P-9 aprobadas) |
-| 5 | [GL-08](tickets/GL-08-datos-ficticios.md) | Datos ficticios reproducibles para desarrollo | **siguiente**: cambio de OpenSpec abierto, sin implementar | GL-03 | ninguna (P-6, P-13 y P-14 aprobadas) |
+| 5 | [GL-08](tickets/GL-08-datos-ficticios.md) | Datos ficticios reproducibles para desarrollo | **implementado en local**; pendiente el CI remoto y el archivado | GL-03 | ninguna (P-6, P-13 y P-14 aprobadas) |
 | 6 | GL-05 | «Personas» y ficha del líder: elegir una persona asignada | pendiente | GL-03, GL-08 | — |
 | 7 | GL-06 | Captura rápida, completar y marcar como lista | pendiente | GL-05 | P-1, P-2, P-3, P-11 |
 | 8 | GL-07 | Resumen por dimensión y cronología | pendiente | GL-06 | P-2, P-10 |
@@ -421,5 +421,6 @@ GL-03 está cerrado ([ticket](tickets/GL-03-autorizacion-minima.md),
 cambio archivado [`2026-11-03-gl-03-autorizacion-minima`](../openspec/changes/archive/2026-11-03-gl-03-autorizacion-minima/proposal.md)).
 El siguiente ticket es **GL-08** ([ticket](tickets/GL-08-datos-ficticios.md),
 cambio [`gl-08-datos-ficticios`](../openspec/changes/gl-08-datos-ficticios/proposal.md)),
-planificado, con P-6, P-13 y P-14 aprobadas. Las demás
+implementado y verificado en local; falta el CI remoto y el archivado.
+Después, GL-05. Las demás
 decisiones bloquean tickets posteriores y pueden aprobarse después.

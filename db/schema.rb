@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_03_030740) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_03_100707) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -42,6 +42,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_03_030740) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sample_data_records", force: :cascade do |t|
+    t.string "key", null: false
+    t.bigint "user_id"
+    t.bigint "person_id"
+    t.bigint "assignment_id"
+    t.datetime "created_at", null: false
+    t.index ["assignment_id"], name: "index_sample_data_records_on_assignment_id", unique: true
+    t.index ["key"], name: "index_sample_data_records_on_key", unique: true
+    t.index ["person_id"], name: "index_sample_data_records_on_person_id", unique: true
+    t.index ["user_id"], name: "index_sample_data_records_on_user_id", unique: true
+    t.check_constraint "num_nonnulls(user_id, person_id, assignment_id) = 1", name: "sample_data_records_exactly_one_reference"
+    t.check_constraint "user_id IS NOT NULL AND key::text ~~ 'account:%'::text OR person_id IS NOT NULL AND key::text ~~ 'person:%'::text OR assignment_id IS NOT NULL AND key::text ~~ 'assignment:%'::text", name: "sample_data_records_key_matches_reference"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "ip_address"
@@ -65,5 +79,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_03_030740) do
 
   add_foreign_key "assignments", "people"
   add_foreign_key "assignments", "users", column: "leader_id"
+  add_foreign_key "sample_data_records", "assignments"
+  add_foreign_key "sample_data_records", "people"
+  add_foreign_key "sample_data_records", "users"
   add_foreign_key "sessions", "users"
 end

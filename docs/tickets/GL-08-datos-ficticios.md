@@ -3,8 +3,10 @@
 > Quinto ticket de la entrega 2 de Growth Log. Lugar en la secuencia:
 > [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec:
 > [`gl-08-datos-ficticios`](../../openspec/changes/gl-08-datos-ficticios/proposal.md).
-> **Estado (03/11/2026): planificado, sin implementar.** P-6, P-13 y P-14
-> aprobadas.
+> **Estado (03/11/2026): implementado y verificado en local; pendiente el CI
+> remoto (D11).** P-6, P-13 y P-14 aprobadas. Resultados y límites en el
+> registro de evidencia del diseño. El aislamiento del feedback entre dos
+> líderes de la misma persona no está comprobado: llega con GL-06.
 
 ## Problema
 

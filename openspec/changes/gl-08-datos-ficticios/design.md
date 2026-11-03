@@ -280,6 +280,71 @@ Mutaciones previstas, con copia de seguridad y restauración comprobada:
 4. sin el bloqueo consultivo: falla la prueba de concurrencia;
 5. permitir cuentas sin marca en `contrasena_ficticia`: falla su prueba.
 
+## Registro de evidencia
+
+Ejecutado en local el 03/11/2026 sobre la base `5025694`. Evidencias en el
+directorio local de evidencias de GL-08, fuera del repositorio. **Remoto:
+pendiente** hasta un push autorizado.
+
+| Criterio | Estado | Evidencia |
+|---|---|---|
+| D1 | Comprobado (local) | `development_sample_data_spec`: con entornos test y producción inyectados, 0 consultas SQL y 0 escrituras. `sample_data_process_spec` (3): procesos reales `bin/rails growth_log:datos_ficticios` con `RAILS_ENV=test` y `RAILS_ENV=production` (dirigido a la base de test con `DATABASE_URL`) y `contrasena_ficticia` con `RAILS_ENV=test`: código 1, mensaje de negativa y base sin cambios. `datos_ficticios_spec`: `DevelopmentSeeds.run` no crea registros; ningún archivo de `config/` ni `db/` invoca la tarea |
+| D2 | Comprobado (local) | 5 cuentas, 5 personas, 7 asignaciones y 17 marcas con los datos del diseño |
+| D3 | Comprobado (local) | segunda ejecución una hora después sin cambios en ningún atributo ni `updated_at`; cambios manuales (contraseña, nombre, desactivación, persona inactiva, asignación terminada) conservados; no se reactiva nada ni se crea otra asignación para el par terminado; solo se crea lo que no tiene marca |
+| D4 | Comprobado (local) | correo ajeno: conflicto, la cuenta ajena intacta y 0 registros creados; asignación activa sin marca: conflicto y base sin cambios |
+| D5 | Comprobado (local) | `development_sample_data_concurrency_spec`, 5 de 5 corridas: la segunda ejecución espera el bloqueo consultivo (comprobado en `pg_stat_activity`) y no crea nada; queda un solo conjunto |
+| D6 | Comprobado (local) | hash distinto entre dos creaciones; una contraseña de prueba no autentica; la salida no contiene ninguna de las contraseñas generadas; `git grep --untracked` sin contraseñas literales ni hashes bcrypt |
+| D7 | Comprobado (local) | `contrasena_ficticia_spec` (9): cuenta activa (cambia, sin mostrar la contraseña, sin cambiar rol ni nombre); una cookie anterior deja de valer; Delia: cambia la contraseña, elimina sus sesiones, sigue desactivada y su inicio de sesión responde 422; contraseñas distintas o cortas sin cambios; cuenta ajena, administradora y correo desconocido rechazados; variables de entorno ignoradas; negativa fuera de desarrollo |
+| D8 | Comprobado (local) | `crear_administrador_spec` de GL-02 sin modificar: 9 ejemplos en verde tras extraer `SecretPrompt`; con solo cuentas ficticias crea el administrador sin cambiarlas |
+| D9 | Comprobado (local) | alcance de GL-03 sobre el conjunto, en la prueba y en la base de desarrollo |
+| D10 | Hecho | delta `MODIFIED` de `initial-administrator` |
+| D11 | Comprobado (local); **pendiente (remota)** | `bin/ci` código 0: 87 archivos sin infracciones, sin avisos (base `a58f1d0`), importmap limpio, Brakeman 0 advertencias, RSpec 164 ejemplos y 0 fallos (120 previos + 44 de GL-08). `openspec validate --all --strict`: 14 de 14. Base de test vacía al terminar |
+| D12 | Comprobado (local) | `sample_data_record_spec` (9): clave duplicada, sin referencia, dos referencias, prefijo incoherente, registro ya marcado, sin clave, referencia inexistente y borrado de un registro marcado rechazados por la base |
+| D13 | Comprobado (local) | error simulado en la tercera asignación: 0 cuentas, personas, asignaciones y marcas |
+
+**Mutaciones** (copia de seguridad, restauración y hash idéntico en cada
+caso):
+
+| Mutación | Resultado |
+|---|---|
+| 1. Sin la comprobación de entorno | 4 fallos: las dos pruebas unitarias de entorno y los dos procesos reales de `datos_ficticios` |
+| 2. Actualizar personas marcadas al repetir | 1 fallo: cambios manuales conservados |
+| 3. Reconocer cuentas por correo y adoptarlas | 1 fallo: conflicto por correo ajeno |
+| 4. Sin el bloqueo consultivo | 1 fallo: la segunda ejecución no esperó |
+| 5. Contraseña para cualquier cuenta | 1 fallo: cuenta ajena y administradora |
+
+**Base local de desarrollo** (autorizado por Pablo): antes no tenía
+registros en `users`, `sessions`, `people`, `assignments`,
+`sample_data_records` ni `login_attempt_counters`. La migración de
+`sample_data_records` se aplicó antes de la huella; solo crea la tabla.
+Primera ejecución: 17 creados, código 0. Segunda: 0 creados y 17
+existentes, código 0; las filas de la primera ejecución quedaron idénticas
+(hash por tabla) y ninguna tabla cambió de cantidad. No se establecieron
+contraseñas ni se mostraron credenciales.
+
+**Límites de lo comprobado:**
+
+- El aislamiento del feedback entre Elena y Tomás **no está comprobado**:
+  no hay entradas hasta GL-06.
+- La entrada sin eco en una terminal real no se ejercitó en GL-08: usa el
+  mismo componente que `crear_administrador`, comprobado en GL-02 con una
+  pseudoterminal. Las pruebas usan entradas en memoria.
+- El inicio de sesión manual con una cuenta ficticia queda para Pablo,
+  después de establecer su contraseña.
+
+**Desvíos e incidencias:**
+
+- `datos_ficticios_spec` tuvo dos ajustes antes de registrar su fallo
+  esperado: requerir `db/seeds/development.rb`, que no se carga solo, y
+  buscar invocaciones de la tarea en lugar de menciones (el comentario de
+  la migración la nombra).
+- La primera ejecución del guion de mutaciones no aplicó ninguna (zsh no
+  separa una variable en palabras) y la segunda falló en 2 a 4 por los
+  `\n` de `echo`; en ambos casos los archivos quedaron con hash idéntico.
+  Se repitieron con una función y heredocs literales.
+- El ejemplo nuevo de `crear_administrador` está en un archivo aparte, para
+  no modificar las pruebas de GL-02.
+
 ## Risks / Trade-offs
 
 - **Tabla de marcas en todos los entornos** → vacía fuera de desarrollo;

@@ -118,8 +118,8 @@ EMAIL=ana.admin@example.test NOMBRE="Ana Admin" bin/rails growth_log:crear_admin
 - La contraseña nunca se pasa por argumentos ni por variables de entorno.
   Sin terminal, se lee de la entrada estándar (útil para automatizar).
 - Usá datos ficticios en desarrollo. Las cuentas de líderes ficticias se
-  prepararán con GL-08; las invitaciones (GL-04) están diferidas. Ver el
-  [plan de la entrega 2](plan-entrega-2.md).
+  preparan con la tarea del paso 4c; las invitaciones (GL-04) están
+  diferidas. Ver el [plan de la entrega 2](plan-entrega-2.md).
 
 Para iniciar sesión, levantá el servidor (paso 7) y entrá en
 `http://localhost:3000`: sin sesión, cualquier página lleva a
@@ -135,6 +135,45 @@ esperá a que venza la ventana o vaciá la tabla:
 ```sh
 bin/rails runner 'LoginAttemptCounter.delete_all'
 ```
+
+## 4c. Datos ficticios de desarrollo
+
+Para recorrer la aplicación con varios líderes hay un conjunto fijo de
+cuentas, personas y asignaciones ficticias (dominio `ficticio.example.test`;
+detalle en el [ticket GL-08](tickets/GL-08-datos-ficticios.md)). Se prepara
+con una tarea explícita; los seeds, las migraciones y el arranque **no** lo
+crean.
+
+```sh
+bin/rails growth_log:datos_ficticios
+```
+
+- Solo funciona con `RAILS_ENV=development`; en otro entorno termina con
+  error sin consultar la base.
+- Se puede repetir: crea solo lo que falta y **nunca** modifica, reactiva ni
+  borra registros. Si cambiaste a mano una cuenta, una persona o una
+  asignación del conjunto, el cambio se conserva.
+- Reconoce como propios solo los registros que marcó en
+  `sample_data_records`. Si ya existe una cuenta con uno de sus correos que
+  la tarea no creó, termina con un conflicto y no escribe nada: no adopta
+  esa cuenta. Resolvelo a mano; la tarea no repara ni borra.
+- Las cuentas se crean con una contraseña aleatoria que no se guarda ni se
+  muestra. Eso **no** las deshabilita: quedan activas (salvo Delia Inactiva)
+  y solo admitirían esa contraseña, que nadie conoce.
+- Ninguna es administradora: la administradora se crea con el paso 4b.
+
+Para usar una cuenta ficticia, establecé su contraseña en tu terminal. Se
+pide dos veces **sin eco**; nunca se pasa por argumentos ni variables de
+entorno, y no aparece en la salida:
+
+```sh
+EMAIL=elena.boceto@ficticio.example.test bin/rails growth_log:contrasena_ficticia
+```
+
+- Solo para cuentas del conjunto ficticio y solo en desarrollo; se niega
+  para la administradora y cualquier otra cuenta.
+- Cierra todas las sesiones abiertas de esa cuenta.
+- No reactiva cuentas: Delia Inactiva sigue sin poder iniciar sesión.
 
 ## 5. Pruebas
 
@@ -178,6 +217,6 @@ Debe responder `HTTP/1.1 200 OK`.
 
 ## Lo que todavía no hay
 
-Permisos sobre recursos, personas, feedback, invitaciones y administración.
+Pantallas de personas, feedback, invitaciones y administración.
 Qué llega, en qué orden y qué queda diferido está en el
 [plan de la entrega 2](plan-entrega-2.md).
