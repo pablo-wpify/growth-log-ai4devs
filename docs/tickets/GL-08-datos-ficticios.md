@@ -1,12 +1,15 @@
 # GL-08. Datos ficticios reproducibles para desarrollo
 
 > Quinto ticket de la entrega 2 de Growth Log. Lugar en la secuencia:
-> [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec:
-> [`gl-08-datos-ficticios`](../../openspec/changes/gl-08-datos-ficticios/proposal.md).
-> **Estado (03/11/2026): implementado y verificado en local; pendiente el CI
-> remoto (D11).** P-6, P-13 y P-14 aprobadas. Resultados y límites en el
-> registro de evidencia del diseño. El aislamiento del feedback entre dos
-> líderes de la misma persona no está comprobado: llega con GL-06.
+> [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec,
+> archivado: [`2026-11-03-gl-08-datos-ficticios`](../../openspec/changes/archive/2026-11-03-gl-08-datos-ficticios/proposal.md).
+> Specs vigentes: [`development-sample-data`](../../openspec/specs/development-sample-data/spec.md)
+> e [`initial-administrator`](../../openspec/specs/initial-administrator/spec.md).
+> **Estado (03/11/2026): cerrado y archivado.** Verificado en local y en el
+> CI remoto ([run 41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815), SHA `2bd5deb`, D11). Resultados y
+> límites en el [registro de evidencia](../../openspec/changes/archive/2026-11-03-gl-08-datos-ficticios/design.md#registro-de-evidencia).
+> **Cerrar GL-08 no verifica el aislamiento del feedback** entre dos líderes
+> de la misma persona: llega con GL-06.
 
 ## Problema
 
@@ -57,7 +60,7 @@ credenciales versionadas y sin tocar otros registros.
 
 Correos en el dominio reservado `ficticio.example.test`; ninguna cuenta es
 administradora. El detalle y los casos están en el
-[diseño](../../openspec/changes/gl-08-datos-ficticios/design.md#datos-propuestos).
+[diseño](../../openspec/changes/archive/2026-11-03-gl-08-datos-ficticios/design.md#datos-propuestos).
 
 | Cuenta | Estado | Asignaciones activas | Caso |
 |---|---|---|---|

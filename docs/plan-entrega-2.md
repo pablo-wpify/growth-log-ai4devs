@@ -60,7 +60,7 @@ citaban por número):
 | 2 | GL-01a | Avisos de seguridad que bloqueaban GL-01 | **cerrado** (archivado) | GL-01 | — |
 | 3 | GL-02 | Autenticación: sesión, administrador inicial, rutas protegidas | **cerrado** (archivado; CI [41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981)) | GL-01 | — |
 | 4 | [GL-03](tickets/GL-03-autorizacion-minima.md) | Autorización mínima del recorrido: denegar por defecto, personas y asignaciones mínimas, alcance por asignación | **cerrado** (archivado; CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236)) | GL-02 | ninguna (P-5, P-7, P-8 y P-9 aprobadas) |
-| 5 | [GL-08](tickets/GL-08-datos-ficticios.md) | Datos ficticios reproducibles para desarrollo | **implementado en local**; pendiente el CI remoto y el archivado | GL-03 | ninguna (P-6, P-13 y P-14 aprobadas) |
+| 5 | [GL-08](tickets/GL-08-datos-ficticios.md) | Datos ficticios reproducibles para desarrollo | **cerrado** (archivado; CI [41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815)) | GL-03 | — |
 | 6 | GL-05 | «Personas» y ficha del líder: elegir una persona asignada | pendiente | GL-03, GL-08 | — |
 | 7 | GL-06 | Captura rápida, completar y marcar como lista | pendiente | GL-05 | P-1, P-2, P-3, P-11 |
 | 8 | GL-07 | Resumen por dimensión y cronología | pendiente | GL-06 | P-2, P-10 |
@@ -220,7 +220,7 @@ recomendaciones, **sin aprobar**.
 | P-10 | Cronología | GL-07 | por fecha del hecho, de la más antigua a la más reciente (como el mock 1), y los borradores propios aparecen marcados «Borrador · solo vos · fuera del resumen» | solo entradas listas en la cronología |
 | P-11 | Formulario completo «+ Feedback» (2.1, 2.2, 2.7) | GL-06 | diferirlo: el recorrido priorizado empieza en la captura rápida, y los campos y validaciones de H2 se cubren al completar | incluirlo en GL-06 |
 | P-12 | Contexto del proyecto para la IA (sección 8) | — | **Aprobada:** creado `CLAUDE.md`. Crear `CLAUDE.md` en la raíz con el contenido mínimo propuesto | no crearlo y mantener solo `openspec/config.yaml` |
-| P-13 | Cómo se distinguen los registros del conjunto ficticio | GL-08 | **Aprobada (03/11/2026).** Tabla `sample_data_records` con una marca por registro creado; sin marca no se adopta nada, aunque coincida el correo ([diseño](../openspec/changes/gl-08-datos-ficticios/design.md#3-marcas-tabla-sample_data_records-p-13-aprobada-el-03112026)) | columna en las tablas del dominio; reconocer por correo (adopta cuentas ajenas) |
+| P-13 | Cómo se distinguen los registros del conjunto ficticio | GL-08 | **Aprobada (03/11/2026).** Tabla `sample_data_records` con una marca por registro creado; sin marca no se adopta nada, aunque coincida el correo ([diseño](../openspec/changes/archive/2026-11-03-gl-08-datos-ficticios/design.md#3-marcas-tabla-sample_data_records-p-13-aprobada-el-03112026)) | columna en las tablas del dominio; reconocer por correo (adopta cuentas ajenas) |
 | P-14 | Entrega de las contraseñas de las cuentas ficticias | GL-08 | **Aprobada (03/11/2026).** Cuentas creadas con una contraseña aleatoria descartada; `growth_log:contrasena_ficticia` la pide dos veces sin eco, una cuenta por vez; el agente no la ejecuta con contraseñas visibles | generarlas y guardarlas en un archivo local 0600 (deja un secreto en disco) |
 
 ### 6.1. Detalle de las decisiones que abren GL-03
@@ -417,10 +417,9 @@ No hay configuraciones personales ni permisos nuevos.
 
 ## 9. Próximo paso
 
-GL-03 está cerrado ([ticket](tickets/GL-03-autorizacion-minima.md),
-cambio archivado [`2026-11-03-gl-03-autorizacion-minima`](../openspec/changes/archive/2026-11-03-gl-03-autorizacion-minima/proposal.md)).
-El siguiente ticket es **GL-08** ([ticket](tickets/GL-08-datos-ficticios.md),
-cambio [`gl-08-datos-ficticios`](../openspec/changes/gl-08-datos-ficticios/proposal.md)),
-implementado y verificado en local; falta el CI remoto y el archivado.
-Después, GL-05. Las demás
-decisiones bloquean tickets posteriores y pueden aprobarse después.
+GL-08 está cerrado ([ticket](tickets/GL-08-datos-ficticios.md), cambio
+archivado [`2026-11-03-gl-08-datos-ficticios`](../openspec/changes/archive/2026-11-03-gl-08-datos-ficticios/proposal.md)). El
+siguiente ticket es **GL-05**, «Personas» y ficha del líder, sin decisiones
+pendientes que lo bloqueen. El aislamiento del feedback entre líderes de la
+misma persona sigue pendiente para GL-06. Las demás decisiones bloquean
+tickets posteriores y pueden aprobarse después.

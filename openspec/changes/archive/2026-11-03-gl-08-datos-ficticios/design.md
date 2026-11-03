@@ -283,8 +283,8 @@ Mutaciones previstas, con copia de seguridad y restauración comprobada:
 ## Registro de evidencia
 
 Ejecutado en local el 03/11/2026 sobre la base `5025694`. Evidencias en el
-directorio local de evidencias de GL-08, fuera del repositorio. **Remoto:
-pendiente** hasta un push autorizado.
+directorio local de evidencias de GL-08, fuera del repositorio. Remoto: CI
+de GitHub [run 41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815) sobre `2bd5deb`.
 
 | Criterio | Estado | Evidencia |
 |---|---|---|
@@ -298,7 +298,7 @@ pendiente** hasta un push autorizado.
 | D8 | Comprobado (local) | `crear_administrador_spec` de GL-02 sin modificar: 9 ejemplos en verde tras extraer `SecretPrompt`; con solo cuentas ficticias crea el administrador sin cambiarlas |
 | D9 | Comprobado (local) | alcance de GL-03 sobre el conjunto, en la prueba y en la base de desarrollo |
 | D10 | Hecho | delta `MODIFIED` de `initial-administrator` |
-| D11 | Comprobado (local); **pendiente (remota)** | `bin/ci` código 0: 87 archivos sin infracciones, sin avisos (base `a58f1d0`), importmap limpio, Brakeman 0 advertencias, RSpec 164 ejemplos y 0 fallos (120 previos + 44 de GL-08). `openspec validate --all --strict`: 14 de 14. Base de test vacía al terminar |
+| D11 | Comprobado (local y remota) | Remota: [run 41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815), evento `push`, SHA `2bd5debd3acf59134325f200d83575434f961702`, conclusión `success`; jobs `scan_ruby` (Brakeman 0 advertencias, bundler-audit sin avisos), `scan_js` (importmap sin paquetes vulnerables), `lint` y `test` (164 ejemplos, 0 fallos, incluidos los procesos reales con `RAILS_ENV=test` y `production`) en `success`. Local: `bin/ci` código 0: 87 archivos sin infracciones, sin avisos (base `a58f1d0`), importmap limpio, Brakeman 0 advertencias, RSpec 164 ejemplos y 0 fallos (120 previos + 44 de GL-08). `openspec validate --all --strict`: 14 de 14. Base de test vacía al terminar |
 | D12 | Comprobado (local) | `sample_data_record_spec` (9): clave duplicada, sin referencia, dos referencias, prefijo incoherente, registro ya marcado, sin clave, referencia inexistente y borrado de un registro marcado rechazados por la base |
 | D13 | Comprobado (local) | error simulado en la tercera asignación: 0 cuentas, personas, asignaciones y marcas |
 

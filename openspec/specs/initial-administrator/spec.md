@@ -26,11 +26,17 @@ veces en el momento. La contraseña MUST cumplir la política de contraseñas.
 
 ### Requirement: Solo para una instalación sin administradores
 El procedimiento MUST negarse a crear una cuenta si ya existe un
-administrador activo, sin modificar las cuentas existentes.
+administrador activo, sin modificar las cuentas existentes. Las cuentas del
+conjunto ficticio de desarrollo no son administradoras y no impiden crear
+el primer administrador.
 
 #### Scenario: Administrador existente
 - **WHEN** se ejecuta el procedimiento y ya hay un administrador activo
 - **THEN** no crea ni modifica ninguna cuenta e informa que ya existe un administrador
+
+#### Scenario: Solo cuentas ficticias
+- **WHEN** se ejecuta el procedimiento en una base que solo tiene las cuentas del conjunto ficticio de desarrollo
+- **THEN** crea el administrador y no modifica las cuentas ficticias
 
 ### Requirement: Sin credenciales en el código ni en la salida
 El procedimiento MUST NOT leer la contraseña de argumentos, del código ni de
@@ -47,5 +53,5 @@ eco.
 - **THEN** ni la salida ni los logs contienen la contraseña
 
 #### Scenario: Repositorio sin credenciales
-- **WHEN** se buscan en los archivos versionados contraseñas o cuentas predefinidas, incluidos los seeds
-- **THEN** no hay ninguna
+- **WHEN** se buscan en los archivos versionados contraseñas, hashes de contraseñas o cuentas predefinidas, incluidos los seeds
+- **THEN** no hay contraseñas ni hashes, y las únicas cuentas predefinidas son las del conjunto ficticio de desarrollo: correos del dominio `ficticio.example.test`, sin rol de administrador y sin contraseñas ni hashes versionados

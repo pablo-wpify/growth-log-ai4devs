@@ -38,6 +38,6 @@ establece Pablo en su terminal.
 
 ## Workflow follow-up
 
-- Con autorización, push y verificación del CI remoto.
+- Hecho (03/11/2026): push de `feature/entrega-2-pp` (`092b548..2bd5deb`, sin force) y CI remoto en verde, [run 41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815), 4 de 4 jobs.
 - Con autorización de Pablo, ejecución manual de la tarea en desarrollo y establecimiento de contraseñas en su terminal.
 - Archivar `gl-08-datos-ficticios` después del CI remoto y de la revisión humana.
