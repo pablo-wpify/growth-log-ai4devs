@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_secure_password
   has_many :sessions, dependent: :destroy
+  has_many :assignments, foreign_key: :leader_id, inverse_of: :leader, dependent: :restrict_with_exception
 
   normalizes :email_address, with: ->(email) { email.strip.downcase }
 

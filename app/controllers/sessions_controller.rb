@@ -5,6 +5,9 @@ class SessionsController < ApplicationController
   TOO_MANY_ATTEMPTS_MESSAGE = "Demasiados intentos. Probá de nuevo en unos minutos.".freeze
 
   allow_unauthenticated_access only: %i[ new create ]
+  # Sin cuenta identificada no hay a quién autorizar. Excepción por acción:
+  # una acción nueva queda sujeta a las verificaciones (GL-03).
+  skip_after_action :verify_authorized, :verify_policy_scoped, only: %i[ new create ]
 
   # Por IP: 10 intentos totales (exitosos o fallidos) en una ventana fija de
   # 3 minutos. La clave usa el SHA-256 de la IP, no la IP en claro.
@@ -35,6 +38,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    authorize :session, :destroy?
+    skip_policy_scope # no lee registros
     terminate_session
     redirect_to new_session_path, status: :see_other
   end

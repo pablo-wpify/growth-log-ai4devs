@@ -4,8 +4,9 @@
 > decisiones pendientes: [plan de la entrega 2](../plan-entrega-2.md).
 > Cambio de OpenSpec:
 > [`gl-03-autorizacion-minima`](../../openspec/changes/gl-03-autorizacion-minima/proposal.md).
-> **Estado (02/11/2026): planificado; P-5, P-7, P-8 y P-9 aprobadas; sin
-> implementar.**
+> **Estado (03/11/2026): implementado y verificado en local; pendiente el CI
+> remoto (B9).** Resultados y límites en el registro de evidencia del
+> diseño. La autorización del feedback no está comprobada: llega con GL-06.
 
 ## Problema
 

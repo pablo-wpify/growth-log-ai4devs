@@ -59,7 +59,7 @@ citaban por número):
 | 1 | GL-01 | Base del producto | **cerrado** (archivado) | — | — |
 | 2 | GL-01a | Avisos de seguridad que bloqueaban GL-01 | **cerrado** (archivado) | GL-01 | — |
 | 3 | GL-02 | Autenticación: sesión, administrador inicial, rutas protegidas | **cerrado** (archivado; CI [41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981)) | GL-01 | — |
-| 4 | [GL-03](tickets/GL-03-autorizacion-minima.md) | Autorización mínima del recorrido: denegar por defecto, personas y asignaciones mínimas, alcance por asignación | **siguiente**: cambio de OpenSpec abierto, sin implementar | GL-02 | ninguna (P-5, P-7, P-8 y P-9 aprobadas) |
+| 4 | [GL-03](tickets/GL-03-autorizacion-minima.md) | Autorización mínima del recorrido: denegar por defecto, personas y asignaciones mínimas, alcance por asignación | **implementado en local**; pendiente el CI remoto y el archivado | GL-02 | ninguna (P-5, P-7, P-8 y P-9 aprobadas) |
 | 5 | GL-08 | Datos ficticios reproducibles para desarrollo | pendiente | GL-03 | P-6 |
 | 6 | GL-05 | «Personas» y ficha del líder: elegir una persona asignada | pendiente | GL-03, GL-08 | — |
 | 7 | GL-06 | Captura rápida, completar y marcar como lista | pendiente | GL-05 | P-1, P-2, P-3, P-11 |
@@ -403,7 +403,8 @@ No hay configuraciones personales ni permisos nuevos.
 
 ## 9. Próximo paso
 
-**Implementar GL-03** ([ticket](tickets/GL-03-autorizacion-minima.md),
+**Verificar GL-03 en el CI remoto** ([ticket](tickets/GL-03-autorizacion-minima.md),
 cambio [`gl-03-autorizacion-minima`](../openspec/changes/gl-03-autorizacion-minima/proposal.md)),
-cuando Pablo lo autorice. Las demás decisiones bloquean tickets posteriores
-y pueden aprobarse después.
+con un push autorizado, y archivarlo después de la revisión. Luego, GL-08,
+que necesita P-6. Las demás decisiones bloquean tickets posteriores y
+pueden aprobarse después.

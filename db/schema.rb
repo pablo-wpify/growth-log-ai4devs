@@ -10,14 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_02_221829) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_03_030740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "leader_id", null: false
+    t.bigint "person_id", null: false
+    t.datetime "started_at", null: false
+    t.datetime "ended_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["leader_id", "person_id"], name: "index_assignments_one_active_per_pair", unique: true, where: "(ended_at IS NULL)"
+    t.index ["leader_id"], name: "index_assignments_on_leader_id"
+    t.index ["person_id"], name: "index_assignments_on_person_id"
+    t.check_constraint "ended_at IS NULL OR ended_at >= started_at", name: "assignments_end_not_before_start"
+  end
 
   create_table "login_attempt_counters", primary_key: "key", id: :string, force: :cascade do |t|
     t.integer "count", null: false
     t.datetime "expires_at", null: false
     t.index ["expires_at"], name: "index_login_attempt_counters_on_expires_at"
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "role"
+    t.string "team"
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -41,5 +63,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_02_221829) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "assignments", "people"
+  add_foreign_key "assignments", "users", column: "leader_id"
   add_foreign_key "sessions", "users"
 end

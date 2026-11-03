@@ -53,7 +53,7 @@ verificaciones), Action Policy (más amplia de lo necesario).
 include Pundit::Authorization
 after_action :verify_authorized
 after_action :verify_policy_scoped
-rescue_from Pundit::NotAuthorizedError, with: :render_not_found
+rescue_from Pundit::NotAuthorizedError, ActiveRecord::RecordNotFound, with: :render_not_found
 ```
 
 `Current.user` se expone a Pundit con `pundit_user`. Las dos verificaciones
@@ -92,10 +92,12 @@ acción, con la lista declarada en la propia prueba. Hoy la lista tiene:
 
 ### 4. Respuesta 404
 
-`render_not_found` responde con `public/404.html` y estado 404, igual que
-`ActiveRecord::RecordNotFound` en producción y en test
-(`show_exceptions = :rescuable`). No se usa 403: no revela si el recurso
-existe.
+`render_not_found` responde con `public/404.html` y estado 404. Atiende
+también `ActiveRecord::RecordNotFound`, para que un acceso denegado, un
+registro fuera del alcance y uno inexistente den exactamente la misma
+respuesta en todos los entornos (en test, `consider_all_requests_local`
+mostraría una página de depuración distinta). No se usa 403: no revela si
+el recurso existe.
 
 ### 5. Carga por alcance
 
@@ -124,8 +126,9 @@ ningún recurso.
   persona (P-8).
 - Modelos: `Person` (`scope :active`), `Assignment` (`belongs_to :leader,
   class_name: "User"`, `belongs_to :person`, `scope :active`), `User`
-  (`has_many :assignments, foreign_key: :leader_id`). Las asociaciones no
-  borran en cascada: ninguna cuenta ni persona se borra en este alcance.
+  (`has_many :assignments, foreign_key: :leader_id`). Las asociaciones usan
+  `restrict_with_exception`: borrar una cuenta o una persona con
+  asignaciones falla en lugar de borrar en cascada.
 
 ### 8. Política de personas
 
@@ -171,7 +174,7 @@ rutas; sin eso la prueba falla.
 | Comprobación | En GL-03 | Requiere |
 |---|---|---|
 | Denegación por defecto de `ApplicationPolicy` y su alcance | sí | — |
-| `verify_authorized` y `verify_policy_scoped` detectan omisiones | sí, con un controlador anónimo **solo de prueba** | — |
+| `verify_authorized` y `verify_policy_scoped` detectan omisiones | sí, con un controlador **solo de prueba** y rutas temporales | — |
 | 404 ante `NotAuthorizedError` y registro fuera del alcance | sí, con el controlador de prueba | — |
 | Excepciones por acción concreta; cierre de sesión autorizado | sí | — |
 | Página de inicio autorizada; mutación sin `authorize` falla | sí | — |
@@ -191,7 +194,7 @@ regla del producto sobre personas ni sobre feedback.
 | Archivo | Qué prueba | Spec |
 |---|---|---|
 | `spec/policies/application_policy_spec.rb` | todas las consultas deniegan; el alcance está vacío | Denegación por defecto |
-| `spec/controllers/authorization_mechanism_spec.rb` | controlador anónimo de prueba: sin `authorize` falla; lee sin `policy_scope` y falla; `NotAuthorizedError` y registro fuera del alcance dan 404 iguales a un inexistente | Autorización obligatoria; Alcance obligatorio; Respuesta |
+| `spec/requests/authorization_mechanism_spec.rb` | controlador solo de prueba con rutas temporales (`with_routing`), a través del middleware real: sin `authorize` falla; lee sin `policy_scope` y falla; una acción denegada y un registro fuera del alcance dan un 404 idéntico al de un inexistente | Autorización obligatoria; Alcance obligatorio; Respuesta |
 | `spec/requests/authorization_coverage_spec.rb` | tabla de rutas del producto con sesión; ruta sin preparar falla; página de inicio | Autorización obligatoria |
 | `spec/authorization/exceptions_spec.rb` | omisiones en `app/`, por controlador y acción, iguales a la lista declarada | Excepciones declaradas por acción |
 | `spec/policies/person_policy_spec.rb` | L1 y L2 asignados a P; L3 sin asignación; A sin asignación; A asignada a Q; P inactiva; asignación terminada | Acceso de un líder a una persona |
@@ -214,7 +217,62 @@ Datos ficticios (`@example.test`) y contraseñas generadas en cada prueba.
 
 ## Registro de evidencia
 
-Se completa al implementar, distinguiendo local y remoto.
+Ejecutado en local el 03/11/2026 sobre la base `93b42ec`. Evidencias en
+el directorio local de evidencias de GL-03, fuera del repositorio.
+**Remoto: pendiente** hasta un push autorizado.
+
+| Criterio | Estado | Evidencia |
+|---|---|---|
+| B1 | Comprobado (local) | `application_policy_spec` (9): las siete consultas deniegan, también a una administradora; alcance base vacío |
+| B2 | Comprobado (local), **solo el mecanismo** | `authorization_mechanism_spec` (4), con un controlador solo de prueba: sin `authorize`, `Pundit::AuthorizationNotPerformedError`; leer sin alcance, `Pundit::PolicyScopingNotPerformedError`; acción denegada y registro fuera del alcance, 404 con el mismo cuerpo que un inexistente y sin el nombre de la persona. No comprueba rutas reales del producto |
+| B3 | Comprobado (local) | `authorization_coverage_spec` (5): rutas del producto con sesión, `GET /` y `DELETE /session`, igual a la tabla. Mutación 1 (sin `authorize` en la página de inicio): 2 fallos con `AuthorizationNotPerformedError` |
+| B4 | Comprobado (local) | `exceptions_spec` (3): omisiones en `app/` iguales a la lista por acción; verificaciones instaladas; una acción nueva de un subcontrolador de sesiones queda sujeta. Mutación 4 (excepción sin `only:`): 2 fallos |
+| B5 | Comprobado (local), **política y alcance** | `person_policy_spec` (8): L1 y L2 asignados a P; L3 sin asignación; asignación terminada; persona inactiva con asignación activa; sin cuenta. Mutación 2 (sin la condición de asignación): 6 fallos; mutación 3 (sin persona activa): 1 fallo. La URL directa queda para GL-05 |
+| B6 | Comprobado (local) | `person_policy_spec`: administradora sin asignaciones con alcance vacío; asignada a Q, solo Q |
+| B7 | Comprobado (local) | `person_spec` (5), `assignment_spec` (11), `assignment_concurrency_spec` (1, 5 de 5 corridas): restricciones de la base, varios líderes por persona y varias personas por líder, reasignación, estados independientes y segunda inserción simultánea rechazada mientras espera la fila de la primera. Mutación 5 (sin el índice único, solo en la base de test): 2 fallos; índice restaurado idéntico y `db/schema.rb` sin cambios. Migraciones revertidas y reaplicadas en test |
+| B8 | Hecho | decisión 9 de este diseño; no es una prueba |
+| B9 | Comprobado (local); **pendiente (remota)** | `bin/ci` código 0: 73 archivos sin infracciones, sin avisos (base `a58f1d0`), importmap limpio, Brakeman 0 advertencias, RSpec 120 ejemplos y 0 fallos (74 de GL-02 + 46 de GL-03). `openspec validate --all --strict`. Base de test vacía al terminar |
+
+Dependencia: `pundit` 2.5.2; el diff de `Gemfile.lock` solo agrega
+`pundit` (que depende de `activesupport`, ya presente) y `bundler-audit`
+no informa avisos.
+
+Mutaciones de código (1 a 4) con copia de seguridad, restauración por
+`trap` y `sha256sum -c` correcto para cada archivo.
+
+**Límites de lo comprobado:**
+
+- El controlador de prueba verifica el **mecanismo**, no la autorización de
+  futuras rutas reales. Cada ruta nueva tiene que entrar en la tabla de
+  cobertura con sus actores (GL-05 en adelante).
+- La autorización del feedback **no está comprobada**: no hay entradas
+  hasta GL-06.
+- La URL directa de una persona ajena, 1.14 y 1.19 por la interfaz, y la
+  mutación de `Person.find` en lugar de la carga por alcance quedan para
+  GL-05.
+- La prueba de excepciones analiza el código línea por línea: una omisión
+  escrita de forma inusual (por ejemplo, en varias líneas) podría escapar.
+  La prueba dinámica de la acción nueva y la de cobertura la complementan.
+
+**Desvíos e incidencias registrados:**
+
+- El diseño preveía un controlador anónimo en una prueba de controlador.
+  Se usó un controlador de prueba con rutas temporales en una prueba de
+  peticiones, para pasar por el middleware real y comparar el 404 completo.
+- `authorization_coverage_spec` no podía fallar antes de existir el
+  mecanismo (sin verificaciones no hay nada que omitir); su eficacia la
+  demuestra la mutación 1. Las demás pruebas fallaron primero por la razón
+  esperada (constantes inexistentes, verificaciones no instaladas, acción
+  nueva no sujeta).
+- La primera versión de `exceptions_spec` usaba `stub_const` fuera del
+  ciclo de la prueba; se corrigió antes de registrar el fallo esperado.
+- La primera ejecución de la mutación 5 dejó colgada la prueba de
+  concurrencia: sin el índice, la espera fallaba y la primera transacción
+  no se liberaba. Se detuvo el proceso, se restauró la base de test con
+  `db:test:prepare` (quedaba sin el índice y con una cuenta de prueba) y
+  la prueba se reescribió para liberar siempre la transacción y fallar con
+  un mensaje claro. Con la prueba corregida, la mutación 5 falla sin
+  colgarse.
 
 ## Risks / Trade-offs
 

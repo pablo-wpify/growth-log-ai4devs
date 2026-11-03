@@ -23,7 +23,7 @@ Rama `feature/entrega-2-pp`. Actualizado al 02/11/2026.
 | **Implementado y verificado** | Base del producto: Rails 8.1.4, Ruby 4.0.9, PostgreSQL 18.6, RSpec, `bin/ci` y GitHub Actions; chequeo de salud `GET /up` (GL-01) | [ticket](docs/tickets/GL-01-base-producto.md) |
 | | Corrección de 15 avisos de seguridad de gemas (GL-01a) | [ticket](docs/tickets/GL-01a-avisos-seguridad.md) |
 | | Autenticación: cuentas individuales sin registro público, inicio y cierre de sesión, sesiones con vencimiento, límites de intentos, CSRF, rutas protegidas por defecto y administrador inicial por tarea (GL-02) | [ticket](docs/tickets/GL-02-autenticacion.md); CI [41557336838](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41557336838) sobre `94e40a1` |
-| **En curso** | Autorización mínima: denegar por defecto y alcance por asignación (GL-03), planificada y sin implementar | [ticket](docs/tickets/GL-03-autorizacion-minima.md) |
+| **En curso** | Autorización mínima: denegar por defecto y alcance por asignación, con personas y asignaciones sin interfaz (GL-03). Implementada y verificada en local; pendiente el CI remoto. Todavía no protege rutas de personas ni feedback, que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md) |
 | **Pendiente** | Personas, feedback, resumen, verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. **Hoy la
@@ -131,8 +131,8 @@ recorrido núcleo está en el [plan](docs/plan-entrega-2.md).
 
 ## 3. Modelo de datos
 
-Implementado: `users`, `sessions` y `login_attempt_counters`
-([db/schema.rb](db/schema.rb)). Modelo conceptual completo:
+Implementado: `users`, `sessions` y `login_attempt_counters`; con GL-03, en
+local, `people` y `assignments` ([db/schema.rb](db/schema.rb)). Modelo conceptual completo:
 [propuesta, sección 3](propuesta-mvp.md#3-modelo-de-datos).
 
 ### 3.1. Diagrama del modelo de datos
