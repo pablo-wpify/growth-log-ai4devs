@@ -27,8 +27,9 @@ modelo no está verificado; no se reconstruye.
 | Replanificación por el feedback de LIDR | M19–M21 | `93b42ec` | [replanificacion-lidr](docs/prompts/replanificacion-lidr/README.md) |
 | GL-03. Autorización mínima | M22–M24 (cambio pedido en M21) | `7263efd` a `092b548`; CI 41571299236 y 41571768783 | [GL-03](docs/prompts/GL-03/README.md) |
 | GL-08. Datos ficticios de desarrollo | M25–M27 | `5025694` a `eacb16e`; CI 41621619815 y 41621897764 | [GL-08](docs/prompts/GL-08/README.md) |
-| GL-05. «Personas» y ficha del líder | M28 | planificación pendiente, sin commit | [GL-05](docs/prompts/GL-05/README.md) |
-| Registro de prompts | M29, M30 | rama `docs/prompts-entrega-2` | [registro-prompts](docs/prompts/registro-prompts/README.md) |
+| GL-05. «Personas» y ficha del líder | M28, M33, M35–M37, M61–M70 | `a8b87a5` a `a60fb8e` (con GL-01b integrado); publicación pedida en M70 | [GL-05](docs/prompts/GL-05/README.md) |
+| GL-01b. Rails 8.1.4.1 por avisos de seguridad | M38–M60 | PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), integrado en `8ae8723`; CI 42380986492 | [GL-01b](docs/prompts/GL-01b/README.md) |
+| Registro de prompts | M29–M32 | PR [#1](https://github.com/pablo-wpify/growth-log-ai4devs/pull/1), integrado en `925e2ee`; CI 41629470056 | [registro-prompts](docs/prompts/registro-prompts/README.md) |
 
 **Conteos.** La transcripción tiene 30 mensajes del usuario hasta este
 registro, numerados por posición de M01 a M30:
@@ -42,8 +43,23 @@ registro, numerados por posición de M01 a M30:
   **27 textos distintos**, guardados en 27 archivos; el de M03 a M05 lista
   los tres envíos con su hora.
 
+**Mensajes posteriores al registro inicial.** M31 a M70 se registran en su
+etapa, con el mismo procedimiento literal.
+
+- **M34**, como M16, es el resumen automático de contexto que genera Claude
+  Code al continuar la sesión: no es un pedido y no se registra.
+- M31 y M32 se registraron después de su ejecución, a pedido de M35.
+- **M42** es una copia pegada de una respuesta del asistente, sin pedido
+  nuevo. Se registra con el texto omitido y no se declara literal.
+- **M53 y M54**, y también **M58 y M59**, son dos envíos del mismo texto.
+  Cada envío tiene su archivo.
+- Un mensaje enviado a mitad de un turno («espera», 07/11/2026) quedó
+  encolado en la transcripción, no como mensaje propio. No tiene número ni
+  registro; se menciona en M52.
+
 **Fidelidad y omisiones.** Cada texto es idéntico al mensaje fuente; solo se
-quitaron las etiquetas de texto pegado que agrega Claude Code. No hubo que
+quitaron las etiquetas de texto pegado que agrega Claude Code. La única
+excepción es M42, omitido por ser una respuesta del asistente. No hubo que
 omitir secretos ni datos personales en ningún pedido. Los pedidos contienen
 rutas locales de proyecto (`~/code/...`) y el nombre de la cuenta pública
 `pablo-wpify`, cuya publicación aprobó Pablo.

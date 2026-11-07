@@ -1,15 +1,12 @@
 # GL-01b. Rails 8.1.4.1 por los avisos de seguridad del 04/11/2026
 
 > Ticket separado de GL-05, como [GL-01a](GL-01a-avisos-seguridad.md).
-> **Estado (07/11/2026): publicado en el PR abierto
-> [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), sin merge.** El commit de implementación
-> `d4c61ebde4bd1b812d8115e01d498f9d26e76566` se publicó en
-> `feature/GL-01b-rails-8-1-4-1`, creada desde `feature/entrega-2-pp`
-> (`925e2ee`) en el worktree `~/code/ai4devs-entrega-1-pp-gl01b`. El PR
-> apunta a `feature/entrega-2-pp`, y el CI remoto
-> [42376879636](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42376879636) pasó sobre ese SHA. Siguen
-> pendientes el merge y la integración en `feature/GL-05-personas`. P-18
-> sigue sin aprobar.
+> **Estado (07/11/2026): integrado** en `feature/entrega-2-pp` con el PR
+> [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2) (merge commit `8ae8723`, CI
+> [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492) en success) y en
+> `feature/GL-05-personas` (`a60fb8e`). Cambio de OpenSpec:
+> [`gl-01b-rails-8-1-4-1`](../../openspec/changes/gl-01b-rails-8-1-4-1/proposal.md),
+> sin archivar. P-18 sigue sin aprobar.
 
 ## Problema
 
@@ -360,7 +357,7 @@ detenerse.
 | B5 | **cumple, según los logs.** `audit-despues.txt` registra «No vulnerabilities found», la salida de `bin/bundler-audit` después de `bin/bundler-audit update`. `bin-ci.log` registra lo mismo en el paso «Security: Gem audit». `config/bundler-audit.yml` no cambió, así que no hay ignorados nuevos. `brakeman.txt` registra `Security Warnings: 0` y «No warnings found». **No quedaron registrados** los códigos de salida de `bin/bundler-audit` ni de `bin/brakeman`, ni las opciones con que se ejecutó `bin/brakeman` para `brakeman.txt` |
 | B6 | **cumple, según `bin-ci.log`:** el log termina con «Continuous Integration passed»; **el código de salida exacto no quedó persistido.** RuboCop no tiene ofensas en 87 archivos, las auditorías de gemas e importmap pasan, Brakeman no tiene avisos y RSpec da 164 ejemplos y 0 fallas, que es la suite de la base sin GL-05 |
 | B7 | **cumple, según `server.log`:** `bin/rails server -p 3011` registró «Rails 8.1.4.1 application starting in development», dos `GET "/up"` con `Completed 200 OK` y el cierre (`Exiting`). **La respuesta de `curl` (`HTTP/1.1 200 OK`) no se guardó:** se observó en la sesión y no está en un log. `bin/rails runner 'puts Rails.version'` imprimió 8.1.4.1: **observado en la sesión, no persistido en un log** |
-| B8 | **cumple en la base:** sin cambios de código ni de configuración; las pruebas de GL-02 y GL-03 pasan sin ajustes. **Pendiente:** las de GL-05, que no están en esta rama, se comprueban al traer la corrección a `feature/GL-05-personas` |
+| B8 | **cumple:** sin cambios de código ni de configuración; las pruebas de GL-02 y GL-03 pasan sin ajustes en la base. Las de GL-05 pasaron al integrar la corrección (07/11/2026): en el árbol de `a60fb8e`, antes del commit, `bin/ci` registró «Continuous Integration passed» con 192 ejemplos y 0 fallas |
 | B9 | **cumple:** el CI remoto [42376879636](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42376879636), disparado por el PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2) sobre `d4c61ebde4bd1b812d8115e01d498f9d26e76566`, terminó en success con los cuatro jobs: `scan_ruby`, `scan_js`, `lint` y `test` |
 
 **OpenSpec.** `openspec validate --all --strict` dio 14 de 14 en la base,
@@ -380,6 +377,8 @@ porque M45 no lo autorizó;** queda pendiente.
 ## Pendiente de autorización
 
 - aprobar P-18, que sigue sin aprobar;
-- crear el cambio de OpenSpec de GL-01b y agregarlo al plan;
-- el merge del PR #2 en `feature/entrega-2-pp`;
-- traer la corrección a `feature/GL-05-personas`.
+- archivar el cambio de OpenSpec `gl-01b-rails-8-1-4-1`.
+
+Hechos desde la publicación (07/11/2026): el merge del PR #2 (`8ae8723`),
+la integración en `feature/GL-05-personas` (`a60fb8e`), el cambio de
+OpenSpec y la entrada en el plan.

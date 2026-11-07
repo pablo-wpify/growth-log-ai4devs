@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   # GL-02: solo iniciar y cerrar sesión; sin registro ni recuperación de contraseña.
   resource :session, only: %i[ new create destroy ]
-  root "home#show"
+  # GL-05 (P-15, P-16): «Personas» es la página de inicio con sesión; las
+  # rutas van en español, como la interfaz. Solo lectura.
+  root "people#index"
+  resources :people, only: %i[ index show ], path: "personas"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

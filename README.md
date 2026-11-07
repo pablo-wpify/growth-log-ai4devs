@@ -22,10 +22,11 @@ Rama `feature/entrega-2-pp`. Actualizado al 02/11/2026.
 |---|---|---|
 | **Implementado y verificado** | Base del producto: Rails 8.1.4, Ruby 4.0.9, PostgreSQL 18.6, RSpec, `bin/ci` y GitHub Actions; chequeo de salud `GET /up` (GL-01) | [ticket](docs/tickets/GL-01-base-producto.md) |
 | | Corrección de 15 avisos de seguridad de gemas (GL-01a) | [ticket](docs/tickets/GL-01a-avisos-seguridad.md) |
+| | Rails 8.1.4.1 por los 21 avisos de seguridad del 04/11/2026 (GL-01b) | [ticket](docs/tickets/GL-01b-rails-8-1-4-1.md); CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492) sobre `8ae8723` |
 | | Autenticación: cuentas individuales sin registro público, inicio y cierre de sesión, sesiones con vencimiento, límites de intentos, CSRF, rutas protegidas por defecto y administrador inicial por tarea (GL-02) | [ticket](docs/tickets/GL-02-autenticacion.md); CI [41557336838](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41557336838) sobre `94e40a1` |
 | | Autorización mínima: denegar por defecto, alcance por asignación y personas y asignaciones sin interfaz (GL-03). **No verifica todavía** la autorización de personas por URL (GL-05), del feedback (GL-06) ni del resumen (GL-07), que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md); CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236) sobre `7263efd` |
 | | Datos ficticios reproducibles para desarrollo (GL-08): tarea solo en `development`, sin contraseñas versionadas ni adopción de registros ajenos. **No verifica** el aislamiento del feedback, que llega con GL-06 | [ticket](docs/tickets/GL-08-datos-ficticios.md); CI [41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815) sobre `2bd5deb` |
-| **Siguiente** | «Personas» y ficha del líder (GL-05) | [plan de la entrega 2](docs/plan-entrega-2.md) |
+| **Siguiente** | «Personas» y ficha del líder (GL-05): implementado e integrado con Rails 8.1.4.1 en la rama `feature/GL-05-personas`; faltan la comprobación manual en navegador y el CI remoto | [ticket](docs/tickets/GL-05-personas.md) |
 | **Pendiente** | Personas, feedback, resumen, verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. **Hoy la

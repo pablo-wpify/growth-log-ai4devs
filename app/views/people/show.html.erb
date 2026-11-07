@@ -1,0 +1,6 @@
+<% content_for :title, "#{@person.name} · Growth Log" %>
+
+<p class="back-link"><%= link_to "← Volver a Personas", people_path %></p>
+
+<h1><%= @person.name %></h1>
+<p class="person-meta"><%= person_role_and_team(@person) %></p>

@@ -3,6 +3,12 @@
 # de administrador no interviene. La lectura de las entradas propias no
 # depende de esta regla (PP-9, AM-1): la define la política de entradas.
 class PersonPolicy < ApplicationPolicy
+  # El listado se puede abrir con cualquier cuenta identificada; qué contiene
+  # lo decide el alcance (GL-05).
+  def index?
+    user.present?
+  end
+
   def show?
     Scope.new(user, Person.all).resolve.exists?(record.id)
   end

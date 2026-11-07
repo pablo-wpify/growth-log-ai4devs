@@ -14,14 +14,38 @@ RSpec.describe "Cobertura de autorización con sesión", type: :request do
     [ "POST", "/session" ]
   ].freeze
 
-  # Para cada ruta: cómo pedirla y qué esperar de cada actor. La página de
-  # inicio y el cierre de sesión son iguales para toda cuenta identificada:
-  # no dan acceso a ningún recurso.
+  # Para cada ruta: cómo pedirla y qué esperar de cada actor. En cada
+  # ejemplo existe «Ada Ejemplo», asignada solo al actor autorizado (GL-05).
+  # El actor sin permisos ve el listado vacío y recibe 404 en la ficha. El
+  # cierre de sesión es igual para toda cuenta identificada.
+  LISTS_ASSIGNED = ->(spec) do
+    spec.expect(spec.response).to spec.have_http_status(:ok)
+    spec.expect(spec.response.body).to spec.include("Ada Ejemplo")
+  end
+  LISTS_NOTHING = ->(spec) do
+    spec.expect(spec.response).to spec.have_http_status(:ok)
+    spec.expect(spec.response.body).not_to spec.include("Ada Ejemplo")
+    spec.expect(spec.response.body).to spec.include("Todavía no tenés personas asignadas.")
+  end
+
   ROUTES = {
     [ "GET", "/" ] => {
       request: ->(spec) { spec.get "/" },
-      authorized: ->(spec) { spec.expect(spec.response).to spec.have_http_status(:ok) },
-      unauthorized: ->(spec) { spec.expect(spec.response).to spec.have_http_status(:ok) }
+      authorized: LISTS_ASSIGNED,
+      unauthorized: LISTS_NOTHING
+    },
+    [ "GET", "/personas" ] => {
+      request: ->(spec) { spec.get "/personas" },
+      authorized: LISTS_ASSIGNED,
+      unauthorized: LISTS_NOTHING
+    },
+    [ "GET", "/personas/:id" ] => {
+      request: ->(spec) { spec.get "/personas/#{spec.person.id}" },
+      authorized: LISTS_ASSIGNED,
+      unauthorized: ->(spec) do
+        spec.expect(spec.response).to spec.have_http_status(:not_found)
+        spec.expect(spec.response.body).not_to spec.include("Ada Ejemplo")
+      end
     },
     [ "DELETE", "/session" ] => {
       request: ->(spec) { spec.delete "/session" },
@@ -44,10 +68,15 @@ RSpec.describe "Cobertura de autorización con sesión", type: :request do
     expect(product_routes).to match_array(ROUTES.keys)
   end
 
+  let!(:leader) { create_user(email_address: "luis.lider@example.test") }
+  let!(:person) { create_person(name: "Ada Ejemplo") }
+
+  before { assign(leader, person) }
+
   ROUTES.each do |(verb, path), setup|
     describe "#{verb} #{path}" do
       it "con un actor autorizado termina sin omisiones de autorización" do
-        sign_in_as(create_user(email_address: "luis.lider@example.test"))
+        sign_in_as(leader)
 
         setup[:request].call(self)
 

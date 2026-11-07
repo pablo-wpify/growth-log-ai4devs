@@ -4,10 +4,18 @@ require "rails_helper"
 # prueba** y rutas temporales. Comprueba que las verificaciones de Pundit
 # detectan omisiones y que un acceso denegado responde igual que un
 # recurso inexistente. No comprueba ninguna regla del producto: las
-# rutas reales de personas y entradas llegan con GL-05 y GL-06.
+# rutas reales de personas se prueban en people_spec (GL-05).
 class AuthorizationProbePolicy < ApplicationPolicy
   def show?
     false
+  end
+end
+
+# Permite a cualquier cuenta identificada; sirve para aislar la verificación
+# del alcance de la decisión de autorización.
+class AuthorizationProbeAllowPolicy < ApplicationPolicy
+  def show?
+    user.present?
   end
 end
 
@@ -20,7 +28,7 @@ class AuthorizationProbeController < ApplicationController
 
   # Autoriza, pero lee un registro sin pasar por el alcance.
   def without_scope
-    authorize :home, :show?
+    authorize :probe, :show?, policy_class: AuthorizationProbeAllowPolicy
     Person.find(params[:id])
     head :ok
   end
