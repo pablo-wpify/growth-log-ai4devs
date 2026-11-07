@@ -18,6 +18,9 @@
 | M49 | 2026-11-07 13:09:27 | pedido de corrección de la documentación | [Ajustar las afirmaciones sin respaldo del ticket GL-01b](M49-2026-11-07-ajustar-afirmaciones-sin-respaldo-del-ticket-gl-01b.md) |
 | M50 | 2026-11-07 13:18:37 | pedido de corrección de la documentación | [Corregir el resultado de `bin/ci` del 06/11](M50-2026-11-07-corregir-el-resultado-de-bin-ci-del-06-11.md) |
 | M51 | 2026-11-07 13:22:40 | autorización de publicación | [Publicar GL-01b](M51-2026-11-07-publicar-gl-01b.md) |
+| M52 | 2026-11-07 13:24:27 | indicación de Pablo | [Publicar siempre con pablo-wpify](M52-2026-11-07-publicar-siempre-con-pablo-wpify.md) |
+| M53 | 2026-11-07 13:34:54 | pedido de verificación | [Verificar el estado de GL-01b](M53-2026-11-07-verificar-el-estado-de-gl-01b.md) |
+| M54 | 2026-11-07 13:37:00 | pedido de verificación | [Verificar el estado de GL-01b (segundo envío)](M54-2026-11-07-verificar-el-estado-de-gl-01b-segundo-envio.md) |
 
 ## Conversación de acompañamiento
 
