@@ -38,19 +38,35 @@ Al terminar, informá el SHA del commit, el PR, los checks remotos y cualquier r
 
 ## Resultado registrado (no forma parte del pedido)
 
-Registrado al preparar el commit. El SHA del commit, el push, el PR y el CI
-remoto no pueden constar en el mismo commit y se informan aparte.
-
 - **Documentación de GL-01b:**
   - cambio de OpenSpec `gl-01b-rails-8-1-4-1`, sin deltas, como GL-01a;
   - entrada en el plan y P-18 como decisión pendiente;
   - estado del ticket GL-01b y fila en el README.
 - **GL-05:** el ticket y el diseño registran la integración de Rails 8.1.4.1.
-- **Registros:** se agregaron M42–M44, M46, M47 y M57–M70.
-  - M42 se registró con omisión: es una copia pegada de una respuesta del
-    asistente.
-  - El mensaje «espera», enviado a mitad de un turno, quedó encolado en la
-    transcripción y no tiene número.
+- **Registros:**
+  - en GL-05: M36, M37 y M61–M70;
+  - en GL-01b: M42–M44, M46, M47 y M57–M60.
+
+  M42 se registró con omisión, porque es una copia pegada de una respuesta
+  del asistente. El mensaje «espera», enviado a mitad de un turno, quedó
+  encolado en la transcripción y no tiene número.
 - **Validación:** `openspec validate --all --strict` dio 16 de 16. No se
   repitió `bin/ci`.
-- **Pendiente:** la comprobación manual en navegador.
+- **Commit:** `494b2573b7361a6b768c938ac7170101af8040b1`, sobre `a60fb8e`, con 33
+  archivos: 25 agregados y 8 modificados.
+- **Publicación:** con `pablo-wpify`, en la rama nueva
+  `feature/GL-05-personas` de `growth-log-publico`. El SHA remoto coincide
+  con el local. Después se volvió a dejar activa la cuenta
+  `ppeuscovich-collab`.
+- **PR:** [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), de `feature/GL-05-personas` hacia
+  `feature/entrega-2-pp`. Abierto, sin reviewers y sin merge.
+- **CI remoto:** [42397610490](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42397610490), disparado por
+  el PR sobre `494b257`, terminó en success con `scan_ruby`, `scan_js`, `lint`
+  y `test`. El log registra «192 examples, 0 failures».
+- **Corrección posterior:** la primera versión de este resultado, incluida en
+  `494b257`, no tenía la publicación ni el CI. Se completó en un commit
+  documental posterior, a pedido de Pablo.
+- **Pendiente:**
+  - la comprobación manual en navegador;
+  - archivar `gl-05-personas` y `gl-01b-rails-8-1-4-1`;
+  - P-18.
