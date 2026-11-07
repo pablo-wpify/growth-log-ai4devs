@@ -21,6 +21,8 @@
 | M52 | 2026-11-07 13:24:27 | indicación de Pablo | [Publicar siempre con pablo-wpify](M52-2026-11-07-publicar-siempre-con-pablo-wpify.md) |
 | M53 | 2026-11-07 13:34:54 | pedido de verificación | [Verificar el estado de GL-01b](M53-2026-11-07-verificar-el-estado-de-gl-01b.md) |
 | M54 | 2026-11-07 13:37:00 | pedido de verificación | [Verificar el estado de GL-01b (segundo envío)](M54-2026-11-07-verificar-el-estado-de-gl-01b-segundo-envio.md) |
+| M55 | 2026-11-07 13:38:28 | autorización de commit documental y publicación | [Actualizar el ticket y el resultado de M51](M55-2026-11-07-actualizar-el-ticket-y-el-resultado-de-m51.md) |
+| M56 | 2026-11-07 13:46:56 | autorización de commit documental y publicación | [Registrar M52 a M54](M56-2026-11-07-registrar-m52-a-m54.md) |
 
 ## Conversación de acompañamiento
 
