@@ -1,12 +1,15 @@
 # GL-01b. Rails 8.1.4.1 por los avisos de seguridad del 04/11/2026
 
 > Ticket separado de GL-05, como [GL-01a](GL-01a-avisos-seguridad.md).
-> **Estado (07/11/2026): implementado en local, sin commit.** Pablo
-> autorizó en M45 una rama propia, la actualización local de dependencias y
-> las verificaciones locales. Rama `feature/GL-01b-rails-8-1-4-1` desde
-> `feature/entrega-2-pp` (`925e2ee`), en el worktree
-> `~/code/ai4devs-entrega-1-pp-gl01b`. Siguen pendientes de autorización:
-> el commit, el CI remoto y la integración. P-18 sigue sin aprobar.
+> **Estado (07/11/2026): publicado en el PR abierto
+> [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), sin merge.** El commit de implementación
+> `d4c61ebde4bd1b812d8115e01d498f9d26e76566` se publicó en
+> `feature/GL-01b-rails-8-1-4-1`, creada desde `feature/entrega-2-pp`
+> (`925e2ee`) en el worktree `~/code/ai4devs-entrega-1-pp-gl01b`. El PR
+> apunta a `feature/entrega-2-pp`, y el CI remoto
+> [42376879636](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42376879636) pasó sobre ese SHA. Siguen
+> pendientes el merge y la integración en `feature/GL-05-personas`. P-18
+> sigue sin aprobar.
 
 ## Problema
 
@@ -230,9 +233,8 @@ La actualización cierra los 21 avisos de todos modos.
   - Aplicarlo dentro de la rama de GL-05 mezclaría tareas, contra
     `CLAUDE.md`.
 - **CI remoto:** una rama nueva no ejecuta el CI con un simple push; hace
-  falta un PR o integrar en `feature/entrega-2-pp`. **El CI remoto queda
-  pendiente de la autorización de push y PR**: no está ejecutado ni
-  autorizado.
+  falta un PR o integrar en `feature/entrega-2-pp`. Pablo autorizó el push
+  y el PR en M51, y el CI del PR #2 pasó (ver B9).
 - **Plan:** agregar GL-01b a `docs/plan-entrega-2.md`, la única fuente de
   la secuencia, también requiere autorización.
 
@@ -288,8 +290,8 @@ La actualización cierra los 21 avisos de todos modos.
    - `bin/rails server` y `curl -i http://localhost:3000/up`.
 8. **Si algo cambia el comportamiento** y rompe pruebas: detenerse e
    informar sin ajustarlas.
-9. **CI remoto:** pendiente de la autorización de push y PR. No forma parte
-   de lo autorizado hasta que Pablo lo indique.
+9. **CI remoto:** se ejecuta en el PR, con la autorización de push y PR que
+   Pablo dio en M51 (ver B9).
 
 ## Riesgos de compatibilidad
 
@@ -359,7 +361,7 @@ detenerse.
 | B6 | **cumple, según `bin-ci.log`:** el log termina con «Continuous Integration passed»; **el código de salida exacto no quedó persistido.** RuboCop no tiene ofensas en 87 archivos, las auditorías de gemas e importmap pasan, Brakeman no tiene avisos y RSpec da 164 ejemplos y 0 fallas, que es la suite de la base sin GL-05 |
 | B7 | **cumple, según `server.log`:** `bin/rails server -p 3011` registró «Rails 8.1.4.1 application starting in development», dos `GET "/up"` con `Completed 200 OK` y el cierre (`Exiting`). **La respuesta de `curl` (`HTTP/1.1 200 OK`) no se guardó:** se observó en la sesión y no está en un log. `bin/rails runner 'puts Rails.version'` imprimió 8.1.4.1: **observado en la sesión, no persistido en un log** |
 | B8 | **cumple en la base:** sin cambios de código ni de configuración; las pruebas de GL-02 y GL-03 pasan sin ajustes. **Pendiente:** las de GL-05, que no están en esta rama, se comprueban al traer la corrección a `feature/GL-05-personas` |
-| B9 | **pendiente:** el CI remoto requiere autorizar el push y el PR |
+| B9 | **cumple:** el CI remoto [42376879636](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42376879636), disparado por el PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2) sobre `d4c61ebde4bd1b812d8115e01d498f9d26e76566`, terminó en success con los cuatro jobs: `scan_ruby`, `scan_js`, `lint` y `test` |
 
 **OpenSpec.** `openspec validate --all --strict` dio 14 de 14 en la base,
 sin GL-05 en esta rama. **Observado en la sesión, no respaldado por un
@@ -379,5 +381,5 @@ porque M45 no lo autorizó;** queda pendiente.
 
 - aprobar P-18, que sigue sin aprobar;
 - crear el cambio de OpenSpec de GL-01b y agregarlo al plan;
-- commits, push y PR, y con ellos el CI remoto (B9);
+- el merge del PR #2 en `feature/entrega-2-pp`;
 - traer la corrección a `feature/GL-05-personas`.
