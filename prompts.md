@@ -27,7 +27,7 @@ modelo no está verificado; no se reconstruye.
 | Replanificación por el feedback de LIDR | M19–M21 | `93b42ec` | [replanificacion-lidr](docs/prompts/replanificacion-lidr/README.md) |
 | GL-03. Autorización mínima | M22–M24 (cambio pedido en M21) | `7263efd` a `092b548`; CI 41571299236 y 41571768783 | [GL-03](docs/prompts/GL-03/README.md) |
 | GL-08. Datos ficticios de desarrollo | M25–M27 | `5025694` a `eacb16e`; CI 41621619815 y 41621897764 | [GL-08](docs/prompts/GL-08/README.md) |
-| GL-05. «Personas» y ficha del líder | M28, M33, M35–M37, M61–M80 | PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), integrado en `8d0e854`; CI 42398717466; comprobación manual E10 (M75–M77), archivo (M78) y cierre publicado en `6b9577f` (M80); CI 42419660424 | [GL-05](docs/prompts/GL-05/README.md) |
+| GL-05. «Personas» y ficha del líder | M28, M33, M35–M37, M61–M81 | PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), integrado en `8d0e854`; CI 42398717466; comprobación manual E10 (M75–M77), archivo (M78) y cierre publicado en `6b9577f` (M80); CI 42419660424; registro de M80 en `4bac6e4` (M81) | [GL-05](docs/prompts/GL-05/README.md) |
 | GL-01b. Rails 8.1.4.1 por avisos de seguridad | M38–M60 | PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), integrado en `8ae8723`; CI 42380986492; archivado (M74) | [GL-01b](docs/prompts/GL-01b/README.md) |
 | Registro de prompts | M29–M32 | PR [#1](https://github.com/pablo-wpify/growth-log-ai4devs/pull/1), integrado en `925e2ee`; CI 41629470056 | [registro-prompts](docs/prompts/registro-prompts/README.md) |
 
@@ -43,7 +43,7 @@ registro, numerados por posición de M01 a M30:
   **27 textos distintos**, guardados en 27 archivos; el de M03 a M05 lista
   los tres envíos con su hora.
 
-**Mensajes posteriores al registro inicial.** M31 a M80 se registran en su
+**Mensajes posteriores al registro inicial.** M31 a M81 se registran en su
 etapa, con el mismo procedimiento literal.
 
 - **M34**, como M16, es el resumen automático de contexto que genera Claude
