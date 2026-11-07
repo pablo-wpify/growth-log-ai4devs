@@ -209,6 +209,26 @@ ese es el resultado registrado.
 - el CI remoto (E11), que requiere autorizar el push;
 - la revisión humana y el archivo del cambio.
 
+### Integración de GL-01b (07/11/2026, local)
+
+- **Integración:** `feature/entrega-2-pp` en `8ae8723` (merge del PR #2,
+  Rails 8.1.4.1) se fusionó sobre `d9365c6` sin conflictos.
+  - Primero se probó en un worktree aparte, con `git merge --no-commit
+    --no-ff`.
+  - Después se confirmó como merge commit `a60fb8e` en una rama local.
+  - Por último se llevó `feature/GL-05-personas` a ese commit con
+    `git merge --ff-only`.
+- **Diff:** solo trae `Gemfile.lock` y la documentación de GL-01b.
+- **Verificación en el árbol integrado, antes del commit:**
+  - `bin/rails runner` imprimió 8.1.4.1;
+  - `bin/ci` registró «Continuous Integration passed», con RuboCop sin
+    ofensas, sin vulnerabilidades, Brakeman sin avisos y 192 ejemplos con
+    0 fallas.
+- **Copias previas:** las seis copias sin versionar de GL-01b que había en
+  el worktree principal se movieron a un respaldo fuera del repositorio,
+  verificado por SHA-256, antes del avance rápido.
+- **Pendiente:** la comprobación manual en navegador y el CI remoto.
+
 ## Risks / Trade-offs
 
 - **Dos URL para el listado** (`/` y `/personas`) → simple y sin

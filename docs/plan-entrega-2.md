@@ -61,7 +61,8 @@ citaban por número):
 | 3 | GL-02 | Autenticación: sesión, administrador inicial, rutas protegidas | **cerrado** (archivado; CI [41551853981](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41551853981)) | GL-01 | — |
 | 4 | [GL-03](tickets/GL-03-autorizacion-minima.md) | Autorización mínima del recorrido: denegar por defecto, personas y asignaciones mínimas, alcance por asignación | **cerrado** (archivado; CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236)) | GL-02 | ninguna (P-5, P-7, P-8 y P-9 aprobadas) |
 | 5 | [GL-08](tickets/GL-08-datos-ficticios.md) | Datos ficticios reproducibles para desarrollo | **cerrado** (archivado; CI [41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815)) | GL-03 | — |
-| 6 | [GL-05](tickets/GL-05-personas.md) | «Personas» y ficha del líder: elegir una persona asignada | **en curso**: implementado en local en la rama `feature/GL-05-personas`; faltan la comprobación manual, el CI remoto y el archivo | GL-03, GL-08 | ninguna (P-15, P-16 y P-17 aprobadas) |
+| 5a | [GL-01b](tickets/GL-01b-rails-8-1-4-1.md) | Rails 8.1.4.1 por los avisos de seguridad del 04/11/2026 | **integrado** en `feature/entrega-2-pp` (PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), `8ae8723`; CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492)); cambio de OpenSpec [`gl-01b-rails-8-1-4-1`](../openspec/changes/gl-01b-rails-8-1-4-1/proposal.md) sin archivar | GL-01 | ninguna (P-18 no lo bloquea) |
+| 6 | [GL-05](tickets/GL-05-personas.md) | «Personas» y ficha del líder: elegir una persona asignada | **en curso**: implementado e integrado con GL-01b en `feature/GL-05-personas` (`a60fb8e`); faltan la comprobación manual, el CI remoto y el archivo | GL-03, GL-08, GL-01b | ninguna (P-15, P-16 y P-17 aprobadas) |
 | 7 | GL-06 | Captura rápida, completar y marcar como lista | pendiente | GL-05 | P-1, P-2, P-3, P-11 |
 | 8 | GL-07 | Resumen por dimensión y cronología | pendiente | GL-06 | P-2, P-10 |
 | 9 | GL-09 | Verificación E2E del recorrido núcleo | pendiente | GL-07 | P-4 (ADR-6) |
@@ -225,6 +226,7 @@ recomendaciones, **sin aprobar**.
 | P-15 | Página de inicio tras iniciar sesión | GL-05 | **Aprobada (03/11/2026).** El listado «Personas» reemplaza la página provisoria de GL-02; se eliminan `HomeController` y `HomePolicy`, y «Sesión iniciada como» pasa a la cabecera | mantener la página provisoria con un enlace a «Personas» |
 | P-16 | Rutas de personas | GL-05 | **Aprobada (03/11/2026).** `/personas` y `/personas/:id`, en español como la interfaz; el listado responde también en `/` | `/people` |
 | P-17 | Datos de la ficha | GL-05 | **Aprobada (03/11/2026).** Nombre, rol y equipo; «Sin rol indicado» o «Sin equipo indicado» si falta uno; sin otros líderes (1.18 diferido), fechas ni estado | omitir la línea si falta el dato |
+| P-18 | ¿Fijar Rails 8.1.4.1 como mínimo en el `Gemfile`? | — | no cambiar el `Gemfile`: `~> 8.1.4` ya admite 8.1.4.1 y el diff queda en el lockfile ([GL-01b](tickets/GL-01b-rails-8-1-4-1.md)) | `gem "rails", "~> 8.1.4", ">= 8.1.4.1"`, que impide volver a una versión vulnerable con un `bundle update` |
 
 ### 6.1. Detalle de las decisiones que abren GL-03
 
@@ -422,9 +424,12 @@ No hay configuraciones personales ni permisos nuevos.
 
 GL-05 está en curso ([ticket](tickets/GL-05-personas.md), cambio
 [`gl-05-personas`](../openspec/changes/gl-05-personas/proposal.md)).
-P-15, P-16 y P-17 están aprobadas (03/11/2026) y la implementación está
-hecha en la rama local `feature/GL-05-personas`, con `bin/ci` en verde;
-faltan la comprobación manual en navegador, el CI remoto y el archivo. La prueba automatizada en
+P-15, P-16 y P-17 están aprobadas (03/11/2026). La implementación está
+hecha y, desde el 07/11/2026, integrada con GL-01b (Rails 8.1.4.1) en
+`feature/GL-05-personas` (`a60fb8e`); en ese árbol `bin/ci` pasó con 192
+ejemplos. Faltan la comprobación manual en navegador, el CI remoto y el
+archivo. GL-01b está integrado en `feature/entrega-2-pp`; quedan su
+archivo y P-18, que no bloquea. La prueba automatizada en
 navegador sigue bloqueada por P-4 (ADR-6) y queda para GL-09; en GL-05 hay
 una comprobación manual. El aislamiento del feedback entre líderes de la
 misma persona sigue pendiente para GL-06.

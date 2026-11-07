@@ -3,9 +3,9 @@
 > Sexto ticket de la entrega 2 de Growth Log. Lugar en la secuencia:
 > [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec:
 > [`gl-05-personas`](../../openspec/changes/gl-05-personas/proposal.md).
-> **Estado (03/11/2026): implementado en local** en la rama
-> `feature/GL-05-personas`; faltan la comprobación manual en navegador, el
-> CI remoto y el archivo.
+> **Estado (07/11/2026): implementado e integrado con GL-01b** (Rails
+> 8.1.4.1) en la rama `feature/GL-05-personas` (`a60fb8e`); faltan la
+> comprobación manual en navegador, el CI remoto y el archivo.
 > Decisiones P-15 a P-17 aprobadas el 03/11/2026.
 
 ## Problema
