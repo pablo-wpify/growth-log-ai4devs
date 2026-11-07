@@ -23,8 +23,17 @@
 | M68 | 2026-11-07 17:26:18 | autorización de integración local | [Avance rápido de GL-05](M68-2026-11-07-avance-rapido-de-gl-05.md) |
 | M69 | 2026-11-07 17:30:49 | autorización de limpieza local | [Eliminar el worktree auxiliar](M69-2026-11-07-eliminar-el-worktree-auxiliar.md) |
 | M70 | 2026-11-07 17:38:30 | autorización de documentación y publicación | [Completar y publicar GL-05](M70-2026-11-07-completar-y-publicar-gl-05.md) |
+| M71 | 2026-11-07 17:45:26 | pedido de verificación | [Verificar la publicación de GL-05](M71-2026-11-07-verificar-la-publicacion-de-gl-05.md) |
+| M72 | 2026-11-07 17:47:45 | autorización de commit documental y publicación | [Actualizar el resultado de M70](M72-2026-11-07-actualizar-el-resultado-de-m70.md) |
+| M73 | 2026-11-07 17:55:18 | autorización de merge | [Fusionar el PR #3](M73-2026-11-07-fusionar-el-pr-3.md) |
+| M74 | 2026-11-07 20:17:21 | pedido de cierre | [Cerrar GL-01b y GL-05](M74-2026-11-07-cerrar-gl-01b-y-gl-05.md) |
+| M75 | 2026-11-07 20:44:28 | pedido de comprobación manual | [Ejecutar la comprobación manual E10](M75-2026-11-07-ejecutar-la-comprobacion-manual-e10.md) |
+| M76 | 2026-11-07 21:08:48 | pedido de comprobación manual | [Ejecutar la comprobación manual E10 (segundo envío)](M76-2026-11-07-ejecutar-la-comprobacion-manual-e10-segundo-envio.md) |
+| M77 | 2026-11-07 21:18:15 | pedido de verificación | [Revisar la conexión a la base para establecer contraseñas](M77-2026-11-07-revisar-la-conexion-a-la-base.md) |
+| M78 | 2026-11-07 21:51:32 | autorización de archivo y documentación | [Registrar E10 y archivar GL-05](M78-2026-11-07-registrar-e10-y-archivar-gl-05.md) |
+| M79 | 2026-11-07 21:59:38 | pedido de revisión documental | [Revisar la numeración y los pendientes de E10](M79-2026-11-07-revisar-la-numeracion-y-los-pendientes-de-e10.md) |
 
-M28 y M33 produjeron la planificación; M35 aprobó P-15 a P-17 y autorizó la implementación en la rama local `feature/GL-05-personas`. M61 a M69 integraron GL-01b (Rails 8.1.4.1) en esa rama (`a60fb8e`), y M70 autorizó documentarlo y publicarlo.
+M28 y M33 produjeron la planificación; M35 aprobó P-15 a P-17 y autorizó la implementación en la rama local `feature/GL-05-personas`. M61 a M69 integraron GL-01b (Rails 8.1.4.1) en esa rama (`a60fb8e`); M70 a M72 la documentaron y publicaron (PR #3); M73 la fusionó en `feature/entrega-2-pp` (`8d0e854`); M74 cerró GL-01b y dejó pendiente la comprobación manual E10; M75 la pidió y quedó bloqueado, M76 la repitió con éxito en una sesión nueva y M77 resolvió la conexión a la base para establecer contraseñas; M78 registró E10 y archivó GL-05, y M79 corrigió la numeración y registró los pendientes de seguimiento. Las respuestas operativas breves de esas sesiones no tienen número (criterio en [prompts.md](../../../prompts.md)).
 
 ## Conversación de acompañamiento
 

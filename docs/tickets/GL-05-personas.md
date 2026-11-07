@@ -1,11 +1,19 @@
 # GL-05. «Personas» y ficha del líder
 
 > Sexto ticket de la entrega 2 de Growth Log. Lugar en la secuencia:
-> [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec:
-> [`gl-05-personas`](../../openspec/changes/gl-05-personas/proposal.md).
-> **Estado (07/11/2026): implementado e integrado con GL-01b** (Rails
-> 8.1.4.1) en la rama `feature/GL-05-personas` (`a60fb8e`); faltan la
-> comprobación manual en navegador, el CI remoto y el archivo.
+> [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec,
+> archivado: [`2026-11-07-gl-05-personas`](../../openspec/changes/archive/2026-11-07-gl-05-personas/proposal.md).
+> Spec vigente: [`people-browsing`](../../openspec/specs/people-browsing/spec.md).
+> **Estado (07/11/2026): cerrado y archivado.** Integrado en
+> `feature/entrega-2-pp` con el PR
+> [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3) (merge commit `8d0e854`, CI
+> [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466) en success, 192 ejemplos).
+> Comprobación manual en navegador (E10) hecha el 07/11/2026 por Pablo y
+> con asistencia de Claude Code; los 375 px fueron emulados con DevTools.
+> Resultados y desvíos en el
+> [diseño](../../openspec/changes/archive/2026-11-07-gl-05-personas/design.md#comprobación-en-navegador-e10-07112026-local-manual).
+> Cuatro pasos adicionales del procedimiento del diseño quedan como
+> seguimiento sin comprobar (detalle en el plan, sección 9).
 > Decisiones P-15 a P-17 aprobadas el 03/11/2026.
 
 ## Problema
@@ -89,7 +97,7 @@ GL-03 todavía no protege ninguna ruta real.
 
 En un teléfono, la cabecera pasa a dos líneas y cada persona ocupa una fila
 completa, con su rol y equipo debajo del nombre. Detalle en el
-[diseño](../../openspec/changes/gl-05-personas/design.md).
+[diseño](../../openspec/changes/archive/2026-11-07-gl-05-personas/design.md).
 
 ## Criterios de aceptación
 

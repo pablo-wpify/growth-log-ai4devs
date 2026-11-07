@@ -17,7 +17,7 @@ GL-05 y cualquier otro cambio. Fuente:
   `bundle update rails --conservative`.
 - `actionview` 8.1.4.1 declara `rails-html-sanitizer (~> 1.6, >= 1.7.2)`;
   el lockfile ya tenía la 1.7.2, que no cambia.
-- Sin cambios en el `Gemfile` (P-18 sin aprobar), Ruby, Bundler, otras
+- Sin cambios en el `Gemfile` (P-18, decidida el 07/11/2026), Ruby, Bundler, otras
   gemas, código ni configuración de la auditoría.
 
 ## Capabilities

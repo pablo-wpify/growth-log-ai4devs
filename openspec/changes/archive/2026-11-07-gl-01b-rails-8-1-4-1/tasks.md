@@ -16,5 +16,5 @@
 
 ## Workflow follow-up
 
-- P-18: fijar o no el mínimo en el `Gemfile`.
-- Archivar este cambio, con autorización de Pablo.
+- P-18: decidida el 07/11/2026; el `Gemfile` queda sin cambios.
+- Archivar este cambio: autorizado por Pablo el 07/11/2026.

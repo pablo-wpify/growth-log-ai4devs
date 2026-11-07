@@ -229,6 +229,54 @@ ese es el resultado registrado.
   verificado por SHA-256, antes del avance rápido.
 - **Pendiente:** la comprobación manual en navegador y el CI remoto.
 
+### Publicación e integración (07/11/2026, remoto)
+
+- **CI remoto (E11):** el PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3) pasó en
+  [42397610490](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42397610490) sobre `494b257` y en
+  [42398108194](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398108194) sobre `f65b274`, con
+  `scan_ruby`, `scan_js`, `lint` y `test` en success y 192 ejemplos.
+- **Integración:** merge commit `8d0e854` en `feature/entrega-2-pp`. El CI
+  posterior, [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466), pasó en success
+  con los cuatro jobs y 192 ejemplos y 0 fallas.
+- **Pendiente:** la comprobación manual en navegador (E10), a cargo de
+  Pablo, y después el archivo de este cambio.
+
+### Comprobación en navegador E10 (07/11/2026, local, manual)
+
+**Comprobado en local, a mano**, por dos vías según confirmó Pablo: él
+mismo y con asistencia de Claude Code en su Chrome. Las contraseñas de las
+cuentas ficticias las estableció e ingresó Pablo; el agente no las conoció.
+
+- **Entorno:** Chrome 155 en Linux; aplicación local
+  `http://localhost:3000`, base `growth_log_development`, datos ficticios
+  de GL-08.
+- **Anchos:** en escritorio, 1920 px reales; para el cierre de sesión,
+  1870 px. Los 375 px fueron **emulados** con el modo dispositivo de
+  DevTools; no se probó un ancho real de 375 px.
+
+| # | Comprobación | Resultado |
+|---|---|---|
+| 1 | Como Elena, `/` | pasa: muestra Ada Ejemplo y Bruno Ejemplo; no muestra Carla, Darío ni Eva |
+| 2 | Como Elena, `/personas/1` | pasa: muestra Ada, su rol y equipo; no muestra otros líderes, fechas ni estado |
+| 3 | Como Elena, `/personas/3` | pasa: responde 404 y no revela datos de Carla |
+| 4 | «Cerrar sesión» | pasa: lleva a `/session/new`; `/` y `/personas/1` ya no muestran contenido sin sesión |
+| 5 | Como Inés, `/` | pasa: muestra el estado vacío y no enlaza personas. El primer intento quedó autocompletado como Elena; se repitió correctamente con Inés |
+| 6 | 375 px emulados, `/` y `/personas/1` | pasa: sin desbordamiento horizontal; `innerWidth` coincide con `clientWidth` y las capturas no muestran corte |
+| 7 | Navegación con Tab, a 375 px emulados | pasa: el foco es visible en los controles revisados |
+
+**Observación:** la base de desarrollo tenía una persona extra, Eva Ejemplo
+(id 5), que no está en el conjunto de GL-08; no apareció para Elena ni para
+Inés.
+
+**Desvíos respecto del procedimiento de la sección «Comprobación en
+navegador»:** los resultados registrados no incluyen volver con «← Volver
+a Personas» (paso 2), la vista de Inés a 375 px, la cabecera en dos líneas
+ni el tamaño de los enlaces para tocar (paso 5). No se declaran
+comprobados.
+
+**E10: cerrado** con estos resultados. El archivo de este cambio lo
+autorizó Pablo el 07/11/2026.
+
 ## Risks / Trade-offs
 
 - **Dos URL para el listado** (`/` y `/personas`) → simple y sin

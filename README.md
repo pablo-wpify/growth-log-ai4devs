@@ -26,12 +26,13 @@ Rama `feature/entrega-2-pp`. Actualizado al 02/11/2026.
 | | Autenticación: cuentas individuales sin registro público, inicio y cierre de sesión, sesiones con vencimiento, límites de intentos, CSRF, rutas protegidas por defecto y administrador inicial por tarea (GL-02) | [ticket](docs/tickets/GL-02-autenticacion.md); CI [41557336838](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41557336838) sobre `94e40a1` |
 | | Autorización mínima: denegar por defecto, alcance por asignación y personas y asignaciones sin interfaz (GL-03). **No verifica todavía** la autorización de personas por URL (GL-05), del feedback (GL-06) ni del resumen (GL-07), que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md); CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236) sobre `7263efd` |
 | | Datos ficticios reproducibles para desarrollo (GL-08): tarea solo en `development`, sin contraseñas versionadas ni adopción de registros ajenos. **No verifica** el aislamiento del feedback, que llega con GL-06 | [ticket](docs/tickets/GL-08-datos-ficticios.md); CI [41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815) sobre `2bd5deb` |
-| **Siguiente** | «Personas» y ficha del líder (GL-05): implementado e integrado con Rails 8.1.4.1 en la rama `feature/GL-05-personas`; faltan la comprobación manual en navegador y el CI remoto | [ticket](docs/tickets/GL-05-personas.md) |
-| **Pendiente** | Personas, feedback, resumen, verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
+| | «Personas» y ficha del líder (GL-05): listado y ficha de solo lectura con autorización por alcance y 404 por URL directa; comprobación manual en navegador (E10) del 07/11/2026, con 375 px emulados | [ticket](docs/tickets/GL-05-personas.md); CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466) sobre `8d0e854` |
+| **Siguiente** | Decisiones P-1, P-2, P-3 y P-11 para GL-06 | [plan de la entrega 2](docs/plan-entrega-2.md) |
+| **Pendiente** | Feedback, resumen, verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. **Hoy la
-aplicación no tiene pantallas de personas ni registra feedback** y no admite
-datos reales.
+aplicación muestra las personas asignadas, pero no registra feedback** y no
+admite datos reales.
 
 ## Dónde está cada cosa
 

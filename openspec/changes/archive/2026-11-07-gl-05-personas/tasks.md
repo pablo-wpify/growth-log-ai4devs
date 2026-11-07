@@ -31,6 +31,6 @@ ficticios y no usan la base de desarrollo ni la tarea de GL-08.
 
 ## Workflow follow-up
 
-- Comprobación manual en navegador por Pablo (E10), registrada como manual.
-- Con autorización, push y verificación del CI remoto.
-- Archivar `gl-05-personas` después del CI remoto, de la comprobación manual y de la revisión humana.
+- Comprobación manual en navegador por Pablo (E10), registrada como manual: hecha el 07/11/2026 por Pablo y con asistencia de Claude Code; resultados en el diseño.
+- Con autorización, push y verificación del CI remoto: PR #3, CI 42398717466 sobre `8d0e854`.
+- Archivar `gl-05-personas` después del CI remoto, de la comprobación manual y de la revisión humana: autorizado por Pablo el 07/11/2026.

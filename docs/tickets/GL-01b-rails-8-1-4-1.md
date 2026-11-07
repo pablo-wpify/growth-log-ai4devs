@@ -1,12 +1,12 @@
 # GL-01b. Rails 8.1.4.1 por los avisos de seguridad del 04/11/2026
 
 > Ticket separado de GL-05, como [GL-01a](GL-01a-avisos-seguridad.md).
-> **Estado (07/11/2026): integrado** en `feature/entrega-2-pp` con el PR
-> [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2) (merge commit `8ae8723`, CI
-> [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492) en success) y en
-> `feature/GL-05-personas` (`a60fb8e`). Cambio de OpenSpec:
-> [`gl-01b-rails-8-1-4-1`](../../openspec/changes/gl-01b-rails-8-1-4-1/proposal.md),
-> sin archivar. P-18 sigue sin aprobar.
+> **Estado (07/11/2026): cerrado y archivado.** Integrado en
+> `feature/entrega-2-pp` con el PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2) (merge commit `8ae8723`,
+> CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492) en success) y en GL-05.
+> Cambio de OpenSpec archivado:
+> [`2026-11-07-gl-01b-rails-8-1-4-1`](../../openspec/changes/archive/2026-11-07-gl-01b-rails-8-1-4-1/proposal.md). P-18
+> aprobada el 07/11/2026: el `Gemfile` queda sin cambios.
 
 ## Problema
 
@@ -235,11 +235,11 @@ La actualización cierra los 21 avisos de todos modos.
 - **Plan:** agregar GL-01b a `docs/plan-entrega-2.md`, la única fuente de
   la secuencia, también requiere autorización.
 
-## Decisión pendiente
+## Decisión
 
 | # | Decisión | Recomendación | Alternativa | Estado |
 |---|---|---|---|---|
-| P-18 | ¿Fijar 8.1.4.1 como mínimo en el `Gemfile`? | no cambiar el `Gemfile`: `~> 8.1.4` ya admite 8.1.4.1 y el diff queda en el lockfile | `gem "rails", "~> 8.1.4", ">= 8.1.4.1"`, que impide volver a una versión vulnerable con un `bundle update` | **sin aprobar** |
+| P-18 | ¿Fijar 8.1.4.1 como mínimo en el `Gemfile`? | no cambiar el `Gemfile`: `~> 8.1.4` ya admite 8.1.4.1 y el diff queda en el lockfile | `gem "rails", "~> 8.1.4", ">= 8.1.4.1"`, que impide volver a una versión vulnerable con un `bundle update` | **aprobada (07/11/2026)**: el `Gemfile` queda sin cambios |
 
 ## Criterios de aceptación
 
@@ -341,7 +341,7 @@ registrado.**
 | Otras gemas | ninguna | — |
 | `DEPENDENCIES` | sin cambios: la restricción de `rails` en el `Gemfile`, `rails (~> 8.1.4)`, sigue igual | — |
 | `PLATFORMS`, `RUBY VERSION`, `BUNDLED WITH` | sin cambios | — |
-| `Gemfile` | sin cambios (`git diff --exit-code Gemfile`) | P-18 sin aprobar |
+| `Gemfile` | sin cambios (`git diff --exit-code Gemfile`) | P-18 (aprobada el 07/11/2026: sin cambios) |
 
 Bundler no propuso ningún cambio fuera de alcance, así que no hizo falta
 detenerse.
@@ -374,11 +374,10 @@ porque M45 no lo autorizó;** queda pendiente.
   de Pablo.
 - `docs/plan-entrega-2.md` no se actualizó, porque requiere autorización.
 
-## Pendiente de autorización
+## Cierre (07/11/2026)
 
-- aprobar P-18, que sigue sin aprobar;
-- archivar el cambio de OpenSpec `gl-01b-rails-8-1-4-1`.
-
-Hechos desde la publicación (07/11/2026): el merge del PR #2 (`8ae8723`),
-la integración en `feature/GL-05-personas` (`a60fb8e`), el cambio de
-OpenSpec y la entrada en el plan.
+- P-18 aprobada: el `Gemfile` queda sin cambios.
+- Cambio de OpenSpec archivado como `2026-11-07-gl-01b-rails-8-1-4-1`, sin
+  deltas de specs.
+- Integrado en GL-05, que se fusionó en `feature/entrega-2-pp` con el PR #3
+  (`8d0e854`, CI 42398717466).

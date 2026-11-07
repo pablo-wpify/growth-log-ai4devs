@@ -242,7 +242,7 @@ Con los datos ficticios (4c), qué ve cada cuenta:
 
 La prueba automatizada en navegador llega con GL-09 (P-4, ADR-6); hasta
 entonces la presentación se comprueba a mano. Los pasos están en el
-[diseño de GL-05](../openspec/changes/gl-05-personas/design.md#comprobación-en-navegador-manual-no-automatizada).
+[diseño de GL-05](../openspec/changes/archive/2026-11-07-gl-05-personas/design.md#comprobación-en-navegador-manual-no-automatizada).
 
 ## Lo que todavía no hay
 

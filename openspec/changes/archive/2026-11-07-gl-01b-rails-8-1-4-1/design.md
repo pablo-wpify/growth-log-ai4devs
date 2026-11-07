@@ -16,7 +16,7 @@ decisiones.
 **Non-Goals:**
 - Actualizar otras gemas, Ruby o Bundler.
 - Tocar la configuración de la auditoría o agregar ignorados.
-- Fijar un mínimo en el `Gemfile` (P-18, pendiente).
+- Fijar un mínimo en el `Gemfile` (P-18: se decidió no hacerlo).
 
 ## Decisions
 
@@ -25,7 +25,7 @@ decisiones.
    admite cualquier otra dependencia que Bundler necesite estrictamente,
    justificada en el ticket. No hizo falta ninguna.
 2. **`Gemfile` sin cambios.** `~> 8.1.4` ya admite 8.1.4.1. La alternativa
-   de fijar `>= 8.1.4.1` queda como P-18, sin aprobar.
+   de fijar `>= 8.1.4.1` se descartó en P-18 (07/11/2026).
 3. **Checksums contra RubyGems.** Los 13 `sha256` nuevos se comparan con
    la API de RubyGems y con la verificación de integridad de Bundler; no
    con el anuncio de Rails.
@@ -63,4 +63,5 @@ Sin migraciones ni datos.
 
 ## Open Questions
 
-- P-18: fijar 8.1.4.1 como mínimo en el `Gemfile`.
+Ninguna. P-18 se decidió el 07/11/2026: el `Gemfile` queda sin cambios,
+porque `~> 8.1.4` ya admite 8.1.4.1.
