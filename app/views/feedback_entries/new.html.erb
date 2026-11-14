@@ -1,0 +1,23 @@
+<% content_for :title, "Captura rápida sobre #{@person.name} · Growth Log" %>
+
+<%# Captura rápida en página propia (GL-06, P-22): solo el texto. La fecha del hecho es hoy en la zona de la instancia (P-23). %>
+<p class="back-link"><%= link_to "← Volver a #{@person.name}", person_path(@person) %></p>
+
+<h1>Captura rápida sobre <%= @person.name %></h1>
+
+<%= form_with model: [ @person, @entry ], class: "entry-form" do |form| %>
+  <%= entry_error_summary(@entry) %>
+
+  <div class="field">
+    <%= form.label :context, "¿Qué pasó?" %>
+    <%= form.text_area :context, rows: 5, required: true, autofocus: true,
+          "aria-describedby": (@entry.errors[:context].any? ? "context-error" : nil) %>
+    <%= entry_field_errors(@entry, :context) %>
+  </div>
+
+  <p class="entry-date">Fecha: hoy, <%= entry_date(Time.zone.today) %></p>
+
+  <div class="actions">
+    <%= form.submit "Guardar borrador" %>
+  </div>
+<% end %>

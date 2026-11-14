@@ -4,3 +4,26 @@
 
 <h1><%= @person.name %></h1>
 <p class="person-meta"><%= person_role_and_team(@person) %></p>
+
+<%# GL-06: único acceso para registrar feedback; la captura se abre en una página propia (P-22). %>
+<p class="primary-action"><%= link_to "Captura rápida", new_person_feedback_entry_path(@person), class: "button" %></p>
+
+<%# Sección provisoria (P-21): solo las entradas propias. GL-07 la reemplaza por la cronología. %>
+<section class="own-entries" data-own-entries aria-labelledby="own-entries-title">
+  <h2 id="own-entries-title">Tus entradas sobre <%= @person.name %></h2>
+  <% if @entries.any? %>
+    <ul class="entries">
+      <% @entries.each do |entry| %>
+        <li>
+          <%= link_to feedback_entry_path(entry), class: "entry-row" do %>
+            <span class="entry-row-date"><%= entry_date(entry.occurred_on) %></span>
+            <span class="entry-row-status"><%= entry_status_label(entry) %></span>
+            <span class="entry-row-text"><%= entry.context.length > 80 ? "#{entry.context.first(80)}…" : entry.context %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="empty-state">Todavía no registraste entradas sobre <%= @person.name %>.</p>
+  <% end %>
+</section>

@@ -1,0 +1,61 @@
+<% content_for :title, "Editar entrada sobre #{@entry.person.name} · Growth Log" %>
+
+<%# Completar o editar una entrada propia (GL-06). Sin autor, persona ni estado: no se cambian por la edición. %>
+<p class="back-link"><%= link_to "← Volver a la entrada", feedback_entry_path(@entry) %></p>
+
+<h1>Editar entrada sobre <%= @entry.person.name %></h1>
+<p class="entry-status"><%= entry_status_label(@entry) %></p>
+
+<%= form_with model: @entry, url: feedback_entry_path(@entry), method: :patch, class: "entry-form" do |form| %>
+  <%= entry_error_summary(@entry) %>
+
+  <div class="field">
+    <%= form.label :occurred_on, "Fecha del hecho" %>
+    <%= form.date_field :occurred_on, required: true %>
+    <%= entry_field_errors(@entry, :occurred_on) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :context, "¿Qué pasó?" %>
+    <%= form.text_area :context, rows: 5, required: true %>
+    <%= entry_field_errors(@entry, :context) %>
+  </div>
+
+  <fieldset class="field choices">
+    <legend>Señal</legend>
+    <%= form.label :signal, value: "" do %><%= form.radio_button :signal, "" %> <%= FeedbackEntriesHelper::NOT_SET %><% end %>
+    <% FeedbackEntry::SIGNALS.each do |value, label| %>
+      <%= form.label :signal, value: value do %><%= form.radio_button :signal, value %> <%= label %><% end %>
+    <% end %>
+    <%= entry_field_errors(@entry, :signal) %>
+  </fieldset>
+
+  <fieldset class="field choices">
+    <legend>Dimensión</legend>
+    <%= form.label :dimension, value: "" do %><%= form.radio_button :dimension, "" %> <%= FeedbackEntriesHelper::NOT_SET %><% end %>
+    <% FeedbackEntry::DIMENSIONS.each do |value, label| %>
+      <%= form.label :dimension, value: value do %><%= form.radio_button :dimension, value %> <%= label %><% end %>
+    <% end %>
+    <%= entry_field_errors(@entry, :dimension) %>
+  </fieldset>
+
+  <div class="field">
+    <%= form.label :evidence, "Evidencia" %>
+    <%= form.text_area :evidence, rows: 3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :impact, "Impacto" %>
+    <%= form.text_area :impact, rows: 3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :confidence, "Confianza (1 a 5)" %>
+    <%= form.select :confidence, [ [ FeedbackEntriesHelper::NOT_SET, "" ] ] + (1..5).map { |value| [ value.to_s, value ] } %>
+    <%= entry_field_errors(@entry, :confidence) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar cambios" %>
+  </div>
+<% end %>

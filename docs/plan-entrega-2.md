@@ -11,7 +11,12 @@
 > I1 a I9), que **no se modifica** y sigue siendo la referencia de todo el
 > alcance del MVP. Aquí se registra en qué se aparta la entrega 2 y por qué.
 >
-> Actualizado: 02/11/2026, con el ajuste por el feedback de LIDR.
+> Actualizado: 14/11/2026, con el gate local de GL-06 en verde y F17
+> cerrada como parcial por decisión de Pablo. Antes: 13/11/2026, con las
+> decisiones de Pablo sobre P-19 a P-26 y la aprobación del cambio de
+> OpenSpec de GL-06. Antes: 12/11/2026, con la aprobación de P-1, P-2, P-3 y P-11
+> y la preparación de GL-06. Versión base: 02/11/2026, con el ajuste por el
+> feedback de LIDR.
 
 ## 1. Decisión de producto (aprobada por Pablo, 02/11/2026)
 
@@ -63,8 +68,8 @@ citaban por número):
 | 5 | [GL-08](tickets/GL-08-datos-ficticios.md) | Datos ficticios reproducibles para desarrollo | **cerrado** (archivado; CI [41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815)) | GL-03 | — |
 | 5a | [GL-01b](tickets/GL-01b-rails-8-1-4-1.md) | Rails 8.1.4.1 por los avisos de seguridad del 04/11/2026 | **cerrado** (archivado [`2026-11-07-gl-01b-rails-8-1-4-1`](../openspec/changes/archive/2026-11-07-gl-01b-rails-8-1-4-1/proposal.md); PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), `8ae8723`; CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492)) | GL-01 | — (P-18 aprobada) |
 | 6 | [GL-05](tickets/GL-05-personas.md) | «Personas» y ficha del líder: elegir una persona asignada | **cerrado** (archivado [`2026-11-07-gl-05-personas`](../openspec/changes/archive/2026-11-07-gl-05-personas/proposal.md); PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), `8d0e854`; CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466); comprobación manual E10 del 07/11/2026) | GL-03, GL-08, GL-01b | — (P-15, P-16 y P-17 aprobadas) |
-| 7 | GL-06 | Captura rápida, completar y marcar como lista | pendiente | GL-05 | P-1, P-2, P-3, P-11 |
-| 8 | GL-07 | Resumen por dimensión y cronología | pendiente | GL-06 | P-2, P-10 |
+| 7 | [GL-06](tickets/GL-06-captura-rapida.md) | Captura rápida, completar y marcar como lista | **implementado en local, sin commit** (cambio [`gl-06-captura-rapida`](../openspec/changes/gl-06-captura-rapida/proposal.md) aprobado por Pablo el 13/11/2026, «Vamos para adelante», según M120; gate local en verde el 14/11/2026, con 291 ejemplos; F17 **parcial** por decisión de Pablo; faltan el CI remoto y el archivo) | GL-05 | — (P-1, P-2, P-3 y P-11 aprobadas; P-19 a P-26 decididas) |
+| 8 | GL-07 | Resumen por dimensión y cronología | pendiente | GL-06 | P-10 (P-2 aprobada) |
 | 9 | GL-09 | Verificación E2E del recorrido núcleo | pendiente | GL-07 | P-4 (ADR-6) |
 | — | GL-04 | Invitaciones y administración de cuentas, personas y asignaciones | **diferido** | GL-03 | ADR-8 para la entrega real del correo |
 
@@ -87,7 +92,7 @@ el hito del Anexo G.
 | GL-03 | **Mismo objetivo** (denegar por defecto, E3), alcance precisado: incorpora las tablas mínimas de personas y asignaciones, sin interfaz de administración, porque el alcance por asignación las necesita | sin personas ni asignaciones no hay nada que proteger con alcance |
 | GL-04 | **Mismo objetivo, diferido.** Las asignaciones ya no llegan con GL-04: sus tablas llegan con GL-03 y los datos con GL-08. GL-04 conserva invitaciones, establecer contraseña, vista de administración, crear y editar personas, y asignar y terminar asignaciones por la interfaz | decisión de producto: el núcleo primero |
 | GL-05 | Mismo objetivo; los datos los prepara GL-08 en lugar de la vista de administración | — |
-| GL-06 | Mismo objetivo (registrar feedback), **por otro camino**: captura rápida, completar y marcar como lista (H3). El formulario completo «+ Feedback» (2.1, 2.2, 2.7) se difiere si se aprueba P-11 | el recorrido priorizado empieza en la captura rápida |
+| GL-06 | Mismo objetivo (registrar feedback), **por otro camino**: captura rápida, completar y marcar como lista (H3). El formulario completo «+ Feedback» (2.1, 2.2, 2.7) se difiere (P-11, aprobada el 12/11/2026) | el recorrido priorizado empieza en la captura rápida |
 | GL-07 | Mismo objetivo; **el E2E sale de GL-07** y pasa a GL-09 | el E2E verifica todo el recorrido y depende de ADR-6 |
 | GL-08 | **ID nuevo**: preparación reproducible de datos ficticios | no existía; no se reutiliza GL-04 para esto |
 | GL-09 | **ID nuevo**: verificación E2E del recorrido núcleo | separado de GL-07 |
@@ -109,9 +114,9 @@ ticket.
 | C5 | PP-8, 1.10, 1.21: el administrador no lee entradas ni resúmenes; administra desde una vista propia | no hay vista de administración | el rol de administrador **no da ningún acceso** en las vistas del líder; una cuenta administradora ve como líder solo las personas que tiene asignadas. Se prueba en GL-03 y GL-06/GL-07 | no |
 | C6 | AM-4 y PT-9: nunca queda la instancia sin administrador activo | protección diferida | sin interfaz que cambie roles o desactive cuentas, solo la consola puede violarlo; la guía lo advierte. Sigue pendiente (I7) y bloquea datos reales | no |
 | C7 | AM-3, PT-10: revocación administrativa | diferida | sin comparticiones no hay nada que revocar. Compartir **no puede publicarse** antes que la revocación del autor (D2); antes de cargar datos reales siguen haciendo falta I7, I8 e I9 (Anexo G, G.6) | no |
-| C8 | README 1.2 y criterio 2.4: señales «positivo, mejora o neutral». Mock 1: «Positivo», «A mejorar». Criterio 4.1: el resumen muestra «positivos, mejoras y total» | etiquetas distintas; la señal neutral no tiene columna | decidir valores internos, etiquetas y columnas (P-2) | no |
-| C9 | 2.4: dimensión «de una lista fija», **[Por confirmar]** | sin lista no se puede marcar como lista (2.6) | decidir la lista (P-1) | no |
-| C10 | 2.6 y 3.5: para marcar como lista solo se exige la dimensión | el resumen cuenta por señal; una entrada lista sin señal solo sumaría al total | decidir si la señal es obligatoria al marcar como lista (P-3) | no |
+| C8 | README 1.2 y criterio 2.4: señales «positivo, mejora o neutral». Mock 1: «Positivo», «A mejorar». Criterio 4.1: el resumen muestra «positivos, mejoras y total» | etiquetas distintas; la señal neutral no tiene columna | decidir valores internos, etiquetas y columnas (P-2). **Resuelta** (12/11/2026): `positive`, `improvement`, `neutral`; «Positivo», «A mejorar», «Neutral»; el resumen de GL-07 muestra Positivos, A mejorar, Neutrales y Total | no |
+| C9 | 2.4: dimensión «de una lista fija», **[Por confirmar]** | sin lista no se puede marcar como lista (2.6) | decidir la lista (P-1). **Resuelta** (12/11/2026): cinco dimensiones fijas | no |
+| C10 | 2.6 y 3.5: para marcar como lista solo se exige la dimensión | el resumen cuenta por señal; una entrada lista sin señal solo sumaría al total | decidir si la señal es obligatoria al marcar como lista (P-3). **Resuelta** (12/11/2026): dimensión y señal obligatorias para «lista»; amplía 2.6 y 3.5 con un delta en GL-06 | no |
 | C11 | README 2.6: el E2E llega hasta compartir y la lectura del destinatario | compartir está diferido | GL-09 cubre el núcleo; el E2E con compartición sigue pendiente (I4) | no |
 | C12 | `openspec/config.yaml`: ADR-2 «abierta» y plan en el Anexo G | desactualizado tras GL-02 | actualizar el contexto (hecho en este paso, solo texto) | no |
 | C13 | GL-02 y `docs/desarrollo.md` remiten las asignaciones y las siguientes cuentas a GL-04 | GL-04 queda diferido | remitir a este plan, a GL-03 y a GL-08 (hecho en este paso) | no |
@@ -150,21 +155,47 @@ aislamiento sobre el feedback prueba GL-06.
 
 ### GL-06. Captura rápida, completar y marcar como lista
 
+Detalle en [el ticket](tickets/GL-06-captura-rapida.md) y en el cambio
+[`gl-06-captura-rapida`](../openspec/changes/gl-06-captura-rapida/proposal.md).
+Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
+
 - **Criterios:** 3.1, 3.2, 3.4 a 3.8; 2.3 a 2.6, 2.8, 2.9 y 2.10 a través
   del formulario de completar; 4.8, 4.9 y 4.11 parciales (sin entradas
-  compartidas ni feed). 3.9 se cumple porque no existe compartir.
+  compartidas ni feed). 3.9 se cumple porque no existe compartir. 2.6 y
+  3.5 se amplían con la señal (P-3).
 - **Requisitos no funcionales:** el texto de las entradas no aparece en los
   logs (README 2.5); ningún texto dice «Publicar» (RN-2).
 - **Pruebas de privacidad obligatorias:** el **borrador y la entrada lista**
   de L1 no son accesibles para L2 (asignado a la misma persona), L3 (sin
   asignación) ni la administradora, en detalle, edición, marcar como lista
   y URL directa, con la misma respuesta que un recurso inexistente.
-- **Diferido (P-11):** formulario completo «+ Feedback» (2.1, 2.2, 2.7).
+- **Autor sin acceso a la ficha (P-24, decidida el 13/11/2026):** lee su
+  entrada por URL directa, con todos los campos y solo el nombre de la
+  persona, sin enlace a la ficha ni acciones de escritura. GL-06 no agrega
+  un listado: **3.10 y 4.14 quedan parciales**.
+- **Rama de lectura de PT-11 (sección 6.1):** GL-06 cubre la lectura de
+  las entradas propias, incluidos los borradores, sin escritura ni acceso a
+  la ficha. Qué exige su frase «con datos mínimos» queda **pendiente de
+  interpretación**: P-24 decide qué muestra el detalle de GL-06, pero no
+  define por sí sola esa frase. Hasta aclararla, la rama de lectura no se
+  da por satisfecha por completo. La reasignación queda fuera (P-26);
+  compartir y revocar, también.
+- **Captura en página propia (P-22, decidida el 13/11/2026):** GL-06 elige
+  una página propia y no adopta la interacción sin navegación propuesta en
+  MVP-FE-1 (ticket propuesto en la entrega 1, no un criterio aprobado).
+- **Diferido (P-11, aprobada):** formulario completo «+ Feedback» (2.1, 2.2, 2.7).
 
 ### GL-07. Resumen por dimensión y cronología
 
 - **Criterios:** 3.3, 4.1, 4.4, 4.5; 4.2, 4.3, 4.12 y 4.13 parciales (solo
   entradas propias); 1.15 parcial (conteo en «Personas» sin compartidas).
+- **Ajuste de 4.1 (P-2, aprobada el 12/11/2026):** el resumen por dimensión
+  muestra Positivos, A mejorar, Neutrales y Total, para que el total sea la
+  suma visible; 4.1 nombra solo positivos, mejoras y total. Se especifica
+  con un delta en GL-07.
+- **Recibe de GL-06:** la tabla de entradas, las etiquetas de señales y
+  dimensiones, y el alcance de entradas ya resuelto. Reemplaza la sección
+  provisoria «Tus entradas» de la ficha (P-21) por la cronología (P-10).
 - **Pruebas de privacidad obligatorias:** una entrada **lista** de L1 no
   cuenta en el resumen ni aparece en la cronología ni en el conteo de L2,
   aunque los dos acompañen a la misma persona; un borrador no cuenta ni
@@ -186,6 +217,7 @@ aislamiento sobre el feedback prueba GL-06.
 | Qué | Criterios y casos | Dónde estaba en el Anexo G | Ticket |
 |---|---|---|---|
 | Invitaciones y establecer contraseña | 1.1 a 1.3; PT-7, PT-8 | I1 (T1.2), I9 (T9.2) | GL-04 |
+| Formulario completo «+ Feedback» (P-11) | 2.1, 2.2, 2.7 | I2 (T2.1) | sin ID |
 | Vista de administración: personas, cuentas y asignaciones | 1.4 a 1.8, 1.10, 1.20, 1.21 (resto) | I1 (T1.3) | GL-04 |
 | Terminar asignaciones y reasignar; autor sin asignación | 1.9, 3.10, 4.14, 5.10, 5.12; PT-4, PT-11 | I4 (T4.5), I5 | sin ID |
 | Compartir y revocar por el autor; nombres de otros líderes | 1.18, 4.10, 5.6, 5.7, 5.9; PT-2, PT-3, PT-12; ramas compartidas de 4.2, 4.3, 4.8, 4.9, 4.12, 4.13 | I4 | sin ID |
@@ -204,14 +236,17 @@ además GL-04.
 ## 6. Decisiones pendientes de aprobación
 
 Aprobadas por Pablo: **P-5, P-7, P-8, P-9 y P-12** (02/11/2026), en los
-términos de la sección 6.1 y la sección 8, **P-6, P-13, P-14, P-15, P-16 y P-17** (03/11/2026) y **P-18** (07/11/2026). Las demás siguen siendo
-recomendaciones, **sin aprobar**.
+términos de la sección 6.1 y la sección 8, **P-6, P-13, P-14, P-15, P-16 y P-17** (03/11/2026), **P-18** (07/11/2026) y **P-1, P-2, P-3 y P-11** (12/11/2026, [registro](decisiones/2026-11-12-gl-06-feedback.md)). Decididas por Pablo
+para GL-06: **P-19 a P-26** (13/11/2026, [registro](decisiones/2026-11-13-gl-06-captura.md));
+en P-22 y P-24 eligió una alternativa distinta de la recomendación
+anterior. Los números P-25 y P-26 son definitivos desde la aprobación del
+cambio de OpenSpec de GL-06 (aprobado por Pablo el 13/11/2026 («Vamos para adelante», según M120)). Las demás siguen siendo recomendaciones, **sin aprobar**.
 
 | # | Decisión | Bloquea | Recomendación | Alternativas |
 |---|---|---|---|---|
-| P-1 | Lista de dimensiones (2.4, Anexo C, C.4) | GL-06 | cinco dimensiones fijas, en código y con una restricción en la base: `delivery` «Entrega», `technical_quality` «Calidad técnica», `teamwork` «Trabajo en equipo», `communication` «Comunicación», `initiative` «Iniciativa». Cambiarla después exige una migración y una decisión | las tres del mock 1 («Trabajo en equipo», «Claridad», «Entrega»); lista configurable por el administrador (no cumple «lista fija» y requiere administración) |
-| P-2 | Señales: valores internos, etiquetas y columnas del resumen | GL-06, GL-07 | valores `positive`, `improvement`, `neutral`; etiquetas «Positivo», «A mejorar», «Neutral»; el resumen muestra Positivos, A mejorar, Neutrales y Total, para que el total sea la suma visible. **Ajusta la presentación de 4.1**, que hoy nombra solo positivos, mejoras y total | etiqueta «Mejora» (README) en lugar de «A mejorar» (mock); mantener 4.1 literal, con la señal neutral solo dentro del total |
-| P-3 | ¿La señal es obligatoria para marcar como lista? | GL-06 | sí: dimensión y señal obligatorias para «lista»; en borrador, ambas opcionales. **Amplía 2.6 y 3.5** | solo la dimensión, como dicen 2.6 y 3.5 hoy |
+| P-1 | Lista de dimensiones (2.4, Anexo C, C.4) | GL-06 | **Aprobada (12/11/2026).** cinco dimensiones fijas, en código y con una restricción en la base: `delivery` «Entrega», `technical_quality` «Calidad técnica», `teamwork` «Trabajo en equipo», `communication` «Comunicación», `initiative` «Iniciativa». Cambiarla después exige una migración y una decisión | las tres del mock 1 («Trabajo en equipo», «Claridad», «Entrega»); lista configurable por el administrador (no cumple «lista fija» y requiere administración) |
+| P-2 | Señales: valores internos, etiquetas y columnas del resumen | GL-06, GL-07 | **Aprobada (12/11/2026).** valores `positive`, `improvement`, `neutral`; etiquetas «Positivo», «A mejorar», «Neutral»; el resumen muestra Positivos, A mejorar, Neutrales y Total, para que el total sea la suma visible. **Ajusta la presentación de 4.1**, que hoy nombra solo positivos, mejoras y total | etiqueta «Mejora» (README) en lugar de «A mejorar» (mock); mantener 4.1 literal, con la señal neutral solo dentro del total |
+| P-3 | ¿La señal es obligatoria para marcar como lista? | GL-06 | **Aprobada (12/11/2026).** sí: dimensión y señal obligatorias para «lista»; en borrador, ambas opcionales. **Amplía 2.6 y 3.5** | solo la dimensión, como dicen 2.6 y 3.5 hoy |
 | P-4 | ADR-6: herramienta E2E | GL-09 | pruebas de sistema de RSpec con Capybara y `selenium-webdriver` con Chrome sin interfaz: es lo que trae Rails, mantiene una sola suite y no agrega Node | Playwright (agrega Node y otro ejecutor); Cuprite (más rápido, otra gema y menos estándar) |
 | P-5 | ADR-3: mecanismo de políticas y respuesta ante un acceso no autorizado | GL-03 | **Aprobada.** Pundit 2.5.2 con políticas que deniegan por defecto, verificaciones como red ante omisiones y pruebas de comportamiento como evidencia; 404 sin revelar existencia. Detalle en 6.1 | objetos de política propios; Action Policy; 403 |
 | P-6 | Preparación de datos ficticios (C1) | GL-08 | **Aprobada (03/11/2026):** tarea explícita solo en `development`; cuentas, personas y asignaciones suficientes para varios líderes y aislamiento; sin contraseñas ni hashes fijos versionados; contraseñas sin eco o generadas y entregadas localmente sin exponerlas; nada al arrancar ni al migrar | — |
@@ -219,7 +254,7 @@ recomendaciones, **sin aprobar**.
 | P-8 | Unicidad de asignaciones | GL-03 | **Aprobada.** Una sola asignación **activa por par líder y persona**; nunca una sola por persona. Detalle en 6.1 | validación solo en el modelo |
 | P-9 | Estados de la persona, de la asignación y de la cuenta | GL-03, GL-05 | **Aprobada.** Tres estados independientes, con efectos separados; `people.active` desde el inicio. Detalle en 6.1 | posponer `active` hasta I7 |
 | P-10 | Cronología | GL-07 | por fecha del hecho, de la más antigua a la más reciente (como el mock 1), y los borradores propios aparecen marcados «Borrador · solo vos · fuera del resumen» | solo entradas listas en la cronología |
-| P-11 | Formulario completo «+ Feedback» (2.1, 2.2, 2.7) | GL-06 | diferirlo: el recorrido priorizado empieza en la captura rápida, y los campos y validaciones de H2 se cubren al completar | incluirlo en GL-06 |
+| P-11 | Formulario completo «+ Feedback» (2.1, 2.2, 2.7) | GL-06 | **Aprobada (12/11/2026).** diferirlo: el recorrido priorizado empieza en la captura rápida, y los campos y validaciones de H2 se cubren al completar | incluirlo en GL-06 |
 | P-12 | Contexto del proyecto para la IA (sección 8) | — | **Aprobada:** creado `CLAUDE.md`. Crear `CLAUDE.md` en la raíz con el contenido mínimo propuesto | no crearlo y mantener solo `openspec/config.yaml` |
 | P-13 | Cómo se distinguen los registros del conjunto ficticio | GL-08 | **Aprobada (03/11/2026).** Tabla `sample_data_records` con una marca por registro creado; sin marca no se adopta nada, aunque coincida el correo ([diseño](../openspec/changes/archive/2026-11-03-gl-08-datos-ficticios/design.md#3-marcas-tabla-sample_data_records-p-13-aprobada-el-03112026)) | columna en las tablas del dominio; reconocer por correo (adopta cuentas ajenas) |
 | P-14 | Entrega de las contraseñas de las cuentas ficticias | GL-08 | **Aprobada (03/11/2026).** Cuentas creadas con una contraseña aleatoria descartada; `growth_log:contrasena_ficticia` la pide dos veces sin eco, una cuenta por vez; el agente no la ejecuta con contraseñas visibles | generarlas y guardarlas en un archivo local 0600 (deja un secreto en disco) |
@@ -227,6 +262,14 @@ recomendaciones, **sin aprobar**.
 | P-16 | Rutas de personas | GL-05 | **Aprobada (03/11/2026).** `/personas` y `/personas/:id`, en español como la interfaz; el listado responde también en `/` | `/people` |
 | P-17 | Datos de la ficha | GL-05 | **Aprobada (03/11/2026).** Nombre, rol y equipo; «Sin rol indicado» o «Sin equipo indicado» si falta uno; sin otros líderes (1.18 diferido), fechas ni estado | omitir la línea si falta el dato |
 | P-18 | ¿Fijar Rails 8.1.4.1 como mínimo en el `Gemfile`? | — | **Aprobada (07/11/2026).** No cambiar el `Gemfile`: `~> 8.1.4` ya admite 8.1.4.1 y el diff queda en el lockfile ([GL-01b](tickets/GL-01b-rails-8-1-4-1.md)) | `gem "rails", "~> 8.1.4", ">= 8.1.4.1"`, que impide volver a una versión vulnerable con un `bundle update` |
+| P-19 | Rutas de las entradas | GL-06 | **Decidida (13/11/2026).** `GET /personas/:person_id/entradas/nueva` y `POST /personas/:person_id/entradas` para la captura; `GET /entradas/:id`, `GET /entradas/:id/editar`, `PATCH /entradas/:id` y `PATCH /entradas/:id/marcar-lista` para las demás. Las acciones de miembro no se anidan bajo la persona, porque anidarlas exige su alcance y rompería la lectura por autoría (PP-9) | rutas en inglés de la propuesta (`/people/:id/entries`, `/entries/:id/ready`); todo anidado bajo `/personas/:person_id` |
+| P-20 | ¿Se editan o se marcan como listas las entradas de una persona inactiva? (pregunta abierta del diseño de GL-03) | GL-06 | **Decidida (13/11/2026).** no: escribir exige autoría, asignación activa y persona activa, como la tabla del diseño de GL-03 y P-9; la lectura propia se conserva aunque termine la asignación o la persona quede inactiva. Alinea la regla de P-7 (sección 6.1), que no nombraba la persona activa | permitir editar y marcar las entradas existentes |
+| P-21 | Dónde reabre el líder sus entradas antes de GL-07 (3.4, T1.6) | GL-06 | **Decidida (13/11/2026).** sección «Tus entradas sobre <nombre>» en la ficha: solo las propias, con fecha, estado («Borrador · solo vos», «Lista · solo vos») y comienzo del texto, por fecha del hecho descendente y, en empate, primero la creada después; GL-07 la reemplaza por la cronología con un cambio explícito | solo volver al detalle después de capturar; adelantar la cronología de GL-07 |
+| P-22 | ¿La captura se abre en la misma página? (MVP-FE-1, mock 2) | GL-06 | **Decidida (13/11/2026): página propia, sin Turbo frame** (era la alternativa; la recomendación anterior era el Turbo frame). «Captura rápida» lleva a la página de captura y, al guardar, se vuelve a la ficha. GL-06 no adopta la interacción sin navegación propuesta en MVP-FE-1 (ticket propuesto en la entrega 1) | Turbo frame dentro de la ficha (recomendación anterior, descartada) |
+| P-23 | Zona horaria de «la fecha de hoy» (3.2) | GL-06 | **Decidida (13/11/2026).** `config.time_zone = "America/Argentina/Buenos_Aires"` para toda la instancia; hoy la aplicación usa UTC y una captura después de las 21:00 quedaría con la fecha de mañana | dejar UTC; zona horaria por cuenta (dato nuevo) |
+| P-24 | Detalle de una entrada propia sin acceso a la ficha (PP-9, AM-1, P-7) | GL-06 | **Decidida (13/11/2026).** El detalle responde por autoría: de la persona, solo el nombre; de la entrada propia, todos los campos; sin enlace a la ficha ni acciones de escritura. **Acceso solo por URL directa**, sin listado adicional en GL-06: la sección «Tus entradas» (P-21) no sirve en esos casos porque la ficha responde 404. **3.10 y 4.14 quedan parciales**; el listado y los datos mínimos de AM-1 para él siguen pendientes (P-7, I5) | de la entrada, solo el resumen del Anexo C (fecha, estado y texto); un listado mínimo en GL-06, que exigía decidir AM-1; otra vista accesible, que adelantaba parte de I5 |
+| P-25 | Segunda solicitud de «Marcar como lista» sobre una entrada que ya está lista | GL-06 | **Decidida (13/11/2026).** Idempotente: la entrada no cambia y la respuesta vuelve al detalle sin error | rechazarla con un código de error |
+| P-26 | Reasignación del caso PT-11 («al reasignarlo vuelve a editar») | GL-06 | **Decidida (13/11/2026).** GL-06 incluye la rama de lectura de PT-11 que le asigna la sección 6.1, **parcial** mientras «con datos mínimos» siga pendiente de interpretación; la transición de reasignación, que devuelve la escritura, queda **fuera** de GL-06: no se especifica ni se prueba aquí | incorporarla a GL-06 |
 
 ### 6.1. Detalle de las decisiones que abren GL-03
 
@@ -276,7 +319,7 @@ Reglas que GL-03 deja definidas (PP-2, PP-3, PP-4, PP-9, AM-1):
 |---|---|
 | Abrir la ficha de una persona | asignación activa con ella (y persona activa, P-9) |
 | Leer una entrada | ser su autor, con cuenta activa; **no** depende de la asignación |
-| Crear, editar o marcar como lista | ser el autor y tener asignación activa con la persona |
+| Crear, editar o marcar como lista | ser el autor, tener asignación activa con la persona y que la persona esté activa (P-9; P-20, decidida el 13/11/2026, alinea esta fila con la tabla del diseño de GL-03) |
 | Leer entradas ajenas | nunca en el núcleo (compartir está diferido) |
 
 **Trabajo adicional concreto para cumplirla:**
@@ -285,9 +328,9 @@ Reglas que GL-03 deja definidas (PP-2, PP-3, PP-4, PP-9, AM-1):
 |---|---|---|
 | Separar el predicado de lectura (autoría) del de escritura (autoría y asignación) | política de entradas, GL-06 | no: es la forma natural de escribir la política |
 | Que el detalle de una entrada propia funcione sin asignación, sin enlace a la ficha ni otros datos de la persona salvo los mínimos | vista de detalle de GL-06 | sí, poco: una condición en la vista y dos pruebas |
-| Qué datos mínimos se muestran (Anexo C propone: nombre de la persona, fecha del hecho, estado y su propio texto) | decisión | sí: **detalle de AM-1 no decidido** |
-| Un lugar donde el autor sin asignación encuentre esas entradas (sin la ficha ni el feed) | listado mínimo | sí: una consulta y una sección; sin él solo se llega por URL directa |
-| Pruebas de 3.10 y 4.14 y de la rama de lectura de PT-11 | GL-06 | sí |
+| Qué datos mínimos se muestran (Anexo C propone: nombre de la persona, fecha del hecho, estado y su propio texto) | decisión | sí: **detalle de AM-1 no decidido**. Para el detalle de GL-06, P-24 (13/11/2026) fija solo el nombre de la persona y todos los campos de la entrada propia; para un listado sigue sin decidir |
+| Un lugar donde el autor sin asignación encuentre esas entradas (sin la ficha ni el feed) | listado mínimo | sí: una consulta y una sección; sin él solo se llega por URL directa. P-24 (13/11/2026): **no** se agrega en GL-06; queda pendiente (I5) |
+| Pruebas de 3.10 y 4.14 y de la rama de lectura de PT-11 | GL-06 | sí. Solo la lectura de las entradas propias, incluidos los borradores; qué exige «con datos mínimos» de PT-11 queda pendiente de interpretación (P-24 no la define). La transición de reasignación queda fuera (P-26) |
 
 **¿Bloquea el núcleo?** No. En el núcleo ninguna pantalla termina una
 asignación; solo la consola puede hacerlo. Las reglas quedan correctas
@@ -296,7 +339,8 @@ registra así, es **dónde encuentra el autor** sus entradas cuando no tiene
 asignación y **qué datos mínimos** ve. Mientras falten, 3.10 y 4.14 son
 **parciales**: el permiso existe, pero la interfaz para usarlo no. No se
 agrega a GL-06 ni a GL-07 sin una decisión aparte. La revocación de PP-9
-llega con compartir.
+llega con compartir. **Con P-24 (13/11/2026)**, GL-06 no agrega listado:
+3.10 y 4.14 siguen parciales al cerrar GL-06.
 
 **Criterios de aceptación** (GL-03, sobre personas): B2 y B5. La regla de
 entradas se especifica en el diseño de GL-03 y se aplica en GL-06.
@@ -400,12 +444,13 @@ asignación; y una persona Q sin asignaciones.
 | Prueba que recorre todas las rutas del producto con sesión y falla si una acción no verifica autorización o alcance | denegar por defecto (RN-1) | **comprobado en GL-03**; cada ticket agrega sus rutas |
 | Mutación registrada: quitar la verificación de una acción hace fallar esa prueba | que la prueba detecta el hueco | **comprobado en GL-03** (mutación 1) |
 | L3 y A piden la ficha de P y la de Q por URL directa: 404 | acceso a la persona solo por asignación activa (1.19, PP-2); administrar no da acceso (PP-8) | regla comprobada en GL-03 a nivel de política; **URL directa comprobada en GL-05**: `spec/requests/people_spec.rb` cubre a un líder con una persona asignada solo a otro líder y con una sin asignaciones, y a una administradora sin asignación con ambas, todas con 404 igual que una inexistente y sin el nombre (CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466) sobre `8d0e854`); a mano, en E10, Elena pidió `/personas/3` (Carla, asignada solo a Tomás) y recibió 404 sin datos de Carla |
-| Matriz de peticiones sobre el **borrador** y sobre la **entrada lista** de L1: detalle, edición, marcar como lista, por L2, L3 y A, con URL directa: 404 y sin cambios en la base | borrador y lista privados (PP-3, PP-4, 4.9, 4.11) | GL-06 |
-| Las respuestas a L2 no contienen el texto de la entrada de L1 | no hay fuga en el cuerpo | GL-06, GL-07 |
+| Matriz de peticiones sobre el **borrador** y sobre la **entrada lista** de L1: detalle, edición, marcar como lista, por L2, L3 y A, con URL directa: 404 y sin cambios en la base | borrador y lista privados (PP-3, PP-4, 4.9, 4.11) | **comprobado en local en GL-06** (13/11/2026; sin CI remoto) |
+| Las respuestas a L2 no contienen el texto de la entrada de L1 | no hay fuga en el cuerpo | **comprobado en local en GL-06** (13/11/2026; sin CI remoto); GL-07 |
+| Con la asignación terminada (y con la persona inactiva), L1 lee por URL directa su borrador y su entrada lista, sin enlace a la ficha; editar y marcar como lista dan 404 sin cambios; la ficha da 404 | lectura propia sin asignación (3.10 y 4.14 parciales, P-24; rama de lectura de PT-11, salvo «con datos mínimos», pendiente de interpretación; P-9, P-20) | **comprobado en local en GL-06** (13/11/2026; sin CI remoto) |
 | Resumen, cronología y conteo de L2 sobre P no incluyen la entrada lista de L1; los de L1 sí; un borrador no cuenta | consultas con alcance (4.11, 4.12 parcial, 3.3, 1.15 parcial) | GL-07 |
 | Mutación registrada: quitar el alcance de la consulta del resumen hace fallar la prueba | que la prueba detecta la fuga | GL-07 |
 | E2E en navegador del recorrido completo y rama negativa de L2 | el recorrido funciona por la interfaz | GL-09 |
-| Log de pruebas sin el texto de las entradas | feedback fuera de los logs | GL-06 |
+| Log de pruebas sin el texto de las entradas, en la petición y en las consultas | feedback fuera de los logs | **comprobado en local en GL-06** (13/11/2026; sin CI remoto): la petición y las consultas muestran `[FILTERED]` |
 | `bin/ci` local y CI remoto en verde sobre el SHA publicado | integración | cada ticket |
 
 Cada ticket registra lo ejecutado en su diseño, distinguiendo local y
@@ -436,8 +481,19 @@ presencia del enlace y su destino están cubiertos por `people_spec` (E4).
 No bloquean el cierre de GL-05 y pueden sumarse a la verificación en navegador
 de GL-09.
 GL-01b está cerrado y archivado, con P-18 aprobada (07/11/2026): el
-`Gemfile` queda sin cambios. El siguiente ticket es GL-06, bloqueado por
-P-1, P-2, P-3 y P-11. La prueba automatizada en
+`Gemfile` queda sin cambios. El siguiente ticket es GL-06: P-1, P-2, P-3 y
+P-11 se aprobaron el 12/11/2026, Pablo decidió P-19 a P-26 el 13/11/2026
+y aprobó ese mismo día el cambio de OpenSpec de GL-06 («Vamos para
+adelante», según M120). La implementación está hecha en local, sin
+commit: el gate local pasó el 14/11/2026 (`bin/bundler-audit update` y
+`bin/ci`, con 291 ejemplos y 0 fallos) y las seis mutaciones se detectan
+([diseño](../openspec/changes/gl-06-captura-rapida/design.md#registro-de-la-implementación-13112026-local-sin-commit)).
+La comprobación en navegador F17 quedó **parcial**: Pablo decidió el
+14/11/2026 no hacer más comprobaciones manuales (375 px revisados solo con
+un `iframe` y, en el navegador, la sesión vencida solo como simulación sin
+cookie). Faltan el CI remoto (con autorización de push) y el archivo. 3.10 y 4.14 quedan **parciales** (P-24), y la rama de
+lectura de PT-11 no se da por satisfecha mientras «con datos mínimos»
+siga pendiente de interpretación. La prueba automatizada en
 navegador sigue bloqueada por P-4 (ADR-6) y queda para GL-09; en GL-05 hay
 una comprobación manual. El aislamiento del feedback entre líderes de la
-misma persona sigue pendiente para GL-06.
+misma persona quedó comprobado en local con GL-06; falta el CI remoto.

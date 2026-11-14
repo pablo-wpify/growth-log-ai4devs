@@ -25,9 +25,15 @@ context: |
   siendo requisito pendiente.
   Aprobadas para GL-03: ADR-3 (P-5), P-7, P-8, P-9 y P-12 (plan de la
   entrega 2, 02/11/2026). Aprobadas para GL-08: P-6, P-13 y P-14 (03/11/2026).
+  Aprobadas para GL-06: P-1 (dimensiones), P-2 (señales), P-3 (dimensión y
+  señal obligatorias para «lista») y P-11 (sin «+ Feedback»), 12/11/2026.
+  Decididas para GL-06: P-19 a P-26 (rutas, escritura con persona activa,
+  sección de entradas propias, captura en página propia, zona horaria
+  America/Argentina/Buenos_Aires, detalle sin acceso a la ficha solo por URL
+  directa, «Marcar como lista» idempotente y reasignación de PT-11 fuera),
+  13/11/2026. Cambio de GL-06 aprobado el 13/11/2026.
   Abiertas: ADR-5 a ADR-8, D3, D4 y las demás decisiones P del plan de la
-  entrega 2 (dimensiones, señales, herramienta E2E, datos ficticios, entre
-  otras).
+  entrega 2 (herramienta E2E y cronología, entre otras).
 
   Restricciones:
   - No agregar funciones que el ticket no pida.

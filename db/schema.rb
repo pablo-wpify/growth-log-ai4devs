@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_03_100707) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_13_194500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,6 +25,29 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_03_100707) do
     t.index ["leader_id"], name: "index_assignments_on_leader_id"
     t.index ["person_id"], name: "index_assignments_on_person_id"
     t.check_constraint "ended_at IS NULL OR ended_at >= started_at", name: "assignments_end_not_before_start"
+  end
+
+  create_table "feedback_entries", force: :cascade do |t|
+    t.bigint "author_id", null: false
+    t.bigint "person_id", null: false
+    t.string "status", default: "draft", null: false
+    t.date "occurred_on", null: false
+    t.text "context", null: false
+    t.string "signal"
+    t.string "dimension"
+    t.text "evidence"
+    t.text "impact"
+    t.integer "confidence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_feedback_entries_on_author_id"
+    t.index ["person_id", "author_id"], name: "index_feedback_entries_on_person_id_and_author_id"
+    t.check_constraint "btrim(context) <> ''::text", name: "feedback_entries_context_present"
+    t.check_constraint "confidence IS NULL OR confidence >= 1 AND confidence <= 5", name: "feedback_entries_confidence_range"
+    t.check_constraint "dimension IS NULL OR (dimension::text = ANY (ARRAY['delivery'::character varying, 'technical_quality'::character varying, 'teamwork'::character varying, 'communication'::character varying, 'initiative'::character varying]::text[]))", name: "feedback_entries_dimension_allowed"
+    t.check_constraint "signal IS NULL OR (signal::text = ANY (ARRAY['positive'::character varying, 'improvement'::character varying, 'neutral'::character varying]::text[]))", name: "feedback_entries_signal_allowed"
+    t.check_constraint "status::text <> 'ready'::text OR signal IS NOT NULL AND dimension IS NOT NULL", name: "feedback_entries_ready_complete"
+    t.check_constraint "status::text = ANY (ARRAY['draft'::character varying, 'ready'::character varying]::text[])", name: "feedback_entries_status_allowed"
   end
 
   create_table "login_attempt_counters", primary_key: "key", id: :string, force: :cascade do |t|
@@ -79,6 +102,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_03_100707) do
 
   add_foreign_key "assignments", "people"
   add_foreign_key "assignments", "users", column: "leader_id"
+  add_foreign_key "feedback_entries", "people"
+  add_foreign_key "feedback_entries", "users", column: "author_id"
   add_foreign_key "sample_data_records", "assignments"
   add_foreign_key "sample_data_records", "people"
   add_foreign_key "sample_data_records", "users"
