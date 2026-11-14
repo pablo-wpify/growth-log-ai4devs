@@ -1,0 +1,42 @@
+<% content_for :title, "Entrada sobre #{@entry.person.name} · Growth Log" %>
+
+<%# Detalle de una entrada propia (GL-06). Un solo predicado decide la variante (P-24): @writable, la persona está en el alcance de personas de la cuenta. Sin acceso a la ficha: de la persona, solo el nombre; sin enlace ni acciones de escritura. %>
+<% if @writable %>
+  <p class="back-link"><%= link_to "← Volver a #{@entry.person.name}", person_path(@entry.person) %></p>
+<% end %>
+
+<h1>Entrada sobre <%= @entry.person.name %></h1>
+<p class="entry-status"><%= entry_status_label(@entry) %></p>
+<p class="entry-meta">Escrita por vos (<%= @entry.author.name %>) · <%= entry_date(@entry.occurred_on) %></p>
+
+<% unless @writable %>
+  <p class="readonly-note">Ya no acompañás a esta persona: podés leer esta entrada, pero no editarla.</p>
+<% end %>
+
+<%= entry_error_summary(@entry) %>
+
+<dl class="entry-fields">
+  <dt>Fecha del hecho</dt>
+  <dd><%= entry_date(@entry.occurred_on) %></dd>
+  <dt>Contexto</dt>
+  <dd class="entry-text"><%= @entry.context %></dd>
+  <dt>Señal</dt>
+  <dd><%= entry_value(@entry.signal_label) %></dd>
+  <dt>Dimensión</dt>
+  <dd><%= entry_value(@entry.dimension_label) %></dd>
+  <dt>Evidencia</dt>
+  <dd class="entry-text"><%= entry_value(@entry.evidence) %></dd>
+  <dt>Impacto</dt>
+  <dd class="entry-text"><%= entry_value(@entry.impact) %></dd>
+  <dt>Confianza</dt>
+  <dd><%= @entry.confidence ? "#{@entry.confidence} de 5" : FeedbackEntriesHelper::NOT_SET %></dd>
+</dl>
+
+<% if @writable %>
+  <div class="actions">
+    <%= link_to "Editar", edit_feedback_entry_path(@entry), class: "button" %>
+    <% if @entry.draft? %>
+      <%= button_to "Marcar como lista", mark_ready_feedback_entry_path(@entry), method: :patch, form_class: "inline-form" %>
+    <% end %>
+  </div>
+<% end %>

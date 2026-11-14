@@ -65,15 +65,29 @@ RSpec.describe "Navegación con sesión", type: :request do
     expect(response).to redirect_to(new_session_path)
   end
 
-  it "el único formulario es «Cerrar sesión» y no hay funciones inexistentes" do
+  it "en el listado el único formulario es «Cerrar sesión» y no hay funciones inexistentes" do
     sign_in_as(leader)
+    get people_path
 
-    [ people_path, person_path(ada) ].each do |path|
-      get path
-      forms = page.css("form")
-      expect(forms.size).to eq(1), "#{path} tiene #{forms.size} formularios"
-      expect(forms.first["action"]).to eq(session_path)
-      expect(page.text).not_to match(/feedback|captura r[aá]pida|administr|crear|editar|asignar|nueva persona/i)
-    end
+    forms = page.css("form")
+    expect(forms.size).to eq(1)
+    expect(forms.first["action"]).to eq(session_path)
+    expect(page.text).not_to match(/feedback|captura r[aá]pida|administr|crear|editar|asignar|nueva persona/i)
+  end
+
+  # Delta de people-browsing (GL-06): la ficha ofrece «Captura rápida» como
+  # único acceso para registrar feedback, antes de abrir la captura, que se
+  # abre en una página propia (P-22).
+  it "en la ficha el único formulario es «Cerrar sesión» y el único acceso para registrar feedback es «Captura rápida»" do
+    sign_in_as(leader)
+    get person_path(ada)
+
+    forms = page.css("form")
+    expect(forms.size).to eq(1)
+    expect(forms.first["action"]).to eq(session_path)
+    capture = page.css("main a").select { |link| link.text.strip == "Captura rápida" }
+    expect(capture.size).to eq(1)
+    expect(capture.first["href"]).to eq(new_person_feedback_entry_path(ada))
+    expect(page.text).not_to match(/\+ ?feedback|resumen|compartir|administr|asignar|nueva persona/i)
   end
 end

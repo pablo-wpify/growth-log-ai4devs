@@ -19,7 +19,7 @@ RSpec.describe "Rutas protegidas por defecto", type: :request do
   end
 
   def database_snapshot
-    [ User.count, Session.count, LoginAttemptCounter.count ]
+    [ User.count, Session.count, LoginAttemptCounter.count, FeedbackEntry.count ]
   end
 
   it "declara exactamente las rutas esperadas" do
@@ -30,7 +30,14 @@ RSpec.describe "Rutas protegidas por defecto", type: :request do
       [ "DELETE", "/session" ],
       [ "GET", "/" ],
       [ "GET", "/personas" ],
-      [ "GET", "/personas/1" ]
+      [ "GET", "/personas/1" ],
+      # GL-06 (P-19): la captura bajo la persona; el resto, bajo /entradas.
+      [ "GET", "/personas/1/entradas/nueva" ],
+      [ "POST", "/personas/1/entradas" ],
+      [ "GET", "/entradas/1" ],
+      [ "GET", "/entradas/1/editar" ],
+      [ "PATCH", "/entradas/1" ],
+      [ "PATCH", "/entradas/1/marcar-lista" ]
     )
   end
 

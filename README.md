@@ -16,7 +16,7 @@ Proyecto final de AI4Devs de Pablo Peuscovich.
 
 ## Estado actual
 
-Rama `feature/entrega-2-pp`. Actualizado al 02/11/2026.
+Rama `feature/entrega-2-pp`. Actualizado al 14/11/2026.
 
 | | Qué | Evidencia |
 |---|---|---|
@@ -24,10 +24,10 @@ Rama `feature/entrega-2-pp`. Actualizado al 02/11/2026.
 | | Corrección de 15 avisos de seguridad de gemas (GL-01a) | [ticket](docs/tickets/GL-01a-avisos-seguridad.md) |
 | | Rails 8.1.4.1 por los 21 avisos de seguridad del 04/11/2026 (GL-01b) | [ticket](docs/tickets/GL-01b-rails-8-1-4-1.md); CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492) sobre `8ae8723` |
 | | Autenticación: cuentas individuales sin registro público, inicio y cierre de sesión, sesiones con vencimiento, límites de intentos, CSRF, rutas protegidas por defecto y administrador inicial por tarea (GL-02) | [ticket](docs/tickets/GL-02-autenticacion.md); CI [41557336838](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41557336838) sobre `94e40a1` |
-| | Autorización mínima: denegar por defecto, alcance por asignación y personas y asignaciones sin interfaz (GL-03). **No verifica todavía** la autorización de personas por URL (GL-05), del feedback (GL-06) ni del resumen (GL-07), que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md); CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236) sobre `7263efd` |
+| | Autorización mínima: denegar por defecto, alcance por asignación y personas y asignaciones sin interfaz (GL-03). La autorización de personas por URL directa se verificó en GL-05; **no verifica todavía** la del feedback (GL-06) ni la del resumen (GL-07), que no existen | [ticket](docs/tickets/GL-03-autorizacion-minima.md); CI [41571299236](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41571299236) sobre `7263efd` |
 | | Datos ficticios reproducibles para desarrollo (GL-08): tarea solo en `development`, sin contraseñas versionadas ni adopción de registros ajenos. **No verifica** el aislamiento del feedback, que llega con GL-06 | [ticket](docs/tickets/GL-08-datos-ficticios.md); CI [41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815) sobre `2bd5deb` |
 | | «Personas» y ficha del líder (GL-05): listado y ficha de solo lectura con autorización por alcance y 404 por URL directa; comprobación manual en navegador (E10) del 07/11/2026, con 375 px emulados | [ticket](docs/tickets/GL-05-personas.md); CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466) sobre `8d0e854` |
-| **Siguiente** | Decisiones P-1, P-2, P-3 y P-11 para GL-06 | [plan de la entrega 2](docs/plan-entrega-2.md) |
+| **Siguiente** | GL-06, captura rápida, completar y marcar como lista: P-1, P-2, P-3 y P-11 aprobadas (12/11/2026) y P-19 a P-26 decididas (13/11/2026); cambio de OpenSpec aprobado (13/11/2026); **publicado en el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), abierto y sin fusionar**: gate local en verde el 14/11/2026 (`bin/bundler-audit update` y `bin/ci`, 291 ejemplos y 0 fallos); CI remoto exitoso sobre `b5665aa` ([ejecución 43608171520](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43608171520)); un commit posterior requiere su propio CI; comprobación en navegador F17 **parcial**, cerrada así por decisión de Pablo, sin más comprobaciones manuales previstas; «con datos mínimos» aclarado (14/11/2026) para la rama de lectura de PT-11, pero PT-11 no está completo: compartir, revocar y reasignación siguen fuera y el listado de AM-1 sigue pendiente; faltan integrar el PR y el archivo | [ticket](docs/tickets/GL-06-captura-rapida.md); [plan de la entrega 2](docs/plan-entrega-2.md) |
 | **Pendiente** | Feedback, resumen, verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. **Hoy la
@@ -82,8 +82,9 @@ política completa. El recorrido núcleo de la entrega 2 está arriba.
 
 Mocks del recorrido, con datos ficticios:
 [propuesta, 1.3](propuesta-mvp.md#13-diseño-y-experiencia-de-usuario) y
-[Anexo E](anexos/anexo-e-mocks.md). Todavía no hay pantallas del producto
-más allá del inicio de sesión y una página de inicio provisoria.
+[Anexo E](anexos/anexo-e-mocks.md). Hoy hay inicio de sesión, el listado
+«Personas» y la ficha de la persona (GL-05); todavía no hay pantallas de
+feedback.
 
 ### 1.4. Instrucciones de instalación
 
@@ -156,7 +157,9 @@ con las reglas que cruzan entidades.
 
 Rutas HTML del monolito, sin API JSON:
 [propuesta, sección 4](propuesta-mvp.md#4-especificación-de-la-api-y-rutas-http).
-Hoy existen `GET /up`, el inicio y cierre de sesión y la página de inicio.
+Hoy existen `GET /up`; el inicio y cierre de sesión (`GET /session/new`,
+`POST /session` y `DELETE /session`); y, desde GL-05 (P-16), el listado
+«Personas» en `GET /` y `GET /personas` y la ficha en `GET /personas/:id`.
 
 ## 5. Historias de usuario
 

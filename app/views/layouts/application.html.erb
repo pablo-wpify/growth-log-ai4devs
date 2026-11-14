@@ -36,6 +36,10 @@
       </header>
     <% end %>
     <main class="container">
+      <%# Avisos (GL-06): confirman que la entrada sigue siendo privada. %>
+      <% if notice.present? %>
+        <p class="flash-notice" role="status"><%= notice %></p>
+      <% end %>
       <%= yield %>
     </main>
   </body>

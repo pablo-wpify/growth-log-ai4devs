@@ -195,7 +195,13 @@ bin/ci
 
 `bin/ci` ejecuta, en orden: preparación, RuboCop, `bundler-audit`, auditoría
 de importmap, Brakeman, preparación de la base de test y RSpec. Termina con
-código 0 solo si todo pasa. GitHub Actions ejecuta las mismas comprobaciones
+código 0 solo si todo pasa. La preparación (`bin/setup --skip-server`) corre
+`db:prepare` en **desarrollo**: aplica las migraciones pendientes a esa base.
+Después ejecuta `bin/rails log:clear tmp:clear`: **vacía `log/development.log`
+y `log/test.log`** y borra el contenido de `tmp/cache`, `tmp/sockets`,
+`tmp/screenshots` y `tmp/storage`. Si hace falta conservar algún log (por
+ejemplo, como evidencia), copialo antes de correr `bin/ci`.
+Las pruebas usan solo la base de test. GitHub Actions ejecuta las mismas comprobaciones
 (`.github/workflows/ci.yml`).
 
 `bin/brakeman` se ejecuta con `--ensure-latest`: si se publica una versión
@@ -244,8 +250,37 @@ La prueba automatizada en navegador llega con GL-09 (P-4, ADR-6); hasta
 entonces la presentación se comprueba a mano. Los pasos están en el
 [diseño de GL-05](../openspec/changes/archive/2026-11-07-gl-05-personas/design.md#comprobación-en-navegador-manual-no-automatizada).
 
+## 9. Captura rápida, completar y marcar como lista (GL-06)
+
+Desde la ficha de una persona asignada:
+
+1. **«Captura rápida»** abre una página propia
+   (`/personas/:id/entradas/nueva`, P-22) que pide solo «¿Qué pasó?». La
+   fecha del hecho es hoy en `America/Argentina/Buenos_Aires` (P-23). Al
+   guardar, vuelve a la ficha con el aviso «Guardamos tu borrador. Solo vos
+   podés verlo.».
+2. La ficha lista **«Tus entradas sobre <nombre>»**: solo las propias, por
+   fecha del hecho descendente y, en empate, la creada después primero
+   (P-21). Cada fila lleva al detalle (`/entradas/:id`).
+3. En el detalle, **«Editar»** completa fecha, contexto, señal, dimensión,
+   evidencia, impacto y confianza; la entrada sigue como borrador.
+4. **«Marcar como lista»** exige dimensión y señal (P-3); si falta alguna,
+   dice cuál. Una entrada lista sigue privada: los estados dicen «solo
+   vos». Repetirlo sobre una entrada ya lista no cambia nada (P-25).
+
+Las entradas son siempre privadas de su autor: otro líder de la misma
+persona, un líder sin asignación y una administradora reciben 404 por URL
+directa. Si termina la asignación o la persona queda inactiva, el autor
+sigue leyendo sus entradas por URL directa, sin enlace a la ficha ni
+escritura (P-24). El texto no aparece en los logs de la petición ni en los
+de las consultas (`filter_parameters`).
+
+Los datos ficticios (4c) no traen entradas: se crean a mano. La
+comprobación manual (F17) está en el
+[diseño de GL-06](../openspec/changes/gl-06-captura-rapida/design.md#comprobación-en-navegador-manual-no-automatizada).
+
 ## Lo que todavía no hay
 
-Pantallas de feedback, invitaciones y administración.
+Resumen y cronología de feedback (GL-07), invitaciones y administración.
 Qué llega, en qué orden y qué queda diferido está en el
 [plan de la entrega 2](plan-entrega-2.md).

@@ -26,7 +26,8 @@ body {
 
 a { color: var(--link); }
 
-a:focus-visible, button:focus-visible, input:focus-visible {
+a:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
@@ -99,6 +100,118 @@ h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 1rem; overflow-wrap: any
 .back-link { margin: 0 0 0.5rem; }
 
 .back-link a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/*
+ * Entradas de feedback (GL-06). El estado se lee siempre en texto
+ * («Borrador · solo vos», «Lista · solo vos»), no solo por color.
+ */
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.primary-action { margin: 1rem 0 1.5rem; }
+
+.flash-notice {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--link);
+  background: var(--surface);
+}
+
+h2 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 0.75rem; overflow-wrap: anywhere; }
+
+.entries { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+
+.entry-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  min-height: 44px;
+  padding: 0.75rem 0.25rem;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+}
+
+.entry-row:hover .entry-row-text { text-decoration: underline; }
+
+.entry-row-date { font-variant-numeric: tabular-nums; color: var(--text); }
+
+.entry-row-status { color: var(--muted); }
+
+.entry-row-text { flex-basis: 100%; overflow-wrap: anywhere; }
+
+.entry-status { font-weight: 600; margin: 0 0 0.25rem; }
+
+.entry-meta { color: var(--muted); margin: 0 0 1rem; }
+
+.readonly-note {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.entry-fields { margin: 0 0 1.5rem; }
+
+.entry-fields dt { font-weight: 600; margin-top: 0.75rem; }
+
+.entry-fields dd { margin: 0.25rem 0 0; }
+
+.entry-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 1rem; }
+
+.inline-form { margin: 0; }
+
+.entry-form .field { margin: 0 0 1rem; }
+
+.entry-form label, .entry-form legend { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+
+.entry-form textarea, .entry-form select, .entry-form input[type="date"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  font: inherit;
+}
+
+.entry-form select, .entry-form input[type="date"] { width: auto; }
+
+.choices { border: 1px solid var(--border); border-radius: 0.375rem; padding: 0.5rem 0.75rem; }
+
+.choices input[type="radio"] { width: 1.25rem; height: 1.25rem; margin: 0 0.25rem 0 0; vertical-align: middle; }
+
+.choices label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0 1rem 0 0;
+  font-weight: 400;
+  white-space: nowrap; /* el radio va dentro de la etiqueta: se ajustan juntos */
+}
+
+.entry-date { color: var(--muted); }
+
+.field-error { color: #a40e26; margin: 0.25rem 0 0; }
+
+.error-summary {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #a40e26;
+  border-left-width: 4px;
+}
+
+.error-summary ul { margin: 0; padding-left: 1.25rem; }
 
 @media (max-width: 30rem) {
   .site-account { margin-left: 0; flex-basis: 100%; order: 3; }

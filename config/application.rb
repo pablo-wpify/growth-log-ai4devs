@@ -40,7 +40,9 @@ module GrowthLog
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    # GL-06 (P-23): zona horaria de toda la instancia. Define «la fecha de hoy»
+    # de la captura rápida (3.2). La base sigue guardando las marcas en UTC.
+    config.time_zone = "America/Argentina/Buenos_Aires"
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
