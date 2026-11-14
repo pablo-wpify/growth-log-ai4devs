@@ -11,7 +11,7 @@
 > I1 a I9), que **no se modifica** y sigue siendo la referencia de todo el
 > alcance del MVP. Aquí se registra en qué se aparta la entrega 2 y por qué.
 >
-> Actualizado: 14/11/2026, con P-4 aprobada y GL-09 implementado en local, sin commit; GL-07 integrado (PR #5, `b835bde`) y
+> Actualizado: 14/11/2026, con GL-09 integrado (PR #6, `e0ceb4e`) y archivado, y el hito «recorrido núcleo» alcanzado; GL-07 integrado (PR #5, `b835bde`) y
 > archivado, después de aprobar P-10 y decidir su alcance; GL-06
 > integrado (PR #4, `8c2f2ad`) y archivado, F17 cerrada como parcial por decisión de Pablo y la aclaración
 > de «con datos mínimos» en la rama de lectura de PT-11. Antes: 13/11/2026, con las
@@ -72,7 +72,7 @@ citaban por número):
 | 6 | [GL-05](tickets/GL-05-personas.md) | «Personas» y ficha del líder: elegir una persona asignada | **cerrado** (archivado [`2026-11-07-gl-05-personas`](../openspec/changes/archive/2026-11-07-gl-05-personas/proposal.md); PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), `8d0e854`; CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466); comprobación manual E10 del 07/11/2026) | GL-03, GL-08, GL-01b | — (P-15, P-16 y P-17 aprobadas) |
 | 7 | [GL-06](tickets/GL-06-captura-rapida.md) | Captura rápida, completar y marcar como lista | **cerrado** (archivado [`2026-11-14-gl-06-captura-rapida`](../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/proposal.md); [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), merge `8c2f2ad`; CI [43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733) sobre `d65a66a`, el head del PR, y CI [43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250) sobre el merge `8c2f2ad`; gate local con 291 ejemplos; F17 **parcial** por decisión de Pablo; «con datos mínimos» aclarado para la rama de lectura de PT-11, que sigue incompleto en compartir, revocar y reasignación, con el listado de AM-1 pendiente) | GL-05 | — (P-1, P-2, P-3 y P-11 aprobadas; P-19 a P-26 decididas) |
 | 8 | [GL-07](tickets/GL-07-resumen-cronologia.md) | Resumen por dimensión y cronología | **cerrado** (archivado [`2026-11-14-gl-07-resumen-cronologia`](../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/proposal.md); [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), merge `b835bde`; CI [43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881) sobre `8f36845`, el head del PR, y CI [43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169) sobre el merge `b835bde`; gate local con 315 ejemplos) | GL-06 | — (P-2 aprobada; P-10 aprobada el 14/11/2026) |
-| 9 | [GL-09](tickets/GL-09-e2e-recorrido-nucleo.md) | Verificación E2E del recorrido núcleo | **implementado en local, sin commit** (cambio [`gl-09-e2e-recorrido-nucleo`](../openspec/changes/gl-09-e2e-recorrido-nucleo/proposal.md); implementación local autorizada en M202; gate local en verde con 317 ejemplos; faltan el CI remoto y el archivo) | GL-07 | — (P-4 aprobada el 14/11/2026) |
+| 9 | [GL-09](tickets/GL-09-e2e-recorrido-nucleo.md) | Verificación E2E del recorrido núcleo | **cerrado** (archivado [`2026-11-14-gl-09-e2e-recorrido-nucleo`](../openspec/changes/archive/2026-11-14-gl-09-e2e-recorrido-nucleo/proposal.md); [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6), merge `e0ceb4e`; CI [43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960) sobre `2f192ab`, el head del PR, y CI [43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495) sobre el merge `e0ceb4e`; gate local con 317 ejemplos) | GL-07 | — (P-4 aprobada el 14/11/2026) |
 | — | GL-04 | Invitaciones y administración de cuentas, personas y asignaciones | **diferido** | GL-03 | ADR-8 para la entrega real del correo |
 
 Los IDs identifican tickets; no indican orden. El orden lo da la primera
@@ -244,11 +244,13 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
 - **Fuera de GL-09:** invitaciones, administración, compartir, filtros,
   feed y despliegue; el E2E hasta compartir sigue pendiente (C11; I4).
 - Detalle en [el ticket](tickets/GL-09-e2e-recorrido-nucleo.md) y en el
-  cambio [`gl-09-e2e-recorrido-nucleo`](../openspec/changes/gl-09-e2e-recorrido-nucleo/proposal.md),
-  **implementado en local, sin commit**: gate local en verde (317
-  ejemplos, 0 fallos) y mutaciones M1 a M4 detectadas. El hito «recorrido
-  núcleo» se alcanza con GL-09 en verde en el CI remoto, todavía
-  pendiente.
+  cambio archivado [`2026-11-14-gl-09-e2e-recorrido-nucleo`](../openspec/changes/archive/2026-11-14-gl-09-e2e-recorrido-nucleo/proposal.md).
+  **Cerrado:** gate local en verde (317 ejemplos, 0 fallos), mutaciones M1
+  a M4 detectadas, integrado con el [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6) (merge `e0ceb4e`)
+  y CI remoto exitoso sobre el head del PR y sobre el merge, con las
+  pruebas en navegador en GitHub Actions. Con eso se alcanza el hito
+  «recorrido núcleo» (sección 2), que no equivale al «primer recorrido
+  usable» del Anexo G ni cubre lo diferido.
 
 ### Diferido: sigue siendo requisito pendiente
 
@@ -487,7 +489,7 @@ asignación; y una persona Q sin asignaciones.
 | Con la asignación terminada (y con la persona inactiva), L1 lee por URL directa su borrador y su entrada lista, sin enlace a la ficha; editar y marcar como lista dan 404 sin cambios; la ficha da 404 | lectura propia sin asignación (3.10 y 4.14 parciales, P-24; rama de lectura de PT-11, con «con datos mínimos» aclarado el 14/11/2026; P-9, P-20) | **comprobado en local en GL-06** (13/11/2026; sin CI remoto) |
 | Resumen, cronología y conteo de L2 sobre P no incluyen la entrada lista de L1; los de L1 sí; un borrador no cuenta | consultas con alcance (4.11, 4.12 parcial, 3.3, 1.15 parcial) | GL-07 |
 | Mutación registrada: quitar el alcance de la consulta del resumen hace fallar la prueba | que la prueba detecta la fuga | GL-07 |
-| E2E en navegador del recorrido completo y rama negativa de L2 | el recorrido funciona por la interfaz | **comprobado en local en GL-09** (14/11/2026; sin CI remoto): `spec/system/core_journey_spec.rb`, con mutaciones M1 a M4 |
+| E2E en navegador del recorrido completo y rama negativa de L2 | el recorrido funciona por la interfaz | **comprobado en GL-09** (14/11/2026), en local y en el CI remoto ([43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960) sobre `2f192ab` y [43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495) sobre el merge `e0ceb4e`): `spec/system/core_journey_spec.rb`, con mutaciones M1 a M4 |
 | Log de pruebas sin el texto de las entradas, en la petición y en las consultas | feedback fuera de los logs | **comprobado en local en GL-06** (13/11/2026; sin CI remoto): la petición y las consultas muestran `[FILTERED]` |
 | `bin/ci` local y CI remoto en verde sobre el SHA publicado | integración | cada ticket |
 
@@ -544,7 +546,7 @@ aclaración de Pablo del 14/11/2026 sobre «con datos mínimos» (de la
 persona, solo el nombre; la entrada propia, completa). PT-11 sigue
 incompleto: compartir, revocar y la reasignación siguen fuera, y el
 listado de AM-1 sigue pendiente. La prueba automatizada en
-navegador sigue bloqueada por P-4 (ADR-6) y queda para GL-09; en GL-05 hay
+navegador sigue bloqueada por P-4 (ADR-6) y queda para GL-09 (la agregó GL-09 el 14/11/2026); en GL-05 hay
 una comprobación manual. El aislamiento del feedback entre líderes de la
 misma persona quedó comprobado con GL-06, en local y en el CI remoto del
 PR #4.

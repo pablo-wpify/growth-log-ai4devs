@@ -2,18 +2,21 @@
 
 > Noveno ticket de la entrega 2 de Growth Log. Lugar en la secuencia:
 > [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec:
-> [`gl-09-e2e-recorrido-nucleo`](../../openspec/changes/gl-09-e2e-recorrido-nucleo/proposal.md).
-> **Estado (14/11/2026): implementado en local, sin commit.** Pablo
-> decidió P-4 (ADR-6) y autorizó la implementación local en M202. Gate
-> local en verde: `bin/ci` con 317 ejemplos y 0 fallos; mutaciones M1 a M4
-> detectadas. Faltan la revisión del cambio, el CI remoto y el archivo.
-> Evidencia en el
-> [diseño](../../openspec/changes/gl-09-e2e-recorrido-nucleo/design.md#registro-de-la-implementación-14112026-local-sin-commit).
+> [`gl-09-e2e-recorrido-nucleo`](../../openspec/changes/archive/2026-11-14-gl-09-e2e-recorrido-nucleo/proposal.md).
+> **Estado (14/11/2026): cerrado y archivado.** Integrado en
+> `feature/entrega-2-pp` con el [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6) (merge commit `e0ceb4e94cf66d42d99c4169368f056793d20358`) y archivado como
+> [`2026-11-14-gl-09-e2e-recorrido-nucleo`](../../openspec/changes/archive/2026-11-14-gl-09-e2e-recorrido-nucleo/proposal.md). Pablo decidió
+> P-4 (ADR-6) y autorizó la implementación en M202. Gate local en verde:
+> `bin/ci` con 317 ejemplos y 0 fallos; mutaciones M1 a M4 detectadas. CI
+> remoto exitoso sobre `2f192ab`, el head del PR ([ejecución 43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960)), y sobre el merge
+> `e0ceb4e` ([ejecución 43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495)), con las pruebas en navegador en GitHub Actions.
+> Con eso se alcanza el hito «recorrido núcleo» del plan, que **no equivale** al «primer recorrido usable» del Anexo G (pendiente hasta GL-04) ni cubre el alcance diferido. Evidencia en el
+> [diseño](../../openspec/changes/archive/2026-11-14-gl-09-e2e-recorrido-nucleo/design.md#registro-de-la-implementación-14112026-local-sin-commit).
 >
 > | Tipo | Qué | Registro |
 > |---|---|---|
 > | Decisiones aprobadas | P-4 (ADR-6) y las dependencias de prueba (14/11/2026, M202) | [14/11/2026](../decisiones/2026-11-14-gl-09-e2e.md) |
-> | Cambio de OpenSpec | implementación autorizada en el mismo pedido (M202); revisión humana del cambio pendiente | tarea 0.4 |
+> | Cambio de OpenSpec | implementación autorizada en el mismo pedido (M202); revisión de solo lectura pedida por Pablo y publicación autorizada después | tarea 0.4 |
 
 ## Problema
 

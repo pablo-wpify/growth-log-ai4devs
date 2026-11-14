@@ -1,10 +1,12 @@
 # Design
 
-> **Estado (14/11/2026): implementado en local, sin commit.** Pablo
-> decidió P-4 (ADR-6) y autorizó la implementación local en M202, en el
-> mismo pedido que preparó este cambio; la revisión humana del cambio
-> queda pendiente antes del commit. Lo ejecutado se registra en «Registro
-> de la implementación».
+> **Estado (14/11/2026): cerrado y archivado.** Integrado en
+> `feature/entrega-2-pp` con el [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6) (merge commit `e0ceb4e`) y archivado
+> como `2026-11-14-gl-09-e2e-recorrido-nucleo`. Pablo decidió P-4 (ADR-6) y autorizó la implementación
+> local en M202; pidió una revisión de solo lectura del cambio y después
+> autorizó la publicación. CI
+> remoto exitoso (ver «CI remoto del 14/11/2026»). Lo ejecutado se
+> registra en «Registro de la implementación».
 
 ## Context
 
@@ -146,10 +148,26 @@ no hubo commit ni push.
 - **Sin cambios** en el código del producto, rutas, migraciones ni reglas
   de privacidad.
 
-**Pendiente:** la revisión humana del cambio; con autorización, commit,
-push, CI remoto (primera ejecución de las pruebas en navegador en GitHub
-Actions) y archivo del cambio. El hito «recorrido núcleo» se alcanza con
-GL-09 en verde en el CI remoto.
+**CI remoto del 14/11/2026:** [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6) desde
+`feature/GL-09-e2e-recorrido-nucleo` contra `feature/entrega-2-pp`, con
+los commits `258eab0` (implementación y documentación) y `2f192ab`
+(registro de prompts). GitHub Actions, [ejecución 43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960): **exitosa** sobre
+`2f192abe0441553fe6df58fd0e55b1b65f115faf`, el head del PR, con
+`scan_ruby`, `scan_js`, `lint` y `test` en verde. El job `test` corrió
+317 ejemplos con 0 fallos, incluidas las 2 pruebas en navegador con el
+Chrome de la imagen `ubuntu-latest`: fue su primera ejecución en GitHub
+Actions. No hubo capturas, porque no hubo fallos. Vale solo para ese SHA.
+
+**Integración y archivo (14/11/2026):** el [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6) se integró en
+`feature/entrega-2-pp` con un merge commit, `e0ceb4e94cf66d42d99c4169368f056793d20358`, y el cambio se archivó
+como `2026-11-14-gl-09-e2e-recorrido-nucleo`. Se actualizaron las specs vigentes `quality-pipeline` (dos
+requisitos nuevos) y `development-environment` («Suite de pruebas única y
+efectiva»). El merge tuvo su propio CI al llegar a `feature/entrega-2-pp`:
+[ejecución 43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495), **exitosa** sobre `e0ceb4e94cf66d42d99c4169368f056793d20358`, con los mismos cuatro jobs en verde y 317
+ejemplos.
+
+**Hito:** el plan lo fija en GL-09 en verde en el CI. Con eso se alcanza el hito «recorrido núcleo» del plan, que **no equivale** al «primer recorrido usable» del Anexo G (pendiente hasta GL-04) ni cubre el alcance diferido. La consigna
+del curso no está en el repositorio y no se contrastó.
 
 ## Risks / Trade-offs
 
