@@ -2,14 +2,18 @@
 
 > Octavo ticket de la entrega 2 de Growth Log. Lugar en la secuencia:
 > [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec:
-> [`gl-07-resumen-cronologia`](../../openspec/changes/gl-07-resumen-cronologia/proposal.md).
-> **Estado (14/11/2026): implementado en local, sin commit.** Pablo aprobó
-> P-10, decidió el alcance de 4.3, 4.4, 4.5 y 1.15 y confirmó los detalles
-> de presentación y las mutaciones el 14/11/2026, y aprobó el cambio de
-> OpenSpec ese mismo día (M194). Gate local en verde: `bin/ci` con 315
-> ejemplos y 0 fallos; mutaciones M1 a M4 detectadas. Faltan el CI remoto
-> y el archivo. Evidencia en el
-> [diseño](../../openspec/changes/gl-07-resumen-cronologia/design.md#registro-de-la-implementación-14112026-local-sin-commit).
+> [`gl-07-resumen-cronologia`](../../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/proposal.md).
+> **Estado (14/11/2026): cerrado y archivado.** Integrado en
+> `feature/entrega-2-pp` con el [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5) (merge commit `b835bdebc064bf1184a91fd7a7404705628dc12d`) y archivado como
+> [`2026-11-14-gl-07-resumen-cronologia`](../../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/proposal.md).
+> Pablo aprobó P-10, decidió el alcance de 4.3, 4.4, 4.5 y 1.15 y confirmó
+> los detalles de presentación y las mutaciones el 14/11/2026, y aprobó el
+> cambio de OpenSpec ese mismo día (M194). Gate local en verde: `bin/ci`
+> con 315 ejemplos y 0 fallos; mutaciones M1 a M4 detectadas. CI remoto
+> exitoso sobre `8f36845`, el head del PR ([ejecución 43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881)), y sobre el merge
+> `b835bde` ([ejecución 43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169)). Sin comprobación en navegador: es de GL-09. Evidencia
+> en el
+> [diseño](../../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/design.md#registro-de-la-implementación-14112026-local-sin-commit).
 >
 > | Tipo | Qué | Registro |
 > |---|---|---|

@@ -1,10 +1,12 @@
 # Design
 
-> **Estado (14/11/2026): implementado en local, sin commit.** P-2 está
-> aprobada (12/11/2026); Pablo aprobó P-10, decidió el alcance de 4.3, 4.4,
-> 4.5 y 1.15 y confirmó los detalles el 14/11/2026, y aprobó el cambio ese
-> mismo día (M194). Lo ejecutado se registra en «Registro de la
-> implementación».
+> **Estado (14/11/2026): cerrado y archivado.** Integrado en
+> `feature/entrega-2-pp` con el [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5) (merge commit `b835bde`) y archivado
+> como `2026-11-14-gl-07-resumen-cronologia`. P-2 está aprobada
+> (12/11/2026); Pablo aprobó P-10, decidió el alcance de 4.3, 4.4, 4.5 y
+> 1.15 y confirmó los detalles el 14/11/2026, y aprobó el cambio ese mismo
+> día (M194). CI remoto exitoso (ver «CI remoto del 14/11/2026»). Lo
+> ejecutado se registra en «Registro de la implementación».
 
 ## Context
 
@@ -244,8 +246,23 @@ hubo commit ni push.
 - **Sin comprobación en navegador:** el plan no la exige para GL-07; la
   prueba en navegador es de GL-09.
 
-**Pendiente:** con autorización, commit, push y CI remoto, y el archivo
-del cambio.
+**CI remoto del 14/11/2026:** [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5) desde `feature/GL-07-resumen-cronologia`
+contra `feature/entrega-2-pp`, con los commits `187cb6b` (implementación
+y documentación) y `8f36845` (registro de prompts). GitHub Actions,
+[ejecución 43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881): **exitosa** sobre `8f36845057864205d4447403b5850c802071675f`, el
+head del PR, con `scan_ruby`, `scan_js`, `lint` y `test` en verde. Vale
+solo para ese SHA.
+
+**Integración y archivo (14/11/2026):** el [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5) se integró en
+`feature/entrega-2-pp` con un merge commit, `b835bdebc064bf1184a91fd7a7404705628dc12d`, y el cambio se archivó
+como `2026-11-14-gl-07-resumen-cronologia`. La spec `feedback-summary`
+pasó a las vigentes y se actualizaron `authorization`, `feedback-capture`
+y `people-browsing`; los propósitos de `feedback-summary` y
+`feedback-capture` se escribieron a mano (ver «Migration Plan»). El merge
+tuvo su propio CI al llegar a `feature/entrega-2-pp`: [ejecución 43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169), **exitosa**
+sobre `b835bdebc064bf1184a91fd7a7404705628dc12d`, con los mismos cuatro jobs en verde.
+
+**Pendiente:** la verificación E2E en navegador (GL-09).
 
 ## Risks / Trade-offs
 

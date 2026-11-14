@@ -3,8 +3,9 @@
 ## Purpose
 Define cómo el líder registra feedback desde la ficha: la captura rápida
 en una página propia, completar un borrador, marcarlo como lista, el
-detalle de una entrada propia, también sin acceso a la ficha, y la sección
-de entradas propias, con textos que no confunden «lista» con «compartida».
+detalle de una entrada propia, también sin acceso a la ficha, con textos
+que no confunden «lista» con «compartida». Las entradas propias se listan
+en la vista cronológica (spec `feedback-summary`).
 
 ## Requirements
 
@@ -128,33 +129,17 @@ lectura de PT-11). Sin listado: 3.10 y 4.14 quedan parciales.
 - **WHEN** la persona pasa a inactiva y el autor abre por URL directa el detalle de su entrada
 - **THEN** ve todos los campos de su entrada y, de la persona, solo el nombre, sin enlace a la ficha ni acciones de escritura
 
-### Requirement: Entradas propias en la ficha
-La ficha SHALL listar las entradas de la cuenta sobre esa persona, en
-borrador y listas, con la fecha del hecho, el estado y el comienzo del
-contexto, cada una con un enlace a su detalle, ordenadas por fecha del
-hecho descendente y, en empate, primero la creada después (P-21). MUST
-NOT incluir entradas de otras cuentas. Sin entradas propias, SHALL
-mostrar un mensaje que lo diga. Es provisoria: GL-07 la reemplaza por la
-cronología con un cambio explícito de esta spec.
-
-#### Scenario: Líder con entradas propias
-- **WHEN** un líder con un borrador y una entrada lista sobre una persona abre su ficha
-- **THEN** ve las dos, cada una con su estado, y no ve las entradas de otro líder de esa persona
-
-#### Scenario: Orden de la sección
-- **WHEN** un líder tiene tres entradas propias sobre una persona, dos con la misma fecha del hecho y una con una fecha anterior
-- **THEN** la sección muestra primero las dos de la fecha más reciente, la creada después antes que la otra, y al final la de la fecha anterior
-
-#### Scenario: Líder sin entradas propias
-- **WHEN** un líder sin entradas sobre una persona abre su ficha
-- **THEN** ve el mensaje de que todavía no registró entradas sobre esa persona
-
 ### Requirement: Textos que separan «lista» de «compartida»
 Ningún texto de la interfaz de entradas MUST decir «Publicar». Los estados
-SHALL mostrarse como «Borrador · solo vos» y «Lista · solo vos», y los
-avisos de guardar y marcar como lista SHALL decir que solo el autor ve la
-entrada.
+SHALL mostrarse como «Borrador · solo vos» y «Lista · solo vos»; en la
+cronología de la ficha, el estado de un borrador SHALL ser «Borrador ·
+solo vos · fuera del resumen» (P-10). Los avisos de guardar y marcar como
+lista SHALL decir que solo el autor ve la entrada.
 
 #### Scenario: Páginas de entradas
 - **WHEN** el autor recorre la ficha, la captura, el detalle y la edición
 - **THEN** ninguna página contiene «Publicar» y los estados indican «solo vos»
+
+#### Scenario: Borrador en la cronología
+- **WHEN** el autor abre la ficha con un borrador propio sobre la persona
+- **THEN** la cronología lo muestra como «Borrador · solo vos · fuera del resumen»

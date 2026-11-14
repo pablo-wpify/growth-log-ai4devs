@@ -11,8 +11,8 @@
 > I1 a I9), que **no se modifica** y sigue siendo la referencia de todo el
 > alcance del MVP. Aquí se registra en qué se aparta la entrega 2 y por qué.
 >
-> Actualizado: 14/11/2026, con P-10 aprobada y el alcance de GL-07
-> decidido, y GL-07 implementado en local, sin commit; GL-06
+> Actualizado: 14/11/2026, con GL-07 integrado (PR #5, `b835bde`) y
+> archivado, después de aprobar P-10 y decidir su alcance; GL-06
 > integrado (PR #4, `8c2f2ad`) y archivado, F17 cerrada como parcial por decisión de Pablo y la aclaración
 > de «con datos mínimos» en la rama de lectura de PT-11. Antes: 13/11/2026, con las
 > decisiones de Pablo sobre P-19 a P-26 y la aprobación del cambio de
@@ -71,7 +71,7 @@ citaban por número):
 | 5a | [GL-01b](tickets/GL-01b-rails-8-1-4-1.md) | Rails 8.1.4.1 por los avisos de seguridad del 04/11/2026 | **cerrado** (archivado [`2026-11-07-gl-01b-rails-8-1-4-1`](../openspec/changes/archive/2026-11-07-gl-01b-rails-8-1-4-1/proposal.md); PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), `8ae8723`; CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492)) | GL-01 | — (P-18 aprobada) |
 | 6 | [GL-05](tickets/GL-05-personas.md) | «Personas» y ficha del líder: elegir una persona asignada | **cerrado** (archivado [`2026-11-07-gl-05-personas`](../openspec/changes/archive/2026-11-07-gl-05-personas/proposal.md); PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), `8d0e854`; CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466); comprobación manual E10 del 07/11/2026) | GL-03, GL-08, GL-01b | — (P-15, P-16 y P-17 aprobadas) |
 | 7 | [GL-06](tickets/GL-06-captura-rapida.md) | Captura rápida, completar y marcar como lista | **cerrado** (archivado [`2026-11-14-gl-06-captura-rapida`](../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/proposal.md); [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), merge `8c2f2ad`; CI [43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733) sobre `d65a66a`, el head del PR, y CI [43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250) sobre el merge `8c2f2ad`; gate local con 291 ejemplos; F17 **parcial** por decisión de Pablo; «con datos mínimos» aclarado para la rama de lectura de PT-11, que sigue incompleto en compartir, revocar y reasignación, con el listado de AM-1 pendiente) | GL-05 | — (P-1, P-2, P-3 y P-11 aprobadas; P-19 a P-26 decididas) |
-| 8 | [GL-07](tickets/GL-07-resumen-cronologia.md) | Resumen por dimensión y cronología | **implementado en local, sin commit** (cambio [`gl-07-resumen-cronologia`](../openspec/changes/gl-07-resumen-cronologia/proposal.md) aprobado el 14/11/2026, M194; gate local en verde con 315 ejemplos; faltan el CI remoto y el archivo) | GL-06 | — (P-2 aprobada; P-10 aprobada el 14/11/2026) |
+| 8 | [GL-07](tickets/GL-07-resumen-cronologia.md) | Resumen por dimensión y cronología | **cerrado** (archivado [`2026-11-14-gl-07-resumen-cronologia`](../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/proposal.md); [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), merge `b835bde`; CI [43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881) sobre `8f36845`, el head del PR, y CI [43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169) sobre el merge `b835bde`; gate local con 315 ejemplos) | GL-06 | — (P-2 aprobada; P-10 aprobada el 14/11/2026) |
 | 9 | GL-09 | Verificación E2E del recorrido núcleo | pendiente | GL-07 | P-4 (ADR-6) |
 | — | GL-04 | Invitaciones y administración de cuentas, personas y asignaciones | **diferido** | GL-03 | ADR-8 para la entrega real del correo |
 
@@ -221,11 +221,11 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   M4 del diseño del cambio).
 - **Diferido:** filtros 4.6 y 4.7 (I6), origen «compartida con vos».
 - Detalle en [el ticket](tickets/GL-07-resumen-cronologia.md) y en el
-  cambio [`gl-07-resumen-cronologia`](../openspec/changes/gl-07-resumen-cronologia/proposal.md),
-  aprobado por Pablo el 14/11/2026 (M194) e **implementado en local, sin
-  commit**: gate local en verde (315 ejemplos, 0 fallos) y mutaciones M1 a
-  M4 detectadas. Faltan el CI remoto y el archivo. La prueba E2E y P-4
-  (ADR-6) son de GL-09.
+  cambio archivado [`2026-11-14-gl-07-resumen-cronologia`](../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/proposal.md),
+  aprobado por Pablo el 14/11/2026 (M194). **Cerrado:** gate local en
+  verde (315 ejemplos, 0 fallos), mutaciones M1 a M4 detectadas, integrado
+  con el [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5) (merge `b835bde`) y CI remoto exitoso sobre el
+  head del PR y sobre el merge. La prueba E2E y P-4 (ADR-6) son de GL-09.
 
 ### GL-09. Verificación E2E del recorrido núcleo
 
