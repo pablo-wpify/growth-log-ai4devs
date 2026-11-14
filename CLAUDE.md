@@ -1,6 +1,6 @@
 # Growth Log
 
-Monolito Rails 8.1.4 con Ruby 4.0.9, PostgreSQL 18.6, Hotwire con importmap
+Monolito Rails 8.1.4.1 con Ruby 4.0.9, PostgreSQL 18.6, Hotwire con importmap
 (sin Node), RSpec y OpenSpec 1.15. Proyecto final de AI4Devs de Pablo
 Peuscovich. Todo se escribe en español rioplatense.
 
@@ -29,8 +29,10 @@ Verificados en GL-01 y GL-02 (02/11/2026), desde la raíz. Detalle en
   `openspec/changes/<cambio>/`. Contexto de OpenSpec: `openspec/config.yaml`.
 - Política de privacidad, criterios y casos PT: `anexos/anexo-a-historias.md`;
   decisiones D y AM: `anexos/anexo-c-riesgos-decisiones.md`.
-- Entrega 1 (`propuesta-mvp.md`, `anexos/`, `prompts.md`) y
-  `openspec/changes/archive/`: referencia histórica; no se reescriben.
+- Entrega 1 (`propuesta-mvp.md`, `anexos/` y la sección «Entrega 1» de
+  `prompts.md`) y `openspec/changes/archive/`: referencia histórica; no se
+  reescriben. La sección «Entrega 2» de `prompts.md` es el índice vivo del
+  registro de prompts y se actualiza con cada etapa.
 
 ## Cómo se trabaja
 

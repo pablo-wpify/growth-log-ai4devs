@@ -507,46 +507,44 @@ No hay configuraciones personales ni permisos nuevos.
 
 ## 9. Próximo paso
 
-GL-05 está cerrado y archivado ([ticket](tickets/GL-05-personas.md),
-PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), merge commit `8d0e854`, CI
-[42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466) con 192 ejemplos, cambio
-[`2026-11-07-gl-05-personas`](../openspec/changes/archive/2026-11-07-gl-05-personas/proposal.md)).
-La comprobación manual E10 se hizo el 07/11/2026, por Pablo y con
-asistencia de Claude Code, con los 375 px emulados en DevTools.
-Quedan como **seguimiento**, sin comprobar, cuatro pasos adicionales del
-procedimiento del diseño que no forman parte de los criterios de E10:
-volver con «← Volver a Personas» desde el navegador, la vista de Inés a
-375 px, la cabecera en dos líneas y el área táctil de al menos 44 px. La
-presencia del enlace y su destino están cubiertos por `people_spec` (E4).
-No bloquean el cierre de GL-05 y pueden sumarse a la verificación en navegador
-de GL-09.
-GL-01b está cerrado y archivado, con P-18 aprobada (07/11/2026): el
-`Gemfile` queda sin cambios. GL-06 está **cerrado y archivado**: P-1, P-2, P-3 y
-P-11 se aprobaron el 12/11/2026, Pablo decidió P-19 a P-26 el 13/11/2026
-y aprobó ese mismo día el cambio de OpenSpec de GL-06 («Vamos para
-adelante», según M120). Se integró en `feature/entrega-2-pp` con el
-[PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4) (merge commit `8c2f2ade1ad1324c7eaeacbcfebc067eb9fa3d3f`) y el
-cambio se archivó como `2026-11-14-gl-06-captura-rapida`. El gate local pasó el 14/11/2026 (`bin/bundler-audit update` y
-`bin/ci`, con 291 ejemplos y 0 fallos) y las seis mutaciones se detectan
-([diseño](../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/design.md#registro-de-la-implementación-13112026-local-sin-commit)).
-La comprobación en navegador F17 quedó **parcial**: Pablo decidió el
-14/11/2026 no hacer más comprobaciones manuales (375 px revisados solo con
-un `iframe` y, en el navegador, la sesión vencida solo como simulación sin
-cookie); no hay más comprobaciones manuales previstas. El CI remoto
-pasó sobre `b5665aa9481f82e9bca86e7a52b872a951d899da`
-([ejecución 43608171520](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43608171520)) y, después de la actualización
-documental, sobre `d65a66aa4c77436e9b9e1d27930c0be385264f3d`, el head
-final del PR ([ejecución 43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733)). Esa ejecución no
-corresponde al SHA de merge: el merge
-`8c2f2ade1ad1324c7eaeacbcfebc067eb9fa3d3f` tuvo su propio CI, también
-exitoso ([ejecución 43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250), al llegar a
-`feature/entrega-2-pp`). 3.10 y 4.14 quedan
-**parciales** (P-24), y la rama de lectura de PT-11 quedó resuelta con la
-aclaración de Pablo del 14/11/2026 sobre «con datos mínimos» (de la
-persona, solo el nombre; la entrada propia, completa). PT-11 sigue
-incompleto: compartir, revocar y la reasignación siguen fuera, y el
-listado de AM-1 sigue pendiente. La prueba automatizada en
-navegador sigue bloqueada por P-4 (ADR-6) y queda para GL-09 (la agregó GL-09 el 14/11/2026); en GL-05 hay
-una comprobación manual. El aislamiento del feedback entre líderes de la
-misma persona quedó comprobado con GL-06, en local y en el CI remoto del
-PR #4.
+**Estado al 14/11/2026.** La secuencia de la sección 5 está completa: GL-01,
+GL-01a, GL-01b, GL-02, GL-03, GL-05, GL-06, GL-07, GL-08 y GL-09 están
+cerrados y archivados, cada uno con su evidencia en su ticket y en la
+sección 7. GL-09 quedó en verde en el CI remoto
+([43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960) sobre `2f192ab`, el head del
+[PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6), y [43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495) sobre el
+merge `e0ceb4e`): con eso se alcanza el hito «recorrido núcleo» (sección
+2), que **no equivale** al «primer recorrido usable» del Anexo G ni cubre
+el alcance diferido.
+
+**No hay un ticket siguiente decidido.** Lo que queda es el alcance
+diferido, que sigue siendo requisito: GL-04 (invitaciones y administración,
+con ADR-8 para el correo), compartir y revocar (I4), filtros y feed (I6),
+la protección del último administrador y la revocación administrativa (I7
+e I8) y el despliegue (ADR-7). El orden lo decide Pablo.
+
+**Pendientes que quedan registrados, sin bloquear el hito:**
+
+- **GL-05:** cuatro pasos de seguimiento de la comprobación manual E10 sin
+  comprobar (volver con «← Volver a Personas» desde el navegador, la vista
+  de Inés a 375 px, la cabecera en dos líneas y el área táctil de 44 px).
+  GL-09 no los cubre: verifica el recorrido, no la presentación a 375 px.
+- **GL-06:** la comprobación en navegador F17 quedó **parcial** por
+  decisión de Pablo (14/11/2026); 3.10 y 4.14 son parciales (P-24). PT-11
+  sigue incompleto: su rama de lectura quedó aclarada («con datos
+  mínimos»), pero compartir, revocar, la reasignación y el listado de AM-1
+  siguen pendientes.
+- **GL-07:** el conteo en «Personas» no tiene comprobación en navegador; lo
+  cubren las pruebas de peticiones.
+- **Registro de prompts:** M178 a M189, M195 a M201 y M203 a M205 no están
+  registrados (ver [prompts.md](../prompts.md)).
+- **Spec `runtime-toolchain`:** corregida a Rails 8.1.4.1 con el cambio de
+  seguimiento de GL-01b
+  [`2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1`](../openspec/changes/archive/2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1/proposal.md),
+  preparado en M208 y aprobado y archivado en M209 (14/11/2026), sin
+  commit todavía.
+
+Historia de esta sección: hasta el 14/11/2026 describía el cierre de GL-05
+y GL-06; ese detalle sigue en los tickets
+([GL-05](tickets/GL-05-personas.md), [GL-06](tickets/GL-06-captura-rapida.md))
+y en sus diseños archivados.

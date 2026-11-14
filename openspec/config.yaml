@@ -18,7 +18,8 @@ context: |
   como verificaciones del producto. Decisiones del producto: docs/decisiones/.
 
   Decisiones aprobadas: D1, D2, D5, AM-1 a AM-5 y criterios 3.9, 4.11 y 4.12
-  (entrega 1); ADR-1 (monolito Rails), Ruby 4.0.9, Rails 8.1.4,
+  (entrega 1); ADR-1 (monolito Rails), Ruby 4.0.9, Rails 8.1.4 (8.1.4.1
+  desde GL-01b, P-18),
   PostgreSQL 18.6, RSpec y las decisiones D-GL01-1 a D-GL01-4 (GL-01);
   ADR-2 y D-GL02-1 a D-GL02-7 (GL-02); recorrido núcleo priorizado y
   alcance diferido (plan de la entrega 2, sección 1). Lo diferido sigue

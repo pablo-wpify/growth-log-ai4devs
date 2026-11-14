@@ -29,9 +29,10 @@ modelo no está verificado; no se reconstruye.
 | GL-08. Datos ficticios de desarrollo | M25–M27 | `5025694` a `eacb16e`; CI 41621619815 y 41621897764 | [GL-08](docs/prompts/GL-08/README.md) |
 | GL-05. «Personas» y ficha del líder | M28, M33, M35–M37, M61–M81 | PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), integrado en `8d0e854`; CI 42398717466; comprobación manual E10 (M75–M77), archivo (M78) y cierre publicado en `6b9577f` (M80); CI 42419660424; registro de M80 en `4bac6e4` (M81) | [GL-05](docs/prompts/GL-05/README.md) |
 | GL-01b. Rails 8.1.4.1 por avisos de seguridad | M38–M60 | PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), integrado en `8ae8723`; CI 42380986492; archivado (M74) | [GL-01b](docs/prompts/GL-01b/README.md) |
-| GL-06. Captura rápida, completar y marcar como lista | M83–M90, M94, M96–M124, M128–M131, M133–M140, M144–M177 | decisiones P-1, P-2, P-3 y P-11 aprobadas (M85) y P-19 a P-24, más P-25 y P-26 con números provisionales, decididas (M107; M108 repitió el texto); ajustes de revisión y tareas 0.1 a 0.3 marcadas (M114); números provisionales (M116; M117 repitió el texto); cambio aprobado e implementado en local (M120); sin commit | [GL-06](docs/prompts/GL-06/README.md) |
+| GL-06. Captura rápida, completar y marcar como lista | M83–M90, M94, M96–M124, M128–M131, M133–M140, M144–M177 | decisiones P-1, P-2, P-3 y P-11 aprobadas (M85) y P-19 a P-24, más P-25 y P-26 con números provisionales, decididas (M107; M108 repitió el texto); ajustes de revisión y tareas 0.1 a 0.3 marcadas (M114); números provisionales (M116; M117 repitió el texto); cambio aprobado e implementado (M120); PR [#4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), integrado en `8c2f2ad`; CI 43609790733 y 43610547250; archivado (cierre en M178 a M189, sin registro) | [GL-06](docs/prompts/GL-06/README.md) |
 | GL-07. Resumen por dimensión y cronología | M190–M194 | P-10 aprobada y alcance de 4.3, 4.4, 4.5 y 1.15 decidido (M192); detalles confirmados (M193); cambio aprobado e implementado, con 315 ejemplos en `bin/ci` (M194); PR [#5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), integrado en `b835bde`; CI 43631292881 y 43632097169; archivado | [GL-07](docs/prompts/GL-07/README.md) |
 | GL-09. Verificación E2E del recorrido núcleo | M202 | P-4 aprobada; cambio preparado e implementado, con 317 ejemplos en `bin/ci` (M202); PR [#6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6), integrado en `e0ceb4e`; CI 43634781960 y 43635205495; archivado | [GL-09](docs/prompts/GL-09/README.md) |
+| Revisión de la entrega 2 | M206–M209 | auditoría de solo lectura (M206), correcciones documentales para la revisión externa (M207) y cambio de OpenSpec `gl-01b-runtime-toolchain-rails-8-1-4-1`, preparado (M208) y aprobado y archivado como `2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1` (M209); sin commit | [revision-entrega-2](docs/prompts/revision-entrega-2/README.md) |
 | Registro de prompts | M29–M32 | PR [#1](https://github.com/pablo-wpify/growth-log-ai4devs/pull/1), integrado en `925e2ee`; CI 41629470056 | [registro-prompts](docs/prompts/registro-prompts/README.md) |
 
 **Conteos.** La transcripción tiene 30 mensajes del usuario hasta este
@@ -46,11 +47,29 @@ registro, numerados por posición de M01 a M30:
   **27 textos distintos**, guardados en 27 archivos; el de M03 a M05 lista
   los tres envíos con su hora.
 
-**Mensajes posteriores al registro inicial.** M31 a M177, M190 a M194 y M202 se
-registran en su etapa, con el mismo procedimiento literal, salvo M82, que
+**Mensajes posteriores al registro inicial.** M31 a M177, M190 a M194, M202
+y M206 a M209 se registran en su etapa, con el mismo procedimiento literal, salvo M82, que
 no está registrado, y las excepciones de GL-06 (M91 a M93, fuera del
 proyecto; respuestas operativas; el comando `/chrome` y su salida; M96 con
-el texto omitido). Ver las etapas GL-06, GL-07 y GL-09.
+el texto omitido). Ver las etapas GL-06, GL-07, GL-09 y revisión de la
+entrega 2.
+
+**Mensajes sin registro, con su motivo.** Comprobado por posición, fecha y
+texto en la transcripción del 14/11/2026 (hora UTC):
+
+- **M178 a M189** (14:50 a 15:42): cierre, publicación, integración y
+  archivo de GL-06. M178 indicó tomar M177 como cierre del registro de
+  GL-06.
+- **M195 a M201** (18:57 a 19:25): revisión del diff, ajustes de
+  presentación, copia del diff a `~/Descargas`, publicación, integración y
+  archivo de GL-07.
+- **M203 a M205** (19:53 a 20:00): revisión de solo lectura, publicación,
+  integración y archivo de GL-09.
+
+M195 a M201 y M203 a M205 no tienen una indicación de Pablo para omitirlos:
+quedan sin registro, **pendiente de confirmación** si se agregan. Lo que
+produjeron (commits, PR, CI y archivos) está en los tickets y en los
+diseños archivados.
 
 - **M34**, como M16, es el resumen automático de contexto que genera Claude
   Code al continuar la sesión: no es un pedido y no se registra.
@@ -89,6 +108,175 @@ omitido por ser material de referencia de otro proyecto con datos
 personales. No hubo que omitir secretos en ningún pedido. Los pedidos contienen
 rutas locales de proyecto (`~/code/...`) y el nombre de la cuenta pública
 `pablo-wpify`, cuya publicación aprobó Pablo.
+
+## Prompts clave de la entrega 2
+
+Selección de cinco flujos entre los pedidos registrados en
+[docs/prompts/](docs/prompts/), uno por etapa central del recorrido núcleo.
+Cada uno enlaza su registro completo, con el texto literal.
+
+**Herramientas, en todos los flujos:** ejecución en **Claude Code (CLI)**
+con **`claude-opus-5-5`**, según el campo de modelo de las respuestas en la
+transcripción. Preparación del pedido: con ayuda de **ChatGPT**, según la
+declaración de Pablo; esa conversación no está aportada y su modelo no
+está verificado. Objetivo, decisiones y aprobaciones: **Pablo**.
+
+| # | Flujo | Pedidos | Sección de la plantilla | Resultado |
+|---|---|---|---|---|
+| 1 | Replanificación por el feedback de LIDR | M19, M21 | 1.2, 9, 10 | plan único de la entrega 2, recorrido núcleo, tickets GL-03 a GL-09, `CLAUDE.md` |
+| 2 | Autorización mínima con pruebas primero | M22 | 2.5, 2.6, 3 | Pundit, denegar por defecto, personas y asignaciones, mutaciones |
+| 3 | Captura rápida: decisiones y SDD de GL-06 | M85, M120 | 1.2, 3, 4, 2.6 | tabla `feedback_entries`, captura, completar y marcar como lista, matriz de privacidad |
+| 4 | Resumen y cronología: decisiones de GL-07 | M192 | 1.3, 5 | resumen por dimensión, cronología y conteo, solo con entradas propias |
+| 5 | E2E del recorrido núcleo | M202 | 2.2, 2.6 | pruebas en navegador con Capybara y `selenium-webdriver`, en el CI |
+
+### Contexto avanzado y herramientas utilizadas en la entrega 2
+
+Según los registros de [docs/prompts/](docs/prompts/), los archivos del
+repositorio y la transcripción de la sesión:
+
+| Elemento | ¿Se usó? | Evidencia |
+|---|---|---|
+| `CLAUDE.md` del proyecto | **sí**, desde el 03/11/2026 (P-12) | [CLAUDE.md](CLAUDE.md); creado con M21 y versionado en `93b42ec` |
+| Contexto de OpenSpec y SDD | **sí** | [`openspec/config.yaml`](openspec/config.yaml); cada ticket con propuesta, specs, diseño y tareas; `openspec validate --all --strict` en cada etapa |
+| Skills y comandos de OpenSpec | **presentes**, uso **pendiente de confirmación** | están versionados en `.claude/` (generados por OpenSpec); en los registros consta el uso directo del CLI `openspec`, no la invocación de esos skills |
+| Servidores MCP | **sí**: Claude in Chrome | comprobaciones manuales en navegador E10 (GL-05, M75 y M76) y F17 (GL-06, M124) |
+| Memoria persistente | **sí**, una nota | publicar siempre con la cuenta `pablo-wpify` (07/11/2026) |
+| Subagentes | **no consta** | ningún registro los menciona |
+| Instrucciones de la cuenta | **sí** | instrucciones generales de la cuenta, no específicas de este proyecto; no se publican |
+| Herramientas del asistente | **sí** | terminal, lectura y edición de archivos, `git`, `gh` (PR y CI), Docker, OpenSpec CLI y Chrome sin interfaz (pruebas de sistema) |
+
+---
+
+### Flujo 1. Replanificación por el feedback de LIDR
+
+*Secciones 1.2, 9 y 10 de la plantilla.*
+
+| Campo | Detalle |
+|---|---|
+| Fase | planificación |
+| Pedidos | [M19](docs/prompts/replanificacion-lidr/M19-2026-11-03-ajustar-el-plan-por-el-feedback-de-lidr.md) (03/11/2026) y [M21](docs/prompts/replanificacion-lidr/M21-2026-11-03-aprobacion-de-p-5-p-7-p-8-p-9-y-p-12-readme.md) (aprobación) |
+| Contexto | plan anterior, anexos de la entrega 1 y feedback de LIDR |
+
+**Extracto literal (M19):**
+
+> Elegí un único documento como fuente vigente de la secuencia de trabajo.
+
+**Resultado:** [plan de la entrega 2](docs/plan-entrega-2.md) como fuente
+única, con el recorrido núcleo, los tickets GL-03 a GL-09, el alcance
+diferido y una tabla de decisiones pendientes; README breve y `CLAUDE.md`
+(M21). Versionado en `93b42ec`.
+
+**Criterio humano (Pablo):** priorizar el recorrido núcleo; preparar
+cuentas, personas y asignaciones con datos ficticios; diferir invitaciones,
+administración y compartir, sin eliminarlos como requisito; aprobar P-5,
+P-7, P-8, P-9 y P-12 (M21), después de precisarlas en M20.
+
+### Flujo 2. Autorización mínima con pruebas primero
+
+*Secciones 2.5, 2.6 y 3 de la plantilla.*
+
+| Campo | Detalle |
+|---|---|
+| Fase | implementación (GL-03) |
+| Pedido | [M22](docs/prompts/GL-03/M22-2026-11-03-aprobacion-documental-e-implementacion-de-gl-03.md) (03/11/2026) |
+| Contexto | `CLAUDE.md`, cambio de OpenSpec `gl-03-autorizacion-minima` |
+
+**Extracto literal:**
+
+> Definí las excepciones de autorización por acciones concretas. Una nueva
+> acción del controlador de sesiones no debe quedar exceptuada
+> automáticamente.
+
+**Resultado:** Pundit con política base que deniega, verificaciones de
+autorización y alcance en cada acción, modelos de personas y asignaciones
+con sus restricciones, y mutaciones registradas. Commits `93b42ec` y
+`7263efd`; CI 41571299236.
+
+**Criterio humano (Pablo):** revisar los archivos reales antes de corregir
+un resumen pegado; distinguir en `CLAUDE.md` cargar `.env` de mostrar su
+contenido; no agregar rutas, semillas ni permisos configurables; separar el
+commit documental del de implementación.
+
+### Flujo 3. Captura rápida: decisiones y SDD de GL-06
+
+*Secciones 1.2, 3, 4 y 2.6 de la plantilla.*
+
+| Campo | Detalle |
+|---|---|
+| Fase | decisiones de producto, SDD e implementación (GL-06) |
+| Pedidos | [M85](docs/prompts/GL-06/M85-2026-11-13-aprobar-decisiones-y-preparar-gl-06.md) (decisiones y preparación) y [M120](docs/prompts/GL-06/M120-2026-11-13-aprobar-gl-06-e-implementar.md) (aprobación e implementación) |
+| Contexto | `CLAUDE.md`, plan, cambio de OpenSpec `gl-06-captura-rapida`; extensión Claude in Chrome para la comprobación F17 |
+
+**Extracto literal (M120):**
+
+> Detenete e informa si una decisión documentada resulta insuficiente o
+> contradictoria; no la resuelvas por inferencia.
+
+**Resultado:** tabla `feedback_entries`, captura rápida en página propia,
+completar y «Marcar como lista», con lectura por autoría y 404 por URL
+directa; seis mutaciones detectadas. Integrado con el
+[PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4).
+
+**Criterio humano (Pablo):** aprobar las dimensiones, las señales y sus
+etiquetas (P-1, P-2), exigir señal y dimensión para «lista» (P-3) y diferir
+el formulario completo (P-11) en M85; decidir P-19 a P-26; no dar por
+resuelto PT-11; cerrar la comprobación en navegador F17 como **parcial**.
+
+### Flujo 4. Resumen y cronología: decisiones de GL-07
+
+*Secciones 1.3 y 5 de la plantilla.*
+
+| Campo | Detalle |
+|---|---|
+| Fase | decisiones de producto y SDD (GL-07) |
+| Pedido | [M192](docs/prompts/GL-07/M192-2026-11-14-confirmar-decisiones-y-preparar-gl-07.md) (14/11/2026); detalles en M193 y aprobación en M194 |
+| Contexto | `CLAUDE.md`, plan, mock 1 del Anexo E, cambio de OpenSpec `gl-07-resumen-cronologia` |
+
+**Extracto literal:**
+
+> Presentame los documentos para revisión antes de implementar.
+
+**Resultado:** resumen por dimensión solo con entradas propias listas,
+cronología ascendente con los borradores marcados «fuera del resumen» y
+conteo en «Personas», con cuatro mutaciones del alcance detectadas.
+Integrado con el [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5).
+
+**Criterio humano (Pablo):** decidir P-10 (orden y desempate de la
+cronología), los textos de 4.4 y 4.5, el alcance parcial de 4.3 y 1.15, y
+mantener diferidos los filtros y el origen «compartida con vos».
+
+### Flujo 5. E2E del recorrido núcleo
+
+*Secciones 2.2 y 2.6 de la plantilla.*
+
+| Campo | Detalle |
+|---|---|
+| Fase | decisión de herramienta e implementación (GL-09) |
+| Pedido | [M202](docs/prompts/GL-09/M202-2026-11-14-implementar-gl-09-e2e.md) (14/11/2026) |
+| Contexto | `CLAUDE.md`, plan, specs vigentes, cambio de OpenSpec `gl-09-e2e-recorrido-nucleo`, GitHub Actions |
+
+**Extracto literal:**
+
+> No agregues requisitos de entrega que no estén en el plan; señalá aparte
+> cualquier diferencia que encuentres con la consigna del curso.
+
+**Resultado:** dos pruebas en Chrome sin interfaz (recorrido núcleo y rama
+negativa de privacidad), escritas antes de la herramienta y verificadas con
+cuatro mutaciones; 317 ejemplos en verde en local y en el CI remoto.
+Integrado con el [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6).
+
+**Criterio humano (Pablo):** elegir la herramienta (P-4: pruebas de sistema
+de RSpec con Capybara y `selenium-webdriver`); fijar el alcance y dejar
+fuera lo diferido; pedir una revisión de solo lectura antes de autorizar la
+publicación y el cierre.
+
+### Secciones de la plantilla en la entrega 2
+
+Las secciones 1.2, 1.3, 2.2, 2.5, 2.6, 3, 4, 5, 9 y 10 tienen al menos un
+flujo arriba. La sección 7 (pull requests) no tiene un flujo propio: cada
+PR se abrió con un pedido de publicación. Los de los PR #1 a #3 están
+registrados en sus etapas (M31, GL-01b y M70); los de los PR #4 a #6
+quedaron en los tramos sin registro (M178 a M189, M200 y M204).
 
 ## Entrega 1 (registro histórico)
 

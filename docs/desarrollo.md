@@ -2,15 +2,48 @@
 
 Guía para preparar el entorno desde un clon del repositorio. Cada comando
 está pensado para ejecutarse tal como está escrito, desde la raíz del
-proyecto, en una terminal `bash` o `zsh`. Ticket de origen:
-[GL-01](tickets/GL-01-base-producto.md).
+proyecto, en una terminal `bash` o `zsh`. Se comprobó en Linux; los
+comandos evitan diferencias conocidas con macOS, pero allí no están
+comprobados. Ticket de origen: [GL-01](tickets/GL-01-base-producto.md).
+
+**Para revisar la entrega**, el camino corto (instalar, preparar datos y
+contraseña ficticia, iniciar la aplicación y correr las pruebas en
+navegador) está en el README, en
+[«Cómo revisar esta entrega»](../README.md#cómo-revisar-esta-entrega). Esta
+guía explica cada paso en orden:
+
+| Paso | Sección |
+|---|---|
+| Clonar la rama de la entrega | 0 |
+| Ruby, Docker, Chrome | Prerrequisitos |
+| Gemas | 1 |
+| Variables locales (`.env`) | 2 |
+| PostgreSQL en Docker | 3 |
+| Bases de desarrollo y de test | 4 |
+| Datos ficticios y contraseña de una cuenta | 4c |
+| Pruebas, incluidas las de navegador | 5 |
+| Verificación completa (`bin/ci`) | 6 |
+| Servidor | 7 |
+| Qué se ve en la aplicación | 8 a 11 |
+
+## 0. Clonar la rama de la entrega
+
+```sh
+git clone --branch feature/entrega-2-pp https://github.com/pablo-wpify/growth-log-ai4devs.git
+cd growth-log-ai4devs
+```
+
+La rama por defecto del repositorio es la de la entrega 1, que solo tiene
+documentación: hay que clonar o cambiar a `feature/entrega-2-pp`.
 
 ## Prerrequisitos
 
-- [asdf](https://asdf-vm.com/) con Ruby 4.0.9 instalado. El repositorio
-  declara la versión en `.tool-versions` (lo lee asdf) y en `.ruby-version`
-  (lo leen el `Gemfile` y el CI); las dos deben coincidir. No hace falta
-  cambiar la configuración global de asdf.
+- Ruby 4.0.9. El repositorio declara la versión en `.tool-versions` (lo
+  lee [asdf](https://asdf-vm.com/)) y en `.ruby-version` (lo leen el
+  `Gemfile`, el CI y otros gestores de versiones); las dos deben coincidir.
+  La guía se probó con asdf; con otro gestor que lea `.ruby-version`
+  debería funcionar igual, pero no está comprobado. No hace falta cambiar
+  la configuración global de asdf.
 - Docker, para el PostgreSQL 18.6 local.
 - `openssl`, para generar la contraseña local.
 - Acceso a internet la primera vez: instalación de gemas, base de avisos
@@ -41,9 +74,13 @@ solo versiona la plantilla `.env.example`, sin secretos.
 
 ```sh
 cp .env.example .env
-sed -i "s/^DATABASE_PASSWORD=.*/DATABASE_PASSWORD=$(openssl rand -hex 24)/" .env
+sed -i.bak "s/^DATABASE_PASSWORD=.*/DATABASE_PASSWORD=$(openssl rand -hex 24)/" .env && rm .env.bak
 chmod 600 .env
 ```
+
+`sed -i.bak` funciona igual con el `sed` de GNU (Linux) y con el de BSD
+(macOS); el `rm` borra la copia que deja. También se puede editar `.env` a
+mano y poner como `DATABASE_PASSWORD` una cadena aleatoria larga.
 
 | Variable | Para qué sirve |
 |---|---|
@@ -261,9 +298,11 @@ Con los datos ficticios (4c), qué ve cada cuenta:
 | Raúl Pasado | estado vacío (su asignación terminó) | ficha de Bruno Ejemplo |
 | Administradora (4b) | estado vacío, salvo que tenga asignaciones | cualquier ficha sin asignación |
 
-La prueba automatizada en navegador llega con GL-09 (P-4, ADR-6); hasta
-entonces la presentación se comprueba a mano. Los pasos están en el
-[diseño de GL-05](../openspec/changes/archive/2026-11-07-gl-05-personas/design.md#comprobación-en-navegador-manual-no-automatizada).
+La presentación de estas pantallas se comprobó a mano en GL-05 (E10, con
+los pasos del
+[diseño de GL-05](../openspec/changes/archive/2026-11-07-gl-05-personas/design.md#comprobación-en-navegador-manual-no-automatizada)).
+Desde GL-09, el recorrido completo tiene además pruebas automatizadas en
+navegador (sección 11).
 
 ## 9. Captura rápida, completar y marcar como lista (GL-06)
 

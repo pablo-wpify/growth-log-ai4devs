@@ -7,6 +7,10 @@
 > Cambio de OpenSpec archivado:
 > [`2026-11-07-gl-01b-rails-8-1-4-1`](../../openspec/changes/archive/2026-11-07-gl-01b-rails-8-1-4-1/proposal.md). P-18
 > aprobada el 07/11/2026: el `Gemfile` queda sin cambios.
+> **Seguimiento (14/11/2026):** este cambio no actualizó la spec
+> `runtime-toolchain`, que siguió diciendo Rails 8.1.4. Lo corrigió el cambio
+> [`2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1`](../../openspec/changes/archive/2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1/proposal.md),
+> preparado en M208 y aprobado y archivado en M209.
 
 ## Problema
 
