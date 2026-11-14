@@ -13,8 +13,9 @@ proyecto, en una terminal `bash` o `zsh`. Ticket de origen:
   cambiar la configuración global de asdf.
 - Docker, para el PostgreSQL 18.6 local.
 - `openssl`, para generar la contraseña local.
-- Acceso a internet la primera vez: instalación de gemas y base de avisos
-  de seguridad.
+- Acceso a internet la primera vez: instalación de gemas, base de avisos
+  de seguridad y el `chromedriver` que descarga Selenium Manager.
+- Google Chrome, para las pruebas en navegador (sección 5).
 - No hace falta Node: la aplicación usa importmap.
 
 Comprobá la versión de Ruby:
@@ -183,6 +184,20 @@ bundle exec rspec
 
 Es la única suite: no hay directorio `test/`.
 
+**Pruebas en navegador (GL-09, P-4).** `spec/system/` tiene pruebas de
+sistema de RSpec con Capybara y `selenium-webdriver`, en Chrome sin
+interfaz: el recorrido núcleo de un líder y la rama negativa de otro líder
+de la misma persona. Corren con el mismo comando y también solas:
+
+```sh
+bundle exec rspec spec/system
+```
+
+Requieren Google Chrome instalado. La primera vez, Selenium Manager
+descarga el `chromedriver` que corresponde a la versión de Chrome y lo
+guarda en `~/.cache/selenium`. Si una prueba en navegador falla, la
+captura de pantalla queda en `tmp/screenshots/`.
+
 ## 6. Análisis y verificación completa
 
 Actualizá antes la base de avisos de seguridad: `bin/bundler-audit` audita
@@ -299,6 +314,20 @@ la misma persona no cuenta ni aparece, y ser administradora no agrega nada.
   resumen»), la señal y la dimensión si las tiene, y el comienzo del texto.
 
 No hay filtros ni entradas compartidas: quedan diferidos (4.6, 4.7 e I4).
+
+## 11. Recorrido núcleo en navegador (GL-09)
+
+Las pruebas de `spec/system/core_journey_spec.rb` recorren, en Chrome sin
+interfaz, lo que describen las secciones 8 a 10:
+
+- **Recorrido núcleo:** un líder inicia sesión, elige una persona asignada,
+  guarda una captura rápida, la completa con señal y dimensión, la marca
+  como lista y la ve en el resumen y en la cronología.
+- **Rama negativa:** otro líder asignado a la misma persona no ve la entrada
+  lista ni el borrador del primero en la ficha, y por URL directa recibe la
+  página 404, sin su texto.
+
+Usan datos ficticios propios de cada prueba, no la base de desarrollo.
 
 ## Lo que todavía no hay
 

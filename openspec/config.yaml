@@ -36,8 +36,10 @@ context: |
   desempate por created_at e id, borradores marcados «fuera del resumen»),
   14/11/2026, con el alcance de 4.3, 4.4, 4.5 y 1.15 decidido ese día.
   Cambio de GL-07 aprobado el 14/11/2026.
-  Abiertas: ADR-5 a ADR-8, D3, D4 y las demás decisiones P del plan de la
-  entrega 2 (herramienta E2E, entre otras).
+  Aprobada para GL-09: P-4 (ADR-6: pruebas de sistema de RSpec con Capybara
+  y selenium-webdriver en Chrome sin interfaz), 14/11/2026.
+  Abiertas: ADR-5, ADR-7, ADR-8, D3, D4 y las demás decisiones P del plan
+  de la entrega 2.
 
   Restricciones:
   - No agregar funciones que el ticket no pida.
