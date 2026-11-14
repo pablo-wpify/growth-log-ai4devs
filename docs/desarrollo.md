@@ -277,7 +277,7 @@ de las consultas (`filter_parameters`).
 
 Los datos ficticios (4c) no traen entradas: se crean a mano. La
 comprobación manual (F17) está en el
-[diseño de GL-06](../openspec/changes/gl-06-captura-rapida/design.md#comprobación-en-navegador-manual-no-automatizada).
+[diseño de GL-06](../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/design.md#comprobación-en-navegador-manual-no-automatizada).
 
 ## Lo que todavía no hay
 

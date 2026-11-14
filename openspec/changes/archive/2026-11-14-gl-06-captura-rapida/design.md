@@ -1,10 +1,11 @@
 # Design
 
-> **Estado (14/11/2026): publicado en el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), abierto y sin fusionar.**
-> P-1, P-2, P-3 y P-11 están aprobadas (12/11/2026), Pablo decidió P-19 a
-> P-26 (13/11/2026) y aprobó el cambio el mismo día («Vamos para
-> adelante», según M120). CI remoto exitoso sobre `b5665aa` (ver «CI
-> remoto del 14/11/2026»). F17 quedó **parcial** por decisión de Pablo,
+> **Estado (14/11/2026): cerrado y archivado.** Integrado en
+> `feature/entrega-2-pp` con el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4) (merge commit `8c2f2ad`) y archivado
+> como `2026-11-14-gl-06-captura-rapida`. P-1, P-2, P-3 y P-11 están
+> aprobadas (12/11/2026), Pablo decidió P-19 a P-26 (13/11/2026) y aprobó
+> el cambio el mismo día («Vamos para adelante», según M120). CI remoto
+> exitoso (ver «CI remoto del 14/11/2026»). F17 quedó **parcial** por decisión de Pablo,
 > sin más comprobaciones manuales previstas. Lo ejecutado se registra en
 > «Evidencia que se registra aquí al implementar»; las verificaciones y
 > la aclaración de PT-11, en «Open Questions».
@@ -586,9 +587,20 @@ Antes se conservaron copias verificadas de `log/development.log` y
 contra `feature/entrega-2-pp`, con los commits `5de213f` (implementación
 y documentación de cierre) y `b5665aa` (registro de prompts). GitHub
 Actions, [ejecución 43608171520](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43608171520): **exitosa** sobre `b5665aa9481f82e9bca86e7a52b872a951d899da`, con `scan_ruby`, `scan_js`,
-`lint` y `test` en verde. Vale solo para ese SHA: una actualización
-posterior (por ejemplo, la aclaración de PT-11 y este registro) requiere
-su propio CI.
+`lint` y `test` en verde. Vale solo para ese SHA. La actualización
+documental posterior (`d65a66a`: cierre de GL-06 y aclaración de PT-11)
+tuvo su propio CI: [ejecución 43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733), **exitosa** sobre
+`d65a66aa4c77436e9b9e1d27930c0be385264f3d`, el head final del PR, con los
+mismos cuatro jobs en verde. Esa ejecución no corresponde al SHA de merge.
+
+**Integración y archivo (14/11/2026):** el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4) se integró en
+`feature/entrega-2-pp` con un merge commit,
+`8c2f2ade1ad1324c7eaeacbcfebc067eb9fa3d3f`, y el cambio se archivó como
+`2026-11-14-gl-06-captura-rapida`. Las specs `feedback-capture` y
+`feedback-entries` pasaron a las vigentes y se actualizaron
+`authorization` y `people-browsing`. El merge tuvo su propio CI al llegar
+a `feature/entrega-2-pp`: [ejecución 43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250), **exitosa**
+sobre `8c2f2ade1ad1324c7eaeacbcfebc067eb9fa3d3f`.
 
 **Desvíos:**
 
@@ -618,9 +630,9 @@ su propio CI.
   la comprobación a mano por Pablo; el paso 15 con DevTools en modo
   dispositivo y sus controles no comprobados; y, en el navegador, el paso
   16 con el vencimiento real y la conservación del texto;
-- con autorización, integrar el PR #4; cualquier commit posterior a
-  `b5665aa` necesita su propio CI remoto;
-- el archivo del cambio.
+- PT-11 sigue incompleto: compartir, revocar y la transición de
+  reasignación quedan fuera de GL-06, y el listado de AM-1 sigue
+  pendiente. La interpretación de su rama de lectura está aclarada.
 
 ## Risks / Trade-offs
 
@@ -666,7 +678,7 @@ borradores; el acceso sigue siendo por URL directa, sin listado (P-24).
 Esto resuelve la interpretación de la rama de lectura. No reabre P-24 ni
 agrega la reasignación (P-26): compartir, revocar y la transición de
 reasignación siguen fuera de GL-06, y PT-11 no queda implementado por
-completo. Registro: [decisiones de GL-06](../../../docs/decisiones/2026-11-13-gl-06-captura.md).
+completo. Registro: [decisiones de GL-06](../../../../docs/decisiones/2026-11-13-gl-06-captura.md).
 
 **Verificaciones técnicas** (no cambian requisitos):
 

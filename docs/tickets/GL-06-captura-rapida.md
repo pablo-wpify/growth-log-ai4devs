@@ -2,8 +2,8 @@
 
 > Séptimo ticket de la entrega 2 de Growth Log. Lugar en la secuencia:
 > [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec:
-> [`gl-06-captura-rapida`](../../openspec/changes/gl-06-captura-rapida/proposal.md).
-> **Estado (14/11/2026): publicado en el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), abierto y sin fusionar.** Cambio de OpenSpec aprobado por Pablo el 13/11/2026 («Vamos para adelante», según M120). Gate local en verde el 14/11/2026 (`bin/bundler-audit update` y `bin/ci`, con 291 ejemplos y 0 fallos). F17 está **parcial**: asistida por Claude Code (no «a mano por Pablo»), 375 px solo con `iframe` y controles pendientes, y el paso 16 en el navegador solo como simulación sin cookie, no un vencimiento real. Por decisión de Pablo (14/11/2026), no se hacen más comprobaciones manuales: el trabajo local se cierra con F17 parcial. La prueba automatizada de sesión vencida (reloj adelantado) se describe aparte, en «Verificaciones técnicas». CI remoto exitoso sobre `b5665aa` ([ejecución 43608171520](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43608171520)); una actualización posterior requiere su propio CI. «Con datos mínimos» quedó aclarado (14/11/2026) para la rama de lectura de PT-11, que no está completo: compartir, revocar y reasignación siguen fuera y el listado de AM-1 sigue pendiente. Faltan integrar el PR y el archivo. Evidencia en el [diseño](../../openspec/changes/gl-06-captura-rapida/design.md#registro-de-la-implementación-13112026-local-sin-commit).
+> [`gl-06-captura-rapida`](../../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/proposal.md).
+> **Estado (14/11/2026): cerrado y archivado.** Integrado en `feature/entrega-2-pp` con el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4) (merge commit `8c2f2ade1ad1324c7eaeacbcfebc067eb9fa3d3f`) y archivado como [`2026-11-14-gl-06-captura-rapida`](../../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/proposal.md). Cambio de OpenSpec aprobado por Pablo el 13/11/2026 («Vamos para adelante», según M120). Gate local en verde el 14/11/2026 (`bin/bundler-audit update` y `bin/ci`, con 291 ejemplos y 0 fallos). F17 está **parcial**: asistida por Claude Code (no «a mano por Pablo»), 375 px solo con `iframe` y controles pendientes, y el paso 16 en el navegador solo como simulación sin cookie, no un vencimiento real. Por decisión de Pablo (14/11/2026), no se hacen más comprobaciones manuales: el trabajo local se cierra con F17 parcial. La prueba automatizada de sesión vencida (reloj adelantado) se describe aparte, en «Verificaciones técnicas». CI remoto exitoso sobre `b5665aa` ([ejecución 43608171520](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43608171520)) y sobre `d65a66aa4c77436e9b9e1d27930c0be385264f3d`, el head final del PR ([ejecución 43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733)); esa ejecución no corresponde al SHA de merge, que tuvo su propio CI exitoso sobre `8c2f2ade1ad1324c7eaeacbcfebc067eb9fa3d3f` ([ejecución 43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250)). «Con datos mínimos» quedó aclarado (14/11/2026) para la rama de lectura de PT-11, que no está completo: compartir, revocar y reasignación siguen fuera y el listado de AM-1 sigue pendiente. Evidencia en el [diseño](../../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/design.md#registro-de-la-implementación-13112026-local-sin-commit).
 >
 > | Tipo | Qué | Registro |
 > |---|---|---|
@@ -135,7 +135,7 @@ la entrada siga siendo solo suya, también por URL directa.
 
 La captura se abre en una página propia, sin Turbo frame (P-22); al
 guardar, vuelve a la ficha con el aviso. Detalle en el
-[diseño](../../openspec/changes/gl-06-captura-rapida/design.md).
+[diseño](../../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/design.md).
 
 ## Criterios de aceptación
 
