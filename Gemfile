@@ -48,6 +48,12 @@ group :development, :test do
   gem "rspec-rails", "~> 8.0"
 end
 
+group :test do
+  # Pruebas en navegador (GL-09, P-4): pruebas de sistema de RSpec con Chrome sin interfaz.
+  gem "capybara"
+  gem "selenium-webdriver"
+end
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"

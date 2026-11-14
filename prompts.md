@@ -31,6 +31,7 @@ modelo no está verificado; no se reconstruye.
 | GL-01b. Rails 8.1.4.1 por avisos de seguridad | M38–M60 | PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), integrado en `8ae8723`; CI 42380986492; archivado (M74) | [GL-01b](docs/prompts/GL-01b/README.md) |
 | GL-06. Captura rápida, completar y marcar como lista | M83–M90, M94, M96–M124, M128–M131, M133–M140, M144–M177 | decisiones P-1, P-2, P-3 y P-11 aprobadas (M85) y P-19 a P-24, más P-25 y P-26 con números provisionales, decididas (M107; M108 repitió el texto); ajustes de revisión y tareas 0.1 a 0.3 marcadas (M114); números provisionales (M116; M117 repitió el texto); cambio aprobado e implementado en local (M120); sin commit | [GL-06](docs/prompts/GL-06/README.md) |
 | GL-07. Resumen por dimensión y cronología | M190–M194 | P-10 aprobada y alcance de 4.3, 4.4, 4.5 y 1.15 decidido (M192); detalles confirmados (M193); cambio aprobado e implementado, con 315 ejemplos en `bin/ci` (M194); PR [#5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), integrado en `b835bde`; CI 43631292881 y 43632097169; archivado | [GL-07](docs/prompts/GL-07/README.md) |
+| GL-09. Verificación E2E del recorrido núcleo | M202 | P-4 aprobada; cambio preparado e implementado en local, con 317 ejemplos en `bin/ci` (M202); sin commit | [GL-09](docs/prompts/GL-09/README.md) |
 | Registro de prompts | M29–M32 | PR [#1](https://github.com/pablo-wpify/growth-log-ai4devs/pull/1), integrado en `925e2ee`; CI 41629470056 | [registro-prompts](docs/prompts/registro-prompts/README.md) |
 
 **Conteos.** La transcripción tiene 30 mensajes del usuario hasta este
@@ -45,11 +46,11 @@ registro, numerados por posición de M01 a M30:
   **27 textos distintos**, guardados en 27 archivos; el de M03 a M05 lista
   los tres envíos con su hora.
 
-**Mensajes posteriores al registro inicial.** M31 a M177 y M190 a M194 se
+**Mensajes posteriores al registro inicial.** M31 a M177, M190 a M194 y M202 se
 registran en su etapa, con el mismo procedimiento literal, salvo M82, que
 no está registrado, y las excepciones de GL-06 (M91 a M93, fuera del
 proyecto; respuestas operativas; el comando `/chrome` y su salida; M96 con
-el texto omitido). Ver las etapas GL-06 y GL-07.
+el texto omitido). Ver las etapas GL-06, GL-07 y GL-09.
 
 - **M34**, como M16, es el resumen automático de contexto que genera Claude
   Code al continuar la sesión: no es un pedido y no se registra.

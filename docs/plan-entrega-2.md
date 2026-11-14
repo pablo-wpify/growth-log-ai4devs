@@ -11,7 +11,7 @@
 > I1 a I9), que **no se modifica** y sigue siendo la referencia de todo el
 > alcance del MVP. Aquí se registra en qué se aparta la entrega 2 y por qué.
 >
-> Actualizado: 14/11/2026, con GL-07 integrado (PR #5, `b835bde`) y
+> Actualizado: 14/11/2026, con P-4 aprobada y GL-09 implementado en local, sin commit; GL-07 integrado (PR #5, `b835bde`) y
 > archivado, después de aprobar P-10 y decidir su alcance; GL-06
 > integrado (PR #4, `8c2f2ad`) y archivado, F17 cerrada como parcial por decisión de Pablo y la aclaración
 > de «con datos mínimos» en la rama de lectura de PT-11. Antes: 13/11/2026, con las
@@ -72,7 +72,7 @@ citaban por número):
 | 6 | [GL-05](tickets/GL-05-personas.md) | «Personas» y ficha del líder: elegir una persona asignada | **cerrado** (archivado [`2026-11-07-gl-05-personas`](../openspec/changes/archive/2026-11-07-gl-05-personas/proposal.md); PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), `8d0e854`; CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466); comprobación manual E10 del 07/11/2026) | GL-03, GL-08, GL-01b | — (P-15, P-16 y P-17 aprobadas) |
 | 7 | [GL-06](tickets/GL-06-captura-rapida.md) | Captura rápida, completar y marcar como lista | **cerrado** (archivado [`2026-11-14-gl-06-captura-rapida`](../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/proposal.md); [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), merge `8c2f2ad`; CI [43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733) sobre `d65a66a`, el head del PR, y CI [43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250) sobre el merge `8c2f2ad`; gate local con 291 ejemplos; F17 **parcial** por decisión de Pablo; «con datos mínimos» aclarado para la rama de lectura de PT-11, que sigue incompleto en compartir, revocar y reasignación, con el listado de AM-1 pendiente) | GL-05 | — (P-1, P-2, P-3 y P-11 aprobadas; P-19 a P-26 decididas) |
 | 8 | [GL-07](tickets/GL-07-resumen-cronologia.md) | Resumen por dimensión y cronología | **cerrado** (archivado [`2026-11-14-gl-07-resumen-cronologia`](../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/proposal.md); [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), merge `b835bde`; CI [43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881) sobre `8f36845`, el head del PR, y CI [43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169) sobre el merge `b835bde`; gate local con 315 ejemplos) | GL-06 | — (P-2 aprobada; P-10 aprobada el 14/11/2026) |
-| 9 | GL-09 | Verificación E2E del recorrido núcleo | pendiente | GL-07 | P-4 (ADR-6) |
+| 9 | [GL-09](tickets/GL-09-e2e-recorrido-nucleo.md) | Verificación E2E del recorrido núcleo | **implementado en local, sin commit** (cambio [`gl-09-e2e-recorrido-nucleo`](../openspec/changes/gl-09-e2e-recorrido-nucleo/proposal.md); implementación local autorizada en M202; gate local en verde con 317 ejemplos; faltan el CI remoto y el archivo) | GL-07 | — (P-4 aprobada el 14/11/2026) |
 | — | GL-04 | Invitaciones y administración de cuentas, personas y asignaciones | **diferido** | GL-03 | ADR-8 para la entrega real del correo |
 
 Los IDs identifican tickets; no indican orden. El orden lo da la primera
@@ -236,6 +236,19 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   ve la entrada y su URL directa no la muestra.
 - **Bloquea:** P-4 (ADR-6). Agrega dependencias de prueba, que se aprueban
   en el ticket.
+- **Decisiones del 14/11/2026** ([registro](decisiones/2026-11-14-gl-09-e2e.md)):
+  P-4 aprobada (M202): pruebas de sistema de RSpec con Capybara y
+  `selenium-webdriver`, en Chrome sin interfaz, en la misma suite. Las
+  dependencias de prueba `capybara` y `selenium-webdriver` quedan
+  aprobadas con la herramienta.
+- **Fuera de GL-09:** invitaciones, administración, compartir, filtros,
+  feed y despliegue; el E2E hasta compartir sigue pendiente (C11; I4).
+- Detalle en [el ticket](tickets/GL-09-e2e-recorrido-nucleo.md) y en el
+  cambio [`gl-09-e2e-recorrido-nucleo`](../openspec/changes/gl-09-e2e-recorrido-nucleo/proposal.md),
+  **implementado en local, sin commit**: gate local en verde (317
+  ejemplos, 0 fallos) y mutaciones M1 a M4 detectadas. El hito «recorrido
+  núcleo» se alcanza con GL-09 en verde en el CI remoto, todavía
+  pendiente.
 
 ### Diferido: sigue siendo requisito pendiente
 
@@ -272,7 +285,7 @@ cambio de OpenSpec de GL-06 (aprobado por Pablo el 13/11/2026 («Vamos para adel
 | P-1 | Lista de dimensiones (2.4, Anexo C, C.4) | GL-06 | **Aprobada (12/11/2026).** cinco dimensiones fijas, en código y con una restricción en la base: `delivery` «Entrega», `technical_quality` «Calidad técnica», `teamwork` «Trabajo en equipo», `communication` «Comunicación», `initiative` «Iniciativa». Cambiarla después exige una migración y una decisión | las tres del mock 1 («Trabajo en equipo», «Claridad», «Entrega»); lista configurable por el administrador (no cumple «lista fija» y requiere administración) |
 | P-2 | Señales: valores internos, etiquetas y columnas del resumen | GL-06, GL-07 | **Aprobada (12/11/2026).** valores `positive`, `improvement`, `neutral`; etiquetas «Positivo», «A mejorar», «Neutral»; el resumen muestra Positivos, A mejorar, Neutrales y Total, para que el total sea la suma visible. **Ajusta la presentación de 4.1**, que hoy nombra solo positivos, mejoras y total | etiqueta «Mejora» (README) en lugar de «A mejorar» (mock); mantener 4.1 literal, con la señal neutral solo dentro del total |
 | P-3 | ¿La señal es obligatoria para marcar como lista? | GL-06 | **Aprobada (12/11/2026).** sí: dimensión y señal obligatorias para «lista»; en borrador, ambas opcionales. **Amplía 2.6 y 3.5** | solo la dimensión, como dicen 2.6 y 3.5 hoy |
-| P-4 | ADR-6: herramienta E2E | GL-09 | pruebas de sistema de RSpec con Capybara y `selenium-webdriver` con Chrome sin interfaz: es lo que trae Rails, mantiene una sola suite y no agrega Node | Playwright (agrega Node y otro ejecutor); Cuprite (más rápido, otra gema y menos estándar) |
+| P-4 | ADR-6: herramienta E2E | GL-09 | **Aprobada (14/11/2026) para GL-09** ([registro](decisiones/2026-11-14-gl-09-e2e.md)). pruebas de sistema de RSpec con Capybara y `selenium-webdriver` con Chrome sin interfaz: es lo que trae Rails, mantiene una sola suite y no agrega Node | Playwright (agrega Node y otro ejecutor); Cuprite (más rápido, otra gema y menos estándar) |
 | P-5 | ADR-3: mecanismo de políticas y respuesta ante un acceso no autorizado | GL-03 | **Aprobada.** Pundit 2.5.2 con políticas que deniegan por defecto, verificaciones como red ante omisiones y pruebas de comportamiento como evidencia; 404 sin revelar existencia. Detalle en 6.1 | objetos de política propios; Action Policy; 403 |
 | P-6 | Preparación de datos ficticios (C1) | GL-08 | **Aprobada (03/11/2026):** tarea explícita solo en `development`; cuentas, personas y asignaciones suficientes para varios líderes y aislamiento; sin contraseñas ni hashes fijos versionados; contraseñas sin eco o generadas y entregadas localmente sin exponerlas; nada al arrancar ni al migrar | — |
 | P-7 | Qué cambia cuando termina la asignación del autor (C3) | GL-03 | **Aprobada.** Conservar PP-9 y AM-1 en las reglas desde GL-03; no bloquea el núcleo. Detalle en 6.1 | diferir todo a I5 sin acceso para el autor (incumpliría PP-9; descartado) |
@@ -474,7 +487,7 @@ asignación; y una persona Q sin asignaciones.
 | Con la asignación terminada (y con la persona inactiva), L1 lee por URL directa su borrador y su entrada lista, sin enlace a la ficha; editar y marcar como lista dan 404 sin cambios; la ficha da 404 | lectura propia sin asignación (3.10 y 4.14 parciales, P-24; rama de lectura de PT-11, con «con datos mínimos» aclarado el 14/11/2026; P-9, P-20) | **comprobado en local en GL-06** (13/11/2026; sin CI remoto) |
 | Resumen, cronología y conteo de L2 sobre P no incluyen la entrada lista de L1; los de L1 sí; un borrador no cuenta | consultas con alcance (4.11, 4.12 parcial, 3.3, 1.15 parcial) | GL-07 |
 | Mutación registrada: quitar el alcance de la consulta del resumen hace fallar la prueba | que la prueba detecta la fuga | GL-07 |
-| E2E en navegador del recorrido completo y rama negativa de L2 | el recorrido funciona por la interfaz | GL-09 |
+| E2E en navegador del recorrido completo y rama negativa de L2 | el recorrido funciona por la interfaz | **comprobado en local en GL-09** (14/11/2026; sin CI remoto): `spec/system/core_journey_spec.rb`, con mutaciones M1 a M4 |
 | Log de pruebas sin el texto de las entradas, en la petición y en las consultas | feedback fuera de los logs | **comprobado en local en GL-06** (13/11/2026; sin CI remoto): la petición y las consultas muestran `[FILTERED]` |
 | `bin/ci` local y CI remoto en verde sobre el SHA publicado | integración | cada ticket |
 
