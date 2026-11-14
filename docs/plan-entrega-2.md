@@ -11,8 +11,9 @@
 > I1 a I9), que **no se modifica** y sigue siendo la referencia de todo el
 > alcance del MVP. Aquí se registra en qué se aparta la entrega 2 y por qué.
 >
-> Actualizado: 14/11/2026, con el gate local de GL-06 en verde y F17
-> cerrada como parcial por decisión de Pablo. Antes: 13/11/2026, con las
+> Actualizado: 14/11/2026, con el gate local de GL-06 en verde, F17
+> cerrada como parcial por decisión de Pablo y la aclaración de «con datos
+> mínimos» en la rama de lectura de PT-11. Antes: 13/11/2026, con las
 > decisiones de Pablo sobre P-19 a P-26 y la aprobación del cambio de
 > OpenSpec de GL-06. Antes: 12/11/2026, con la aprobación de P-1, P-2, P-3 y P-11
 > y la preparación de GL-06. Versión base: 02/11/2026, con el ajuste por el
@@ -68,7 +69,7 @@ citaban por número):
 | 5 | [GL-08](tickets/GL-08-datos-ficticios.md) | Datos ficticios reproducibles para desarrollo | **cerrado** (archivado; CI [41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815)) | GL-03 | — |
 | 5a | [GL-01b](tickets/GL-01b-rails-8-1-4-1.md) | Rails 8.1.4.1 por los avisos de seguridad del 04/11/2026 | **cerrado** (archivado [`2026-11-07-gl-01b-rails-8-1-4-1`](../openspec/changes/archive/2026-11-07-gl-01b-rails-8-1-4-1/proposal.md); PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), `8ae8723`; CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492)) | GL-01 | — (P-18 aprobada) |
 | 6 | [GL-05](tickets/GL-05-personas.md) | «Personas» y ficha del líder: elegir una persona asignada | **cerrado** (archivado [`2026-11-07-gl-05-personas`](../openspec/changes/archive/2026-11-07-gl-05-personas/proposal.md); PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), `8d0e854`; CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466); comprobación manual E10 del 07/11/2026) | GL-03, GL-08, GL-01b | — (P-15, P-16 y P-17 aprobadas) |
-| 7 | [GL-06](tickets/GL-06-captura-rapida.md) | Captura rápida, completar y marcar como lista | **implementado en local, sin commit** (cambio [`gl-06-captura-rapida`](../openspec/changes/gl-06-captura-rapida/proposal.md) aprobado por Pablo el 13/11/2026, «Vamos para adelante», según M120; gate local en verde el 14/11/2026, con 291 ejemplos; F17 **parcial** por decisión de Pablo; faltan el CI remoto y el archivo) | GL-05 | — (P-1, P-2, P-3 y P-11 aprobadas; P-19 a P-26 decididas) |
+| 7 | [GL-06](tickets/GL-06-captura-rapida.md) | Captura rápida, completar y marcar como lista | **publicado en el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), abierto y sin fusionar** (cambio [`gl-06-captura-rapida`](../openspec/changes/gl-06-captura-rapida/proposal.md) aprobado por Pablo el 13/11/2026, «Vamos para adelante», según M120; gate local en verde el 14/11/2026, con 291 ejemplos; CI remoto exitoso sobre `b5665aa` ([ejecución 43608171520](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43608171520)), y un commit posterior requiere su propio CI; F17 **parcial** por decisión de Pablo, sin más comprobaciones manuales previstas; «con datos mínimos» aclarado para la rama de lectura de PT-11, que sigue incompleto en compartir, revocar y reasignación, con el listado de AM-1 pendiente; faltan integrar el PR y archivar el cambio) | GL-05 | — (P-1, P-2, P-3 y P-11 aprobadas; P-19 a P-26 decididas) |
 | 8 | GL-07 | Resumen por dimensión y cronología | pendiente | GL-06 | P-10 (P-2 aprobada) |
 | 9 | GL-09 | Verificación E2E del recorrido núcleo | pendiente | GL-07 | P-4 (ADR-6) |
 | — | GL-04 | Invitaciones y administración de cuentas, personas y asignaciones | **diferido** | GL-03 | ADR-8 para la entrega real del correo |
@@ -175,11 +176,13 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   un listado: **3.10 y 4.14 quedan parciales**.
 - **Rama de lectura de PT-11 (sección 6.1):** GL-06 cubre la lectura de
   las entradas propias, incluidos los borradores, sin escritura ni acceso a
-  la ficha. Qué exige su frase «con datos mínimos» queda **pendiente de
-  interpretación**: P-24 decide qué muestra el detalle de GL-06, pero no
-  define por sí sola esa frase. Hasta aclararla, la rama de lectura no se
-  da por satisfecha por completo. La reasignación queda fuera (P-26);
-  compartir y revocar, también.
+  la ficha. Su frase «con datos mínimos» quedó **aclarada por Pablo el
+  14/11/2026**: la interpretación de P-24 se aplica también aquí; los
+  datos mínimos son los de la persona (solo el nombre), la entrada propia
+  se muestra completa, incluidos los borradores, y el acceso es por URL
+  directa. Con eso la rama de lectura queda resuelta en GL-06. PT-11 no
+  queda completo: la reasignación queda fuera (P-26); compartir y
+  revocar, también.
 - **Captura en página propia (P-22, decidida el 13/11/2026):** GL-06 elige
   una página propia y no adopta la interacción sin navegación propuesta en
   MVP-FE-1 (ticket propuesto en la entrega 1, no un criterio aprobado).
@@ -269,7 +272,7 @@ cambio de OpenSpec de GL-06 (aprobado por Pablo el 13/11/2026 («Vamos para adel
 | P-23 | Zona horaria de «la fecha de hoy» (3.2) | GL-06 | **Decidida (13/11/2026).** `config.time_zone = "America/Argentina/Buenos_Aires"` para toda la instancia; hoy la aplicación usa UTC y una captura después de las 21:00 quedaría con la fecha de mañana | dejar UTC; zona horaria por cuenta (dato nuevo) |
 | P-24 | Detalle de una entrada propia sin acceso a la ficha (PP-9, AM-1, P-7) | GL-06 | **Decidida (13/11/2026).** El detalle responde por autoría: de la persona, solo el nombre; de la entrada propia, todos los campos; sin enlace a la ficha ni acciones de escritura. **Acceso solo por URL directa**, sin listado adicional en GL-06: la sección «Tus entradas» (P-21) no sirve en esos casos porque la ficha responde 404. **3.10 y 4.14 quedan parciales**; el listado y los datos mínimos de AM-1 para él siguen pendientes (P-7, I5) | de la entrada, solo el resumen del Anexo C (fecha, estado y texto); un listado mínimo en GL-06, que exigía decidir AM-1; otra vista accesible, que adelantaba parte de I5 |
 | P-25 | Segunda solicitud de «Marcar como lista» sobre una entrada que ya está lista | GL-06 | **Decidida (13/11/2026).** Idempotente: la entrada no cambia y la respuesta vuelve al detalle sin error | rechazarla con un código de error |
-| P-26 | Reasignación del caso PT-11 («al reasignarlo vuelve a editar») | GL-06 | **Decidida (13/11/2026).** GL-06 incluye la rama de lectura de PT-11 que le asigna la sección 6.1, **parcial** mientras «con datos mínimos» siga pendiente de interpretación; la transición de reasignación, que devuelve la escritura, queda **fuera** de GL-06: no se especifica ni se prueba aquí | incorporarla a GL-06 |
+| P-26 | Reasignación del caso PT-11 («al reasignarlo vuelve a editar») | GL-06 | **Decidida (13/11/2026).** GL-06 incluye la rama de lectura de PT-11 que le asigna la sección 6.1, **parcial** mientras «con datos mínimos» siga pendiente de interpretación (aclarada el 14/11/2026: datos mínimos de la persona, solo el nombre; la entrada propia completa); la transición de reasignación, que devuelve la escritura, queda **fuera** de GL-06: no se especifica ni se prueba aquí | incorporarla a GL-06 |
 
 ### 6.1. Detalle de las decisiones que abren GL-03
 
@@ -330,7 +333,7 @@ Reglas que GL-03 deja definidas (PP-2, PP-3, PP-4, PP-9, AM-1):
 | Que el detalle de una entrada propia funcione sin asignación, sin enlace a la ficha ni otros datos de la persona salvo los mínimos | vista de detalle de GL-06 | sí, poco: una condición en la vista y dos pruebas |
 | Qué datos mínimos se muestran (Anexo C propone: nombre de la persona, fecha del hecho, estado y su propio texto) | decisión | sí: **detalle de AM-1 no decidido**. Para el detalle de GL-06, P-24 (13/11/2026) fija solo el nombre de la persona y todos los campos de la entrada propia; para un listado sigue sin decidir |
 | Un lugar donde el autor sin asignación encuentre esas entradas (sin la ficha ni el feed) | listado mínimo | sí: una consulta y una sección; sin él solo se llega por URL directa. P-24 (13/11/2026): **no** se agrega en GL-06; queda pendiente (I5) |
-| Pruebas de 3.10 y 4.14 y de la rama de lectura de PT-11 | GL-06 | sí. Solo la lectura de las entradas propias, incluidos los borradores; qué exige «con datos mínimos» de PT-11 queda pendiente de interpretación (P-24 no la define). La transición de reasignación queda fuera (P-26) |
+| Pruebas de 3.10 y 4.14 y de la rama de lectura de PT-11 | GL-06 | sí. Solo la lectura de las entradas propias, incluidos los borradores; «con datos mínimos» de PT-11 se aclaró el 14/11/2026: de la persona solo el nombre, la entrada propia completa, por URL directa (P-24). La transición de reasignación queda fuera (P-26) |
 
 **¿Bloquea el núcleo?** No. En el núcleo ninguna pantalla termina una
 asignación; solo la consola puede hacerlo. Las reglas quedan correctas
@@ -446,7 +449,7 @@ asignación; y una persona Q sin asignaciones.
 | L3 y A piden la ficha de P y la de Q por URL directa: 404 | acceso a la persona solo por asignación activa (1.19, PP-2); administrar no da acceso (PP-8) | regla comprobada en GL-03 a nivel de política; **URL directa comprobada en GL-05**: `spec/requests/people_spec.rb` cubre a un líder con una persona asignada solo a otro líder y con una sin asignaciones, y a una administradora sin asignación con ambas, todas con 404 igual que una inexistente y sin el nombre (CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466) sobre `8d0e854`); a mano, en E10, Elena pidió `/personas/3` (Carla, asignada solo a Tomás) y recibió 404 sin datos de Carla |
 | Matriz de peticiones sobre el **borrador** y sobre la **entrada lista** de L1: detalle, edición, marcar como lista, por L2, L3 y A, con URL directa: 404 y sin cambios en la base | borrador y lista privados (PP-3, PP-4, 4.9, 4.11) | **comprobado en local en GL-06** (13/11/2026; sin CI remoto) |
 | Las respuestas a L2 no contienen el texto de la entrada de L1 | no hay fuga en el cuerpo | **comprobado en local en GL-06** (13/11/2026; sin CI remoto); GL-07 |
-| Con la asignación terminada (y con la persona inactiva), L1 lee por URL directa su borrador y su entrada lista, sin enlace a la ficha; editar y marcar como lista dan 404 sin cambios; la ficha da 404 | lectura propia sin asignación (3.10 y 4.14 parciales, P-24; rama de lectura de PT-11, salvo «con datos mínimos», pendiente de interpretación; P-9, P-20) | **comprobado en local en GL-06** (13/11/2026; sin CI remoto) |
+| Con la asignación terminada (y con la persona inactiva), L1 lee por URL directa su borrador y su entrada lista, sin enlace a la ficha; editar y marcar como lista dan 404 sin cambios; la ficha da 404 | lectura propia sin asignación (3.10 y 4.14 parciales, P-24; rama de lectura de PT-11, con «con datos mínimos» aclarado el 14/11/2026; P-9, P-20) | **comprobado en local en GL-06** (13/11/2026; sin CI remoto) |
 | Resumen, cronología y conteo de L2 sobre P no incluyen la entrada lista de L1; los de L1 sí; un borrador no cuenta | consultas con alcance (4.11, 4.12 parcial, 3.3, 1.15 parcial) | GL-07 |
 | Mutación registrada: quitar el alcance de la consulta del resumen hace fallar la prueba | que la prueba detecta la fuga | GL-07 |
 | E2E en navegador del recorrido completo y rama negativa de L2 | el recorrido funciona por la interfaz | GL-09 |
@@ -484,16 +487,23 @@ GL-01b está cerrado y archivado, con P-18 aprobada (07/11/2026): el
 `Gemfile` queda sin cambios. El siguiente ticket es GL-06: P-1, P-2, P-3 y
 P-11 se aprobaron el 12/11/2026, Pablo decidió P-19 a P-26 el 13/11/2026
 y aprobó ese mismo día el cambio de OpenSpec de GL-06 («Vamos para
-adelante», según M120). La implementación está hecha en local, sin
-commit: el gate local pasó el 14/11/2026 (`bin/bundler-audit update` y
+adelante», según M120). La implementación está publicada en el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4),
+abierto y sin fusionar: el gate local pasó el 14/11/2026 (`bin/bundler-audit update` y
 `bin/ci`, con 291 ejemplos y 0 fallos) y las seis mutaciones se detectan
 ([diseño](../openspec/changes/gl-06-captura-rapida/design.md#registro-de-la-implementación-13112026-local-sin-commit)).
 La comprobación en navegador F17 quedó **parcial**: Pablo decidió el
 14/11/2026 no hacer más comprobaciones manuales (375 px revisados solo con
 un `iframe` y, en el navegador, la sesión vencida solo como simulación sin
-cookie). Faltan el CI remoto (con autorización de push) y el archivo. 3.10 y 4.14 quedan **parciales** (P-24), y la rama de
-lectura de PT-11 no se da por satisfecha mientras «con datos mínimos»
-siga pendiente de interpretación. La prueba automatizada en
+cookie); no hay más comprobaciones manuales previstas. El CI remoto
+pasó sobre `b5665aa9481f82e9bca86e7a52b872a951d899da`
+([ejecución 43608171520](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43608171520)); cualquier commit posterior requiere su
+propio CI. Faltan integrar el PR y archivar el cambio. 3.10 y 4.14 quedan
+**parciales** (P-24), y la rama de lectura de PT-11 quedó resuelta con la
+aclaración de Pablo del 14/11/2026 sobre «con datos mínimos» (de la
+persona, solo el nombre; la entrada propia, completa). PT-11 sigue
+incompleto: compartir, revocar y la reasignación siguen fuera, y el
+listado de AM-1 sigue pendiente. La prueba automatizada en
 navegador sigue bloqueada por P-4 (ADR-6) y queda para GL-09; en GL-05 hay
 una comprobación manual. El aislamiento del feedback entre líderes de la
-misma persona quedó comprobado en local con GL-06; falta el CI remoto.
+misma persona quedó comprobado con GL-06, en local y en el CI remoto del
+PR #4.

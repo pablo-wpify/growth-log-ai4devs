@@ -1,10 +1,13 @@
 # Design
 
-> **Estado (13/11/2026): implementado en local, sin commit.** P-1, P-2, P-3 y P-11 están
-> aprobadas (12/11/2026), Pablo decidió P-19 a P-26 (13/11/2026) y aprobó
-> el cambio el mismo día («Vamos para adelante», según M120). Lo ejecutado
-> se registra en «Evidencia que se registra aquí al implementar». Las verificaciones técnicas pendientes se
-> listan en «Open Questions».
+> **Estado (14/11/2026): publicado en el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), abierto y sin fusionar.**
+> P-1, P-2, P-3 y P-11 están aprobadas (12/11/2026), Pablo decidió P-19 a
+> P-26 (13/11/2026) y aprobó el cambio el mismo día («Vamos para
+> adelante», según M120). CI remoto exitoso sobre `b5665aa` (ver «CI
+> remoto del 14/11/2026»). F17 quedó **parcial** por decisión de Pablo,
+> sin más comprobaciones manuales previstas. Lo ejecutado se registra en
+> «Evidencia que se registra aquí al implementar»; las verificaciones y
+> la aclaración de PT-11, en «Open Questions».
 
 ## Context
 
@@ -73,7 +76,7 @@ Registro: `docs/decisiones/2026-11-13-gl-06-captura.md` y plan, sección 6.
 | P-23 | `America/Argentina/Buenos_Aires` para toda la instancia | sección 7 |
 | P-24 | Sin acceso a la ficha: de la persona solo el nombre, de la entrada todos los campos; solo por URL directa, sin listado. 3.10 y 4.14 quedan parciales | sección 6; matriz y trazabilidad |
 | P-25 | «Marcar como lista» sobre una entrada ya lista no la cambia y vuelve al detalle sin error | sección 5; escenario de `feedback-capture` |
-| P-26 | De PT-11, solo la rama de lectura, parcial mientras «con datos mínimos» siga pendiente de interpretación; la reasignación queda fuera | Non-Goals; trazabilidad |
+| P-26 | De PT-11, solo la rama de lectura, parcial mientras «con datos mínimos» siga pendiente de interpretación (aclarada el 14/11/2026: ver Open Questions); la reasignación queda fuera | Non-Goals; trazabilidad |
 
 ### 2. Tabla y modelo
 
@@ -393,10 +396,11 @@ de lectura de PT-11», asignadas a GL-06):**
   lectura permitida por URL directa, con todos los campos y solo el nombre
   de la persona (P-24), sin enlace a la ficha; 404 en el formulario de
   edición, la edición y marcar como lista; la ficha de P responde 404.
-- La rama de lectura de PT-11 **no** se da por satisfecha por completo:
-  qué exige su frase «con datos mínimos» queda pendiente de
-  interpretación. P-24 decide qué muestra el detalle, pero no define por
-  sí sola esa frase.
+- La rama de lectura de PT-11 queda **resuelta** con la aclaración de
+  Pablo del 14/11/2026: «con datos mínimos» se refiere a los datos de la
+  persona (solo el nombre); la entrada propia se muestra completa,
+  incluidos los borradores, por URL directa (P-24). PT-11 no queda
+  completo: compartir, revocar y la reasignación siguen fuera.
 - La fila «L1 con P inactiva» cubre P-9 (lectura conservada) y P-20; no
   traza 3.10 ni 4.14, que hablan de la asignación terminada.
 - No hay fila de reasignación: la transición de PT-11 queda fuera (P-26).
@@ -435,8 +439,9 @@ se da nada por comprobado en el CI.
 
 #### Registro de la implementación (13/11/2026, local, sin commit)
 
-Todo lo de esta sección se comprobó en **local**. No hay CI remoto: no hubo
-commit ni push. La comprobación en navegador (F17) quedó **parcial**: ver
+Todo lo de esta sección se comprobó en **local**. Al registrarla
+(13/11/2026) no había CI remoto; el del 14/11/2026 está en «CI remoto del
+14/11/2026». La comprobación en navegador (F17) quedó **parcial**: ver
 «Comprobación en navegador F17 (13 y 14/11/2026, parcial)».
 
 - **Pruebas primero.** Cada grupo escribió sus pruebas y las vio fallar por
@@ -577,6 +582,14 @@ infracciones, auditorías sin vulnerabilidades y Brakeman sin advertencias.
 Antes se conservaron copias verificadas de `log/development.log` y
 `log/test.log`, porque «Setup» los vacía (`log:clear`).
 
+**CI remoto del 14/11/2026:** [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4) desde `feature/GL-06-captura-rapida`
+contra `feature/entrega-2-pp`, con los commits `5de213f` (implementación
+y documentación de cierre) y `b5665aa` (registro de prompts). GitHub
+Actions, [ejecución 43608171520](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43608171520): **exitosa** sobre `b5665aa9481f82e9bca86e7a52b872a951d899da`, con `scan_ruby`, `scan_js`,
+`lint` y `test` en verde. Vale solo para ese SHA: una actualización
+posterior (por ejemplo, la aclaración de PT-11 y este registro) requiere
+su propio CI.
+
 **Desvíos:**
 
 - **Rutas:** en lugar de `resources … only: %i[ show edit update ]`, las
@@ -601,13 +614,12 @@ Antes se conservaron copias verificadas de `log/development.log` y
 **Pendiente:**
 
 - F17 queda **parcial** por decisión de Pablo (14/11/2026: no hace más
-  comprobaciones manuales). Sin evidencia quedan: la comprobación a mano
-  por Pablo; el paso 15 con DevTools en modo dispositivo y sus controles
-  no comprobados; y, en el navegador, el paso 16 con el vencimiento real y
-  la conservación del texto;
-- con autorización, commit, push y CI remoto;
-- la interpretación de «con datos mínimos» en PT-11, que **no** se da por
-  satisfecha;
+  comprobaciones manuales y no hay más previstas). Sin evidencia quedan:
+  la comprobación a mano por Pablo; el paso 15 con DevTools en modo
+  dispositivo y sus controles no comprobados; y, en el navegador, el paso
+  16 con el vencimiento real y la conservación del texto;
+- con autorización, integrar el PR #4; cualquier commit posterior a
+  `b5665aa` necesita su propio CI remoto;
 - el archivo del cambio.
 
 ## Risks / Trade-offs
@@ -646,11 +658,15 @@ GL-08.
 **Decisiones:** P-19 a P-26 están decididas (13/11/2026; sección 1a). El
 cambio está aprobado (13/11/2026).
 
-**Pendiente de interpretación** (no es una decisión registrada): qué
-exige «con datos mínimos» en la rama de lectura de PT-11. P-24 decide el
-detalle de GL-06, pero no define por sí sola esa frase; hasta aclararla,
-esa rama no se da por satisfecha por completo. No reabre P-24 ni agrega
-la reasignación (P-26).
+**Interpretación aclarada (14/11/2026):** Pablo confirmó que la
+interpretación de P-24 también se aplica a la rama de lectura de PT-11.
+«Con datos mínimos» se refiere a los datos de la persona: se muestra
+solo su nombre; la entrada propia se muestra completa, incluidos los
+borradores; el acceso sigue siendo por URL directa, sin listado (P-24).
+Esto resuelve la interpretación de la rama de lectura. No reabre P-24 ni
+agrega la reasignación (P-26): compartir, revocar y la transición de
+reasignación siguen fuera de GL-06, y PT-11 no queda implementado por
+completo. Registro: [decisiones de GL-06](../../../docs/decisiones/2026-11-13-gl-06-captura.md).
 
 **Verificaciones técnicas** (no cambian requisitos):
 

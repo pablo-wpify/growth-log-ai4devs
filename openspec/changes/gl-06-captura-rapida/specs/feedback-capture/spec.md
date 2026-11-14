@@ -109,8 +109,8 @@ Si el autor ya no puede abrir la ficha de la persona (asignación
 terminada o persona inactiva), el detalle de su borrador o de su entrada
 lista SHALL seguir disponible por URL directa con todos los campos de la
 entrada. De la persona MUST mostrar solo el nombre, y MUST NOT enlazar a
-la ficha ni ofrecer acciones de escritura (PP-9, AM-1, P-24). Sin listado
-de esas entradas: 3.10 y 4.14 quedan parciales.
+la ficha ni ofrecer acciones de escritura (PP-9, AM-1, P-24; rama de
+lectura de PT-11). Sin listado: 3.10 y 4.14 quedan parciales.
 
 #### Scenario: Asignación terminada
 - **WHEN** termina la asignación del autor con la persona y el autor abre por URL directa el detalle de su borrador o de su entrada lista
