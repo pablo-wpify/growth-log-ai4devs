@@ -28,12 +28,12 @@ Rama `feature/entrega-2-pp`. Actualizado al 14/11/2026.
 | | Datos ficticios reproducibles para desarrollo (GL-08): tarea solo en `development`, sin contraseñas versionadas ni adopción de registros ajenos. **No verifica** el aislamiento del feedback: los datos ficticios no traen entradas, y ese aislamiento lo cubren las pruebas automatizadas de GL-06 | [ticket](docs/tickets/GL-08-datos-ficticios.md); CI [41621619815](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41621619815) sobre `2bd5deb` |
 | | «Personas» y ficha del líder (GL-05): listado y ficha de solo lectura con autorización por alcance y 404 por URL directa; comprobación manual en navegador (E10) del 07/11/2026, con 375 px emulados | [ticket](docs/tickets/GL-05-personas.md); CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466) sobre `8d0e854` |
 | **Integrado, con verificación en navegador parcial** | Captura rápida, completar y marcar como lista (GL-06): entradas de feedback privadas del autor, con lectura por autoría, escritura con asignación y persona activas y 404 por URL directa; integrado en `feature/entrega-2-pp` con el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4) (merge commit `8c2f2ad`, 14/11/2026) y archivado como `2026-11-14-gl-06-captura-rapida`. Gate local del 14/11/2026 con 291 ejemplos. Verificado con pruebas automatizadas, gate local y CI remoto; la comprobación en navegador (F17) quedó **parcial** por decisión de Pablo (asistida por Claude Code, 375 px solo con `iframe` y la sesión vencida en el navegador solo como simulación sin cookie). PT-11: la interpretación de su rama de lectura está aclarada, pero PT-11 no está completo (compartir, revocar y reasignación fuera; listado de AM-1 pendiente) | [ticket](docs/tickets/GL-06-captura-rapida.md); CI [43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733) sobre `d65a66a` (head del PR) y CI [43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250) sobre el merge `8c2f2ad` |
-| **Siguiente** | GL-07, resumen por dimensión y cronología: P-10 pendiente de decisión | [plan de la entrega 2](docs/plan-entrega-2.md) |
-| **Pendiente** | Resumen y cronología del feedback, verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
+| **Siguiente** | GL-07, resumen por dimensión y cronología: P-10 aprobada y alcance decidido; cambio de OpenSpec aprobado (14/11/2026); **implementado en local, sin commit**: gate local en verde (`bin/ci`, 315 ejemplos y 0 fallos); pendiente de revisión y publicación (CI remoto y archivo) | [ticket](docs/tickets/GL-07-resumen-cronologia.md); [plan de la entrega 2](docs/plan-entrega-2.md) |
+| **Pendiente** | Verificación E2E y todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
-Lo pendiente sigue siendo requisito: diferirlo no lo elimina. **Hoy la
-aplicación muestra las personas asignadas, pero no registra feedback** y no
-admite datos reales.
+Lo pendiente sigue siendo requisito: diferirlo no lo elimina. GL-06 registra
+feedback privado; GL-07 suma localmente el resumen, la cronología y el
+conteo. El resto del alcance del MVP sigue pendiente.
 
 ## Dónde está cada cosa
 

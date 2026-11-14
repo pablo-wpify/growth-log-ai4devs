@@ -148,7 +148,31 @@ h2 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 0.75rem; overflow-wrap: a
 
 .entry-row-status { color: var(--muted); }
 
+.entry-row-tag { color: var(--muted); }
+
 .entry-row-text { flex-basis: 100%; overflow-wrap: anywhere; }
+
+/* GL-07: resumen por dimensión. La tabla se desplaza dentro de su caja en
+   pantallas angostas en lugar de desbordar la página. */
+.summary, .timeline { margin: 1.5rem 0; }
+
+.table-wrap { overflow-x: auto; }
+
+.summary-table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+
+.summary-table th, .summary-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+}
+
+.summary-table th:first-child { text-align: left; }
+
+.summary-table thead th { color: var(--muted); font-weight: 600; }
+
+.summary-note { color: var(--muted); margin: 0.5rem 0 0; }
+
+.person-count { color: var(--muted); margin: 0; font-variant-numeric: tabular-nums; }
 
 .entry-status { font-weight: 600; margin: 0 0 0.25rem; }
 

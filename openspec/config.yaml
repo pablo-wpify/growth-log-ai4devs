@@ -32,8 +32,12 @@ context: |
   America/Argentina/Buenos_Aires, detalle sin acceso a la ficha solo por URL
   directa, «Marcar como lista» idempotente y reasignación de PT-11 fuera),
   13/11/2026. Cambio de GL-06 aprobado el 13/11/2026.
+  Aprobada para GL-07: P-10 (cronología ascendente por fecha del hecho,
+  desempate por created_at e id, borradores marcados «fuera del resumen»),
+  14/11/2026, con el alcance de 4.3, 4.4, 4.5 y 1.15 decidido ese día.
+  Cambio de GL-07 aprobado el 14/11/2026.
   Abiertas: ADR-5 a ADR-8, D3, D4 y las demás decisiones P del plan de la
-  entrega 2 (herramienta E2E y cronología, entre otras).
+  entrega 2 (herramienta E2E, entre otras).
 
   Restricciones:
   - No agregar funciones que el ticket no pida.

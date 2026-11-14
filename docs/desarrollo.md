@@ -259,9 +259,9 @@ Desde la ficha de una persona asignada:
    fecha del hecho es hoy en `America/Argentina/Buenos_Aires` (P-23). Al
    guardar, vuelve a la ficha con el aviso «Guardamos tu borrador. Solo vos
    podés verlo.».
-2. La ficha lista **«Tus entradas sobre <nombre>»**: solo las propias, por
-   fecha del hecho descendente y, en empate, la creada después primero
-   (P-21). Cada fila lleva al detalle (`/entradas/:id`).
+2. La ficha muestra la **«Vista cronológica»** de las entradas propias
+   (GL-07; ver la sección 10). Cada fila lleva al detalle
+   (`/entradas/:id`).
 3. En el detalle, **«Editar»** completa fecha, contexto, señal, dimensión,
    evidencia, impacto y confianza; la entrada sigue como borrador.
 4. **«Marcar como lista»** exige dimensión y señal (P-3); si falta alguna,
@@ -279,8 +279,29 @@ Los datos ficticios (4c) no traen entradas: se crean a mano. La
 comprobación manual (F17) está en el
 [diseño de GL-06](../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/design.md#comprobación-en-navegador-manual-no-automatizada).
 
+## 10. Resumen, cronología y conteo (GL-07)
+
+Todo se lee solo de las entradas propias de la cuenta: lo de otro líder de
+la misma persona no cuenta ni aparece, y ser administradora no agrega nada.
+
+- **«Personas»:** cada fila muestra, después de «rol · equipo», cuántas
+  entradas propias listas hay sobre la persona: «0 entradas listas», «1
+  entrada lista», «2 entradas listas». Los borradores no cuentan (3.3).
+- **«Resumen por dimensión»** en la ficha: una fila por dimensión con al
+  menos una entrada lista, en el orden de la lista de P-1, con Positivos,
+  A mejorar, Neutrales y Total (P-2), y la aclaración «Solo entradas
+  listas. No es un puntaje: reúne evidencia para la conversación.». Sin
+  entradas listas, dice «Todavía no hay entradas listas para el resumen.».
+- **«Vista cronológica»** en la ficha: todas las entradas propias, también
+  los borradores, por fecha del hecho de la más antigua a la más reciente
+  y, en empate, la creada antes primero (P-10). Cada fila muestra la fecha,
+  el estado («Lista · solo vos» o «Borrador · solo vos · fuera del
+  resumen»), la señal y la dimensión si las tiene, y el comienzo del texto.
+
+No hay filtros ni entradas compartidas: quedan diferidos (4.6, 4.7 e I4).
+
 ## Lo que todavía no hay
 
-Resumen y cronología de feedback (GL-07), invitaciones y administración.
+Filtros y entradas compartidas, invitaciones y administración.
 Qué llega, en qué orden y qué queda diferido está en el
 [plan de la entrega 2](plan-entrega-2.md).
