@@ -12,6 +12,12 @@ module FeedbackEntriesHelper
     STATUS_LABELS.fetch(entry.status)
   end
 
+  # En la cronología de la ficha (GL-07, P-10), el borrador avisa además que
+  # no cuenta en el resumen.
+  def timeline_status_label(entry)
+    entry.draft? ? "#{STATUS_LABELS.fetch("draft")} · fuera del resumen" : entry_status_label(entry)
+  end
+
   def entry_date(date)
     date&.strftime("%d/%m/%Y")
   end

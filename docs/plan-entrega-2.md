@@ -11,8 +11,9 @@
 > I1 a I9), que **no se modifica** y sigue siendo la referencia de todo el
 > alcance del MVP. Aquí se registra en qué se aparta la entrega 2 y por qué.
 >
-> Actualizado: 14/11/2026, con GL-06 integrado (PR #4, `8c2f2ad`) y
-> archivado, F17 cerrada como parcial por decisión de Pablo y la aclaración
+> Actualizado: 14/11/2026, con P-10 aprobada y el alcance de GL-07
+> decidido, y GL-07 implementado en local, sin commit; GL-06
+> integrado (PR #4, `8c2f2ad`) y archivado, F17 cerrada como parcial por decisión de Pablo y la aclaración
 > de «con datos mínimos» en la rama de lectura de PT-11. Antes: 13/11/2026, con las
 > decisiones de Pablo sobre P-19 a P-26 y la aprobación del cambio de
 > OpenSpec de GL-06. Antes: 12/11/2026, con la aprobación de P-1, P-2, P-3 y P-11
@@ -70,7 +71,7 @@ citaban por número):
 | 5a | [GL-01b](tickets/GL-01b-rails-8-1-4-1.md) | Rails 8.1.4.1 por los avisos de seguridad del 04/11/2026 | **cerrado** (archivado [`2026-11-07-gl-01b-rails-8-1-4-1`](../openspec/changes/archive/2026-11-07-gl-01b-rails-8-1-4-1/proposal.md); PR [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2), `8ae8723`; CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492)) | GL-01 | — (P-18 aprobada) |
 | 6 | [GL-05](tickets/GL-05-personas.md) | «Personas» y ficha del líder: elegir una persona asignada | **cerrado** (archivado [`2026-11-07-gl-05-personas`](../openspec/changes/archive/2026-11-07-gl-05-personas/proposal.md); PR [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3), `8d0e854`; CI [42398717466](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42398717466); comprobación manual E10 del 07/11/2026) | GL-03, GL-08, GL-01b | — (P-15, P-16 y P-17 aprobadas) |
 | 7 | [GL-06](tickets/GL-06-captura-rapida.md) | Captura rápida, completar y marcar como lista | **cerrado** (archivado [`2026-11-14-gl-06-captura-rapida`](../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/proposal.md); [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), merge `8c2f2ad`; CI [43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733) sobre `d65a66a`, el head del PR, y CI [43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250) sobre el merge `8c2f2ad`; gate local con 291 ejemplos; F17 **parcial** por decisión de Pablo; «con datos mínimos» aclarado para la rama de lectura de PT-11, que sigue incompleto en compartir, revocar y reasignación, con el listado de AM-1 pendiente) | GL-05 | — (P-1, P-2, P-3 y P-11 aprobadas; P-19 a P-26 decididas) |
-| 8 | GL-07 | Resumen por dimensión y cronología | pendiente | GL-06 | P-10 (P-2 aprobada) |
+| 8 | [GL-07](tickets/GL-07-resumen-cronologia.md) | Resumen por dimensión y cronología | **implementado en local, sin commit** (cambio [`gl-07-resumen-cronologia`](../openspec/changes/gl-07-resumen-cronologia/proposal.md) aprobado el 14/11/2026, M194; gate local en verde con 315 ejemplos; faltan el CI remoto y el archivo) | GL-06 | — (P-2 aprobada; P-10 aprobada el 14/11/2026) |
 | 9 | GL-09 | Verificación E2E del recorrido núcleo | pendiente | GL-07 | P-4 (ADR-6) |
 | — | GL-04 | Invitaciones y administración de cuentas, personas y asignaciones | **diferido** | GL-03 | ADR-8 para la entrega real del correo |
 
@@ -203,7 +204,28 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   cuenta en el resumen ni aparece en la cronología ni en el conteo de L2,
   aunque los dos acompañen a la misma persona; un borrador no cuenta ni
   para su autor.
+- **Decisiones del 14/11/2026** ([registro](decisiones/2026-11-14-gl-07-resumen-cronologia.md)): P-10 aprobada
+  (cronología ascendente por fecha del hecho; en empate, `created_at` e
+  `id` ascendentes; borradores marcados «Borrador · solo vos · fuera del
+  resumen», fuera del resumen y del conteo). Alcance decidido: 4.3 parcial
+  con el estado «… · solo vos» y sin columna «Origen»; texto de 4.5 «Solo
+  entradas listas. No es un puntaje: reúne evidencia para la
+  conversación»; 4.4 con «Todavía no hay entradas listas para el resumen»
+  y la cronología vacía con «Todavía no registraste entradas sobre
+  <nombre>», sin filas para dimensiones sin datos; 1.15 parcial con «N
+  entradas listas», también con 0. Detalles confirmados el mismo día
+  (M193): «1 entrada lista» para uno; el conteo va después de «rol ·
+  equipo»; la cronología muestra también señal y dimensión, como el mock
+  1; las filas del resumen siguen el orden de P-1; los títulos son
+  «Resumen por dimensión» y «Vista cronológica»; cuatro mutaciones (M1 a
+  M4 del diseño del cambio).
 - **Diferido:** filtros 4.6 y 4.7 (I6), origen «compartida con vos».
+- Detalle en [el ticket](tickets/GL-07-resumen-cronologia.md) y en el
+  cambio [`gl-07-resumen-cronologia`](../openspec/changes/gl-07-resumen-cronologia/proposal.md),
+  aprobado por Pablo el 14/11/2026 (M194) e **implementado en local, sin
+  commit**: gate local en verde (315 ejemplos, 0 fallos) y mutaciones M1 a
+  M4 detectadas. Faltan el CI remoto y el archivo. La prueba E2E y P-4
+  (ADR-6) son de GL-09.
 
 ### GL-09. Verificación E2E del recorrido núcleo
 
@@ -256,7 +278,7 @@ cambio de OpenSpec de GL-06 (aprobado por Pablo el 13/11/2026 («Vamos para adel
 | P-7 | Qué cambia cuando termina la asignación del autor (C3) | GL-03 | **Aprobada.** Conservar PP-9 y AM-1 en las reglas desde GL-03; no bloquea el núcleo. Detalle en 6.1 | diferir todo a I5 sin acceso para el autor (incumpliría PP-9; descartado) |
 | P-8 | Unicidad de asignaciones | GL-03 | **Aprobada.** Una sola asignación **activa por par líder y persona**; nunca una sola por persona. Detalle en 6.1 | validación solo en el modelo |
 | P-9 | Estados de la persona, de la asignación y de la cuenta | GL-03, GL-05 | **Aprobada.** Tres estados independientes, con efectos separados; `people.active` desde el inicio. Detalle en 6.1 | posponer `active` hasta I7 |
-| P-10 | Cronología | GL-07 | por fecha del hecho, de la más antigua a la más reciente (como el mock 1), y los borradores propios aparecen marcados «Borrador · solo vos · fuera del resumen» | solo entradas listas en la cronología |
+| P-10 | Cronología | GL-07 | **Aprobada (14/11/2026) para GL-07** ([registro](decisiones/2026-11-14-gl-07-resumen-cronologia.md)). por fecha del hecho, de la más antigua a la más reciente (como el mock 1), y los borradores propios aparecen marcados «Borrador · solo vos · fuera del resumen»; en empate, `created_at` e `id` ascendentes | solo entradas listas en la cronología |
 | P-11 | Formulario completo «+ Feedback» (2.1, 2.2, 2.7) | GL-06 | **Aprobada (12/11/2026).** diferirlo: el recorrido priorizado empieza en la captura rápida, y los campos y validaciones de H2 se cubren al completar | incluirlo en GL-06 |
 | P-12 | Contexto del proyecto para la IA (sección 8) | — | **Aprobada:** creado `CLAUDE.md`. Crear `CLAUDE.md` en la raíz con el contenido mínimo propuesto | no crearlo y mantener solo `openspec/config.yaml` |
 | P-13 | Cómo se distinguen los registros del conjunto ficticio | GL-08 | **Aprobada (03/11/2026).** Tabla `sample_data_records` con una marca por registro creado; sin marca no se adopta nada, aunque coincida el correo ([diseño](../openspec/changes/archive/2026-11-03-gl-08-datos-ficticios/design.md#3-marcas-tabla-sample_data_records-p-13-aprobada-el-03112026)) | columna en las tablas del dominio; reconocer por correo (adopta cuentas ajenas) |

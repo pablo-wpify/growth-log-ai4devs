@@ -9,6 +9,7 @@
         <%= link_to person_path(person), class: "person-row" do %>
           <span class="person-name" data-person-name><%= person.name %></span>
           <span class="person-meta"><%= person_role_and_team(person) %></span>
+          <span class="person-count" data-ready-count><%= ready_entries_count(@ready_counts.fetch(person.id, 0)) %></span>
         <% end %>
       </li>
     <% end %>
