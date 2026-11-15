@@ -25,6 +25,7 @@ guía explica cada paso en orden:
 | Verificación completa (`bin/ci`) | 6 |
 | Servidor | 7 |
 | Qué se ve en la aplicación | 8 a 11 |
+| Tarea de datos demo para Render (GL-10, sin desplegar) | 12 |
 
 ## 0. Clonar la rama de la entrega
 
@@ -367,6 +368,42 @@ interfaz, lo que describen las secciones 8 a 10:
   página 404, sin su texto.
 
 Usan datos ficticios propios de cada prueba, no la base de desarrollo.
+
+## 12. Datos de la demo temporal en Render (GL-10)
+
+**No hay demo desplegada.** GL-10 prepara el código para una demo temporal
+en Render, con datos exclusivamente ficticios. Crear el servicio, cargar las
+variables y desplegar le corresponde a Pablo y no forma parte de esta guía.
+Detalle y decisiones (P-27 a P-31) en el
+[ticket](tickets/GL-10-demo-temporal-render.md).
+
+- **Tarea `bin/rails growth_log:datos_demo`:**
+  - Escribe solo con `RAILS_ENV=production` y `GROWTH_LOG_DEMO_INSTANCE`
+    con su valor exacto. **En local se niega siempre**, también en
+    `development` y aunque la variable exista.
+  - Crea dos líderes (Lucía Demo y Martín Demo) asignados a Paula Ejemplo,
+    con un borrador y dos entradas listas.
+  - Se niega si la base tiene registros que no son de la demo, por ejemplo
+    los del conjunto de desarrollo de la sección 4c.
+  - Toma la contraseña inicial de cada cuenta de una variable secreta del
+    panel de Render, solo al crearla. Nunca la muestra ni cambia la de una
+    cuenta existente.
+- **Comandos del servicio en Render** (confirmados contra el repositorio;
+  todavía no ejecutados en Render):
+  - Build Command: `bin/render-build.sh`.
+  - Start Command: `bin/rails server`. Arranca Puma con `config/puma.rb`,
+    con el puerto de `PORT` y un solo proceso.
+  - Las variables y el orden de los dos deploys están en el
+    [diseño de GL-10](../openspec/changes/gl-10-demo-temporal-render/design.md#9-configuración-de-render-al-implementar-con-aprobación).
+- **`bin/render-build.sh`:**
+  - Instala las gemas, compila los assets y migra.
+  - Invoca la tarea solo si el panel tiene `GROWTH_LOG_DEMO_INSTANCE`.
+  - Si un paso falla, falla el build.
+- **En local**, la tarea y el script se comprueban solo con las pruebas
+  (`bundle exec rspec`); no hace falta ejecutarlos a mano.
+
+La tarea de datos ficticios de la sección 4c no cambia y sigue siendo solo
+para desarrollo.
 
 ## Lo que todavía no hay
 

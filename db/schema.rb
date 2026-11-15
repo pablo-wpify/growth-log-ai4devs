@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_13_194500) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_14_233500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,6 +25,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_194500) do
     t.index ["leader_id"], name: "index_assignments_on_leader_id"
     t.index ["person_id"], name: "index_assignments_on_person_id"
     t.check_constraint "ended_at IS NULL OR ended_at >= started_at", name: "assignments_end_not_before_start"
+  end
+
+  create_table "demo_data_records", force: :cascade do |t|
+    t.string "key", null: false
+    t.bigint "user_id"
+    t.bigint "person_id"
+    t.bigint "assignment_id"
+    t.bigint "feedback_entry_id"
+    t.datetime "created_at", null: false
+    t.index ["assignment_id"], name: "index_demo_data_records_on_assignment_id", unique: true
+    t.index ["feedback_entry_id"], name: "index_demo_data_records_on_feedback_entry_id", unique: true
+    t.index ["key"], name: "index_demo_data_records_on_key", unique: true
+    t.index ["person_id"], name: "index_demo_data_records_on_person_id", unique: true
+    t.index ["user_id"], name: "index_demo_data_records_on_user_id", unique: true
+    t.check_constraint "num_nonnulls(user_id, person_id, assignment_id, feedback_entry_id) = 1", name: "demo_data_records_exactly_one_reference"
+    t.check_constraint "user_id IS NOT NULL AND key::text ~~ 'demo:account:%'::text OR person_id IS NOT NULL AND key::text ~~ 'demo:person:%'::text OR assignment_id IS NOT NULL AND key::text ~~ 'demo:assignment:%'::text OR feedback_entry_id IS NOT NULL AND key::text ~~ 'demo:entry:%'::text", name: "demo_data_records_key_matches_reference"
   end
 
   create_table "feedback_entries", force: :cascade do |t|
@@ -102,6 +118,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_194500) do
 
   add_foreign_key "assignments", "people"
   add_foreign_key "assignments", "users", column: "leader_id"
+  add_foreign_key "demo_data_records", "assignments"
+  add_foreign_key "demo_data_records", "feedback_entries"
+  add_foreign_key "demo_data_records", "people"
+  add_foreign_key "demo_data_records", "users"
   add_foreign_key "feedback_entries", "people"
   add_foreign_key "feedback_entries", "users", column: "author_id"
   add_foreign_key "sample_data_records", "assignments"

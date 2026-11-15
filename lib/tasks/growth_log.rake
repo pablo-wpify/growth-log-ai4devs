@@ -19,3 +19,11 @@ namespace :growth_log do
     exit(status) unless status.zero?
   end
 end
+
+namespace :growth_log do
+  desc "Prepara el conjunto demo (solo en producción con GROWTH_LOG_DEMO_INSTANCE; no modifica ni borra registros existentes)"
+  task datos_demo: :environment do
+    status = DemoDataCommand.new.call
+    exit(status) unless status.zero?
+  end
+end

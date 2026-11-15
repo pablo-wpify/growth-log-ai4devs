@@ -11,7 +11,7 @@
 > I1 a I9), que **no se modifica** y sigue siendo la referencia de todo el
 > alcance del MVP. Aquí se registra en qué se aparta la entrega 2 y por qué.
 >
-> Actualizado: 14/11/2026, con GL-09 integrado (PR #6, `e0ceb4e`) y archivado, y el hito «recorrido núcleo» alcanzado; GL-07 integrado (PR #5, `b835bde`) y
+> Actualizado: 14/11/2026, con GL-10 (demo temporal en Render) propuesto como borrador documental (M212, actualizado en M213 y M214), con P-27, P-28, P-29 y P-31 decididas e implementado en local, sin commit ni deploy (M215); antes, con GL-09 integrado (PR #6, `e0ceb4e`) y archivado, y el hito «recorrido núcleo» alcanzado; GL-07 integrado (PR #5, `b835bde`) y
 > archivado, después de aprobar P-10 y decidir su alcance; GL-06
 > integrado (PR #4, `8c2f2ad`) y archivado, F17 cerrada como parcial por decisión de Pablo y la aclaración
 > de «con datos mínimos» en la rama de lectura de PT-11. Antes: 13/11/2026, con las
@@ -73,6 +73,7 @@ citaban por número):
 | 7 | [GL-06](tickets/GL-06-captura-rapida.md) | Captura rápida, completar y marcar como lista | **cerrado** (archivado [`2026-11-14-gl-06-captura-rapida`](../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/proposal.md); [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), merge `8c2f2ad`; CI [43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733) sobre `d65a66a`, el head del PR, y CI [43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250) sobre el merge `8c2f2ad`; gate local con 291 ejemplos; F17 **parcial** por decisión de Pablo; «con datos mínimos» aclarado para la rama de lectura de PT-11, que sigue incompleto en compartir, revocar y reasignación, con el listado de AM-1 pendiente) | GL-05 | — (P-1, P-2, P-3 y P-11 aprobadas; P-19 a P-26 decididas) |
 | 8 | [GL-07](tickets/GL-07-resumen-cronologia.md) | Resumen por dimensión y cronología | **cerrado** (archivado [`2026-11-14-gl-07-resumen-cronologia`](../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/proposal.md); [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), merge `b835bde`; CI [43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881) sobre `8f36845`, el head del PR, y CI [43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169) sobre el merge `b835bde`; gate local con 315 ejemplos) | GL-06 | — (P-2 aprobada; P-10 aprobada el 14/11/2026) |
 | 9 | [GL-09](tickets/GL-09-e2e-recorrido-nucleo.md) | Verificación E2E del recorrido núcleo | **cerrado** (archivado [`2026-11-14-gl-09-e2e-recorrido-nucleo`](../openspec/changes/archive/2026-11-14-gl-09-e2e-recorrido-nucleo/proposal.md); [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6), merge `e0ceb4e`; CI [43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960) sobre `2f192ab`, el head del PR, y CI [43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495) sobre el merge `e0ceb4e`; gate local con 317 ejemplos) | GL-07 | — (P-4 aprobada el 14/11/2026) |
+| 10 | [GL-10](tickets/GL-10-demo-temporal-render.md) | Demo temporal en Render, editable, con datos exclusivamente ficticios | **implementado en local** (cambio [`gl-10-demo-temporal-render`](../openspec/changes/gl-10-demo-temporal-render/proposal.md); M212 a M215; gate local con 368 ejemplos; sin commit, CI remoto ni deploy) | GL-09 | autorización para publicar y, aparte, para Render (P-27, P-28, P-29 y P-31 decididas; P-30 abierta) |
 | — | GL-04 | Invitaciones y administración de cuentas, personas y asignaciones | **diferido** | GL-03 | ADR-8 para la entrega real del correo |
 
 Los IDs identifican tickets; no indican orden. El orden lo da la primera
@@ -98,6 +99,7 @@ el hito del Anexo G.
 | GL-07 | Mismo objetivo; **el E2E sale de GL-07** y pasa a GL-09 | el E2E verifica todo el recorrido y depende de ADR-6 |
 | GL-08 | **ID nuevo**: preparación reproducible de datos ficticios | no existía; no se reutiliza GL-04 para esto |
 | GL-09 | **ID nuevo**: verificación E2E del recorrido núcleo | separado de GL-07 |
+| GL-10 | **ID nuevo**, propuesto (M212): demo temporal en Render con datos ficticios y una tarea demo propia | complemento temporal de la revisión local; no es el despliegue de ADR-7 ni toca la tarea de GL-08 |
 
 Ningún ID se reutilizó para un objetivo distinto.
 
@@ -122,6 +124,7 @@ ticket.
 | C11 | README 2.6: el E2E llega hasta compartir y la lectura del destinatario | compartir está diferido | GL-09 cubre el núcleo; el E2E con compartición sigue pendiente (I4) | no |
 | C12 | `openspec/config.yaml`: ADR-2 «abierta» y plan en el Anexo G | desactualizado tras GL-02 | actualizar el contexto (hecho en este paso, solo texto) | no |
 | C13 | GL-02 y `docs/desarrollo.md` remiten las asignaciones y las siguientes cuentas a GL-04 | GL-04 queda diferido | remitir a este plan, a GL-03 y a GL-08 (hecho en este paso) | no |
+| C14 | Spec `initial-administrator`, escenario «Repositorio sin credenciales»: las únicas cuentas predefinidas son las del conjunto de desarrollo. Spec `development-sample-data`: solo en `development` | la demo de GL-10 necesita cuentas ficticias predefinidas fuera de desarrollo | **no se relaja GL-08**: capability nueva `temporary-demo` con su propia tarea y guarda, y delta `MODIFIED` explícito del escenario de `initial-administrator` para admitir las cuentas demo, siempre sin contraseñas ni hashes versionados (propuesto en GL-10, sin aprobar) | no: solo datos ficticios y sin credenciales versionadas |
 
 ## 5. Tickets del recorrido núcleo
 
@@ -252,6 +255,54 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   «recorrido núcleo» (sección 2), que no equivale al «primer recorrido
   usable» del Anexo G ni cubre lo diferido.
 
+### GL-10. Demo temporal en Render (implementado en local, sin desplegar)
+
+- **Resultado propuesto:** una instancia demo temporal en Render, editable
+  (P-27), con datos exclusivamente ficticios: dos líderes asignados a la
+  misma persona, con un borrador y entradas listas de ejemplo, para recorrer
+  el núcleo y ver la privacidad entre ellos sin instalar nada.
+- **Tarea demo propia** (`growth_log:datos_demo`), explícita e idempotente,
+  solo en producción con el indicador de instancia demo y sobre una base
+  dedicada; falla de forma segura ante registros ajenos; no sobrescribe,
+  adopta ni borra; no corre desde los seeds ni al arrancar Puma. **GL-08 no
+  cambia:** su tarea sigue siendo solo para `development` (C14).
+- **Render (declarado por Pablo en M212 a M214):** la base
+  `growth-log-entrega-2-db` existe en Postgres Free, en Virginia, creada el
+  14/11/2026; vence alrededor del 14/12/2026. El servicio web no se creó;
+  desplegará `feature/entrega-2-pp` con despliegue manual (M214). El
+  servicio web Free no tiene shell, SSH ni trabajos
+  puntuales, y el pre-deploy es pago.
+- **P-28 (aprobada en M214):** la tarea corre en el build, después de las
+  migraciones y bajo las dos guardas. Primero, un deploy solo de
+  migraciones; tras comprobar la conexión, un deploy manual con la tarea
+  habilitada. Según la
+  documentación oficial de Render, las variables de entorno están
+  disponibles en el build, y su guía de Rails 8 recomienda las migraciones
+  en el build en Free. Si falla el build o la tarea, falla ese deploy y se
+  conserva el último exitoso. **No se probó todavía en este servicio.**
+- **P-29 (decidida en M214):** contraseñas iniciales desde variables
+  secretas de Render, leídas solo al crear cada cuenta; la tarea no las
+  imprime ni sobrescribe contraseñas existentes. **P-31 (aprobada en
+  M214):** tabla de marcas propia. Conjunto demo (Lucía, Martín y Paula)
+  aceptado. **P-30 sigue pendiente.**
+- Límites, cargos posibles y fuentes en el
+  [diseño](../openspec/changes/gl-10-demo-temporal-render/design.md#límites-de-render-verificados).
+- **Fuera de GL-10:** datos reales, ADR-7 (despliegue y backups), modo de
+  solo lectura y todo lo diferido. No cambia la forma de entrega (la rama,
+  por Typeform) ni reemplaza la revisión local.
+- **Implementado en local (M215):**
+  - Tarea `growth_log:datos_demo`, tabla `demo_data_records` y
+    `bin/render-build.sh`.
+  - `bin/ci` con código 0 (368 ejemplos) y mutaciones M1 a M4 detectadas.
+  - **Faltan:**
+    - el commit y el CI remoto, con autorización;
+    - en Render, que hace Pablo con otra autorización: el deploy solo de
+      migraciones, el deploy con la tarea, la comprobación manual y el
+      retiro de las variables de contraseña, conservando el indicador.
+  - P-30 sigue abierta hasta compartir la demo.
+- Detalle en [el ticket](tickets/GL-10-demo-temporal-render.md) y en el
+  cambio [`gl-10-demo-temporal-render`](../openspec/changes/gl-10-demo-temporal-render/proposal.md).
+
 ### Diferido: sigue siendo requisito pendiente
 
 | Qué | Criterios y casos | Dónde estaba en el Anexo G | Ticket |
@@ -264,7 +315,7 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
 | Feed y filtros | 4.6, 4.7, 4.11 (feed), 5.1 a 5.5, 5.8 | I6 | sin ID |
 | Baja de personas, desactivar cuentas, último administrador, doble función | 1.6, 1.7, 1.11, 1.12, 1.21; PT-5, PT-6, PT-9 | I7 | sin ID |
 | Revocación administrativa | 1.13; PT-1 completo, PT-10 | I8 | sin ID |
-| Despliegue, correo real, backups, errores; HTTPS forzado y CSP | 1.1 (entrega real); E4 | I9, E4 | sin ID |
+| Despliegue, correo real, backups, errores; HTTPS forzado y CSP | 1.1 (entrega real); E4 | I9, E4 | sin ID (la demo temporal de GL-10, si se aprueba, no lo cubre) |
 
 Los IDs de lo diferido sin ticket se asignan cuando se planifique cada uno,
 sin reutilizar números.
@@ -280,7 +331,8 @@ términos de la sección 6.1 y la sección 8, **P-6, P-13, P-14, P-15, P-16 y P-
 para GL-06: **P-19 a P-26** (13/11/2026, [registro](decisiones/2026-11-13-gl-06-captura.md));
 en P-22 y P-24 eligió una alternativa distinta de la recomendación
 anterior. Los números P-25 y P-26 son definitivos desde la aprobación del
-cambio de OpenSpec de GL-06 (aprobado por Pablo el 13/11/2026 («Vamos para adelante», según M120)). Las demás siguen siendo recomendaciones, **sin aprobar**.
+cambio de OpenSpec de GL-06 (aprobado por Pablo el 13/11/2026 («Vamos para adelante», según M120)). Decididas por Pablo para GL-10:
+**P-27** (14/11/2026, M212) y **P-28, P-29 y P-31** (14/11/2026, M214). Las demás siguen siendo recomendaciones, **sin aprobar**.
 
 | # | Decisión | Bloquea | Recomendación | Alternativas |
 |---|---|---|---|---|
@@ -310,6 +362,11 @@ cambio de OpenSpec de GL-06 (aprobado por Pablo el 13/11/2026 («Vamos para adel
 | P-24 | Detalle de una entrada propia sin acceso a la ficha (PP-9, AM-1, P-7) | GL-06 | **Decidida (13/11/2026).** El detalle responde por autoría: de la persona, solo el nombre; de la entrada propia, todos los campos; sin enlace a la ficha ni acciones de escritura. **Acceso solo por URL directa**, sin listado adicional en GL-06: la sección «Tus entradas» (P-21) no sirve en esos casos porque la ficha responde 404. **3.10 y 4.14 quedan parciales**; el listado y los datos mínimos de AM-1 para él siguen pendientes (P-7, I5) | de la entrada, solo el resumen del Anexo C (fecha, estado y texto); un listado mínimo en GL-06, que exigía decidir AM-1; otra vista accesible, que adelantaba parte de I5 |
 | P-25 | Segunda solicitud de «Marcar como lista» sobre una entrada que ya está lista | GL-06 | **Decidida (13/11/2026).** Idempotente: la entrada no cambia y la respuesta vuelve al detalle sin error | rechazarla con un código de error |
 | P-26 | Reasignación del caso PT-11 («al reasignarlo vuelve a editar») | GL-06 | **Decidida (13/11/2026).** GL-06 incluye la rama de lectura de PT-11 que le asigna la sección 6.1, **parcial** mientras «con datos mínimos» siga pendiente de interpretación (aclarada el 14/11/2026: datos mínimos de la persona, solo el nombre; la entrada propia completa); la transición de reasignación, que devuelve la escritura, queda **fuera** de GL-06: no se especifica ni se prueba aquí | incorporarla a GL-06 |
+| P-27 | Demo temporal: ¿editable o de solo lectura? | GL-10 | **Decidida por Pablo (M212, 14/11/2026).** Editable, con datos exclusivamente ficticios; sin modo de solo lectura | modo de solo lectura (descartado) |
+| P-28 | Dónde corre la tarea demo | GL-10 | **Aprobada (M214, 14/11/2026)**, con un primer deploy solo de migraciones y, tras comprobar la conexión, un deploy manual con la tarea habilitada: en el build de Render, después de `db:migrate`, bajo las dos guardas (entorno de producción y `GROWTH_LOG_DEMO_INSTANCE` con su valor exacto). Las variables de entorno están disponibles en el build ([Render](https://render.com/docs/your-first-deploy)); la guía de Rails 8 recomienda las migraciones en el build en Free porque el pre-deploy es pago ([Render](https://render.com/docs/deploy-rails-8)); si falla el build o la tarea, falla ese deploy y se conserva el último exitoso ([Render](https://render.com/docs/deploys)). No se probó todavía en este servicio | ejecución desde la máquina de Pablo con la URL externa de la base (descartada) |
+| P-29 | Cómo se establecen las contraseñas utilizables de las cuentas demo | GL-10 | **Decidida (M214, 14/11/2026):** variables secretas de Render para las contraseñas iniciales, una por cuenta, leídas solo al crearla y validadas con la política antes de escribir; la tarea no las imprime ni sobrescribe contraseñas existentes ([diseño](../openspec/changes/gl-10-demo-temporal-render/design.md#8-contraseñas-iniciales-p-29-decidida-en-m214-y-credenciales-para-revisores-p-30-pendiente)) | tarea sin eco ejecutada por Pablo contra la URL externa (descartada) |
+| P-30 | Cómo se comparten las credenciales con quienes revisen | GL-10 (antes de compartir la demo) | **Pendiente: la decide Pablo.** El diseño no propone canal | — |
+| P-31 | Marcas del conjunto demo | GL-10 | **Aprobada (M214, 14/11/2026):** tabla propia `demo_data_records`, con las restricciones de `sample_data_records` y referencias también a entradas; mantiene la capacidad demo separada de GL-08, sin cambiar su tabla ni su spec | ampliar `sample_data_records` (cambia una tabla y una spec de GL-08; descartada) |
 
 ### 6.1. Detalle de las decisiones que abren GL-03
 
@@ -517,7 +574,14 @@ merge `e0ceb4e`): con eso se alcanza el hito «recorrido núcleo» (sección
 2), que **no equivale** al «primer recorrido usable» del Anexo G ni cubre
 el alcance diferido.
 
-**No hay un ticket siguiente decidido.** Lo que queda es el alcance
+**En curso: GL-10**, demo temporal en Render con datos ficticios (M212 a
+M215). Está implementado en local, sin commit ni deploy (sección 5). Siguen:
+
+- publicar, con autorización;
+- los pasos en Render, que hace Pablo con otra autorización;
+- P-30.
+
+**Fuera de GL-10, no hay otro ticket decidido.** Lo que queda es el alcance
 diferido, que sigue siendo requisito: GL-04 (invitaciones y administración,
 con ADR-8 para el correo), compartir y revocar (I4), filtros y feed (I6),
 la protección del último administrador y la revocación administrativa (I7
@@ -536,13 +600,14 @@ e I8) y el despliegue (ADR-7). El orden lo decide Pablo.
   siguen pendientes.
 - **GL-07:** el conteo en «Personas» no tiene comprobación en navegador; lo
   cubren las pruebas de peticiones.
-- **Registro de prompts:** M178 a M189, M195 a M201 y M203 a M205 no están
-  registrados (ver [prompts.md](../prompts.md)).
+- **Registro de prompts:** M178 a M189, M195 a M201, M203 a M205 y M210
+  no están registrados (ver [prompts.md](../prompts.md)).
 - **Spec `runtime-toolchain`:** corregida a Rails 8.1.4.1 con el cambio de
   seguimiento de GL-01b
   [`2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1`](../openspec/changes/archive/2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1/proposal.md),
-  preparado en M208 y aprobado y archivado en M209 (14/11/2026), sin
-  commit todavía.
+  preparado en M208 y aprobado y archivado en M209 (14/11/2026); publicado
+  en `e5d678f` con las correcciones documentales (CI
+  [43639579889](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43639579889)).
 
 Historia de esta sección: hasta el 14/11/2026 describía el cierre de GL-05
 y GL-06; ese detalle sigue en los tickets
