@@ -1,5 +1,10 @@
 # Proposal
 
+> **Estado (15/11/2026, M237): implementado (M215), integrado (PR #7,
+> merge `6177aef`) y desplegado en Render; sin archivar.** Detalle en el
+> registro del despliegue del diseño. Lo que sigue es la propuesta
+> original.
+>
 > **Borrador; implementación sin aprobar** (M212, actualizado en M213 y
 > M214, 14/11/2026).
 >
@@ -52,7 +57,9 @@ preparar un conjunto ficticio en una base dedicada a la demo. Fuente:
     migraciones en el build en Free, porque el pre-deploy es pago.
   - Si falla el build o la tarea, falla ese deploy y se conserva el último
     exitoso.
-  - **No se probó todavía en este servicio.**
+  - **No se probó todavía en este servicio.** Probado el 15/11/2026: el
+    primer deploy migró sin la tarea y el segundo la ejecutó (ver el
+    diseño).
   - Alternativa descartada: ejecutarla desde la máquina de Pablo con la
     URL externa.
 - **No incluye:**

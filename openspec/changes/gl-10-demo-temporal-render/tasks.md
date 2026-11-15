@@ -70,21 +70,27 @@ El trabajo tiene dos fases:
   - el script migra siempre e invoca la tarea solo si `GROWTH_LOG_DEMO_INSTANCE` está configurado;
   - no usa `set -x` ni muestra el entorno.
   Evidencia: `bin/render-build.sh`; sin cambios en la configuración de producción; `assets:precompile` de producción comprobado en local
-- [ ] 5.2 **Fuera de la autorización de M215.** Primer deploy, solo de migraciones. Con autorización de Pablo para ese paso, Pablo crea el servicio web sobre `feature/entrega-2-pp`, con despliegue manual y sin `GROWTH_LOG_DEMO_INSTANCE` ni las variables de contraseña; el agente no lo hace.
-  - Comprobar la conexión del build a la base (riesgo R1 del diseño): migraciones aplicadas y ningún dato demo.
-- [ ] 5.3 Segundo deploy, manual, con la tarea habilitada. Tras comprobar la conexión, Pablo carga el indicador y las variables de contraseña y lanza el deploy. Fuera de la autorización de M215.
-  - Comprobar a mano en la URL, con fecha (criterio CA8 del ticket):
-  - el recorrido con L1;
-  - la rama negativa con L2;
-  - un nuevo deploy manual que no cambia los datos ni las contraseñas.
-- [ ] 5.4 Retirar las variables de contraseña del panel tras crear y verificar las cuentas demo, conservando `GROWTH_LOG_DEMO_INSTANCE` (decidido en M215). Lo hace Pablo.
-  - Un deploy posterior sin esas variables no falla ni cambia las contraseñas.
+Redacción actualizada el 15/11/2026 (M237) para reflejar lo ocurrido. La versión anterior preveía una tarea 5.4 de retiro de las variables de contraseña; ver la aclaración en esa tarea.
+
+- [x] 5.2 Primer deploy, solo de migraciones. Pablo creó el servicio web sobre `feature/entrega-2-pp`, con despliegue manual y sin `GROWTH_LOG_DEMO_INSTANCE`; el agente no lo hizo. Evidencia: inspección de solo lectura del agente en M235 (15/11/2026):
+  - deploy de `6177aef` («Deploy succeeded», disparado como primer deploy), con Ruby 4.0.9 tomado de `Gemfile.lock` (riesgo R9 resuelto);
+  - en el log del build, «Tarea demo no habilitada: falta GROWTH_LOG_DEMO_INSTANCE. Solo se aplicaron las migraciones.» y «Build successful»;
+  - `db:migrate` terminó sin error, porque el script corta ante cualquier fallo; con eso la conexión del build a la base funciona (riesgo R1 resuelto). El log no muestra salida de las migraciones y el agente no consultó la base;
+  - el servidor arrancó en producción y `/session/new` respondió 200.
+- [x] 5.3 Segundo deploy, manual, con la tarea habilitada, a cargo de Pablo. Según M237 la tarea corrió y creó las cuentas demo, lo que requiere el indicador y las variables de contraseña en el panel. Evidencia: declaración de Pablo en M237 (15/11/2026): la aplicación y los datos demo están desplegados en Render. Sus capturas muestran el inicio de sesión como Lucía Demo y Martín Demo, que solo existen si la tarea corrió. El agente no vio esas capturas ni el log de ese deploy.
+- [ ] 5.3b Comprobación manual en la URL, con fecha (criterio CA8 del ticket). **Parcial:**
+  - [x] inicio de sesión como L1 y como L2, y la vista de Paula Ejemplo de cada uno con entradas ficticias. Evidencia: capturas de Pablo, descriptas en M237 (15/11/2026) y no aportadas al repositorio;
+  - [ ] el recorrido con L1: capturar, completar y marcar como lista. Las capturas descriptas no lo muestran;
+  - [ ] la rama negativa con L2: por URL directa, el detalle de una entrada de L1 responde 404. Las capturas descriptas no lo muestran;
+  - [ ] que cada líder vea solo sus propias entradas sobre Paula. Lo descripto no alcanza para afirmarlo;
+  - [ ] un nuevo deploy manual que no cambia los datos ni las contraseñas. Sin evidencia.
+- 5.4 **Sin efecto (aclaración del 15/11/2026, M237).** La versión anterior de esta tarea preveía retirar las variables de contraseña del panel tras crear las cuentas, según el registro de M215. En M237 Pablo aclaró que no se iban a retirar: las variables quedan en el panel y no hay una tarea de retiro pendiente.
 
 ## 6. Documentación y verificación
 
 - [x] 6.1 Preservar los logs y ejecutar `bin/bundler-audit update`, `bin/ci` y `openspec validate --all --strict`. Registrar en el diseño lo comprobado en local. Evidencia: 14/11/2026, `bin/ci` con código 0 (368 ejemplos, 0 fallos); OpenSpec 19 de 19
-- [ ] 6.1b CI remoto sobre el SHA publicado. **Pendiente:** requiere autorización de commit y push
+- [x] 6.1b CI remoto sobre el SHA publicado. Evidencia: PR #7, CI [43660072168](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660072168) sobre `d4fd753`, el head del PR, y CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef`, ambos en `success` (consultado con `gh` el 15/11/2026)
 - [x] 6.2a Actualizar `docs/desarrollo.md` (sección 12), el plan, el ticket y el registro de prompts con el estado «implementado en local, sin desplegar». Evidencia: M215
-- [ ] 6.2 Actualizar el README («Cómo revisar esta entrega», 0.4 y 2.4) cuando la demo exista. **Pendiente** hasta 5.3:
+- [ ] 6.2 Actualizar el README («Cómo revisar esta entrega», 0.4 y 2.4) ahora que la demo existe. **Pendiente:** al 15/11/2026 el README no menciona la demo. Depende también de P-30 para compartirla:
   - la demo es temporal, con datos ficticios y fecha de vencimiento;
   - no reemplaza la revisión local.

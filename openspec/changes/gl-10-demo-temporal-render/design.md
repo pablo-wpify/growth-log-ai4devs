@@ -1,9 +1,14 @@
 # Design
 
-> **Borrador, implementación sin aprobar** (M212, actualizado en M213 y
-> M214, 14/11/2026). En M214 Pablo decidió P-28, P-29 y P-31, la rama y el
-> despliegue manual, y aceptó el conjunto demo. P-30 sigue pendiente. **La
-> implementación espera la aprobación explícita de Pablo.**
+> **Estado (15/11/2026, M237): implementado, integrado y desplegado en
+> Render, sin archivar.** Integrado con el PR #7 (merge `6177aef`) y CI
+> remoto en verde. Los dos deploys están hechos (ver «Registro del
+> despliegue»). Quedan pendientes la comprobación manual completa (CA8),
+> el README, P-30 y el archivo.
+>
+> Historia: borrador de M212, actualizado en M213 y M214 (14/11/2026). En
+> M214 Pablo decidió P-28, P-29 y P-31, la rama y el despliegue manual, y
+> aceptó el conjunto demo; en M215 autorizó la implementación.
 
 ## Context
 
@@ -15,7 +20,9 @@
     Render, vence alrededor del 14/12/2026 y, después de 14 días de gracia,
     se borra alrededor del 28/12/2026. Render avisa por correo la fecha
     exacta.
-  - El formulario del servicio web quedó sin enviar.
+  - El formulario del servicio web quedó sin enviar. **Actualización
+    (15/11/2026):** el servicio web existe y está desplegado; ver
+    «Registro del despliegue».
   - **Decidido en M214:** el servicio despliega `feature/entrega-2-pp`, con
     despliegue **manual** (sin despliegue automático).
   - Este diseño no incluye ni infiere credenciales, URLs de conexión ni
@@ -217,11 +224,13 @@ en el panel.
 - **Relación con GL-08:** la spec de GL-08 prohíbe leer contraseñas de
   variables de entorno **para su propia tarea**, y eso no cambia. La regla
   de la tarea demo es distinta y se define en `temporary-demo`.
-- **Después de crear las cuentas (decidido en M215):** una vez creadas y
-  verificadas las cuentas demo, Pablo retira las variables de contraseña
-  del panel y conserva `GROWTH_LOG_DEMO_INSTANCE`. Los deploys siguientes
-  corren la tarea sin esas variables. Como las cuentas ya existen, la tarea
-  no las necesita y no falla.
+- **Después de crear las cuentas (aclaración del 15/11/2026, M237):** el
+  registro de M215 incluía retirar las variables de contraseña una vez
+  creadas y verificadas las cuentas. En M237 Pablo aclaró que no se iban a
+  retirar. Las variables quedan en el panel junto con
+  `GROWTH_LOG_DEMO_INSTANCE`, y no hay una tarea de retiro. Como las
+  cuentas ya existen, los deploys siguientes no vuelven a leerlas ni
+  cambian las contraseñas (CA10).
 
 **P-30**, cómo se comparten las credenciales con quienes revisen: **sigue
 pendiente y lo decide Pablo.** Este diseño no propone canal.
@@ -250,10 +259,14 @@ pendiente y lo decide Pablo.** Este diseño no propone canal.
   - `GROWTH_LOG_DEMO_INSTANCE`, recién en el segundo deploy;
   - `GROWTH_LOG_DEMO_PASSWORD_LUCIA` y `GROWTH_LOG_DEMO_PASSWORD_MARTIN`,
     secretos, recién en el segundo deploy;
-  - `WEB_CONCURRENCY`: la guía de Render lo recomienda en 2, pero
-    **no tiene efecto con este repositorio**, porque `config/puma.rb` no
-    define workers. Puma corre en un solo proceso, con hilos. No hace falta
-    cargarla.
+  - `WEB_CONCURRENCY`: la guía de Render lo recomienda en 2. ~~No tiene
+    efecto con este repositorio~~ **Corrección (15/11/2026, observada en el
+    log del primer deploy, M235):** Render la fija en 1 por defecto («Setting
+    WEB_CONCURRENCY=1 by default») y Puma la lee aunque `config/puma.rb` no
+    defina workers. Arrancó en modo cluster con un worker y advirtió que en
+    ese caso conviene el modo de un solo proceso. No impide el
+    funcionamiento. Cargar `WEB_CONCURRENCY=0` en el panel lo evitaría;
+    lo decide Pablo.
 - **Rama y despliegue (decididos en M214):** `feature/entrega-2-pp`, con
   despliegue automático desactivado. Cada deploy lo lanza Pablo a mano.
 - **Configuración que se revisa al implementar, sin cambiarla ahora:**
@@ -398,10 +411,46 @@ esperada:
 - la conexión del build a la base (R1);
 - la versión de Ruby en Render (R9).
 
+### Registro del despliegue (15/11/2026)
+
+**Integración.** PR #7, merge `6177aef`. CI [43660072168](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660072168) sobre `d4fd753`, el head del PR, y CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef`, ambos en `success`.
+
+**Primer deploy, solo migraciones (tarea 5.2).** Comprobado por el agente
+en modo de solo lectura en el panel de Render (M235), sin abrir valores de
+variables:
+
+- deploy de `6177aef`, «Deploy succeeded», disparado como primer deploy;
+- Ruby 4.0.9 tomado de `Gemfile.lock` (R9 resuelto);
+- «Tarea demo no habilitada: falta GROWTH_LOG_DEMO_INSTANCE. Solo se
+  aplicaron las migraciones.» y «Build successful»;
+- `db:migrate` terminó sin error y el build siguió (R1 resuelto). El log
+  no muestra salida de las migraciones y el agente no consultó la base;
+- Rails 8.1.4.1 arrancó en producción; `/` redirige a `/session/new`, que
+  respondió 200.
+
+**Segundo deploy, con la tarea (tarea 5.3).** Declarado por Pablo en M237:
+la aplicación y los datos demo están desplegados. El agente no vio el log
+de ese deploy.
+
+**Comprobación manual (CA8), parcial.** Según la descripción de Pablo en
+M237, sus capturas muestran el inicio de sesión como Lucía Demo y como
+Martín Demo, y la vista de Paula Ejemplo de cada uno con entradas
+ficticias. Las capturas no están en el repositorio y el agente no las vio.
+**No demostrado:**
+
+- el recorrido completo con L1;
+- la rama negativa con L2 por URL directa;
+- que cada líder vea solo sus entradas;
+- un deploy repetido sin cambios.
+
+**Variables de contraseña:** quedan en el panel (aclaración de M237; ver
+la sección 8). No se inspeccionaron.
+
 ## Risks / Trade-offs
 
-- **R1. Residual: la conexión del build a la base no se probó en este
-  servicio** (sección 7). La documentación respalda la decisión, pero no
+- **R1. Resuelto el 15/11/2026:** el primer deploy migró sin error desde el
+  build (ver «Registro del despliegue»). Texto original: **la conexión del
+  build a la base no se probó en este servicio** (sección 7). La documentación respalda la decisión, pero no
   reemplaza la prueba. Mitigación: el primer deploy solo migra. Si falla,
   Pablo decide cómo seguir antes de habilitar la tarea.
 - **R2. Vencimiento:** la base, creada el 14/11/2026, vence alrededor del
@@ -424,6 +473,8 @@ esperada:
 - **R8. Contraseñas en el panel de Render (P-29):**
   - El valor queda guardado en Render y disponible en el entorno del build y
     de la ejecución.
+  - Las variables no se retiran (aclaración de M237): el valor sigue en el
+    panel mientras exista el servicio.
   - Mitigaciones:
     - la tarea no lo imprime;
     - el script no muestra el entorno;
@@ -436,6 +487,7 @@ esperada:
     ([Ruby Version](https://render.com/docs/ruby-version)).
   - Que 4.0.9 esté disponible se comprueba en el primer deploy. Si no lo
     está, falla el build y hace falta una decisión de Pablo.
+  - **Resuelto el 15/11/2026:** el primer deploy instaló y usó Ruby 4.0.9.
 
 ## Migration Plan
 
@@ -449,8 +501,10 @@ esperada:
    decide Pablo; no bloquea la implementación, sí compartir la demo.
 2. ¿Qué plan tiene el espacio de trabajo de Render y tiene un medio de
    pago? Define si un excedente cobra o suspende.
-3. ~~¿Se retiran las variables de contraseña?~~ Resuelta en M215: se
-   retiran tras crear y verificar las cuentas, y se conserva el indicador.
+3. ~~¿Se retiran las variables de contraseña?~~ El registro de M215 decía
+   que se retiraban tras crear y verificar las cuentas, conservando el
+   indicador. **Aclaración (15/11/2026, M237):** Pablo aclaró que no se
+   iban a retirar; no hay tarea de retiro.
 4. ~~Aprobación para implementar.~~ Dada en M215 según el borrador v3, sin
    modificar Render ni desplegar.
 

@@ -25,7 +25,7 @@ guía explica cada paso en orden:
 | Verificación completa (`bin/ci`) | 6 |
 | Servidor | 7 |
 | Qué se ve en la aplicación | 8 a 11 |
-| Tarea de datos demo para Render (GL-10, sin desplegar) | 12 |
+| Tarea de datos demo para Render (GL-10, desplegada) | 12 |
 
 ## 0. Clonar la rama de la entrega
 
@@ -371,9 +371,10 @@ Usan datos ficticios propios de cada prueba, no la base de desarrollo.
 
 ## 12. Datos de la demo temporal en Render (GL-10)
 
-**No hay demo desplegada.** GL-10 prepara el código para una demo temporal
-en Render, con datos exclusivamente ficticios. Crear el servicio, cargar las
-variables y desplegar le corresponde a Pablo y no forma parte de esta guía.
+**Demo desplegada (15/11/2026).** GL-10 prepara el código para una demo
+temporal en Render, con datos exclusivamente ficticios, y Pablo la desplegó
+en dos deploys. Crear el servicio, cargar las variables y desplegar le
+corresponde a Pablo y no forma parte de esta guía.
 Detalle y decisiones (P-27 a P-31) en el
 [ticket](tickets/GL-10-demo-temporal-render.md).
 
@@ -388,11 +389,12 @@ Detalle y decisiones (P-27 a P-31) en el
   - Toma la contraseña inicial de cada cuenta de una variable secreta del
     panel de Render, solo al crearla. Nunca la muestra ni cambia la de una
     cuenta existente.
-- **Comandos del servicio en Render** (confirmados contra el repositorio;
-  todavía no ejecutados en Render):
+- **Comandos del servicio en Render** (confirmados contra el repositorio y
+  usados en los deploys del 15/11/2026):
   - Build Command: `bin/render-build.sh`.
   - Start Command: `bin/rails server`. Arranca Puma con `config/puma.rb`,
-    con el puerto de `PORT` y un solo proceso.
+    con el puerto de `PORT`. Render fija `WEB_CONCURRENCY=1` por defecto,
+    así que Puma arranca en modo cluster con un worker (ver el diseño).
   - Las variables y el orden de los dos deploys están en el
     [diseño de GL-10](../openspec/changes/gl-10-demo-temporal-render/design.md#9-configuración-de-render-al-implementar-con-aprobación).
 - **`bin/render-build.sh`:**

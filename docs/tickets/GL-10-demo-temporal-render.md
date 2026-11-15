@@ -3,18 +3,32 @@
 > Ticket propuesto de la entrega 2 de Growth Log. Lugar en la secuencia:
 > [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec, en
 > borrador: [`gl-10-demo-temporal-render`](../../openspec/changes/gl-10-demo-temporal-render/proposal.md).
-> **Estado (14/11/2026): implementado en local, sin commit ni deploy.**
+> **Estado (15/11/2026, M237): implementado, integrado y desplegado en
+> Render, sin archivar.**
+> - **Integrado:** [PR #7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7),
+>   merge commit `6177aef04a6cd64c85f27cad832cb4b5cf54e949`; CI [43660072168](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660072168) sobre `d4fd753`, el head del PR, y CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef`,
+>   ambos en `success`.
+> - **Desplegado:**
+>   - primer deploy, solo migraciones, comprobado por el agente en modo de
+>     solo lectura (M235);
+>   - segundo deploy, con la tarea demo, declarado por Pablo en M237
+>     ([registro](../../openspec/changes/gl-10-demo-temporal-render/design.md#registro-del-despliegue-15112026)).
+> - **Comprobado a mano (capturas de Pablo, M237):** inicio de sesión como
+>   Lucía Demo y como Martín Demo, y la vista de Paula Ejemplo de cada uno
+>   con entradas ficticias.
 > - **Historia:** pedido en M212; actualizado en M213 y M214; implementación
 >   autorizada en M215 según el borrador v3, sin modificar Render ni
 >   desplegar.
 > - **Gate local:** `bin/ci` con código 0 (368 ejemplos) y mutaciones M1 a
 >   M4 detectadas
 >   ([registro](../../openspec/changes/gl-10-demo-temporal-render/design.md#registro-de-la-implementación-14112026-local-sin-commit)).
-> - **Pendientes:**
->   - el CI remoto;
->   - en Render, los dos deploys y la comprobación manual (tareas 5.2 a
->     5.4), a cargo de Pablo;
->   - P-30.
+> - **Pendientes, con su evidencia:**
+>   - el resto de CA8 (tarea 5.3b): las capturas descriptas no muestran el
+>     recorrido completo con L1, la rama negativa con L2 por URL directa,
+>     que cada líder vea solo lo suyo ni un deploy repetido sin cambios;
+>   - el README (tarea 6.2): al 15/11/2026 no menciona la demo;
+>   - P-30, sin decisión;
+>   - el archivo del cambio.
 
 ## Problema
 
@@ -39,7 +53,8 @@ mano en la instancia.
 - Este ticket no incluye ni infiere credenciales, URLs de conexión ni
   valores de variables.
 - El formulario del servicio web quedó **sin enviar**: no hay servicio
-  web desplegado.
+  web desplegado. **Actualización (15/11/2026):** el servicio web existe y
+  la demo está desplegada (ver el estado al principio).
 - GL-10 no cambia servicios ni configuración de Render en esta fase.
 
 ## Decisiones de Pablo (14/11/2026)
@@ -58,9 +73,11 @@ mano en la instancia.
   manual.
 - **Conjunto demo (M214):** Lucía, Martín y Paula, aceptados como datos
   ficticios.
-- **Variables después de crear las cuentas (M215):** una vez creadas y
-  verificadas las cuentas demo, se retiran las variables de contraseña y se
-  conserva `GROWTH_LOG_DEMO_INSTANCE`.
+- **Variables después de crear las cuentas:** el registro de M215 incluía
+  retirar las variables de contraseña tras crear y verificar las cuentas.
+  **Aclaración (15/11/2026, M237):** Pablo aclaró que no se iban a retirar.
+  Quedan en el panel, con `GROWTH_LOG_DEMO_INSTANCE`, y no hay una tarea de
+  retiro.
 - **P-30 sigue pendiente:** cómo se comparten las credenciales con quienes
   revisen. No se define aquí.
 
@@ -88,7 +105,8 @@ mano en la instancia.
    - Si falla el build o la tarea, falla ese deploy y se conserva el último
      exitoso.
    - Fuentes en el [diseño](../../openspec/changes/gl-10-demo-temporal-render/design.md#7-dónde-corre-la-tarea-p-28-aprobada-por-pablo-en-m214).
-   - **Todavía no se probó en este servicio.**
+   - **Todavía no se probó en este servicio.** Probado el 15/11/2026: los
+     dos deploys se hicieron en ese orden (ver el estado).
 4. Contraseñas iniciales según P-29:
    - Variables secretas de Render, una por cuenta, leídas solo al crearla.
    - Se validan con la política antes de escribir.

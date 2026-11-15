@@ -15,6 +15,7 @@
 | M215 | 2026-11-14 23:31:03 | autorización de implementación | [Autorizar la implementación de GL-10](M215-2026-11-14-autorizar-la-implementacion-de-gl-10.md) |
 | M216 | 2026-11-15 00:25:06 | revisión de solo lectura | [Revisar la implementación de GL-10](M216-2026-11-15-revisar-la-implementacion-de-gl-10.md) |
 | M217 | 2026-11-15 00:43:31 | correcciones de revisión | [Corregir hallazgos de la revisión de GL-10](M217-2026-11-15-corregir-hallazgos-de-la-revision-de-gl-10.md) |
+| M237 | 2026-11-15 13:53:07 | actualización documental | [Reconciliar la documentación de GL-10](M237-2026-11-15-reconciliar-la-documentacion-de-gl-10.md) |
 
 M211 pidió el borrador de OpenSpec a partir de un archivo que no estaba
 disponible; el trabajo se detuvo antes de editar. M212 lo reemplazó, tomó
@@ -40,6 +41,10 @@ M215 autorizó la implementación según el borrador v3, sin modificar Render
 ni desplegar. Además decidió retirar las variables de contraseña tras crear
 y verificar las cuentas, y conservar el indicador. P-30 sigue pendiente.
 
+**Aclaración (15/11/2026, M237).** Pablo aclaró que no se iban a retirar las
+variables de contraseña. El retiro no es una tarea pendiente (la tarea 5.4
+quedó sin efecto) y el texto de M215 se conserva sin cambios.
+
 M216 pidió una revisión de solo lectura. M217 corrigió tres hallazgos:
 
 - se eliminó una constante sin usos;
@@ -47,6 +52,10 @@ M216 pidió una revisión de solo lectura. M217 corrigió tres hallazgos:
 - se renombraron los criterios del ticket a CA1–CA11.
 
 M217 pedía registrarse como M216, pero por posición le corresponde M217.
+
+M218 a M235 (publicación, merge y primer deploy) no están registrados; ver
+[prompts.md](../../../prompts.md). M237 reconcilió la documentación con lo
+ocurrido: GL-10 integrado y desplegado, con la comprobación manual parcial.
 
 **Numeración.** El número sale de la posición en la transcripción; el
 SHA-256 de M206 a M209 coincide con sus registros. M210 (publicación de
