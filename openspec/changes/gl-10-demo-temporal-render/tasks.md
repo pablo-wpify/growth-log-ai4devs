@@ -83,7 +83,7 @@ Redacción actualizada el 15/11/2026 (M237) para reflejar lo ocurrido. La versi�
   - [ ] el recorrido con L1: capturar, completar y marcar como lista. Las capturas descriptas no lo muestran;
   - [ ] la rama negativa con L2: por URL directa, el detalle de una entrada de L1 responde 404. Las capturas descriptas no lo muestran;
   - [ ] que cada líder vea solo sus propias entradas sobre Paula. Lo descripto no alcanza para afirmarlo;
-  - [ ] un nuevo deploy manual que no cambia los datos ni las contraseñas. Sin evidencia.
+  - [ ] un nuevo deploy manual que no cambia los datos ni las contraseñas. **Evidencia parcial (M242):** en el deploy manual de `cad6afe`, la tarea demo informó «0 creados, 8 existentes». Que las contraseñas no cambiaron no se comprobó en la demo; lo cubren las pruebas de CA10.
 - 5.4 **Sin efecto (aclaración del 15/11/2026, M237).** La versión anterior de esta tarea preveía retirar las variables de contraseña del panel tras crear las cuentas, según el registro de M215. En M237 Pablo aclaró que no se iban a retirar: las variables quedan en el panel y no hay una tarea de retiro pendiente.
 
 ## 6. Documentación y verificación

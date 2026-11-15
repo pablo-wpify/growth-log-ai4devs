@@ -24,7 +24,7 @@ deploy ni archivo.
 
 ## 3. Publicación y cierre (cada paso con su autorización)
 
-- [ ] 3.1 Commit, push y PR; CI remoto con enlace y SHA
+- [ ] 3.1 Commit, push y PR; CI remoto con enlace y SHA. **Parcial (M242):** commit `cef5d80` pusheado directo a `feature/entrega-2-pp` (sin PR, no autorizado); CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe` en `success`
 - [ ] 3.2 Merge
-- [ ] 3.3 Deploy manual en Render, a cargo de Pablo, y comprobación de que la demo arranca con Puma 8.0.3
+- [x] 3.3 Deploy manual en Render y comprobación de que la demo arranca con Puma 8.0.3. Evidencia (M242): deploy manual en Render de `cad6afe` (15/11/2026, Live); el log muestra «Puma version: 8.0.3» y Ruby 4.0.9. El agente lanzó el deploy con la autorización de M242
 - [ ] 3.4 Archivo del cambio

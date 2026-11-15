@@ -50,7 +50,14 @@ El trabajo tiene dos fases:
 
 ## 4. Publicación y cierre (cada paso con su autorización)
 
-- [ ] 4.1 Commit, push y PR contra `feature/entrega-2-pp`; CI remoto con enlace y SHA.
+- [ ] 4.1 Commit, push y PR contra `feature/entrega-2-pp`; CI remoto con enlace y SHA. **Parcial (M242):** commit `4e5c3ef` pusheado directo a `feature/entrega-2-pp` (sin PR, no autorizado); CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe` en `success`
 - [ ] 4.2 Merge.
-- [ ] 4.3 Deploy manual en Render, si Pablo lo decide, y comprobación en la demo.
+- [x] 4.3 Deploy manual en Render, si Pablo lo decide, y comprobación en la demo. Evidencia (M242): deploy manual en Render de `cad6afe` (15/11/2026, Live). En `/session/new`, medido a 1280 y 375 px en iframes del mismo origen:
+  - formulario de 384 px (24 rem) a 1280 px y de 339 px (el ancho del contenedor) a 375 px;
+  - etiquetas encima de los campos y alineadas con ellos;
+  - campos de 44 px;
+  - botón debajo de la contraseña, alineado, de 44 px;
+  - foco sólido de 3 px `rgb(10, 88, 202)`, con 2 px de separación, en el correo (`autofocus`), la contraseña y el botón;
+  - sin desplazamiento horizontal y sin cabecera.
+  Sin iniciar sesión. La comprobación manual de Pablo (3.3) sigue pendiente
 - [ ] 4.4 Archivo del cambio.

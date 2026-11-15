@@ -62,4 +62,19 @@ Informá los commits y SHA, resultado del CI remoto, SHA desplegado, estado del 
 - **Avisos de Puma:** los siete avisos del diseño de GL-12 tienen el rango afectado `>= 8.0.0, < 8.0.3` en la línea 8, según el repositorio `puma/puma`. Puma 8.0.3, la versión efectiva, queda fuera. No hubo motivo para detenerse.
 - **Render:** el servicio apunta a `feature/entrega-2-pp` con Auto-Deploy en Off. No se abrieron valores de variables.
 - **Verificación local:** `bin/bundler-audit update` y `bin/ci` con código 0 (383 ejemplos, 0 fallos; auditoría sin vulnerabilidades); `openspec validate --all --strict`, 21 de 21. Tarea 3.2 de GL-11 marcada.
-- **Commits, CI remoto y deploy:** en curso; se completa con la evidencia final.
+- **Commits por ticket**, staging por nombre de archivo y revisión con `git diff --cached`:
+  - `cef5d80` GL-12 (`Gemfile.lock` y su documentación);
+  - `02fe600` GL-10 (reconciliación documental);
+  - `4e5c3ef` GL-11 (vista, hoja, pruebas y documentación);
+  - `cad6afe` plan y registro de prompts compartidos.
+- **Push** a `growth-log-publico/feature/entrega-2-pp`: `6177aef..cad6afe`, con la cuenta `pablo-wpify`. Sin PR ni merge.
+- **CI remoto:** ejecución 43730010839 sobre `cad6afe`, en `success` (test, lint, scan_ruby y scan_js).
+- **Deploy manual en Render** con «Deploy latest commit»: `cad6afe`, «Deploy succeeded», Live. El log muestra Puma 8.0.3, Ruby 4.0.9 y la tarea demo con «0 creados, 8 existentes». No se cambió ninguna configuración ni variable.
+- **Comprobación visual de `/session/new`**, sin iniciar sesión, en iframes del mismo origen de 1280 y 375 px:
+  - etiquetas encima de los campos;
+  - formulario de 384 px (24 rem) en escritorio y del ancho del contenedor (339 px) a 375 px;
+  - campos y botón de 44 px, con el botón debajo y alineado;
+  - foco sólido de 3 px con el color de la aplicación en el correo, la contraseña y el botón;
+  - sin desplazamiento horizontal.
+- **Documentación de la evidencia:** un commit adicional, solo de documentación, con las tareas 4.3 de GL-11 y 3.3 de GL-12 marcadas, las 4.1 y 3.1 como parciales (sin PR), la nota en la 5.3b de GL-10 y este resultado. No requiere otro deploy.
+- **Pendiente:** la comprobación manual de Pablo (GL-11, 3.3), el resto de CA8 de GL-10, P-30, el README de la demo y el archivo de GL-10, GL-11 y GL-12. No se abrió PR ni se archivó nada.
