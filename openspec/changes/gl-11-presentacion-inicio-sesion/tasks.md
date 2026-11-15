@@ -46,6 +46,12 @@ El trabajo tiene dos fases:
 - [x] 3.1b Estilos de las pantallas internas sin cambios: los estilos calculados registrados en 1.3 son iguales después del cambio. Evidencia: los JSON de antes y después son idénticos byte a byte
 - [x] 3.2 `bin/bundler-audit update` y `bin/ci` con código 0. Evidencia: 15/11/2026 15:26 UTC (M242), con GL-12 en el árbol: `bin/ci` con código 0, auditoría sin vulnerabilidades y 383 ejemplos sin fallos. **Antes, bloqueada (M240):** `bin/ci` terminó con código 1 solo por la auditoría de gemas. Hay avisos nuevos en `msgpack` 1.8.6 (CVE-2026-126366) y en `puma` 8.0.2 (siete GHSA), ajenos a GL-11: `Gemfile.lock` no cambió. Pasaron estilo (sin ofensas), Importmap, Brakeman (0 avisos) y RSpec (383 ejemplos, 0 fallos). Actualizar gemas queda fuera de este cambio y lo decide Pablo
 - [ ] 3.3 Comprobación manual de Pablo en local a 1280 px y a 375 px, con un aviso de error, incluida una mirada a la captura rápida y a la edición de una entrada para confirmar que no cambiaron.
+  - **Revisión de la evidencia (M244, 15/11/2026): sin cubrir.**
+    - M236 describe el formulario anterior a GL-11, es decir, el problema.
+    - Las capturas de M237 son de GL-10, de antes del deploy de GL-11.
+    - Después de M240, Pablo no aportó capturas ni declaró ninguna comprobación.
+    - Lo de M242 (tarea 4.3) es una verificación del agente en la demo: sin aviso de error en Render y sin mirada a las pantallas internas.
+  - **Falta:** que Pablo mire `/session/new` a 1280 y 375 px, también con el aviso de un intento fallido, y que revise la captura rápida y la edición de una entrada para confirmar que no cambiaron. Si la comprobación se hace en la demo en lugar de en local, hay que ajustar el texto de esta tarea.
 - [x] 3.4 Registrar en el diseño lo ejecutado, los desvíos y lo pendiente.
 
 ## 4. Publicación y cierre (cada paso con su autorización)
