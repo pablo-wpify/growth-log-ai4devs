@@ -11,7 +11,7 @@
 > I1 a I9), que **no se modifica** y sigue siendo la referencia de todo el
 > alcance del MVP. Aquí se registra en qué se aparta la entrega 2 y por qué.
 >
-> Actualizado: 15/11/2026, con GL-12 (avisos de seguridad de `msgpack` y `puma`) autorizado e implementado en local, sin commit (M241), que devuelve `bin/ci` a código 0; con GL-10 reconciliado con lo ocurrido (M237): integrado (PR #7, `6177aef`) y desplegado en Render, con la comprobación manual parcial y las variables de contraseña conservadas; y con GL-11 (presentación de la página de inicio de sesión) propuesto como borrador documental (M236), con P-32 y P-33 aprobadas e implementado en local, sin commit (M240), con el gate bloqueado por avisos nuevos de gemas ajenos a GL-11. Antes: 14/11/2026, con GL-10 (demo temporal en Render) propuesto como borrador documental (M212, actualizado en M213 y M214), con P-27, P-28, P-29 y P-31 decididas e implementado en local, sin commit ni deploy (M215); antes, con GL-09 integrado (PR #6, `e0ceb4e`) y archivado, y el hito «recorrido núcleo» alcanzado; GL-07 integrado (PR #5, `b835bde`) y
+> Actualizado: 15/11/2026, con el cierre de la entrega 2 (M243): GL-10 y GL-12 cerrados y archivados (GL-10 con la comprobación manual en Render parcial y P-30 abierta) y GL-11 publicado y desplegado, sin archivar hasta la comprobación manual de Pablo. Antes, con GL-12 (avisos de seguridad de `msgpack` y `puma`) autorizado e implementado en local, sin commit (M241), que devuelve `bin/ci` a código 0; con GL-10 reconciliado con lo ocurrido (M237): integrado (PR #7, `6177aef`) y desplegado en Render, con la comprobación manual parcial y las variables de contraseña conservadas; y con GL-11 (presentación de la página de inicio de sesión) propuesto como borrador documental (M236), con P-32 y P-33 aprobadas e implementado en local, sin commit (M240), con el gate bloqueado por avisos nuevos de gemas ajenos a GL-11. Antes: 14/11/2026, con GL-10 (demo temporal en Render) propuesto como borrador documental (M212, actualizado en M213 y M214), con P-27, P-28, P-29 y P-31 decididas e implementado en local, sin commit ni deploy (M215); antes, con GL-09 integrado (PR #6, `e0ceb4e`) y archivado, y el hito «recorrido núcleo» alcanzado; GL-07 integrado (PR #5, `b835bde`) y
 > archivado, después de aprobar P-10 y decidir su alcance; GL-06
 > integrado (PR #4, `8c2f2ad`) y archivado, F17 cerrada como parcial por decisión de Pablo y la aclaración
 > de «con datos mínimos» en la rama de lectura de PT-11. Antes: 13/11/2026, con las
@@ -73,9 +73,9 @@ citaban por número):
 | 7 | [GL-06](tickets/GL-06-captura-rapida.md) | Captura rápida, completar y marcar como lista | **cerrado** (archivado [`2026-11-14-gl-06-captura-rapida`](../openspec/changes/archive/2026-11-14-gl-06-captura-rapida/proposal.md); [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), merge `8c2f2ad`; CI [43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733) sobre `d65a66a`, el head del PR, y CI [43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250) sobre el merge `8c2f2ad`; gate local con 291 ejemplos; F17 **parcial** por decisión de Pablo; «con datos mínimos» aclarado para la rama de lectura de PT-11, que sigue incompleto en compartir, revocar y reasignación, con el listado de AM-1 pendiente) | GL-05 | — (P-1, P-2, P-3 y P-11 aprobadas; P-19 a P-26 decididas) |
 | 8 | [GL-07](tickets/GL-07-resumen-cronologia.md) | Resumen por dimensión y cronología | **cerrado** (archivado [`2026-11-14-gl-07-resumen-cronologia`](../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/proposal.md); [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), merge `b835bde`; CI [43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881) sobre `8f36845`, el head del PR, y CI [43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169) sobre el merge `b835bde`; gate local con 315 ejemplos) | GL-06 | — (P-2 aprobada; P-10 aprobada el 14/11/2026) |
 | 9 | [GL-09](tickets/GL-09-e2e-recorrido-nucleo.md) | Verificación E2E del recorrido núcleo | **cerrado** (archivado [`2026-11-14-gl-09-e2e-recorrido-nucleo`](../openspec/changes/archive/2026-11-14-gl-09-e2e-recorrido-nucleo/proposal.md); [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6), merge `e0ceb4e`; CI [43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960) sobre `2f192ab`, el head del PR, y CI [43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495) sobre el merge `e0ceb4e`; gate local con 317 ejemplos) | GL-07 | — (P-4 aprobada el 14/11/2026) |
-| 10 | [GL-10](tickets/GL-10-demo-temporal-render.md) | Demo temporal en Render, editable, con datos exclusivamente ficticios | **desplegado, sin archivar** (cambio [`gl-10-demo-temporal-render`](../openspec/changes/gl-10-demo-temporal-render/proposal.md); M212 a M215; gate local con 368 ejemplos; [PR #7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7), merge `6177aef`; CI [43660072168](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660072168) sobre `d4fd753`, el head del PR, y CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef`; dos deploys en Render el 15/11/2026; comprobación manual parcial, M237) | GL-09 | — para lo hecho; P-30 abierta para compartir la demo (P-27, P-28, P-29 y P-31 decididas) |
-| 11 | [GL-11](tickets/GL-11-presentacion-inicio-sesion.md) | Presentación de la página de inicio de sesión con el lenguaje visual de la aplicación | **publicado y desplegado, sin archivar** (cambio [`gl-11-presentacion-inicio-sesion`](../openspec/changes/gl-11-presentacion-inicio-sesion/proposal.md); M236 a M240; 15 pruebas nuevas; commit `4e5c3ef` en `feature/entrega-2-pp`, sin PR; CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe`; desplegado en Render y comprobado a 1280 y 375 px, M242) | GL-02, GL-05, GL-06 | — (P-32 y P-33 aprobadas en M240); falta la comprobación manual de Pablo |
-| 12 | [GL-12](tickets/GL-12-avisos-msgpack-puma.md) | `msgpack` 1.8.7 y Puma 8.0.3 por los avisos de seguridad del 12 y 13/11/2026 | **publicado y desplegado, sin archivar** (cambio [`gl-12-avisos-msgpack-puma`](../openspec/changes/gl-12-avisos-msgpack-puma/proposal.md); M241; commit `cef5d80` en `feature/entrega-2-pp`, sin PR; CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe`; desplegado en Render con Puma 8.0.3, M242) | — | — (autorizado en M241) |
+| 10 | [GL-10](tickets/GL-10-demo-temporal-render.md) | Demo temporal en Render, editable, con datos exclusivamente ficticios | **cerrado** (archivado [`2026-11-15-gl-10-demo-temporal-render`](../openspec/changes/archive/2026-11-15-gl-10-demo-temporal-render/proposal.md), M243; M212 a M215; gate local con 368 ejemplos; [PR #7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7), merge `6177aef`; CI [43660072168](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660072168) sobre `d4fd753`, el head del PR, y CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef`; deploys en Render el 15/11/2026, el último de `cad6afe`; comprobación manual en Render **parcial**, cerrada así en M243) | GL-09 | — para lo hecho; P-30 abierta para compartir la demo (P-27, P-28, P-29 y P-31 decididas) |
+| 11 | [GL-11](tickets/GL-11-presentacion-inicio-sesion.md) | Presentación de la página de inicio de sesión con el lenguaje visual de la aplicación | **publicado y desplegado, sin archivar** (cambio [`gl-11-presentacion-inicio-sesion`](../openspec/changes/gl-11-presentacion-inicio-sesion/proposal.md); M236 a M240; 15 pruebas nuevas; commit `4e5c3ef` en `feature/entrega-2-pp`, sin PR; CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe`; desplegado en Render y comprobado a 1280 y 375 px, M242) | GL-02, GL-05, GL-06 | — (P-32 y P-33 aprobadas en M240); el archivo espera la comprobación manual de Pablo (tarea 3.3) |
+| 12 | [GL-12](tickets/GL-12-avisos-msgpack-puma.md) | `msgpack` 1.8.7 y Puma 8.0.3 por los avisos de seguridad del 12 y 13/11/2026 | **cerrado** (archivado [`2026-11-15-gl-12-avisos-msgpack-puma`](../openspec/changes/archive/2026-11-15-gl-12-avisos-msgpack-puma/proposal.md), M243; M241; commit `cef5d80` en `feature/entrega-2-pp`, sin PR; CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe`; desplegado en Render con Puma 8.0.3, M242) | — | — (autorizado en M241) |
 | — | GL-04 | Invitaciones y administración de cuentas, personas y asignaciones | **diferido** | GL-03 | ADR-8 para la entrega real del correo |
 
 Los IDs identifican tickets; no indican orden. El orden lo da la primera
@@ -259,7 +259,7 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   «recorrido núcleo» (sección 2), que no equivale al «primer recorrido
   usable» del Anexo G ni cubre lo diferido.
 
-### GL-10. Demo temporal en Render (desplegado, sin archivar)
+### GL-10. Demo temporal en Render (cerrado y archivado, comprobación manual parcial)
 
 - **Resultado propuesto:** una instancia demo temporal en Render, editable
   (P-27), con datos exclusivamente ficticios: dos líderes asignados a la
@@ -292,7 +292,7 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   M214):** tabla de marcas propia. Conjunto demo (Lucía, Martín y Paula)
   aceptado. **P-30 sigue pendiente.**
 - Límites, cargos posibles y fuentes en el
-  [diseño](../openspec/changes/gl-10-demo-temporal-render/design.md#límites-de-render-verificados).
+  [diseño](../openspec/changes/archive/2026-11-15-gl-10-demo-temporal-render/design.md#límites-de-render-verificados).
 - **Fuera de GL-10:** datos reales, ADR-7 (despliegue y backups), modo de
   solo lectura y todo lo diferido. No cambia la forma de entrega (la rama,
   por Typeform) ni reemplaza la revisión local.
@@ -313,17 +313,22 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   - **Variables de contraseña:** se conservan en el panel. Aclaración de
     M237: no se iban a retirar, aunque el registro de M215 lo incluía; no
     hay tarea de retiro.
-- **Pendiente, con su evidencia:**
-  - el resto de CA8: las capturas descriptas no muestran el recorrido
-    completo con L1, la rama negativa con L2 por URL directa, que cada
-    líder vea solo lo suyo ni un deploy repetido sin cambios;
-  - el README: al 15/11/2026 no menciona la demo;
-  - P-30, abierta hasta compartir la demo;
-  - el archivo del cambio.
+- **Cierre (M243):** archivado como `2026-11-15-gl-10-demo-temporal-render`.
+  La spec `temporary-demo` se creó y la de `initial-administrator` se
+  modificó con su delta. El README presenta la demo sin credenciales.
+- **Pendientes conservados:**
+  - **CA8, cerrado como parcial** por indicación de Pablo. No se comprobaron
+    en Render el recorrido completo con L1, la rama negativa con L2 por URL
+    directa ni la separación entre líderes; las pruebas automatizadas
+    cubren esas reglas. Que un deploy repetido no crea ni cambia datos sí
+    quedó comprobado: «0 creados, 8 existentes» en el deploy de `cad6afe`.
+  - **P-30, abierta:** las credenciales demo se conservan en Render y falta
+    decidir cómo compartirlas con quienes evalúen.
+  - La base Free vence alrededor del 14/12/2026.
 - Detalle en [el ticket](tickets/GL-10-demo-temporal-render.md) y en el
-  cambio [`gl-10-demo-temporal-render`](../openspec/changes/gl-10-demo-temporal-render/proposal.md).
+  cambio [`gl-10-demo-temporal-render`](../openspec/changes/archive/2026-11-15-gl-10-demo-temporal-render/proposal.md).
 
-### GL-11. Presentación de la página de inicio de sesión (implementado en local, sin commit)
+### GL-11. Presentación de la página de inicio de sesión (publicado y desplegado, sin archivar)
 
 - **Problema (evidencia visual de Pablo, M236):** la ficha y la navegación
   con sesión se ven coherentes, pero en `/session/new` el formulario se ve
@@ -355,17 +360,18 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   - 15 pruebas nuevas, que fallaron antes por la razón esperada;
   - mutaciones M1 a M3 detectadas;
   - estilos de las pantallas internas idénticos antes y después.
-- **Gate bloqueado:** `bin/ci` terminó con código 1 solo por la auditoría
-  de gemas: avisos nuevos en `msgpack` 1.8.6 y `puma` 8.0.2, ajenos a GL-11
-  (`Gemfile.lock` no cambió). Pasaron estilo, Brakeman, Importmap y RSpec
-  (383 ejemplos, 0 fallos). Puma corre también en la demo de GL-10. Cómo
-  tratarlos lo decide Pablo.
-- **Sigue:** esa decisión, la comprobación manual de Pablo y, con su
-  autorización, el commit, el CI remoto, el merge y el archivo.
+- **Gate:** en M240, `bin/ci` terminó con código 1 solo por avisos nuevos de
+  gemas, ajenos a GL-11. GL-12 los resolvió y desde M242 el gate da código 0.
+- **Publicado y desplegado (M242):** commit `4e5c3ef`, sin PR; CI
+  [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839)
+  en verde. En la demo, `/session/new` se comprobó a 1280 y 375 px.
+- **No archivado (M243):** falta la comprobación manual de Pablo (tarea
+  3.3), sin evidencia ni decisión que la cierre.
+- **Sigue:** esa comprobación y, con su autorización, el archivo.
 - Detalle en [el ticket](tickets/GL-11-presentacion-inicio-sesion.md) y en
   el cambio [`gl-11-presentacion-inicio-sesion`](../openspec/changes/gl-11-presentacion-inicio-sesion/proposal.md).
 
-### GL-12. Avisos de seguridad de `msgpack` y Puma (implementado en local, sin commit)
+### GL-12. Avisos de seguridad de `msgpack` y Puma (cerrado y archivado)
 
 - **Problema:** el 15/11/2026, con la base de avisos actualizada,
   `bin/ci` falló solo en la auditoría de gemas. Había un aviso contra
@@ -377,7 +383,7 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
     checksums coinciden con RubyGems.
   - Puma 8.1.x queda fuera: es una versión menor nueva, no necesaria.
 - **Aplicabilidad**
-  ([diseño](../openspec/changes/gl-12-avisos-msgpack-puma/design.md#avisos-verificados-contra-sus-fuentes-oficiales-15112026)):
+  ([diseño](../openspec/changes/archive/2026-11-15-gl-12-avisos-msgpack-puma/design.md#avisos-verificados-contra-sus-fuentes-oficiales-15112026)):
   - el aviso de `msgpack` es del decoder de JRuby y no aplica en la
     práctica;
   - de Puma, aplican cinco, uno de ellos solo en parte. No aplican los que
@@ -385,11 +391,9 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
   - no se asume ninguna mitigación de Render.
 - **Verificación local:** `bin/bundler-audit` sin vulnerabilidades y
   `bin/ci` con código 0 (383 ejemplos, 0 fallos).
-- **Sigue, con su autorización:**
-  - commit, CI remoto y merge;
-  - el deploy en Render, porque la demo de GL-10 sigue con Puma 8.0.2 hasta
-    entonces;
-  - el archivo.
+- **Publicado, desplegado y archivado:** commit `cef5d80`, sin PR, con CI
+  en verde; la demo corre Puma 8.0.3 desde el deploy de `cad6afe` (M242).
+  Archivado como `2026-11-15-gl-12-avisos-msgpack-puma` (M243).
 - Detalle en [el ticket](tickets/GL-12-avisos-msgpack-puma.md).
 
 ### Diferido: sigue siendo requisito pendiente
@@ -453,7 +457,7 @@ cambio de OpenSpec de GL-06 (aprobado por Pablo el 13/11/2026 («Vamos para adel
 | P-26 | Reasignación del caso PT-11 («al reasignarlo vuelve a editar») | GL-06 | **Decidida (13/11/2026).** GL-06 incluye la rama de lectura de PT-11 que le asigna la sección 6.1, **parcial** mientras «con datos mínimos» siga pendiente de interpretación (aclarada el 14/11/2026: datos mínimos de la persona, solo el nombre; la entrada propia completa); la transición de reasignación, que devuelve la escritura, queda **fuera** de GL-06: no se especifica ni se prueba aquí | incorporarla a GL-06 |
 | P-27 | Demo temporal: ¿editable o de solo lectura? | GL-10 | **Decidida por Pablo (M212, 14/11/2026).** Editable, con datos exclusivamente ficticios; sin modo de solo lectura | modo de solo lectura (descartado) |
 | P-28 | Dónde corre la tarea demo | GL-10 | **Aprobada (M214, 14/11/2026)**, con un primer deploy solo de migraciones y, tras comprobar la conexión, un deploy manual con la tarea habilitada: en el build de Render, después de `db:migrate`, bajo las dos guardas (entorno de producción y `GROWTH_LOG_DEMO_INSTANCE` con su valor exacto). Las variables de entorno están disponibles en el build ([Render](https://render.com/docs/your-first-deploy)); la guía de Rails 8 recomienda las migraciones en el build en Free porque el pre-deploy es pago ([Render](https://render.com/docs/deploy-rails-8)); si falla el build o la tarea, falla ese deploy y se conserva el último exitoso ([Render](https://render.com/docs/deploys)). No se probó todavía en este servicio | ejecución desde la máquina de Pablo con la URL externa de la base (descartada) |
-| P-29 | Cómo se establecen las contraseñas utilizables de las cuentas demo | GL-10 | **Decidida (M214, 14/11/2026):** variables secretas de Render para las contraseñas iniciales, una por cuenta, leídas solo al crearla y validadas con la política antes de escribir; la tarea no las imprime ni sobrescribe contraseñas existentes ([diseño](../openspec/changes/gl-10-demo-temporal-render/design.md#8-contraseñas-iniciales-p-29-decidida-en-m214-y-credenciales-para-revisores-p-30-pendiente)) | tarea sin eco ejecutada por Pablo contra la URL externa (descartada) |
+| P-29 | Cómo se establecen las contraseñas utilizables de las cuentas demo | GL-10 | **Decidida (M214, 14/11/2026):** variables secretas de Render para las contraseñas iniciales, una por cuenta, leídas solo al crearla y validadas con la política antes de escribir; la tarea no las imprime ni sobrescribe contraseñas existentes ([diseño](../openspec/changes/archive/2026-11-15-gl-10-demo-temporal-render/design.md#8-contraseñas-iniciales-p-29-decidida-en-m214-y-credenciales-para-revisores-p-30-pendiente)) | tarea sin eco ejecutada por Pablo contra la URL externa (descartada) |
 | P-30 | Cómo se comparten las credenciales con quienes revisen | GL-10 (antes de compartir la demo) | **Pendiente: la decide Pablo.** El diseño no propone canal | — |
 | P-31 | Marcas del conjunto demo | GL-10 | **Aprobada (M214, 14/11/2026):** tabla propia `demo_data_records`, con las restricciones de `sample_data_records` y referencias también a entradas; mantiene la capacidad demo separada de GL-08, sin cambiar su tabla ni su spec | ampliar `sample_data_records` (cambia una tabla y una spec de GL-08; descartada) |
 | P-32 | Referencia visual del inicio de sesión: no hay un mock aprobado del login (Anexo E) | GL-11 | **Aprobada por Pablo (M240, 15/11/2026):** las pantallas internas existentes son la referencia visual (`.entry-form`, `.error-summary` y las reglas comunes de `application.css`), sin crear un mock nuevo del login. Decidida por separado de la autorización para implementar | preparar antes un mock del login |
@@ -665,31 +669,20 @@ merge `e0ceb4e`): con eso se alcanza el hito «recorrido núcleo» (sección
 2), que **no equivale** al «primer recorrido usable» del Anexo G ni cubre
 el alcance diferido.
 
-**En curso: GL-10**, demo temporal en Render con datos ficticios (M212 a
-M215; reconciliado en M237). Está integrado (PR #7, `6177aef`, CI en verde)
-y desplegado en Render (sección 5). Siguen:
+**Cierre de la entrega 2 (15/11/2026, M243).**
 
-- el resto de la comprobación manual (CA8);
-- el README;
-- P-30;
-- el archivo, con su autorización.
+- **GL-10 y GL-12, cerrados y archivados.** La demo temporal está
+  desplegada en Render; su última versión es `cad6afe`, con Puma 8.0.3.
+- **GL-10, con pendientes conservados:**
+  - la comprobación manual en Render quedó parcial (CA8);
+  - P-30 sigue abierta: las credenciales demo se conservan en Render y
+    falta decidir cómo compartirlas con quienes evalúen.
+- **GL-11, publicado y desplegado, sin archivar:** falta la comprobación
+  manual de Pablo (tarea 3.3). Después se archiva, con su autorización.
+- **Rama final:** `feature/entrega-final-pp` se crea desde el commit de este
+  cierre, sin push.
 
-**En curso: GL-11**, presentación de la página de inicio de sesión (M236 a
-M240). P-32 y P-33 están aprobadas. En M242 se publicó con el commit
-`4e5c3ef` en `feature/entrega-2-pp`, sin PR, con el CI en verde, y se
-desplegó en Render. La tarea 3.2 (`bin/ci` en código 0) quedó registrada.
-Siguen:
-
-- la comprobación manual de Pablo;
-- el archivo, con su autorización (sección 5).
-
-**En curso: GL-12**, actualización dirigida de `msgpack` y `puma` por
-avisos de seguridad (M241). En M242 se publicó con el commit `cef5d80` en
-`feature/entrega-2-pp`, sin PR, con el CI en verde, y se desplegó en
-Render, que ya corre Puma 8.0.3. Sigue el archivo, con su autorización
-(sección 5).
-
-**Fuera de GL-10, GL-11 y GL-12, no hay otro ticket decidido.** Lo que queda es el alcance
+**Fuera de lo anterior, no hay otro ticket decidido.** Lo que queda es el alcance
 diferido, que sigue siendo requisito: GL-04 (invitaciones y administración,
 con ADR-8 para el correo), compartir y revocar (I4), filtros y feed (I6),
 la protección del último administrador y la revocación administrativa (I7

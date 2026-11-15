@@ -37,6 +37,7 @@ modelo no está verificado; no se reconstruye.
 | GL-11. Presentación de la página de inicio de sesión | M236, M238–M240 | verificación previa sin bloqueos y borrador documental del ticket y del cambio `gl-11-presentacion-inicio-sesion`, con la capability nueva `sign-in-presentation` y P-32 abierta (M236); revisión de solo lectura sin contradicciones bloqueantes (M238); ajustes de redacción H1 a H7 y P-33 (ancho del formulario) registrada, pendiente (M239); P-32 y P-33 aprobadas e implementación autorizada, implementado en local con 15 pruebas nuevas y RSpec con 383 ejemplos y 0 fallos, y `bin/ci` bloqueado por avisos nuevos de gemas ajenos a GL-11 (M240); sin commit | [GL-11](docs/prompts/GL-11/README.md) |
 | GL-12. Avisos de seguridad de `msgpack` y Puma | M241 | ticket y cambio `gl-12-avisos-msgpack-puma` (`skip_specs: true`); `msgpack` 1.8.7 y `puma` 8.0.3 con `bundle update --conservative --patch`; `bin/ci` con código 0 (383 ejemplos); sin commit | [GL-12](docs/prompts/GL-12/README.md) |
 | Publicación de GL-10, GL-11 y GL-12 | M242 | verificación final, commits por ticket, push a `feature/entrega-2-pp`, CI remoto y deploy manual en Render, con la comprobación visual de `/session/new`; sin PR, merge ni archivo | [publicacion-gl-10-a-gl-12](docs/prompts/publicacion-gl-10-a-gl-12/README.md) |
+| Cierre de la entrega 2 | M243 | GL-10 y GL-12 archivados (GL-10 con CA8 parcial y P-30 abierta), GL-11 sin archivar hasta la comprobación manual de Pablo, README y plan actualizados; commit local y rama `feature/entrega-final-pp`, sin push | [cierre-entrega-2](docs/prompts/cierre-entrega-2/README.md) |
 | Registro de prompts | M29–M32 | PR [#1](https://github.com/pablo-wpify/growth-log-ai4devs/pull/1), integrado en `925e2ee`; CI 41629470056 | [registro-prompts](docs/prompts/registro-prompts/README.md) |
 
 **Conteos.** La transcripción tiene 30 mensajes del usuario hasta este
@@ -52,11 +53,11 @@ registro, numerados por posición de M01 a M30:
   los tres envíos con su hora.
 
 **Mensajes posteriores al registro inicial.** M31 a M177, M190 a M194, M202,
-M206 a M209, M211 a M217 y M236 a M242 se registran en su etapa, con el mismo procedimiento literal, salvo M82, que
+M206 a M209, M211 a M217 y M236 a M243 se registran en su etapa, con el mismo procedimiento literal, salvo M82, que
 no está registrado, y las excepciones de GL-06 (M91 a M93, fuera del
 proyecto; respuestas operativas; el comando `/chrome` y su salida; M96 con
 el texto omitido). Ver las etapas GL-06, GL-07, GL-09, revisión de la
-entrega 2, GL-10, GL-11, GL-12 y la publicación de GL-10 a GL-12.
+entrega 2, GL-10, GL-11, GL-12, la publicación de GL-10 a GL-12 y el cierre de la entrega 2.
 
 **Mensajes sin registro, con su motivo.** Comprobado por posición, fecha y
 texto en la transcripción del 14/11/2026 (hora UTC):

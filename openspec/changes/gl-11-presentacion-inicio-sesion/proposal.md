@@ -1,7 +1,7 @@
 # Proposal
 
-> **Implementación autorizada por Pablo en M240 e implementada en local,
-> sin commit.** P-32 y P-33 aprobadas en M240. Historia: borrador de M236,
+> **Implementación autorizada por Pablo en M240, publicada y desplegada en
+> M242; sin archivar hasta la comprobación manual de Pablo.** P-32 y P-33 aprobadas en M240. Historia: borrador de M236,
 > ajustado en M239.
 
 ## Why

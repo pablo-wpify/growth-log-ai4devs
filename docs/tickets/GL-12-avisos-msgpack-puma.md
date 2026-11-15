@@ -3,14 +3,16 @@
 > Ticket de seguridad separado de GL-11, como
 > [GL-01a](GL-01a-avisos-seguridad.md) y [GL-01b](GL-01b-rails-8-1-4-1.md).
 > Lugar en la secuencia: [plan de la entrega 2](../plan-entrega-2.md).
-> Cambio de OpenSpec: [`gl-12-avisos-msgpack-puma`](../../openspec/changes/gl-12-avisos-msgpack-puma/proposal.md).
-> **Estado (15/11/2026): implementado en local, sin commit (M241).**
+> Cambio de OpenSpec: [`gl-12-avisos-msgpack-puma`](../../openspec/changes/archive/2026-11-15-gl-12-avisos-msgpack-puma/proposal.md).
+> **Estado (15/11/2026, M243): cerrado y archivado.**
 > - Pedido y autorizado por Pablo en M241: documentación SDD e
 >   implementación dirigida, sin esperar otra aprobación.
 > - `bin/ci` con código 0 (383 ejemplos, 0 fallos; auditoría sin
 >   vulnerabilidades).
-> - Pendientes: commit, CI remoto, merge, deploy en Render y archivo, cada
->   uno con su autorización.
+> - Publicado en `cef5d80`, directamente en `feature/entrega-2-pp` y sin PR
+>   (M242). CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839)
+>   sobre `cad6afe` en `success`.
+> - Desplegado en Render con Puma 8.0.3 (M242) y archivado en M243.
 
 ## Problema
 
@@ -36,7 +38,7 @@ dirigida de `msgpack` y `puma` a versiones corregidas, sin tocar el
 - `Gemfile.lock`: `msgpack` de 1.8.6 a 1.8.7 y `puma` de 8.0.2 a 8.0.3, con
   `bundle update msgpack puma --conservative --patch`.
 - Evaluación de la exposición de la aplicación a cada aviso, en el
-  [diseño](../../openspec/changes/gl-12-avisos-msgpack-puma/design.md).
+  [diseño](../../openspec/changes/archive/2026-11-15-gl-12-avisos-msgpack-puma/design.md).
 
 ## Exclusiones
 

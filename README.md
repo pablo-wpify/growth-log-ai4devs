@@ -18,20 +18,23 @@ Proyecto final de AI4Devs de Pablo Peuscovich.
 rama `feature/entrega-2-pp` y está cubierto por pruebas automatizadas,
 incluidas dos en un navegador real, en local y en el CI. Las cuentas, las
 personas y las asignaciones se preparan con datos ficticios, porque la
-administración por interfaz está diferida. No hay despliegue.
+administración por interfaz está diferida. Hay una **demo temporal en
+Render** con datos exclusivamente ficticios (GL-10), que no reemplaza la
+revisión local.
 
 ## Cómo revisar esta entrega
 
 La entrega es la rama `feature/entrega-2-pp`, enviada por Typeform; no
-requiere un pull request. El despliegue es opcional y no lo hay: el
-funcionamiento se comprueba con el CI público o en local.
+requiere un pull request. El despliegue es opcional: el funcionamiento se
+comprueba con el CI público o en local. Además hay una demo temporal
+(punto 5).
 
 **1. CI público.** Cada push a la rama ejecuta estilo, auditorías de
 seguridad y la suite completa, incluidas las pruebas en navegador:
 [ejecuciones de `feature/entrega-2-pp`](https://github.com/pablo-wpify/growth-log-ai4devs/actions/workflows/ci.yml?query=branch%3Afeature%2Fentrega-2-pp).
-La última comprobada antes de esta revisión documental es la
-[43635435427](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635435427), sobre `188bc2a`: 317 ejemplos y
-0 fallos.
+La última comprobada antes del cierre de la entrega 2 es la
+[43730489614](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730489614), sobre `70dd83f`, en verde. El
+gate local del 15/11/2026 corrió 383 ejemplos sin fallos.
 
 **2. Instalar en local, desde un clon limpio.** Hace falta Ruby 4.0.9
 (declarada en `.ruby-version` y `.tool-versions`), Docker para PostgreSQL
@@ -101,13 +104,23 @@ datos. Con estas cuentas ficticias, la captura se comprobó a mano en GL-06
 (F17, parcial); el resumen y la cronología no tienen una comprobación
 manual registrada.
 
+**5. Demo temporal en Render (opcional).** En
+<https://growth-log-ai4devs.onrender.com> hay una instancia editable con
+datos exclusivamente ficticios: dos líderes demo asignados a la misma
+persona, con un borrador y entradas listas de ejemplo (GL-10). Las
+credenciales no se publican en el repositorio; cómo se comparten con
+quienes evalúen sigue pendiente (P-30). Es temporal (plan Free):
+- el primer acceso tras 15 minutos sin uso puede tardar alrededor de un minuto;
+- la base vence alrededor del 14/12/2026.
+No reemplaza la revisión local.
+
 **Qué no incluye:** invitaciones, administración por interfaz, compartir,
-filtros, feed y despliegue. Siguen siendo requisitos pendientes
+filtros, feed y despliegue productivo (ADR-7). Siguen siendo requisitos pendientes
 ([plan](docs/plan-entrega-2.md)).
 
 ## Estado actual
 
-Rama `feature/entrega-2-pp`. Actualizado al 14/11/2026.
+Rama `feature/entrega-2-pp`. Actualizado al 15/11/2026 (cierre de la entrega 2).
 
 | | Qué | Evidencia |
 |---|---|---|
@@ -121,8 +134,11 @@ Rama `feature/entrega-2-pp`. Actualizado al 14/11/2026.
 | **Integrado, con verificación en navegador parcial** | Captura rápida, completar y marcar como lista (GL-06): entradas de feedback privadas del autor, con lectura por autoría, escritura con asignación y persona activas y 404 por URL directa; integrado en `feature/entrega-2-pp` con el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4) (merge commit `8c2f2ad`, 14/11/2026) y archivado como `2026-11-14-gl-06-captura-rapida`. Gate local del 14/11/2026 con 291 ejemplos. Verificado con pruebas automatizadas, gate local y CI remoto; la comprobación en navegador (F17) quedó **parcial** por decisión de Pablo (asistida por Claude Code, 375 px solo con `iframe` y la sesión vencida en el navegador solo como simulación sin cookie). PT-11: la interpretación de su rama de lectura está aclarada, pero PT-11 no está completo (compartir, revocar y reasignación fuera; listado de AM-1 pendiente) | [ticket](docs/tickets/GL-06-captura-rapida.md); CI [43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733) sobre `d65a66a` (head del PR) y CI [43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250) sobre el merge `8c2f2ad` |
 | **Integrado** | Resumen por dimensión, vista cronológica y conteo de entradas listas en «Personas» (GL-07): solo entradas propias; el resumen y el conteo solo cuentan las listas; integrado en `feature/entrega-2-pp` con el [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5) (merge commit `b835bde`, 14/11/2026) y archivado como `2026-11-14-gl-07-resumen-cronologia`. Gate local del 14/11/2026 con 315 ejemplos. Verificado con pruebas automatizadas, mutaciones, gate local y CI remoto; el resumen y la cronología se verifican en navegador con GL-09; el conteo, no | [ticket](docs/tickets/GL-07-resumen-cronologia.md); CI [43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881) sobre `8f36845` (head del PR) y CI [43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169) sobre el merge `b835bde` |
 | **Integrado: hito «recorrido núcleo»** | Verificación E2E del recorrido núcleo (GL-09, P-4): pruebas en navegador (Capybara y `selenium-webdriver`, Chrome sin interfaz) del recorrido de un líder (inicio de sesión, ficha, captura, completar, marcar como lista, resumen y cronología) y de la rama negativa de otro líder de la misma persona (ficha y URL directa con 404); integrado en `feature/entrega-2-pp` con el [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6) (merge commit `e0ceb4e`, 14/11/2026) y archivado como `2026-11-14-gl-09-e2e-recorrido-nucleo`. Gate local con 317 ejemplos. En verde en el CI remoto: alcanza el hito «recorrido núcleo» del plan, que **no equivale** al «primer recorrido usable» del Anexo G ni cubre lo diferido. La forma de entrega (esta rama, enviada por Typeform; deploy opcional; revisión local) la contrastó Pablo con la plataforma del curso (M208) | [ticket](docs/tickets/GL-09-e2e-recorrido-nucleo.md); CI [43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960) sobre `2f192ab` (head del PR) y CI [43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495) sobre el merge `e0ceb4e` |
-| **Siguiente** | La secuencia del plan termina en GL-09; no hay un ticket siguiente decidido. Lo que queda es el alcance diferido (fila «Pendiente») | [plan de la entrega 2](docs/plan-entrega-2.md) |
-| **Pendiente** | Todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue) | [plan de la entrega 2](docs/plan-entrega-2.md) |
+| **Desplegado: demo temporal** | Demo temporal en Render, editable y con datos exclusivamente ficticios (GL-10): tarea demo propia e idempotente en el build, con dos cuentas demo asignadas a la misma persona. Integrada con el [PR #7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7) (merge commit `6177aef`) y archivada como `2026-11-15-gl-10-demo-temporal-render`. Desplegada el 15/11/2026; el último deploy es `cad6afe`. La comprobación manual en Render quedó **parcial**: falta el recorrido completo, la rama negativa por URL directa y la separación entre líderes, que sí cubren las pruebas automatizadas. Las credenciales demo se conservan en Render y **no se publican**: cómo compartirlas con quienes evalúen sigue pendiente (P-30). La base Free vence alrededor del 14/12/2026 | [ticket](docs/tickets/GL-10-demo-temporal-render.md); CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef` |
+| **Desplegado, sin archivar** | Presentación de la página de inicio de sesión (GL-11, P-32 y P-33): etiquetas sobre los campos, ancho máximo de 24 rem, foco visible y aviso genérico accesible, sin cambios en la autenticación. Publicado en `4e5c3ef` y desplegado; verificado en la demo a 1280 y 375 px. **Falta la comprobación manual de Pablo** (tarea 3.3), por eso no se archivó | [ticket](docs/tickets/GL-11-presentacion-inicio-sesion.md); CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe` |
+| **Integrado y desplegado** | `msgpack` 1.8.7 y Puma 8.0.3 por los avisos de seguridad de noviembre de 2026 (GL-12). Publicado en `cef5d80`, desplegado con Puma 8.0.3 y archivado como `2026-11-15-gl-12-avisos-msgpack-puma` | [ticket](docs/tickets/GL-12-avisos-msgpack-puma.md); CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe` |
+| **Siguiente** | La entrega 2 se cierra con GL-09 a GL-12. Quedan la comprobación manual de GL-11 (y su archivo), P-30 y el alcance diferido (fila «Pendiente») | [plan de la entrega 2](docs/plan-entrega-2.md) |
+| **Pendiente** | Todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue productivo) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. GL-06 registra
 feedback privado; GL-07 suma el resumen, la cronología y el conteo, y GL-09
@@ -154,7 +170,7 @@ títulos se conservan para que los enlaces de los anexos sigan funcionando.
 | 0.1. Nombre completo | Pablo Peuscovich |
 | 0.2. Nombre del proyecto | Growth Log. Proyecto personal de Pablo Peuscovich, autor de la idea. |
 | 0.3. Descripción breve | Bitácora para que varios líderes registren feedback concreto sobre las personas que acompañan y lo usen en 1:1 y evaluaciones, con privacidad por defecto y compartición explícita. |
-| 0.4. URL del proyecto | No hay despliegue (es opcional). Para revisar el funcionamiento: [Cómo revisar esta entrega](#cómo-revisar-esta-entrega). |
+| 0.4. URL del proyecto | Demo temporal en Render, con datos ficticios: <https://growth-log-ai4devs.onrender.com>. Las credenciales no se publican (P-30 pendiente) y la base vence alrededor del 14/12/2026. La revisión principal sigue siendo la local: [Cómo revisar esta entrega](#cómo-revisar-esta-entrega). |
 | 0.5. Repositorio | [github.com/pablo-wpify/growth-log-ai4devs](https://github.com/pablo-wpify/growth-log-ai4devs). Entrega 1: [`feature/entrega-1-pp`](https://github.com/pablo-wpify/growth-log-ai4devs/tree/feature/entrega-1-pp). Entrega 2: [`feature/entrega-2-pp`](https://github.com/pablo-wpify/growth-log-ai4devs/tree/feature/entrega-2-pp). |
 
 ## 1. Descripción general del producto
@@ -214,8 +230,11 @@ decisiones), `openspec/` (specs y cambios), `anexos/` y `ensayo/`
 
 ### 2.4. Infraestructura y despliegue
 
-Sin despliegue (ADR-7 abierta). CI en GitHub Actions en cada push a
-`feature/entrega-2-pp` y en cada pull request.
+Sin despliegue productivo (ADR-7 abierta). Hay una demo temporal en
+Render Free (GL-10): un servicio web con despliegue manual de
+`feature/entrega-2-pp` y una base PostgreSQL Free que vence alrededor del
+14/12/2026, sin backups. No es el despliegue de ADR-7. CI en GitHub
+Actions en cada push a `feature/entrega-2-pp` y en cada pull request.
 [Propuesta, 2.4](propuesta-mvp.md#24-infraestructura-y-despliegue).
 
 ### 2.5. Seguridad
@@ -309,11 +328,12 @@ del [plan](docs/plan-entrega-2.md).
 
 ## 7. Pull requests
 
-Seis pull requests contra `feature/entrega-2-pp`, todos integrados con
+Siete pull requests contra `feature/entrega-2-pp`, todos integrados con
 merge commit: [#1](https://github.com/pablo-wpify/growth-log-ai4devs/pull/1) (registro de prompts), [#2](https://github.com/pablo-wpify/growth-log-ai4devs/pull/2)
 (GL-01b), [#3](https://github.com/pablo-wpify/growth-log-ai4devs/pull/3) (GL-05), [#4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4) (GL-06),
-[#5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5) (GL-07) y [#6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6) (GL-09). GL-01, GL-01a, GL-02,
-GL-03 y GL-08 se publicaron directamente en la rama. El CI se ejecuta en
+[#5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5) (GL-07), [#6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6) (GL-09) y [#7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7) (GL-10). GL-01, GL-01a, GL-02,
+GL-03 y GL-08 se publicaron directamente en la rama, igual que GL-11, GL-12
+y la reconciliación de GL-10 (M242). El CI se ejecuta en
 cada pull request y en cada push a la rama; cada ticket registra su
 ejecución.
 
@@ -326,7 +346,8 @@ todo de forma parcial respecto de la matriz:
 - límite de intentos de inicio de sesión (capa 1);
 - índices de entradas por autor y por persona (capa 4);
 - chequeo de salud (capa 5);
-- CI en cada pull request y push (capa 6, sin despliegue);
+- CI en cada pull request y push (capa 6; sin despliegue productivo, solo la
+  demo temporal de GL-10);
 - feedback filtrado de los logs de peticiones y consultas (capa 8, sin
   seguimiento de errores);
 - autorización en el servidor que deniega por defecto, con consultas con

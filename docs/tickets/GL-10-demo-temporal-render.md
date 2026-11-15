@@ -1,34 +1,33 @@
 # GL-10. Demo temporal en Render con datos ficticios
 
-> Ticket propuesto de la entrega 2 de Growth Log. Lugar en la secuencia:
-> [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec, en
-> borrador: [`gl-10-demo-temporal-render`](../../openspec/changes/gl-10-demo-temporal-render/proposal.md).
-> **Estado (15/11/2026, M237): implementado, integrado y desplegado en
-> Render, sin archivar.**
+> Ticket de la entrega 2 de Growth Log. Lugar en la secuencia:
+> [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec
+> archivado: [`2026-11-15-gl-10-demo-temporal-render`](../../openspec/changes/archive/2026-11-15-gl-10-demo-temporal-render/proposal.md).
+> **Estado (15/11/2026, M243): cerrado y archivado, con la comprobación
+> manual en Render parcial.**
 > - **Integrado:** [PR #7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7),
 >   merge commit `6177aef04a6cd64c85f27cad832cb4b5cf54e949`; CI [43660072168](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660072168) sobre `d4fd753`, el head del PR, y CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef`,
->   ambos en `success`.
+>   ambos en `success`. La reconciliación documental se publicó en `02fe600`
+>   (M242).
 > - **Desplegado:**
 >   - primer deploy, solo migraciones, comprobado por el agente en modo de
 >     solo lectura (M235);
 >   - segundo deploy, con la tarea demo, declarado por Pablo en M237
->     ([registro](../../openspec/changes/gl-10-demo-temporal-render/design.md#registro-del-despliegue-15112026)).
+>     ([registro](../../openspec/changes/archive/2026-11-15-gl-10-demo-temporal-render/design.md#registro-del-despliegue-15112026));
+>   - deploy manual de `cad6afe` (M242): Live, con la tarea demo informando
+>     «0 creados, 8 existentes».
 > - **Comprobado a mano (capturas de Pablo, M237):** inicio de sesión como
 >   Lucía Demo y como Martín Demo, y la vista de Paula Ejemplo de cada uno
 >   con entradas ficticias.
+> - **CA8 cerrado como parcial (M243)**, por indicación de Pablo. Siguen sin
+>   comprobar en Render el recorrido completo con L1, la rama negativa con
+>   L2 por URL directa y la separación entre líderes; las pruebas
+>   automatizadas cubren esas reglas.
+> - **Credenciales:** las variables de contraseña se conservan en Render
+>   (M237). **P-30 sigue pendiente:** cómo compartirlas con quienes evalúen.
+> - **README:** actualizado con la demo, sin credenciales (M243).
 > - **Historia:** pedido en M212; actualizado en M213 y M214; implementación
->   autorizada en M215 según el borrador v3, sin modificar Render ni
->   desplegar.
-> - **Gate local:** `bin/ci` con código 0 (368 ejemplos) y mutaciones M1 a
->   M4 detectadas
->   ([registro](../../openspec/changes/gl-10-demo-temporal-render/design.md#registro-de-la-implementación-14112026-local-sin-commit)).
-> - **Pendientes, con su evidencia:**
->   - el resto de CA8 (tarea 5.3b): las capturas descriptas no muestran el
->     recorrido completo con L1, la rama negativa con L2 por URL directa,
->     que cada líder vea solo lo suyo ni un deploy repetido sin cambios;
->   - el README (tarea 6.2): al 15/11/2026 no menciona la demo;
->   - P-30, sin decisión;
->   - el archivo del cambio.
+>   autorizada en M215; reconciliado en M237; archivado en M243.
 
 ## Problema
 
@@ -104,7 +103,7 @@ mano en la instancia.
      Free, porque el pre-deploy es pago.
    - Si falla el build o la tarea, falla ese deploy y se conserva el último
      exitoso.
-   - Fuentes en el [diseño](../../openspec/changes/gl-10-demo-temporal-render/design.md#7-dónde-corre-la-tarea-p-28-aprobada-por-pablo-en-m214).
+   - Fuentes en el [diseño](../../openspec/changes/archive/2026-11-15-gl-10-demo-temporal-render/design.md#7-dónde-corre-la-tarea-p-28-aprobada-por-pablo-en-m214).
    - **Todavía no se probó en este servicio.** Probado el 15/11/2026: los
      dos deploys se hicieron en ese orden (ver el estado).
 4. Contraseñas iniciales según P-29:

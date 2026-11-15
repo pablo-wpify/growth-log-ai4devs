@@ -3,16 +3,22 @@
 > Ticket propuesto de la entrega 2 de Growth Log. Lugar en la secuencia:
 > [plan de la entrega 2](../plan-entrega-2.md). Cambio de OpenSpec, en
 > borrador: [`gl-11-presentacion-inicio-sesion`](../../openspec/changes/gl-11-presentacion-inicio-sesion/proposal.md).
-> **Estado (15/11/2026): implementado en local, sin commit (M240).**
+> **Estado (15/11/2026, M243): publicado y desplegado, sin archivar.**
 > - P-32 y P-33 aprobadas por Pablo en M240; implementación autorizada en
 >   el mismo pedido.
-> - Pruebas nuevas, 15 de 15; RSpec completo, 383 ejemplos y 0 fallos.
-> - Estilos de las pantallas internas sin cambios.
-> - **`bin/ci` con código 1** solo por avisos nuevos de gemas (`msgpack` y
->   `puma`), ajenos a GL-11
+> - Pruebas nuevas, 15 de 15. Estilos de las pantallas internas sin
+>   cambios
 >   ([registro](../../openspec/changes/gl-11-presentacion-inicio-sesion/design.md#registro-de-la-implementación-15112026-local-sin-commit)).
-> - Pendientes: el gate en código 0, la comprobación manual de Pablo, el
->   commit, el CI remoto y el archivo.
+> - `bin/ci` con código 0 desde GL-12 (M242); antes lo bloqueaban avisos de
+>   gemas ajenos a GL-11.
+> - Publicado en `4e5c3ef`, directamente en `feature/entrega-2-pp` y sin PR
+>   (M242). CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839)
+>   sobre `cad6afe` en `success`.
+> - Desplegado en Render con `cad6afe` y verificado en la demo a 1280 y
+>   375 px (M242, tarea 4.3).
+> - **No se archivó en M243:** falta la comprobación manual de Pablo (tarea
+>   3.3), sin evidencia ni decisión que la cierre. Sigue el archivo, con su
+>   autorización.
 > - Historia: borrador de M236, revisado en M238 y ajustado en M239.
 
 ## Problema

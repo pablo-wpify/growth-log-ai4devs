@@ -42,6 +42,9 @@ context: |
   Decididas para GL-10: P-27 (demo editable con datos ficticios, M212) y
   P-28, P-29 y P-31 (build con tarea demo, contraseñas iniciales desde
   secretos de Render, marcas propias; M214). P-30 sigue pendiente.
+  Aprobadas para GL-11: P-32 (las pantallas internas como referencia
+  visual, sin mock del login) y P-33 (max-width de 24rem con ancho fluido),
+  M240.
   Abiertas: ADR-5, ADR-7, ADR-8, D3, D4 y las demás decisiones P del plan
   de la entrega 2.
 

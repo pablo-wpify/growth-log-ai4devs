@@ -396,7 +396,7 @@ Detalle y decisiones (P-27 a P-31) en el
     con el puerto de `PORT`. Render fija `WEB_CONCURRENCY=1` por defecto,
     así que Puma arranca en modo cluster con un worker (ver el diseño).
   - Las variables y el orden de los dos deploys están en el
-    [diseño de GL-10](../openspec/changes/gl-10-demo-temporal-render/design.md#9-configuración-de-render-al-implementar-con-aprobación).
+    [diseño de GL-10](../openspec/changes/archive/2026-11-15-gl-10-demo-temporal-render/design.md#9-configuración-de-render-al-implementar-con-aprobación).
 - **`bin/render-build.sh`:**
   - Instala las gemas, compila los assets y migra.
   - Invoca la tarea solo si el panel tiene `GROWTH_LOG_DEMO_INSTANCE`.

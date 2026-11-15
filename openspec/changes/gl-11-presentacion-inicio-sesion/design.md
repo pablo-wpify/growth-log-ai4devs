@@ -1,8 +1,8 @@
 # Design
 
-> **Implementado en local (M240, 15/11/2026), sin commit.** P-32 y P-33
-> aprobadas por Pablo en M240. El gate está bloqueado por avisos de gemas
-> ajenos a GL-11 (ver el registro). Historia: borrador de M236, revisado en
+> **Publicado y desplegado (M242), sin archivar (M243):** falta la
+> comprobación manual de Pablo (tarea 3.3). P-32 y P-33 aprobadas por
+> Pablo en M240. `bin/ci` en código 0 desde GL-12. Historia: borrador de M236, revisado en
 > M238 y ajustado en M239. Fuente:
 > `docs/tickets/GL-11-presentacion-inicio-sesion.md`.
 

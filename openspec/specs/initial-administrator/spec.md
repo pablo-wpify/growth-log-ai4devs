@@ -54,4 +54,4 @@ eco.
 
 #### Scenario: Repositorio sin credenciales
 - **WHEN** se buscan en los archivos versionados contraseñas, hashes de contraseñas o cuentas predefinidas, incluidos los seeds
-- **THEN** no hay contraseñas ni hashes, y las únicas cuentas predefinidas son las del conjunto ficticio de desarrollo: correos del dominio `ficticio.example.test`, sin rol de administrador y sin contraseñas ni hashes versionados
+- **THEN** no hay contraseñas ni hashes, y las únicas cuentas predefinidas son las del conjunto ficticio de desarrollo y las del conjunto demo: correos del dominio `ficticio.example.test`, sin rol de administrador y sin contraseñas ni hashes versionados
