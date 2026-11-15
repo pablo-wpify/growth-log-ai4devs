@@ -32,7 +32,8 @@ modelo no está verificado; no se reconstruye.
 | GL-06. Captura rápida, completar y marcar como lista | M83–M90, M94, M96–M124, M128–M131, M133–M140, M144–M177 | decisiones P-1, P-2, P-3 y P-11 aprobadas (M85) y P-19 a P-24, más P-25 y P-26 con números provisionales, decididas (M107; M108 repitió el texto); ajustes de revisión y tareas 0.1 a 0.3 marcadas (M114); números provisionales (M116; M117 repitió el texto); cambio aprobado e implementado (M120); PR [#4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4), integrado en `8c2f2ad`; CI 43609790733 y 43610547250; archivado (cierre en M178 a M189, sin registro) | [GL-06](docs/prompts/GL-06/README.md) |
 | GL-07. Resumen por dimensión y cronología | M190–M194 | P-10 aprobada y alcance de 4.3, 4.4, 4.5 y 1.15 decidido (M192); detalles confirmados (M193); cambio aprobado e implementado, con 315 ejemplos en `bin/ci` (M194); PR [#5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), integrado en `b835bde`; CI 43631292881 y 43632097169; archivado | [GL-07](docs/prompts/GL-07/README.md) |
 | GL-09. Verificación E2E del recorrido núcleo | M202 | P-4 aprobada; cambio preparado e implementado, con 317 ejemplos en `bin/ci` (M202); PR [#6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6), integrado en `e0ceb4e`; CI 43634781960 y 43635205495; archivado | [GL-09](docs/prompts/GL-09/README.md) |
-| Revisión de la entrega 2 | M206–M209 | auditoría de solo lectura (M206), correcciones documentales para la revisión externa (M207) y cambio de OpenSpec `gl-01b-runtime-toolchain-rails-8-1-4-1`, preparado (M208) y aprobado y archivado como `2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1` (M209); sin commit | [revision-entrega-2](docs/prompts/revision-entrega-2/README.md) |
+| Revisión de la entrega 2 | M206–M209 | auditoría de solo lectura (M206), correcciones documentales para la revisión externa (M207) y cambio de OpenSpec `gl-01b-runtime-toolchain-rails-8-1-4-1`, preparado (M208) y aprobado y archivado como `2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1` (M209); publicado en `e5d678f` (M210, sin registro); CI 43639579889 | [revision-entrega-2](docs/prompts/revision-entrega-2/README.md) |
+| GL-10. Demo temporal en Render | M211–M217 | M211 detenido antes de editar (faltaba el archivo de partida); borrador documental del ticket y del cambio `gl-10-demo-temporal-render`, P-27 decidida y P-28 a P-31 abiertas (M212); P-28 y P-31 como recomendaciones y datos de la base actualizados (M213); P-28, P-29 y P-31 decididas, rama `feature/entrega-2-pp` con despliegue manual y conjunto demo aceptado (M214); implementación autorizada sin Render ni deploy e implementada en local, con 368 ejemplos en `bin/ci` (M215); revisión de solo lectura (M216) y correcciones de tres hallazgos (M217); P-30 pendiente; sin commit | [GL-10](docs/prompts/GL-10/README.md) |
 | Registro de prompts | M29–M32 | PR [#1](https://github.com/pablo-wpify/growth-log-ai4devs/pull/1), integrado en `925e2ee`; CI 41629470056 | [registro-prompts](docs/prompts/registro-prompts/README.md) |
 
 **Conteos.** La transcripción tiene 30 mensajes del usuario hasta este
@@ -47,12 +48,12 @@ registro, numerados por posición de M01 a M30:
   **27 textos distintos**, guardados en 27 archivos; el de M03 a M05 lista
   los tres envíos con su hora.
 
-**Mensajes posteriores al registro inicial.** M31 a M177, M190 a M194, M202
-y M206 a M209 se registran en su etapa, con el mismo procedimiento literal, salvo M82, que
+**Mensajes posteriores al registro inicial.** M31 a M177, M190 a M194, M202,
+M206 a M209 y M211 a M217 se registran en su etapa, con el mismo procedimiento literal, salvo M82, que
 no está registrado, y las excepciones de GL-06 (M91 a M93, fuera del
 proyecto; respuestas operativas; el comando `/chrome` y su salida; M96 con
-el texto omitido). Ver las etapas GL-06, GL-07, GL-09 y revisión de la
-entrega 2.
+el texto omitido). Ver las etapas GL-06, GL-07, GL-09, revisión de la
+entrega 2 y GL-10.
 
 **Mensajes sin registro, con su motivo.** Comprobado por posición, fecha y
 texto en la transcripción del 14/11/2026 (hora UTC):
@@ -65,8 +66,10 @@ texto en la transcripción del 14/11/2026 (hora UTC):
   archivo de GL-07.
 - **M203 a M205** (19:53 a 20:00): revisión de solo lectura, publicación,
   integración y archivo de GL-09.
+- **M210** (20:49): publicación de las correcciones documentales de la
+  entrega 2 (commit `e5d678f`, CI 43639579889).
 
-M195 a M201 y M203 a M205 no tienen una indicación de Pablo para omitirlos:
+M195 a M201, M203 a M205 y M210 no tienen una indicación de Pablo para omitirlos:
 quedan sin registro, **pendiente de confirmación** si se agregan. Lo que
 produjeron (commits, PR, CI y archivos) está en los tickets y en los
 diseños archivados.
