@@ -52,6 +52,7 @@ El trabajo tiene dos fases:
     - Después de M240, Pablo no aportó capturas ni declaró ninguna comprobación.
     - Lo de M242 (tarea 4.3) es una verificación del agente en la demo: sin aviso de error en Render y sin mirada a las pantallas internas.
   - **Falta:** que Pablo mire `/session/new` a 1280 y 375 px, también con el aviso de un intento fallido, y que revise la captura rápida y la edición de una entrada para confirmar que no cambiaron. Si la comprobación se hace en la demo en lugar de en local, hay que ajustar el texto de esta tarea.
+  - **Diferida (M245, 15/11/2026):** por decisión de Pablo, la revisión manual se hace al cierre de la entrega final, cuando la interfaz sea definitiva. La tarea sigue sin marcar y GL-11 sigue sin archivar hasta entonces.
 - [x] 3.4 Registrar en el diseño lo ejecutado, los desvíos y lo pendiente.
 
 ## 4. Publicación y cierre (cada paso con su autorización)

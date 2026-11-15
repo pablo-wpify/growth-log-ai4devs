@@ -74,7 +74,7 @@ citaban por número):
 | 8 | [GL-07](tickets/GL-07-resumen-cronologia.md) | Resumen por dimensión y cronología | **cerrado** (archivado [`2026-11-14-gl-07-resumen-cronologia`](../openspec/changes/archive/2026-11-14-gl-07-resumen-cronologia/proposal.md); [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), merge `b835bde`; CI [43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881) sobre `8f36845`, el head del PR, y CI [43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169) sobre el merge `b835bde`; gate local con 315 ejemplos) | GL-06 | — (P-2 aprobada; P-10 aprobada el 14/11/2026) |
 | 9 | [GL-09](tickets/GL-09-e2e-recorrido-nucleo.md) | Verificación E2E del recorrido núcleo | **cerrado** (archivado [`2026-11-14-gl-09-e2e-recorrido-nucleo`](../openspec/changes/archive/2026-11-14-gl-09-e2e-recorrido-nucleo/proposal.md); [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6), merge `e0ceb4e`; CI [43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960) sobre `2f192ab`, el head del PR, y CI [43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495) sobre el merge `e0ceb4e`; gate local con 317 ejemplos) | GL-07 | — (P-4 aprobada el 14/11/2026) |
 | 10 | [GL-10](tickets/GL-10-demo-temporal-render.md) | Demo temporal en Render, editable, con datos exclusivamente ficticios | **cerrado** (archivado [`2026-11-15-gl-10-demo-temporal-render`](../openspec/changes/archive/2026-11-15-gl-10-demo-temporal-render/proposal.md), M243; M212 a M215; gate local con 368 ejemplos; [PR #7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7), merge `6177aef`; CI [43660072168](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660072168) sobre `d4fd753`, el head del PR, y CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef`; deploys en Render el 15/11/2026, el último de `cad6afe`; comprobación manual en Render **parcial**, cerrada así en M243) | GL-09 | — para lo hecho; P-30 abierta para compartir la demo (P-27, P-28, P-29 y P-31 decididas) |
-| 11 | [GL-11](tickets/GL-11-presentacion-inicio-sesion.md) | Presentación de la página de inicio de sesión con el lenguaje visual de la aplicación | **publicado y desplegado, sin archivar** (cambio [`gl-11-presentacion-inicio-sesion`](../openspec/changes/gl-11-presentacion-inicio-sesion/proposal.md); M236 a M240; 15 pruebas nuevas; commit `4e5c3ef` en `feature/entrega-2-pp`, sin PR; CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe`; desplegado en Render y comprobado a 1280 y 375 px, M242) | GL-02, GL-05, GL-06 | — (P-32 y P-33 aprobadas en M240); el archivo espera la comprobación manual de Pablo (tarea 3.3) |
+| 11 | [GL-11](tickets/GL-11-presentacion-inicio-sesion.md) | Presentación de la página de inicio de sesión con el lenguaje visual de la aplicación | **publicado y desplegado, sin archivar** (cambio [`gl-11-presentacion-inicio-sesion`](../openspec/changes/gl-11-presentacion-inicio-sesion/proposal.md); M236 a M240; 15 pruebas nuevas; commit `4e5c3ef` en `feature/entrega-2-pp`, sin PR; CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe`; desplegado en Render y comprobado a 1280 y 375 px, M242) | GL-02, GL-05, GL-06 | — (P-32 y P-33 aprobadas en M240); el archivo espera la comprobación manual de Pablo (tarea 3.3), diferida al cierre de la entrega final (M245) |
 | 12 | [GL-12](tickets/GL-12-avisos-msgpack-puma.md) | `msgpack` 1.8.7 y Puma 8.0.3 por los avisos de seguridad del 12 y 13/11/2026 | **cerrado** (archivado [`2026-11-15-gl-12-avisos-msgpack-puma`](../openspec/changes/archive/2026-11-15-gl-12-avisos-msgpack-puma/proposal.md), M243; M241; commit `cef5d80` en `feature/entrega-2-pp`, sin PR; CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe`; desplegado en Render con Puma 8.0.3, M242) | — | — (autorizado en M241) |
 | — | GL-04 | Invitaciones y administración de cuentas, personas y asignaciones | **diferido** | GL-03 | ADR-8 para la entrega real del correo |
 
@@ -365,9 +365,14 @@ Tareas del Anexo G: T1.5, T1.6, T1.7 y T2.2; T2.1 queda fuera (P-11).
 - **Publicado y desplegado (M242):** commit `4e5c3ef`, sin PR; CI
   [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839)
   en verde. En la demo, `/session/new` se comprobó a 1280 y 375 px.
-- **No archivado (M243):** falta la comprobación manual de Pablo (tarea
-  3.3), sin evidencia ni decisión que la cierre.
-- **Sigue:** esa comprobación y, con su autorización, el archivo.
+- **No archivado (M243 y M244):** falta la comprobación manual de Pablo
+  (tarea 3.3); la evidencia aportada no la cubre.
+- **Comprobación diferida (M245):** por decisión de Pablo, la revisión manual
+  se hace al cierre de la entrega final, cuando la interfaz sea
+  definitiva. Hasta entonces GL-11 sigue implementado y desplegado, sin
+  archivar, con la tarea 3.3 sin marcar.
+- **Sigue:** esa comprobación al cierre de la entrega final y, con su
+  autorización, el archivo.
 - Detalle en [el ticket](tickets/GL-11-presentacion-inicio-sesion.md) y en
   el cambio [`gl-11-presentacion-inicio-sesion`](../openspec/changes/gl-11-presentacion-inicio-sesion/proposal.md).
 
@@ -678,7 +683,9 @@ el alcance diferido.
   - P-30 sigue abierta: las credenciales demo se conservan en Render y
     falta decidir cómo compartirlas con quienes evalúen.
 - **GL-11, publicado y desplegado, sin archivar:** falta la comprobación
-  manual de Pablo (tarea 3.3). Después se archiva, con su autorización.
+  manual de Pablo (tarea 3.3), **diferida al cierre de la entrega final**,
+  cuando la interfaz sea definitiva (M245). Después se archiva, con su
+  autorización.
 - **Rama final:** `feature/entrega-final-pp` se crea desde el commit de este
   cierre, sin push.
 
