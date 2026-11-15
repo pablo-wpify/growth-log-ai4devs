@@ -39,6 +39,9 @@ context: |
   Cambio de GL-07 aprobado el 14/11/2026.
   Aprobada para GL-09: P-4 (ADR-6: pruebas de sistema de RSpec con Capybara
   y selenium-webdriver en Chrome sin interfaz), 14/11/2026.
+  Decididas para GL-10: P-27 (demo editable con datos ficticios, M212) y
+  P-28, P-29 y P-31 (build con tarea demo, contraseñas iniciales desde
+  secretos de Render, marcas propias; M214). P-30 sigue pendiente.
   Abiertas: ADR-5, ADR-7, ADR-8, D3, D4 y las demás decisiones P del plan
   de la entrega 2.
 
