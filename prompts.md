@@ -33,7 +33,10 @@ modelo no está verificado; no se reconstruye.
 | GL-07. Resumen por dimensión y cronología | M190–M194 | P-10 aprobada y alcance de 4.3, 4.4, 4.5 y 1.15 decidido (M192); detalles confirmados (M193); cambio aprobado e implementado, con 315 ejemplos en `bin/ci` (M194); PR [#5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5), integrado en `b835bde`; CI 43631292881 y 43632097169; archivado | [GL-07](docs/prompts/GL-07/README.md) |
 | GL-09. Verificación E2E del recorrido núcleo | M202 | P-4 aprobada; cambio preparado e implementado, con 317 ejemplos en `bin/ci` (M202); PR [#6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6), integrado en `e0ceb4e`; CI 43634781960 y 43635205495; archivado | [GL-09](docs/prompts/GL-09/README.md) |
 | Revisión de la entrega 2 | M206–M209 | auditoría de solo lectura (M206), correcciones documentales para la revisión externa (M207) y cambio de OpenSpec `gl-01b-runtime-toolchain-rails-8-1-4-1`, preparado (M208) y aprobado y archivado como `2026-11-14-gl-01b-runtime-toolchain-rails-8-1-4-1` (M209); publicado en `e5d678f` (M210, sin registro); CI 43639579889 | [revision-entrega-2](docs/prompts/revision-entrega-2/README.md) |
-| GL-10. Demo temporal en Render | M211–M217 | M211 detenido antes de editar (faltaba el archivo de partida); borrador documental del ticket y del cambio `gl-10-demo-temporal-render`, P-27 decidida y P-28 a P-31 abiertas (M212); P-28 y P-31 como recomendaciones y datos de la base actualizados (M213); P-28, P-29 y P-31 decididas, rama `feature/entrega-2-pp` con despliegue manual y conjunto demo aceptado (M214); implementación autorizada sin Render ni deploy e implementada en local, con 368 ejemplos en `bin/ci` (M215); revisión de solo lectura (M216) y correcciones de tres hallazgos (M217); P-30 pendiente; sin commit | [GL-10](docs/prompts/GL-10/README.md) |
+| GL-10. Demo temporal en Render | M211–M217, M237 | M211 detenido antes de editar (faltaba el archivo de partida); borrador documental del ticket y del cambio `gl-10-demo-temporal-render`, P-27 decidida y P-28 a P-31 abiertas (M212); P-28 y P-31 como recomendaciones y datos de la base actualizados (M213); P-28, P-29 y P-31 decididas, rama `feature/entrega-2-pp` con despliegue manual y conjunto demo aceptado (M214); implementación autorizada sin Render ni deploy e implementada en local, con 368 ejemplos en `bin/ci` (M215); revisión de solo lectura (M216) y correcciones de tres hallazgos (M217); publicado, integrado en `6177aef` (PR [#7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7); CI 43660072168 y 43660510488) y desplegado en Render (M218 a M235, sin registro); documentación reconciliada, con la comprobación manual parcial y la aclaración de que las variables de contraseña no se retiran (M237); P-30 pendiente; sin archivar | [GL-10](docs/prompts/GL-10/README.md) |
+| GL-11. Presentación de la página de inicio de sesión | M236, M238–M240 | verificación previa sin bloqueos y borrador documental del ticket y del cambio `gl-11-presentacion-inicio-sesion`, con la capability nueva `sign-in-presentation` y P-32 abierta (M236); revisión de solo lectura sin contradicciones bloqueantes (M238); ajustes de redacción H1 a H7 y P-33 (ancho del formulario) registrada, pendiente (M239); P-32 y P-33 aprobadas e implementación autorizada, implementado en local con 15 pruebas nuevas y RSpec con 383 ejemplos y 0 fallos, y `bin/ci` bloqueado por avisos nuevos de gemas ajenos a GL-11 (M240); sin commit | [GL-11](docs/prompts/GL-11/README.md) |
+| GL-12. Avisos de seguridad de `msgpack` y Puma | M241 | ticket y cambio `gl-12-avisos-msgpack-puma` (`skip_specs: true`); `msgpack` 1.8.7 y `puma` 8.0.3 con `bundle update --conservative --patch`; `bin/ci` con código 0 (383 ejemplos); sin commit | [GL-12](docs/prompts/GL-12/README.md) |
+| Publicación de GL-10, GL-11 y GL-12 | M242 | verificación final, commits por ticket, push a `feature/entrega-2-pp`, CI remoto y deploy manual en Render, con la comprobación visual de `/session/new`; sin PR, merge ni archivo | [publicacion-gl-10-a-gl-12](docs/prompts/publicacion-gl-10-a-gl-12/README.md) |
 | Registro de prompts | M29–M32 | PR [#1](https://github.com/pablo-wpify/growth-log-ai4devs/pull/1), integrado en `925e2ee`; CI 41629470056 | [registro-prompts](docs/prompts/registro-prompts/README.md) |
 
 **Conteos.** La transcripción tiene 30 mensajes del usuario hasta este
@@ -49,11 +52,11 @@ registro, numerados por posición de M01 a M30:
   los tres envíos con su hora.
 
 **Mensajes posteriores al registro inicial.** M31 a M177, M190 a M194, M202,
-M206 a M209 y M211 a M217 se registran en su etapa, con el mismo procedimiento literal, salvo M82, que
+M206 a M209, M211 a M217 y M236 a M242 se registran en su etapa, con el mismo procedimiento literal, salvo M82, que
 no está registrado, y las excepciones de GL-06 (M91 a M93, fuera del
 proyecto; respuestas operativas; el comando `/chrome` y su salida; M96 con
 el texto omitido). Ver las etapas GL-06, GL-07, GL-09, revisión de la
-entrega 2 y GL-10.
+entrega 2, GL-10, GL-11, GL-12 y la publicación de GL-10 a GL-12.
 
 **Mensajes sin registro, con su motivo.** Comprobado por posición, fecha y
 texto en la transcripción del 14/11/2026 (hora UTC):
@@ -68,8 +71,12 @@ texto en la transcripción del 14/11/2026 (hora UTC):
   integración y archivo de GL-09.
 - **M210** (20:49): publicación de las correcciones documentales de la
   entrega 2 (commit `e5d678f`, CI 43639579889).
+- **M218 a M235** (15/11/2026, 00:48 a 03:21): publicación, integración
+  y primer deploy de GL-10 en Render. Incluyen el PR #7, el merge
+  `6177aef`, la inspección de solo lectura de Render y las
+  indicaciones para el formulario del servicio web.
 
-M195 a M201, M203 a M205 y M210 no tienen una indicación de Pablo para omitirlos:
+M195 a M201, M203 a M205, M210 y M218 a M235 no tienen una indicación de Pablo para omitirlos:
 quedan sin registro, **pendiente de confirmación** si se agregan. Lo que
 produjeron (commits, PR, CI y archivos) está en los tickets y en los
 diseños archivados.
