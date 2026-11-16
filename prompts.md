@@ -3,6 +3,26 @@
 Índice de los registros de prompts. La entrega 2 se registra por etapa en
 [docs/prompts/](docs/prompts/); la entrega 1 se conserva abajo sin cambios.
 
+## Entrega final
+
+Índice vivo de la entrega final. Usa el mismo procedimiento literal que la
+entrega 2: un registro por etapa en [docs/prompts/](docs/prompts/). La
+sección «Entrega 2» queda cerrada y no se modifica. La secuencia está en
+el plan de la entrega final, `docs/plan-entrega-final.md`. Ese plan es
+transversal: queda fuera del candidato de publicación de GL-13, pendiente
+de una decisión de publicación aparte.
+
+| Etapa | Mensajes | Resultado | Registro |
+|---|---|---|---|
+| GL-13. Dirección visual | M250–M257, M261–M279 | borrador SDD con el ticket, el cambio `gl-13-direccion-visual` (capability nueva `visual-language`) y el plan de la entrega final con P-34 a P-40 abiertas; M250 fue reemplazado por M254 (M254). Mejoras propuestas del listado «Personas», con deltas de `people-browsing`, `feedback-capture` y `authorization` y P-41 a P-45 abiertas; la referencia la confirmó M256 (M255 y M256). `openspec validate --all --strict` en verde; sin implementar y sin commit. Separado en M257: las mejoras funcionales del listado pasaron a GL-14, y P-36 y P-37 quedaron resueltas. P-34, P-35 y P-38 a P-40 decididas, con un delta `ADDED` de `people-browsing` para el aviso de la ficha y sin autorizar la implementación (M261). Diffs copiados a `~/Descargas` (M262). Redacción del aviso de la ficha corregida en `people-browsing` y `visual-language` (M263). Implementación autorizada; la contradicción entre P-40, P-34 y la spec de GL-11 se resolvió con Pablo y GL-13 quedó implementado en local, con `bin/ci` en código 0 y 400 ejemplos, sin commit (M264). Corregidos los hallazgos de la revisión visual: la cabecera a 375 px en dos filas, los radios internos en terracota y el color previo del texto de los campos del login, que GL-11 no comparte; sin commit (M265). P-40 precisada: «Iniciar sesión» es un botón común, con su color de texto `#2b2320`, y los campos del login conservan el texto negro; prueba ampliada, sin cambios de CSS (M266). El registro de M266 enlaza las 16 capturas de M265 (`~/Descargas/gl-13-capturas/m265/`, fuera del repositorio) como evidencia del estado sin cambios (M267). Pregunta sobre las capturas (M268) y revisión final de solo lectura (M269). `bin/ci` con código 0 después de M266: 403 ejemplos y 0 fallos, sin `bundler-audit update` y con el árbol intacto (M270, registrado en M271). Conformidad visual de Pablo sobre las capturas de M265 a 1280 y 375 px; tarea 3.3 cerrada (M272). Paquete de revisión en `~/Descargas` (M273). Estados de la propuesta, el diseño y las tareas actualizados; 0.4 sigue abierta por falta de evidencia; enlaces a GL-14 pasados a texto; candidato de publicación preparado sin el plan transversal (M274). Reenvío idéntico de M274, sin cambios (M275). Enlaces al plan pasados a texto, con el plan fuera del candidato; 0.4 cerrada con M264 como evidencia; candidato regenerado (M276). Viñeta de M260 y fila de M260 en el README de GL-13 reescritas sin remitir a M248 y M249; candidato regenerado (M277). Publicado: commit `c7d4165`, PR #8 y CI remoto en verde con 403 ejemplos y 0 fallos; sin merge ni archivo (M278). Reenvío idéntico de M278, sin cambios (M279) | [GL-13](docs/prompts/GL-13/README.md) |
+
+**Mensajes sin registro, con su motivo.**
+
+- **M260** (16/11/2026, 00:12 UTC): revisión de solo lectura de las
+  decisiones pendientes de GL-13. El pedido prohibía editar archivos, así
+  que no se registró cuando se hizo. Su registro queda pendiente de la
+  autorización de Pablo.
+
 ## Entrega 2
 
 **Fuente:** los mensajes originales de Pablo en la transcripción local de

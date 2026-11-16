@@ -1,12 +1,20 @@
 <% content_for :title, "#{@person.name} · Growth Log" %>
+<% content_for :main_class, "container-wide" %>
 
 <p class="back-link"><%= link_to "← Volver a Personas", people_path %></p>
 
-<h1><%= @person.name %></h1>
-<p class="person-meta"><%= person_role_and_team(@person) %></p>
+<div class="person-header">
+  <h1><%= @person.name %></h1>
+  <p class="person-meta"><%= person_role_and_team(@person) %></p>
+  <%# GL-13 (P-38): el mismo aviso breve que el listado, una sola vez y sin panel «Quién ve qué». %>
+  <p class="privacy-note">Ves solo a quienes tenés asignados y las entradas que podés ver</p>
 
-<%# GL-06: único acceso para registrar feedback; la captura se abre en una página propia (P-22). %>
-<p class="primary-action"><%= link_to "Captura rápida", new_person_feedback_entry_path(@person), class: "button" %></p>
+  <%# GL-06: único acceso para registrar feedback; la captura se abre en una página propia (P-22). Acción principal de la ficha (GL-13). %>
+  <p class="primary-action"><%= link_to "Captura rápida", new_person_feedback_entry_path(@person), class: "button button-primary" %></p>
+</div>
+
+<%# GL-13 (R-4): cronología y resumen en dos columnas desde 64 rem; más angosto, el resumen va primero. %>
+<div class="person-columns">
 
 <%# Resumen por dimensión (GL-07): solo entradas propias listas (4.1, P-2, 3.3, 4.4, 4.5). %>
 <section class="summary" data-summary aria-labelledby="summary-title">
@@ -49,11 +57,11 @@
     <ul class="entries">
       <% @timeline.each do |entry| %>
         <li>
-          <%= link_to feedback_entry_path(entry), class: "entry-row" do %>
+          <%= link_to feedback_entry_path(entry), class: "entry-row", data: { status: entry.status } do %>
             <span class="entry-row-date"><%= entry_date(entry.occurred_on) %></span>
             <span class="entry-row-status"><%= timeline_status_label(entry) %></span>
-            <% if entry.signal_label %><span class="entry-row-tag"><%= entry.signal_label %></span><% end %>
-            <% if entry.dimension_label %><span class="entry-row-tag"><%= entry.dimension_label %></span><% end %>
+            <% if entry.signal_label %><span class="entry-row-tag entry-row-signal signal-<%= entry.signal %>"><%= entry.signal_label %></span><% end %>
+            <% if entry.dimension_label %><span class="entry-row-tag entry-row-dimension"><%= entry.dimension_label %></span><% end %>
             <span class="entry-row-text"><%= entry.context.length > 80 ? "#{entry.context.first(80)}…" : entry.context %></span>
           <% end %>
         </li>
@@ -63,3 +71,4 @@
     <p class="empty-state">Todavía no registraste entradas sobre <%= @person.name %>.</p>
   <% end %>
 </section>
+</div>
