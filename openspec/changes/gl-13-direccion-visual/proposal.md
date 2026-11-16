@@ -1,7 +1,6 @@
 # Proposal
 
-> **Estado (16/11/2026): implementado y verificado en local, sin
-> publicar.**
+> **Estado (16/11/2026): publicado en el PR #8, sin merge ni archivo.**
 >
 > - **Origen:** borrador documental de M254 (15/11/2026). En M255 y M256
 >   se le sumaron las mejoras del listado «Personas». En M257 se separaron
@@ -12,8 +11,10 @@
 >   correcciones de M265 y la precisión de P-40 de M266. `bin/ci` pasó en
 >   local después de M266 (M270).
 > - **Conformidad visual:** Pablo la dio en M272.
-> - **Pendiente:** commit, push, PR, CI remoto y archivo, cada uno con su
->   autorización. Detalle en el diseño, secciones 12 a 15.
+> - **Publicación:** autorizada por Pablo en M278: commit `c7d4165`, PR #8 y CI remoto en verde
+>   (diseño, sección 16).
+> - **Pendiente:** el archivo, con su autorización. Detalle en el diseño,
+>   secciones 12 a 16.
 
 ## Why
 

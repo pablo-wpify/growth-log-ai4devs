@@ -1,7 +1,6 @@
 # Design
 
-> **Estado (16/11/2026): implementado y verificado en local, sin
-> publicar.**
+> **Estado (16/11/2026): publicado en el PR #8, sin merge ni archivo.**
 >
 > - **Origen:** propuesta de M254, ampliada en M255 y M256 y separada en
 >   M257 (15/11/2026).
@@ -15,8 +14,9 @@
 >   secciones 12 a 15. El resto del diseño, incluido el mapa de las
 >   pantallas futuras, sigue siendo una propuesta.
 > - **Conformidad visual:** Pablo la dio en M272 (sección 15).
-> - **Pendiente:** la publicación (commit, push, PR y CI remoto) y el
->   archivo, cada uno con su autorización.
+> - **Publicación:** autorizada por Pablo en M278: commit `c7d4165`, PR #8 y CI remoto en verde
+>   (sección 16).
+> - **Pendiente:** el archivo, con su autorización.
 >
 > Las mejoras funcionales del listado «Personas» pasaron a GL-14, en el
 > cambio de OpenSpec `gl-14-mejoras-listado-personas` (diseño en
@@ -768,3 +768,25 @@ registrar es «Doy mi conformidad». Con eso se cierra la tarea 3.3.
 - commit, push, PR y CI remoto (4.1) y el archivo (4.2), cada uno con su
   autorización;
 - la tarea 3.3 de GL-11, en su propio cambio.
+
+## 16. Publicación (M278, 16/11/2026)
+
+Pablo autorizó publicar GL-13 con el candidato de M277, sin el plan
+transversal, que queda para una publicación documental posterior.
+
+- **Commit:** `c7d41654dc6549602d6f99ade854ad16efd42bc9`, sobre `eabac8e`.
+  Contiene el candidato de M277 (29 archivos completos y la parte de GL-13
+  de `prompts.md`) y la fuente `NotoSerifDisplay-Regular.ttf`, sumada
+  aparte. No incluye GL-14, `CLAUDE.md`, el plan ni la Entrega 2.
+- **PR:** [#8](https://github.com/pablo-wpify/growth-log-ai4devs/pull/8),
+  de `feature/entrega-final-pp` a `feature/entrega-2-pp`, la rama que
+  apunta a `eabac8e`.
+- **CI remoto:**
+  [run 43903787327](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43903787327),
+  en verde: 403 ejemplos y 0 fallos, con los cuatro jobs aprobados
+  (`test`, `lint`, `scan_ruby` y `scan_js`).
+- **No se corrió `bin/ci` local:** pasó en M270 y después solo cambiaron
+  documentos.
+
+**Pendiente:** el archivo del cambio (4.2), con su autorización. Sin
+merge ni deploy.

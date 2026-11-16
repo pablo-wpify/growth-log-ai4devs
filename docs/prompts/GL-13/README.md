@@ -23,6 +23,8 @@
 | M274 | 2026-11-16 13:26:03 | documentación | [Preparación de GL-13 para la revisión final de publicación](M274-2026-11-16-preparacion-revision-final-publicacion.md) |
 | M276 | 2026-11-16 15:44:12 | documentación | [Candidato actualizado de publicación de GL-13](M276-2026-11-16-candidato-actualizado-publicacion.md). El pedido decía M275; Pablo eligió la numeración por posición |
 | M277 | 2026-11-16 15:55:34 | documentación | [Ajuste del candidato de GL-13 para que sea autosuficiente](M277-2026-11-16-ajuste-autosuficiencia-del-candidato.md) |
+| M278 | 2026-11-16 16:05:15 | publicación | [Publicación de GL-13](M278-2026-11-16-publicacion-gl-13.md): commit `c7d4165`, PR #8 y CI remoto en verde. Registrado en M280 |
+| M279 | 2026-11-16 16:10:05 | publicación (reenvío) | [Reenvío del pedido de publicación de GL-13](M279-2026-11-16-reenvio-publicacion-gl-13.md), sin cambios. Registrado en M280 |
 
 ## Mensajes previos de esta etapa, sin archivo propio
 

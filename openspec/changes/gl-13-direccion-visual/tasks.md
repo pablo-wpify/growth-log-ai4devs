@@ -8,8 +8,9 @@ El trabajo tiene dos fases:
   Pablo en M264**, solo para GL-13, y completas en local. Las pruebas se
   escribieron primero y se vieron fallar por la razón esperada. La
   conformidad visual de Pablo cerró la tarea 3.3 en M272.
-- **Publicación y archivo (grupo 4):** pendientes. Cada paso necesita la
-  autorización explícita de Pablo.
+- **Publicación y archivo (grupo 4):** la publicación (4.1) se hizo con
+  la autorización de Pablo en M278. El archivo (4.2) sigue pendiente de
+  su autorización.
 
 ## 0. Fase documental
 
@@ -62,5 +63,5 @@ El trabajo tiene dos fases:
 
 ## 4. Publicación y cierre (cada paso con su autorización)
 
-- [ ] 4.1 Commit, push y PR; CI remoto con enlace y SHA
+- [x] 4.1 Commit, push y PR; CI remoto con enlace y SHA. Evidencia: 16/11/2026, M278. Commit `c7d41654dc6549602d6f99ade854ad16efd42bc9`; PR [#8](https://github.com/pablo-wpify/growth-log-ai4devs/pull/8); CI [43903787327](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43903787327) en verde: 403 ejemplos, 0 fallos y cuatro jobs aprobados
 - [ ] 4.2 Archivo del cambio
