@@ -5,14 +5,17 @@
 > única fuente de la secuencia de esta entrega. Ese plan es transversal:
 > queda fuera del candidato de publicación de GL-13, pendiente de una
 > decisión de publicación aparte. La entrega 2 está cerrada y su plan no
-> se modifica. Cambio de OpenSpec, publicado en el PR #8, sin
-> merge ni archivo:
-> [`gl-13-direccion-visual`](../../openspec/changes/gl-13-direccion-visual/proposal.md).
-> **Estado (16/11/2026, M278): publicado en el PR #8, sin merge ni
-> archivo.** Pablo autorizó implementar en M264. Dio su conformidad
+> se modifica. Cambio de OpenSpec, mergeado y archivado en local, sin
+> commit del archivo:
+> [`2026-11-16-gl-13-direccion-visual`](../../openspec/changes/archive/2026-11-16-gl-13-direccion-visual/proposal.md).
+> **Estado (16/11/2026, M284): mergeado y archivado en local, sin commit
+> del archivo.** Pablo autorizó implementar en M264. Dio su conformidad
 > visual en M272 (tarea 3.3, sobre las capturas de M265). Autorizó
-> publicar en M278: commit `c7d4165`, PR #8 y CI remoto en verde. Falta
-> la autorización para archivar. En M265 se corrigieron los hallazgos de su revisión
+> publicar en M278: commit `c7d4165`, PR #8 y CI remoto en verde. El PR #8
+> se mergeó en `feature/entrega-2-pp` con `e6fce0b6cc94da73067f9d0168054290570afee7`. Pablo autorizó
+> archivar en M282: el cambio está en
+> `openspec/changes/archive/2026-11-16-gl-13-direccion-visual/`, todavía
+> sin commit ni push. En M265 se corrigieron los hallazgos de su revisión
 > visual: la cabecera a 375 px, los radios internos y el color del texto
 > de los campos del login (diseño, sección 13). Pablo decidió P-34, P-35 y P-38 a P-40 en M261
 > (P-40 se precisó en M264 y M266), y P-36 (se mantiene P-10) y P-37 (sin pestaña

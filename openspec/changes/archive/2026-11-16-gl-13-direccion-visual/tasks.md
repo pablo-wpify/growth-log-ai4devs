@@ -9,8 +9,10 @@ El trabajo tiene dos fases:
   escribieron primero y se vieron fallar por la razón esperada. La
   conformidad visual de Pablo cerró la tarea 3.3 en M272.
 - **Publicación y archivo (grupo 4):** la publicación (4.1) se hizo con
-  la autorización de Pablo en M278. El archivo (4.2) sigue pendiente de
-  su autorización.
+  la autorización de Pablo en M278. El PR #8 se integró en
+  `feature/entrega-2-pp` con el merge `e6fce0b`, y el archivo (4.2) se
+  hizo con su autorización en M282. El archivo sigue en local, sin
+  commit ni push.
 
 ## 0. Fase documental
 
@@ -64,4 +66,8 @@ El trabajo tiene dos fases:
 ## 4. Publicación y cierre (cada paso con su autorización)
 
 - [x] 4.1 Commit, push y PR; CI remoto con enlace y SHA. Evidencia: 16/11/2026, M278. Commit `c7d41654dc6549602d6f99ade854ad16efd42bc9`; PR [#8](https://github.com/pablo-wpify/growth-log-ai4devs/pull/8); CI [43903787327](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43903787327) en verde: 403 ejemplos, 0 fallos y cuatro jobs aprobados
-- [ ] 4.2 Archivo del cambio
+- [x] 4.2 Archivo del cambio. Evidencia: 16/11/2026, M282, con autorización de Pablo, después del merge del PR #8 en `feature/entrega-2-pp` (`e6fce0b6cc94da73067f9d0168054290570afee7`). Archivado en local en `openspec/changes/archive/2026-11-16-gl-13-direccion-visual/`; el archivo **todavía no se publicó con un commit**
+
+## Workflow follow-up
+
+- Archivado en M282 (16/11/2026), por autorización de Pablo. Crea la spec `visual-language` y suma a `people-browsing` el requisito del aviso de privacidad de la ficha. Queda pendiente el commit del archivo, con su autorización. La tarea 3.3 de GL-11 sigue en su propio cambio.

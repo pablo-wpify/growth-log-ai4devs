@@ -1,6 +1,6 @@
 # Design
 
-> **Estado (16/11/2026): publicado en el PR #8, sin merge ni archivo.**
+> **Estado (16/11/2026): mergeado y archivado en local, sin commit del archivo.**
 >
 > - **Origen:** propuesta de M254, ampliada en M255 y M256 y separada en
 >   M257 (15/11/2026).
@@ -16,7 +16,9 @@
 > - **Conformidad visual:** Pablo la dio en M272 (sección 15).
 > - **Publicación:** autorizada por Pablo en M278: commit `c7d4165`, PR #8 y CI remoto en verde
 >   (sección 16).
-> - **Pendiente:** el archivo, con su autorización.
+> - **Merge y archivo:** el PR #8 se mergeó con `e6fce0b6cc94da73067f9d0168054290570afee7`.
+>   Pablo autorizó archivar en M282; el archivo está en el árbol local,
+>   sin commit ni push (sección 16).
 >
 > Las mejoras funcionales del listado «Personas» pasaron a GL-14, en el
 > cambio de OpenSpec `gl-14-mejoras-listado-personas` (diseño en
@@ -788,5 +790,17 @@ transversal, que queda para una publicación documental posterior.
 - **No se corrió `bin/ci` local:** pasó en M270 y después solo cambiaron
   documentos.
 
-**Pendiente:** el archivo del cambio (4.2), con su autorización. Sin
-merge ni deploy.
+**Merge (registrado en M284):** el PR #8 se mergeó en
+`feature/entrega-2-pp` con `e6fce0b6cc94da73067f9d0168054290570afee7`, cuyo
+segundo padre es `e45e1b8` («docs: record GL-13 publication», M281).
+
+**Archivo (M282, registrado en M284):** con la autorización de Pablo, el
+cambio se archivó con `openspec archive` en
+`openspec/changes/archive/2026-11-16-gl-13-direccion-visual/`. Creó la spec
+`visual-language` (9 requisitos) y sumó a `people-browsing` el requisito
+«Aviso de privacidad en la ficha». El «Purpose» de `visual-language`, que
+`openspec archive` deja en «TBD», se completó a mano.
+`openspec validate --all --strict`: 22 de 22.
+
+**Pendiente:** el commit y el push del archivo, con su autorización. Sin
+deploy.

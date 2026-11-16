@@ -25,6 +25,11 @@
 | M277 | 2026-11-16 15:55:34 | documentación | [Ajuste del candidato de GL-13 para que sea autosuficiente](M277-2026-11-16-ajuste-autosuficiencia-del-candidato.md) |
 | M278 | 2026-11-16 16:05:15 | publicación | [Publicación de GL-13](M278-2026-11-16-publicacion-gl-13.md): commit `c7d4165`, PR #8 y CI remoto en verde. Registrado en M280 |
 | M279 | 2026-11-16 16:10:05 | publicación (reenvío) | [Reenvío del pedido de publicación de GL-13](M279-2026-11-16-reenvio-publicacion-gl-13.md), sin cambios. Registrado en M280 |
+| M280 | 2026-11-16 16:15:19 | documentación | [Cierre documental de la publicación de GL-13](M280-2026-11-16-cierre-documental-publicacion.md). Registrado en M284 |
+| M281 | 2026-11-16 17:50:00 | publicación | [Commit y push del cierre documental de GL-13](M281-2026-11-16-commit-push-cierre-documental.md): commit `e45e1b8` en el PR #8, CI en verde. Registrado en M284 |
+| M282 | 2026-11-16 18:28:07 | archivo | [Archivo del cambio GL-13](M282-2026-11-16-archivo-gl-13.md), después del merge `e6fce0b`; en local, sin commit. Registrado en M284 |
+| M283 | 2026-11-16 18:32:02 | archivo (reenvío) | [Reenvío del pedido de archivo de GL-13](M283-2026-11-16-reenvio-archivo-gl-13.md), sin cambios. Registrado en M284 |
+| M284 | 2026-11-16 18:41:43 | documentación | [Actualización del cierre documental de GL-13](M284-2026-11-16-actualizacion-cierre-documental.md) |
 
 ## Mensajes previos de esta etapa, sin archivo propio
 

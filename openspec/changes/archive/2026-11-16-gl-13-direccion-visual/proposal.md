@@ -1,6 +1,6 @@
 # Proposal
 
-> **Estado (16/11/2026): publicado en el PR #8, sin merge ni archivo.**
+> **Estado (16/11/2026): mergeado y archivado en local, sin commit del archivo.**
 >
 > - **Origen:** borrador documental de M254 (15/11/2026). En M255 y M256
 >   se le sumaron las mejoras del listado «Personas». En M257 se separaron
@@ -13,8 +13,9 @@
 > - **Conformidad visual:** Pablo la dio en M272.
 > - **Publicación:** autorizada por Pablo en M278: commit `c7d4165`, PR #8 y CI remoto en verde
 >   (diseño, sección 16).
-> - **Pendiente:** el archivo, con su autorización. Detalle en el diseño,
->   secciones 12 a 16.
+> - **Merge y archivo:** el PR #8 se mergeó con `e6fce0b6cc94da73067f9d0168054290570afee7`.
+>   Pablo autorizó archivar en M282; el archivo está en el árbol local,
+>   sin commit ni push. Detalle en el diseño, secciones 12 a 16.
 
 ## Why
 
