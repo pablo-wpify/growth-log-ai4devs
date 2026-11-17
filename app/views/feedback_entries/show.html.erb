@@ -15,7 +15,6 @@
 
 <%= entry_error_summary(@entry) %>
 
-<div class="entry-card">
 <dl class="entry-fields">
   <dt>Fecha del hecho</dt>
   <dd><%= entry_date(@entry.occurred_on) %></dd>
@@ -37,9 +36,7 @@
   <div class="actions">
     <%= link_to "Editar", edit_feedback_entry_path(@entry), class: "button" %>
     <% if @entry.draft? %>
-      <%# Acción principal del detalle de un borrador (GL-13). %>
-      <%= button_to "Marcar como lista", mark_ready_feedback_entry_path(@entry), method: :patch, form_class: "inline-form", class: "button-primary" %>
+      <%= button_to "Marcar como lista", mark_ready_feedback_entry_path(@entry), method: :patch, form_class: "inline-form" %>
     <% end %>
   </div>
 <% end %>
-</div>

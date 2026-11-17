@@ -12,8 +12,7 @@ RSpec.describe "Presentación de la página de inicio de sesión en navegador", 
 
   before { assign(leader, person) }
 
-  # Color de foco de la aplicación: desde GL-13 (P-34, M264) es el terracota de la paleta, #a6462a.
-  FOCUS_RING = { "outlineStyle" => "solid", "outlineWidth" => "3px", "outlineColor" => "rgb(166, 70, 42)", "outlineOffset" => "2px" }.freeze
+  FOCUS_RING = { "outlineStyle" => "solid", "outlineWidth" => "3px", "outlineColor" => "rgb(10, 88, 202)", "outlineOffset" => "2px" }.freeze
   FIELD_LOOK = %w[borderTopWidth borderTopStyle borderTopColor borderTopLeftRadius fontFamily fontSize].freeze
   BUTTON_LOOK = %w[borderTopWidth borderTopStyle borderTopColor borderTopLeftRadius backgroundColor fontFamily fontSize].freeze
 

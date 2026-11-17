@@ -1,173 +1,48 @@
 /*
- * Estilos de Growth Log. CSS propio, sin framework ni dependencias.
- *
- * GL-13 (capability `visual-language`; P-34, P-35, P-38 y P-40):
- * - todos los colores son tokens en :root y las reglas los usan por nombre;
- * - las reglas de las páginas con sesión van dentro de `body.app`;
- * - las reglas sin ese prefijo valen también para el inicio de sesión, que
- *   conserva su fondo, su tipografía y su estructura (P-40). Solo comparte
- *   lo que la spec de GL-11 le exige compartir con la captura rápida: el
- *   borde de los campos, el foco y el botón común (precisión de M264);
- * - el estado, la señal y el origen se leen siempre en texto; el color y el
- *   borde solo los refuerzan.
+ * Estilos de Growth Log (GL-05). CSS propio, sin framework ni dependencias:
+ * tipografía del sistema, contraste AA, foco visible y áreas táctiles de al
+ * menos 44 px. En pantallas estrechas la cabecera pasa a dos líneas.
  */
-
-/* P-35: serif OFL alojada en la aplicación; licencia en
-   app/assets/fonts/noto-serif-display/OFL.txt. Sin servicios externos. */
-@font-face {
-  font-family: "Noto Serif Display";
-  src: url("noto-serif-display/NotoSerifDisplay-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  /* Paleta cálida (P-34). Contrastes en el diseño de GL-13, sección 4. */
-  --bg: #faf7f2;
-  --surface: #ffffff;
-  --surface-muted: #f7f2ec;
-  --surface-active: #f3ece4;
-  --text: #2b2320;
-  --muted: #6b5e57;
-  --line: #e8e0d6;
-  --field-border: #857870;
-  --accent: #a6462a;
-  --accent-strong: #8b3a22;
-  --on-accent: #ffffff;
-  --sage: #5e7f4e;
-  --positive-bg: #e4f0e4;
-  --positive-ink: #2d5f34;
-  --improve-bg: #fbebd3;
-  --improve-ink: #8a4b0f;
-  --neutral-bg: #f3ece4;
-  --neutral-ink: #2b2320;
-  /* El azul es solo de los enlaces y de lo compartido, nunca de las señales. */
-  --shared-bg: #e6ecf7;
-  --shared-ink: #2f4a86;
-  --link: #2f4a86;
-  --danger: #a40e26;
-  --focus: var(--accent);
-
-  /* Inicio de sesión: conserva sus valores anteriores a GL-13 (P-40). */
-  --login-bg: #ffffff;
-  --login-text: #1f2328;
-
-  --font-text: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-title: "Noto Serif Display", ui-serif, Georgia, Cambria, "Times New Roman", serif;
-
-  --radius-control: 0.375rem;
-  --radius-card: 0.75rem;
-  --radius-pill: 999px;
+  --text: #1f2328;
+  --muted: #57606a;
+  --link: #0a58ca;
+  --border: #d0d7de;
+  --surface: #f6f8fa;
+  --background: #ffffff;
+  --focus: #0a58ca;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-/* ---- Base común: es la del inicio de sesión ---- */
-
 body {
   margin: 0;
-  background: var(--login-bg);
-  color: var(--login-text);
-  font-family: var(--font-text);
+  background: var(--background);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
 }
 
 a { color: var(--link); }
 
-/* Foco común (visual-language «Contraste y foco»; GL-11 «Foco visible»). */
 a:focus-visible, button:focus-visible, input:focus-visible,
 textarea:focus-visible, select:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
-.container {
+.container, .site-nav {
   max-width: 48rem;
   margin: 0 auto;
-  padding: 1.5rem 1rem 2rem;
+  padding: 0 1rem;
 }
 
-h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 1rem; overflow-wrap: anywhere; }
+.container { padding-top: 1.5rem; padding-bottom: 2rem; }
 
-h2 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 0.75rem; overflow-wrap: anywhere; }
-
-/* Botón común: el mismo en el inicio de sesión y en las páginas con sesión
-   (spec de GL-11, «Botón “Iniciar sesión”»). */
-button, input[type="submit"], .button {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--field-border);
-  border-radius: var(--radius-control);
-  background: var(--surface);
-  color: var(--text);
-  font: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Campos: el mismo borde, radio y tipografía en el inicio de sesión y en
-   los formularios internos, con 3:1 sobre el fondo (P-34; spec de GL-11,
-   «Campos»). El color del texto no es parte de lo compartido: el login
-   conserva el suyo y el de las páginas con sesión va abajo (M265). */
-.entry-form textarea, .entry-form select, .entry-form input[type="date"],
-.sign-in-form input[type="email"], .sign-in-form input[type="password"] {
-  min-height: 44px;
-  padding: 0.5rem;
-  border: 1px solid var(--field-border);
-  border-radius: var(--radius-control);
-  background: var(--surface);
-  font: inherit;
-}
-
-.field-error { color: var(--danger); margin: 0.25rem 0 0; }
-
-.error-summary {
-  margin: 0 0 1rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--danger);
-  border-left-width: 4px;
-}
-
-.error-summary ul { margin: 0; padding-left: 1.25rem; }
-
-/* Inicio de sesión (GL-11, P-32 y P-33): etiquetas encima, ancho máximo de
-   24 rem y fluido por debajo. */
-.sign-in-form { width: 100%; max-width: 24rem; }
-
-.sign-in-form .field { margin: 0 0 1rem; }
-
-.sign-in-form label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
-
-.sign-in-form input[type="email"], .sign-in-form input[type="password"] { width: 100%; }
-
-/* ---- Páginas con sesión (GL-13) ---- */
-
-body.app { background: var(--bg); color: var(--text); }
-
-body.app .entry-form textarea, body.app .entry-form select, body.app .entry-form input[type="date"] { color: var(--text); }
-
-/* Radios en el terracota de la paleta (M265); el foco común sigue visible. */
-body.app input[type="radio"] { accent-color: var(--accent); }
-
-body.app h1, body.app h2, body.app .site-name, body.app .person-name {
-  font-family: var(--font-title);
-  font-weight: 400;
-}
-
-body.app h1 { font-size: 2rem; }
-
-body.app h2 { font-size: 1.375rem; }
-
-body.app .container-wide { max-width: 72rem; }
-
-/* Cabecera superior (visual-language «Cabecera superior»). */
 .site-header {
+  border-bottom: 1px solid var(--border);
   background: var(--surface);
-  border-bottom: 1px solid var(--line);
 }
 
 .site-nav {
@@ -175,45 +50,50 @@ body.app .container-wide { max-width: 72rem; }
   flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem 1rem;
-  max-width: 72rem;
   min-height: 3.5rem;
-  margin: 0 auto;
-  padding: 0.5rem 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.site-name { font-size: 1.375rem; }
+.site-name { font-weight: 700; }
 
-.site-nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 0.75rem;
-  border-radius: var(--radius-control);
-  color: var(--text);
-  text-decoration: none;
-}
+.site-nav a { display: inline-flex; align-items: center; min-height: 44px; }
 
-.site-nav a:hover { text-decoration: underline; }
-
-/* El destino actual no depende solo del color: fondo y peso. */
-.site-nav a[aria-current="page"] { background: var(--surface-active); font-weight: 600; }
+.site-nav a[aria-current="page"] { font-weight: 700; text-decoration-thickness: 2px; }
 
 .site-account { margin-left: auto; color: var(--muted); }
 
 .sign-out { margin: 0; }
 
-/* Acción principal: una sola por pantalla (R-1). «Guardar borrador» queda
-   como botón común (P-40, M264). */
-.button-primary {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--on-accent);
-  font-weight: 600;
+button, input[type="submit"] {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--background);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
 }
 
-.button-primary:hover { border-color: var(--accent-strong); background: var(--accent-strong); }
+h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 1rem; overflow-wrap: anywhere; }
 
-.button { font-weight: 600; }
+.people { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+
+.person-row {
+  display: flex;
+  flex-direction: column;
+  min-height: 44px;
+  padding: 0.75rem 0.25rem;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+}
+
+.person-row:hover .person-name { text-decoration: underline; }
+
+.person-name { font-weight: 600; overflow-wrap: anywhere; }
+
+.person-meta { color: var(--muted); margin: 0; }
 
 .empty-state { color: var(--muted); }
 
@@ -221,86 +101,68 @@ body.app .container-wide { max-width: 72rem; }
 
 .back-link a { display: inline-flex; align-items: center; min-height: 44px; }
 
+/*
+ * Entradas de feedback (GL-06). El estado se lee siempre en texto
+ * («Borrador · solo vos», «Lista · solo vos»), no solo por color.
+ */
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.primary-action { margin: 1rem 0 1.5rem; }
+
 .flash-notice {
   margin: 0 0 1rem;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--sage);
-  border-radius: var(--radius-control);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--link);
   background: var(--surface);
 }
 
-/* Tarjetas. */
-.people, .summary, .timeline, .entry-card, .entry-form {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-}
+h2 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 0.75rem; overflow-wrap: anywhere; }
 
-/* Listado «Personas». */
-.people { list-style: none; margin: 0; padding: 0; overflow: hidden; }
+.entries { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
 
-.people li + li { border-top: 1px solid var(--line); }
-
-.person-row {
+.entry-row {
   display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
   min-height: 44px;
-  padding: 0.875rem 1rem;
-  color: var(--text);
+  padding: 0.75rem 0.25rem;
+  border-bottom: 1px solid var(--border);
   text-decoration: none;
 }
 
-.person-row:hover .person-name { text-decoration: underline; }
+.entry-row:hover .entry-row-text { text-decoration: underline; }
 
-.person-name { font-size: 1.25rem; line-height: 1.3; overflow-wrap: anywhere; }
+.entry-row-date { font-variant-numeric: tabular-nums; color: var(--text); }
 
-.person-meta { color: var(--muted); margin: 0; }
+.entry-row-status { color: var(--muted); }
 
-.person-count {
-  align-self: flex-start;
-  margin-top: 0.25rem;
-  padding: 0 0.625rem;
-  border-radius: var(--radius-pill);
-  background: var(--neutral-bg);
-  color: var(--neutral-ink);
-  font-size: 0.875rem;
-  font-variant-numeric: tabular-nums;
-}
+.entry-row-tag { color: var(--muted); }
 
-/* Ficha. */
-.person-header { margin-bottom: 1.5rem; }
+.entry-row-text { flex-basis: 100%; overflow-wrap: anywhere; }
 
-.privacy-note { color: var(--muted); font-size: 0.875rem; margin: 0.25rem 0 0; }
+/* GL-07: resumen por dimensión. La tabla se desplaza dentro de su caja en
+   pantallas angostas en lugar de desbordar la página. */
+.summary, .timeline { margin: 1.5rem 0; }
 
-.primary-action { margin: 1rem 0 0; }
-
-/* R-4: a dos columnas iguales desde 72 rem, con la cronología a la
-   izquierda y el resumen a la derecha. Desde 72 rem la tabla del resumen
-   entra entera en su columna; más angosto, una sola columna con el resumen
-   primero, como antes. */
-.person-columns { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
-
-.person-columns > * { min-width: 0; }
-
-@media (min-width: 72rem) {
-  .person-columns { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
-  .person-columns .summary { grid-column: 2; grid-row: 1; }
-  .person-columns .timeline { grid-column: 1; grid-row: 1; }
-}
-
-.summary, .timeline { margin: 0; padding: 1rem; }
-
-/* Resumen (visual-language «El resumen no se presenta como puntaje»):
-   conteos sin color por fila, barras ni porcentajes. */
 .table-wrap { overflow-x: auto; }
 
 .summary-table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
 
 .summary-table th, .summary-table td {
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--line);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
   text-align: right;
 }
 
@@ -308,78 +170,18 @@ body.app .container-wide { max-width: 72rem; }
 
 .summary-table thead th { color: var(--muted); font-weight: 600; }
 
-.summary-note {
-  margin: 0.75rem 0 0;
-  padding: 0.75rem;
-  border-radius: var(--radius-control);
-  background: var(--surface-muted);
-  color: var(--muted);
-}
+.summary-note { color: var(--muted); margin: 0.5rem 0 0; }
 
-/* Cronología. */
-.entries { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
-
-.entry-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.375rem 0.5rem;
-  min-height: 44px;
-  padding: 0.75rem;
-  border: 1px solid transparent;
-  border-bottom-color: var(--line);
-  color: var(--text);
-  text-decoration: none;
-}
-
-.entry-row:hover .entry-row-text { text-decoration: underline; }
-
-/* Borrador distinguible (R-2): borde discontinuo y fondo propio, además
-   de su texto «Borrador · solo vos · fuera del resumen». */
-.entry-row[data-status="draft"] {
-  border: 1px dashed var(--field-border);
-  border-radius: var(--radius-control);
-  background: var(--surface-muted);
-}
-
-.entry-row-date { font-weight: 600; font-variant-numeric: tabular-nums; }
-
-/* Etiquetas: píldoras con texto siempre visible. */
-.entry-row-status, .entry-row-tag {
-  padding: 0 0.625rem;
-  border: 1px solid transparent;
-  border-radius: var(--radius-pill);
-  font-size: 0.875rem;
-  background: var(--neutral-bg);
-  color: var(--neutral-ink);
-}
-
-.entry-row[data-status="draft"] .entry-row-status { border: 1px dashed var(--field-border); background: var(--surface); }
-
-.entry-row-dimension { background: var(--surface); border-color: var(--line); }
-
-.entry-row-signal.signal-positive { background: var(--positive-bg); color: var(--positive-ink); }
-
-.entry-row-signal.signal-improvement { background: var(--improve-bg); color: var(--improve-ink); }
-
-.entry-row-signal.signal-neutral { background: var(--neutral-bg); color: var(--neutral-ink); }
-
-.entry-row-text { flex-basis: 100%; overflow-wrap: anywhere; }
-
-/* Detalle, captura y edición. */
-.entry-card, .entry-form { padding: 1rem; }
+.person-count { color: var(--muted); margin: 0; font-variant-numeric: tabular-nums; }
 
 .entry-status { font-weight: 600; margin: 0 0 0.25rem; }
 
 .entry-meta { color: var(--muted); margin: 0 0 1rem; }
 
-.entry-date { color: var(--muted); }
-
 .readonly-note {
   padding: 0.75rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-control);
-  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .entry-fields { margin: 0 0 1.5rem; }
@@ -398,9 +200,18 @@ body.app .container-wide { max-width: 72rem; }
 
 .entry-form label, .entry-form legend { display: block; font-weight: 600; margin-bottom: 0.25rem; }
 
-.entry-form textarea { width: 100%; }
+.entry-form textarea, .entry-form select, .entry-form input[type="date"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  font: inherit;
+}
 
-.choices { border: 1px solid var(--line); border-radius: var(--radius-control); padding: 0.5rem 0.75rem; }
+.entry-form select, .entry-form input[type="date"] { width: auto; }
+
+.choices { border: 1px solid var(--border); border-radius: 0.375rem; padding: 0.5rem 0.75rem; }
 
 .choices input[type="radio"] { width: 1.25rem; height: 1.25rem; margin: 0 0.25rem 0 0; vertical-align: middle; }
 
@@ -413,11 +224,41 @@ body.app .container-wide { max-width: 72rem; }
   white-space: nowrap; /* el radio va dentro de la etiqueta: se ajustan juntos */
 }
 
+.entry-date { color: var(--muted); }
+
+.field-error { color: #a40e26; margin: 0.25rem 0 0; }
+
+.error-summary {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #a40e26;
+  border-left-width: 4px;
+}
+
+.error-summary ul { margin: 0; padding-left: 1.25rem; }
+
+/*
+ * Inicio de sesión (GL-11). Toma como referencia los formularios internos
+ * (P-32): etiqueta encima, campos de 44 px con el borde y el radio comunes.
+ * Ancho máximo de 24 rem y fluido en pantallas más angostas (P-33). Las
+ * reglas quedan dentro de .sign-in-form para no alterar otros formularios.
+ */
+.sign-in-form { width: 100%; max-width: 24rem; }
+
+.sign-in-form .field { margin: 0 0 1rem; }
+
+.sign-in-form label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+
+.sign-in-form input[type="email"], .sign-in-form input[type="password"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  font: inherit;
+}
+
 @media (max-width: 30rem) {
-  body.app h1 { font-size: 1.75rem; }
-  /* Cabecera en dos filas como máximo (visual-language «Pantallas
-     angostas», M265): nombre y «Personas» arriba; la cuenta y «Cerrar
-     sesión» abajo. Un nombre largo se ajusta dentro de su celda. */
-  .site-nav { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.25rem 0.5rem; }
-  .site-account { margin-left: 0; font-size: 0.875rem; line-height: 1.3; overflow-wrap: anywhere; }
+  .site-account { margin-left: 0; flex-basis: 100%; order: 3; }
+  .sign-out { order: 4; }
 }

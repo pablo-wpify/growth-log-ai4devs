@@ -23,8 +23,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <%# GL-13: las páginas con sesión llevan la clase «app» y toman el lenguaje visual común. El inicio de sesión no la lleva y conserva su aspecto, salvo campos, foco y botón común (P-40). %>
-  <body class="<%= "app" if authenticated? %>">
+  <body>
     <% if authenticated? %>
       <%# Cabecera con sesión (GL-05, P-15). Sin enlaces a funciones que no existen. %>
       <header class="site-header">
@@ -36,7 +35,7 @@
         </nav>
       </header>
     <% end %>
-    <main class="container <%= content_for(:main_class) %>">
+    <main class="container">
       <%# Avisos (GL-06): confirman que la entrada sigue siendo privada. %>
       <% if notice.present? %>
         <p class="flash-notice" role="status"><%= notice %></p>
