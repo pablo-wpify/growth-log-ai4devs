@@ -72,8 +72,10 @@ bundle exec rspec               # suite completa
 `log/test.log` (ver la [guía, sección 6](docs/desarrollo.md#6-análisis-y-verificación-completa)).
 
 **4. Recorrido manual con datos ficticios.** El repositorio no trae
-credenciales: no hay registro público ni contraseñas versionadas (PP-1,
-AM-5). Quien revisa elige la contraseña de cada cuenta ficticia; se pide
+credenciales para el entorno local: no hay registro público ni contraseñas
+versionadas de las cuentas de desarrollo (PP-1, AM-5). Las únicas
+credenciales publicadas son las de la demo de Render (punto 5). Quien
+revisa elige la contraseña de cada cuenta ficticia; se pide
 dos veces sin eco, necesita al menos 15 caracteres y solo funciona en
 desarrollo.
 
@@ -107,12 +109,35 @@ manual registrada.
 **5. Demo temporal en Render (opcional).** En
 <https://growth-log-ai4devs.onrender.com> hay una instancia editable con
 datos exclusivamente ficticios: dos líderes demo asignados a la misma
-persona, con un borrador y entradas listas de ejemplo (GL-10). Las
-credenciales no se publican en el repositorio; cómo se comparten con
-quienes evalúen sigue pendiente (P-30). Es temporal (plan Free):
+persona, con un borrador y entradas listas de ejemplo (GL-10). Es
+temporal (plan Free):
 - el primer acceso tras 15 minutos sin uso puede tardar alrededor de un minuto;
 - la base vence alrededor del 14/12/2026.
 No reemplaza la revisión local.
+
+**Acceso a la demo.** Son credenciales públicas de demostración, para dos
+cuentas con datos exclusivamente ficticios: cualquier persona que lea este
+README puede iniciar sesión y modificar los datos de la demo, así que no
+cargues información real. Las contraseñas se configuran como variables
+secretas de Render (P-29); publicarlas aquí es la forma elegida para
+compartirlas con quienes evalúen (P-30). El inicio de sesión en Render con
+estas dos cuentas se verificó el 17/11/2026.
+
+- Inicio de sesión: <https://growth-log-ai4devs.onrender.com/session/new>
+- Usuarios: `lucia.demo@ficticio.example.test` y
+  `martin.demo@ficticio.example.test`
+- Contraseña de ambas cuentas: `123456789123456789`
+
+**Recorrido sugerido en la demo.**
+
+1. Iniciá sesión con una cuenta de demo.
+2. En **Personas**, abrí **Paula Ejemplo**.
+3. Revisá la vista cronológica y el resumen por dimensión. Abrí una entrada
+   marcada **Lista** para ver su detalle. Con la cuenta de Lucía, observá
+   que el borrador aparece identificado como tal; Martín no tiene borradores.
+4. Opcional: usá **Captura rápida** para guardar una nota ficticia como
+   borrador. No edites ni borres las entradas de ejemplo; la demo es
+   compartida.
 
 **Qué no incluye:** invitaciones, administración por interfaz, compartir,
 filtros, feed y despliegue productivo (ADR-7). Siguen siendo requisitos pendientes
@@ -120,7 +145,7 @@ filtros, feed y despliegue productivo (ADR-7). Siguen siendo requisitos pendient
 
 ## Estado actual
 
-Rama `feature/entrega-2-pp`. Actualizado al 15/11/2026 (cierre de la entrega 2).
+Rama `feature/entrega-2-pp`. Actualizado al 17/11/2026; la entrega 2 se cerró el 15/11/2026.
 
 | | Qué | Evidencia |
 |---|---|---|
@@ -134,10 +159,10 @@ Rama `feature/entrega-2-pp`. Actualizado al 15/11/2026 (cierre de la entrega 2).
 | **Integrado, con verificación en navegador parcial** | Captura rápida, completar y marcar como lista (GL-06): entradas de feedback privadas del autor, con lectura por autoría, escritura con asignación y persona activas y 404 por URL directa; integrado en `feature/entrega-2-pp` con el [PR #4](https://github.com/pablo-wpify/growth-log-ai4devs/pull/4) (merge commit `8c2f2ad`, 14/11/2026) y archivado como `2026-11-14-gl-06-captura-rapida`. Gate local del 14/11/2026 con 291 ejemplos. Verificado con pruebas automatizadas, gate local y CI remoto; la comprobación en navegador (F17) quedó **parcial** por decisión de Pablo (asistida por Claude Code, 375 px solo con `iframe` y la sesión vencida en el navegador solo como simulación sin cookie). PT-11: la interpretación de su rama de lectura está aclarada, pero PT-11 no está completo (compartir, revocar y reasignación fuera; listado de AM-1 pendiente) | [ticket](docs/tickets/GL-06-captura-rapida.md); CI [43609790733](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43609790733) sobre `d65a66a` (head del PR) y CI [43610547250](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43610547250) sobre el merge `8c2f2ad` |
 | **Integrado** | Resumen por dimensión, vista cronológica y conteo de entradas listas en «Personas» (GL-07): solo entradas propias; el resumen y el conteo solo cuentan las listas; integrado en `feature/entrega-2-pp` con el [PR #5](https://github.com/pablo-wpify/growth-log-ai4devs/pull/5) (merge commit `b835bde`, 14/11/2026) y archivado como `2026-11-14-gl-07-resumen-cronologia`. Gate local del 14/11/2026 con 315 ejemplos. Verificado con pruebas automatizadas, mutaciones, gate local y CI remoto; el resumen y la cronología se verifican en navegador con GL-09; el conteo, no | [ticket](docs/tickets/GL-07-resumen-cronologia.md); CI [43631292881](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43631292881) sobre `8f36845` (head del PR) y CI [43632097169](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43632097169) sobre el merge `b835bde` |
 | **Integrado: hito «recorrido núcleo»** | Verificación E2E del recorrido núcleo (GL-09, P-4): pruebas en navegador (Capybara y `selenium-webdriver`, Chrome sin interfaz) del recorrido de un líder (inicio de sesión, ficha, captura, completar, marcar como lista, resumen y cronología) y de la rama negativa de otro líder de la misma persona (ficha y URL directa con 404); integrado en `feature/entrega-2-pp` con el [PR #6](https://github.com/pablo-wpify/growth-log-ai4devs/pull/6) (merge commit `e0ceb4e`, 14/11/2026) y archivado como `2026-11-14-gl-09-e2e-recorrido-nucleo`. Gate local con 317 ejemplos. En verde en el CI remoto: alcanza el hito «recorrido núcleo» del plan, que **no equivale** al «primer recorrido usable» del Anexo G ni cubre lo diferido. La forma de entrega (esta rama, enviada por Typeform; deploy opcional; revisión local) la contrastó Pablo con la plataforma del curso (M208) | [ticket](docs/tickets/GL-09-e2e-recorrido-nucleo.md); CI [43634781960](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43634781960) sobre `2f192ab` (head del PR) y CI [43635205495](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43635205495) sobre el merge `e0ceb4e` |
-| **Desplegado: demo temporal** | Demo temporal en Render, editable y con datos exclusivamente ficticios (GL-10): tarea demo propia e idempotente en el build, con dos cuentas demo asignadas a la misma persona. Integrada con el [PR #7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7) (merge commit `6177aef`) y archivada como `2026-11-15-gl-10-demo-temporal-render`. Desplegada el 15/11/2026; el último deploy es `cad6afe`. La comprobación manual en Render quedó **parcial**: falta el recorrido completo, la rama negativa por URL directa y la separación entre líderes, que sí cubren las pruebas automatizadas. Las credenciales demo se conservan en Render y **no se publican**: cómo compartirlas con quienes evalúen sigue pendiente (P-30). La base Free vence alrededor del 14/12/2026 | [ticket](docs/tickets/GL-10-demo-temporal-render.md); CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef` |
+| **Desplegado: demo temporal** | Demo temporal en Render, editable y con datos exclusivamente ficticios (GL-10): tarea demo propia e idempotente en el build, con dos cuentas demo asignadas a la misma persona. Integrada con el [PR #7](https://github.com/pablo-wpify/growth-log-ai4devs/pull/7) (merge commit `6177aef`) y archivada como `2026-11-15-gl-10-demo-temporal-render`. Desplegada el 15/11/2026; el último deploy es `cad6afe`. La comprobación manual en Render quedó **parcial**: falta el recorrido completo, la rama negativa por URL directa y la separación entre líderes, que sí cubren las pruebas automatizadas. Las contraseñas demo se configuran como variables secretas de Render (P-29) y sus credenciales se publican en este README, en [Demo temporal en Render](#cómo-revisar-esta-entrega) (P-30); el inicio de sesión con ambas cuentas se verificó el 17/11/2026. La base Free vence alrededor del 14/12/2026 | [ticket](docs/tickets/GL-10-demo-temporal-render.md); CI [43660510488](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43660510488) sobre el merge `6177aef` |
 | **Desplegado, sin archivar** | Presentación de la página de inicio de sesión (GL-11, P-32 y P-33): etiquetas sobre los campos, ancho máximo de 24 rem, foco visible y aviso genérico accesible, sin cambios en la autenticación. Publicado en `4e5c3ef` y desplegado; verificado en la demo a 1280 y 375 px. **Falta la comprobación manual de Pablo** (tarea 3.3), por eso no se archivó | [ticket](docs/tickets/GL-11-presentacion-inicio-sesion.md); CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe` |
 | **Integrado y desplegado** | `msgpack` 1.8.7 y Puma 8.0.3 por los avisos de seguridad de noviembre de 2026 (GL-12). Publicado en `cef5d80`, desplegado con Puma 8.0.3 y archivado como `2026-11-15-gl-12-avisos-msgpack-puma` | [ticket](docs/tickets/GL-12-avisos-msgpack-puma.md); CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe` |
-| **Siguiente** | La entrega 2 se cierra con GL-09 a GL-12. Quedan la comprobación manual de GL-11 (y su archivo), P-30 y el alcance diferido (fila «Pendiente») | [plan de la entrega 2](docs/plan-entrega-2.md) |
+| **Siguiente** | La entrega 2 se cierra con GL-09 a GL-12. Quedan la comprobación manual de GL-11 (y su archivo) y el alcance diferido (fila «Pendiente») | [plan de la entrega 2](docs/plan-entrega-2.md) |
 | **Pendiente** | Todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue productivo) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. GL-06 registra
@@ -170,7 +195,7 @@ títulos se conservan para que los enlaces de los anexos sigan funcionando.
 | 0.1. Nombre completo | Pablo Peuscovich |
 | 0.2. Nombre del proyecto | Growth Log. Proyecto personal de Pablo Peuscovich, autor de la idea. |
 | 0.3. Descripción breve | Bitácora para que varios líderes registren feedback concreto sobre las personas que acompañan y lo usen en 1:1 y evaluaciones, con privacidad por defecto y compartición explícita. |
-| 0.4. URL del proyecto | Demo temporal en Render, con datos ficticios: <https://growth-log-ai4devs.onrender.com>. Las credenciales no se publican (P-30 pendiente) y la base vence alrededor del 14/12/2026. La revisión principal sigue siendo la local: [Cómo revisar esta entrega](#cómo-revisar-esta-entrega). |
+| 0.4. URL del proyecto | Demo temporal en Render, con datos ficticios: <https://growth-log-ai4devs.onrender.com>. Las credenciales de sus dos cuentas ficticias son públicas y están en [Cómo revisar esta entrega](#cómo-revisar-esta-entrega), punto 5 (P-30); cualquier persona puede modificar los datos de la demo. La base vence alrededor del 14/12/2026. La revisión principal sigue siendo la local: [Cómo revisar esta entrega](#cómo-revisar-esta-entrega). |
 | 0.5. Repositorio | [github.com/pablo-wpify/growth-log-ai4devs](https://github.com/pablo-wpify/growth-log-ai4devs). Entrega 1: [`feature/entrega-1-pp`](https://github.com/pablo-wpify/growth-log-ai4devs/tree/feature/entrega-1-pp). Entrega 2: [`feature/entrega-2-pp`](https://github.com/pablo-wpify/growth-log-ai4devs/tree/feature/entrega-2-pp). |
 
 ## 1. Descripción general del producto
