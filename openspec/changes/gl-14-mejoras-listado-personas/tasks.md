@@ -1,0 +1,61 @@
+# Tasks
+
+El trabajo tiene dos fases:
+
+- **Fase documental (grupo 0):** ticket, propuesta, specs, diseño,
+  validación y revisión de Pablo. Pedida en M257.
+- **Implementación y verificación (grupos 1 a 4):** **sin autorizar.** Se
+  empieza solo con la aprobación explícita de Pablo para implementar.
+  P-46 a P-53 se resolvieron en M258. Las pruebas se escriben primero y se
+  ven fallar por la razón esperada.
+
+## 0. Fase documental
+
+- [x] 0.1 Separar de GL-13 los requisitos funcionales del listado y crear este cambio con el ticket, la propuesta, el diseño, los deltas de `people-browsing`, `feedback-capture` y `authorization`, y estas tareas. Evidencia: 15/11/2026, M257
+- [x] 0.2 Registrar las decisiones 1 a 9 aprobadas por Pablo (P-41 a P-45) y las consecuencias abiertas P-46 a P-53 en el plan de la entrega final. Evidencia: 15/11/2026, M257
+- [x] 0.3 Ejecutar `openspec validate --all --strict` y registrar el resultado. Evidencia: 15/11/2026, M257 (ver su registro)
+- [ ] 0.4 Revisión de Pablo del borrador
+- [x] 0.5 Decisiones de Pablo sobre P-46 a P-53 y ajuste de los deltas. Evidencia: 15/11/2026, M258
+- [x] 0.5b Volver a ejecutar `openspec validate --all --strict`. Evidencia: 15/11/2026, M258 (ver su registro)
+- [x] 0.5c Registrar la confirmación de las interpretaciones de P-51 y P-53 y validar de nuevo. Evidencia: 16/11/2026, M259 (ver su registro)
+- [ ] 0.6 Aprobación explícita de Pablo para implementar
+
+## 1. Pruebas primero
+
+- [ ] 1.1 Pruebas de peticiones:
+  - textos de los conteos en sus cuatro casos, incluida una persona solo con borradores;
+  - «Último hecho» con listas y un borrador posterior, y sin fecha con solo borradores;
+  - otro líder de la misma persona, con una entrada lista posterior y un borrador, que no cambia conteos, fecha ni orden;
+  - administradora asignada sin entradas;
+  - «Registrar la primera» solo sin entradas y fuera del enlace de la fila, y presente igual cuando otro líder tiene entradas sobre esa persona;
+  - el total de personas y el aviso, y su ausencia en el estado vacío;
+  - captura por URL directa, en `new` y en `create`, con una persona fuera del alcance (404 y sin entrada)
+- [ ] 1.2 Pruebas de sistema a 1280 y 375 px:
+  - Tab y foco visible en la fila, sin enlaces anidados;
+  - búsqueda parcial sin mayúsculas ni acentos, y filtro con equipos solo de las personas asignadas y «Sin equipo indicado» cuando corresponde;
+  - «Hechos más recientes» con las personas sin entradas listas al final, su desempate y el orden por nombre como predeterminado;
+  - sin resultados y «Limpiar filtros», que conserva el orden;
+  - vacío frente a sin resultados;
+  - la URL sin cambios al buscar o filtrar, y el listado completo por nombre al recargar y sin JavaScript;
+  - 375 px sin desplazamiento horizontal y con 44 px
+- [ ] 1.3 Ver fallar 1.1 y 1.2 por la razón esperada y registrarlo
+
+## 2. Implementación
+
+- [ ] 2.1 Lectura agregada única desde `policy_scope(FeedbackEntry)` en `PeopleController#index`
+- [ ] 2.2 Textos en `people_helper.rb`: conteos y «Último hecho»
+- [ ] 2.3 Fila con un enlace extendido y «Registrar la primera» como enlace independiente
+- [ ] 2.4 Total y aviso; búsqueda, filtro, orden, «Limpiar filtros» y sin resultados, con un controlador Stimulus (P-51)
+- [ ] 2.5 Estilos del listado con los tokens y componentes de GL-13, si ya están aprobados
+
+## 3. Verificación
+
+- [ ] 3.1 Pruebas nuevas en verde. Las existentes, en verde sin modificarlas, salvo las que comprueban «0 entradas listas» (`spec/requests/people_counts_spec.rb`), que cambian junto con su escenario y se registran
+- [ ] 3.2 `bin/bundler-audit update` y `bin/ci` con código 0
+- [ ] 3.3 Comprobación manual de Pablo del listado a 1280 y 375 px
+- [ ] 3.4 Registrar en el diseño lo ejecutado, los desvíos y lo pendiente
+
+## 4. Publicación y cierre (cada paso con su autorización)
+
+- [ ] 4.1 Commit, push y PR; CI remoto con enlace y SHA
+- [ ] 4.2 Archivo del cambio

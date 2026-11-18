@@ -22,8 +22,11 @@ Verificados en GL-01 y GL-02 (02/11/2026), desde la raíz. Detalle en
 
 ## Dónde está cada cosa
 
-- Secuencia vigente y decisiones pendientes: `docs/plan-entrega-2.md`, la
-  única fuente. No mantener planes en otros archivos.
+- Secuencia y decisiones: cada entrega tiene su plan, que es la única
+  fuente de su secuencia. No mantener planes en otros archivos.
+  - Entrega final, la vigente: `docs/plan-entrega-final.md`.
+  - Entrega 2: `docs/plan-entrega-2.md`, cerrado y congelado. Sus
+    decisiones P-1 a P-33 siguen vigentes, pero el archivo no se modifica.
 - Ticket de cada cambio: `docs/tickets/`; decisiones: `docs/decisiones/`.
 - Requisitos vigentes: `openspec/specs/`; cambio en curso:
   `openspec/changes/<cambio>/`. Contexto de OpenSpec: `openspec/config.yaml`.
@@ -31,8 +34,9 @@ Verificados en GL-01 y GL-02 (02/11/2026), desde la raíz. Detalle en
   decisiones D y AM: `anexos/anexo-c-riesgos-decisiones.md`.
 - Entrega 1 (`propuesta-mvp.md`, `anexos/` y la sección «Entrega 1» de
   `prompts.md`) y `openspec/changes/archive/`: referencia histórica; no se
-  reescriben. La sección «Entrega 2» de `prompts.md` es el índice vivo del
-  registro de prompts y se actualiza con cada etapa.
+  reescriben. La sección «Entrega final» de `prompts.md` es el índice vivo
+  del registro de prompts y se actualiza con cada etapa; la sección
+  «Entrega 2» está cerrada.
 
 ## Cómo se trabaja
 

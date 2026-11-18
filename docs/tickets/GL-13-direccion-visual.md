@@ -1,26 +1,29 @@
 # GL-13. Dirección visual de la aplicación y de sus pantallas principales
 
 > Ticket propuesto para la entrega final de Growth Log. Lugar en la
-> secuencia: el plan de la entrega final, `docs/plan-entrega-final.md`,
+> secuencia: el [plan de la entrega final](../plan-entrega-final.md),
 > única fuente de la secuencia de esta entrega. Ese plan es transversal:
-> queda fuera del candidato de publicación de GL-13, pendiente de una
-> decisión de publicación aparte. La entrega 2 está cerrada y su plan no
-> se modifica. Cambio de OpenSpec, mergeado y archivado en local, sin
-> commit del archivo:
+> quedó fuera de los commits de GL-13. La entrega 2 está cerrada y su plan
+> no se modifica. Cambio de OpenSpec archivado:
 > [`2026-11-16-gl-13-direccion-visual`](../../openspec/changes/archive/2026-11-16-gl-13-direccion-visual/proposal.md).
-> **Estado (16/11/2026, M284): mergeado y archivado en local, sin commit
-> del archivo.** Pablo autorizó implementar en M264. Dio su conformidad
-> visual en M272 (tarea 3.3, sobre las capturas de M265). Autorizó
-> publicar en M278: commit `c7d4165`, PR #8 y CI remoto en verde. El PR #8
-> se mergeó en `feature/entrega-2-pp` con `e6fce0b6cc94da73067f9d0168054290570afee7`. Pablo autorizó
-> archivar en M282: el cambio está en
-> `openspec/changes/archive/2026-11-16-gl-13-direccion-visual/`, todavía
-> sin commit ni push. En M265 se corrigieron los hallazgos de su revisión
+> **Estado (17/11/2026): implementado y archivado.** El archivo quedó
+> publicado en el commit `68f74cc` de `feature/entrega-final-pp`, que
+> conserva GL-13. El PR #8 se mergeó en `feature/entrega-2-pp` con `e6fce0b`
+> y después ese contenido se retiró de esa rama con el revert `3dc4e90`.
+> El PR #9 (archivo de GL-13, de `feature/entrega-final-pp` hacia
+> `feature/entrega-2-pp`) se cerró sin merge; su CI sobre `68f74cc` pasó.
+> **Historial:** el estado anterior (16/11/2026, M284) era «mergeado y
+> archivado en local, sin commit del archivo». Pablo autorizó implementar
+> en M264. Dio su conformidad visual en M272 (tarea 3.3, sobre las
+> capturas de M265). Autorizó publicar en M278: commit `c7d4165`, PR #8 y
+> CI remoto en verde. El PR #8 se mergeó en `feature/entrega-2-pp` con
+> `e6fce0b6cc94da73067f9d0168054290570afee7`. Pablo autorizó archivar en
+> M282, y el archivo se publicó con `68f74cc` (M286). En M265 se corrigieron los hallazgos de su revisión
 > visual: la cabecera a 375 px, los radios internos y el color del texto
 > de los campos del login (diseño, sección 13). Pablo decidió P-34, P-35 y P-38 a P-40 en M261
 > (P-40 se precisó en M264 y M266), y P-36 (se mantiene P-10) y P-37 (sin pestaña
 > «Compartir») en M257. En M257, las mejoras funcionales del listado «Personas»
-> pasaron a GL-14, cuyo ticket es `docs/tickets/GL-14-mejoras-listado-personas.md`.
+> pasaron a GL-14, cuyo ticket es [GL-14](GL-14-mejoras-listado-personas.md).
 > No forma parte de este cambio.
 
 ## Problema
