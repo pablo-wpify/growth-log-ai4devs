@@ -371,11 +371,28 @@ Solo local; sin CI remoto.
     vieron fallar antes de implementar (el pedido de implementación
     excluyó correr pruebas); solo las de los ajustes visuales se vieron
     fallar primero;
-  - `bin/bundler-audit update` no se ejecutó, por indicación de Pablo:
-    bundler-audit usó la base de avisos instalada. Por eso la tarea 3.1
-    queda parcial.
-- **Pendiente:** la tarea 3.1 (`bin/bundler-audit update`) y el grupo 4:
-  commit y CI remoto, integración, archivo y el ajuste del delta de GL-14.
+  - `bin/bundler-audit update` no se ejecutó en esta etapa, por indicación
+    de Pablo: bundler-audit usó la base de avisos instalada. Se ejecutó
+    después (subsección siguiente).
+
+### Verificación con la base de avisos actualizada (18/11/2026)
+
+Con autorización de Pablo, después del commit local bb5db27. Solo local;
+sin CI remoto. No se cambió código.
+
+- **`bin/bundler-audit update`:** base de avisos `ruby-advisory-db`
+  actualizada de 98dc44b a e755a81 (1378 avisos, última actualización
+  18/11/2026).
+- **`bin/ci`:** código 0, con 428 ejemplos y 0 fallos; rubocop sin
+  infracciones (125 archivos), bundler-audit sin vulnerabilidades,
+  importmap audit sin paquetes vulnerables y Brakeman sin advertencias.
+- **Desvío:** un primer intento de `bin/ci` falló en la preparación y en
+  las pruebas porque se ejecutó sin cargar las variables locales y no
+  llegó a PostgreSQL; no fue un fallo del código. Con las variables
+  cargadas, terminó en código 0.
+- **Tareas cubiertas:** 3.1.
+- **Pendiente:** el grupo 4: push y CI remoto, integración, archivo y el
+  ajuste del delta de GL-14.
 
 ### Documentación
 

@@ -6,10 +6,10 @@ El trabajo tiene dos fases:
   validación y revisión de Pablo. Los criterios de diseño de las
   secciones 4.1, 4.2 y 4.3 del diseño están cerrados (18/11/2026).
 - **Implementación y verificación (grupos 1 a 3):** autorizadas por Pablo
-  el 18/11/2026 (tarea 0.7) y hechas en local, sin commit. Queda abierta
-  la 3.1 (`bin/bundler-audit update`). Las pruebas de 1.1 a 1.4 se
-  escribieron antes del código, pero no se vieron fallar antes de
-  implementar (diseño, sección 8).
+  el 18/11/2026 (tarea 0.7) y hechas en local. La 3.1 se completó después
+  del commit local bb5db27, con la base de avisos actualizada. Las
+  pruebas de 1.1 a 1.4 se escribieron antes del código, pero no se vieron
+  fallar antes de implementar (diseño, sección 8).
 - **Publicación y cierre (grupo 4):** abiertos; cada paso con
   autorización de Pablo.
 
@@ -39,7 +39,7 @@ El trabajo tiene dos fases:
 
 ## 3. Verificación
 
-- [ ] 3.1 `bin/bundler-audit update` y `bin/ci` en código 0, con el número de ejemplos. Parcial: `bin/ci` en código 0 con 428 ejemplos el 18/11/2026; `bin/bundler-audit update` no se ejecutó, por indicación de Pablo
+- [x] 3.1 `bin/bundler-audit update` y `bin/ci` en código 0, con el número de ejemplos. Evidencia: 18/11/2026, con autorización de Pablo y después del commit local bb5db27: base de avisos actualizada a e755a81 (1378 avisos) y `bin/ci` en código 0, con 428 ejemplos y 0 fallos (diseño, sección 8, «Verificación con la base de avisos actualizada»)
 - [x] 3.2 `openspec validate --all --strict`. Evidencia: 18/11/2026, 23 de 23 en verde según el reporte de implementación de GL-15 (diseño, sección 8, «Verificación local»)
 - [x] 3.3 Comprobación manual de Pablo en local a 1280 y 375 px: abrir el formulario en la ficha, guardar un borrador y una lista, y ver un error. Evidencia: 18/11/2026, conformidad visual de Pablo sobre las capturas a 1280 × 800 y 375 × 812 de la ficha, el formulario abierto y los errores (diseño, sección 8, «Conformidad visual»); pedido sin numerar todavía
 - [x] 3.4 Registrar en este diseño lo ejecutado, los desvíos y lo pendiente. Evidencia: 18/11/2026, diseño, sección 8
