@@ -56,6 +56,27 @@ RSpec.describe "Cobertura de autorización con sesión", type: :request do
       # Sin preparar: en la captura, el actor sin permisos es un líder sin
       # asignación. Un líder asignado sí puede crear su propia entrada.
     },
+    # GL-15: formulario completo «+ Feedback». Como en la captura, el actor
+    # sin permisos es un líder sin asignación con la persona.
+    [ "GET", "/personas/:person_id/entradas/completa" ] => {
+      request: ->(spec) { spec.get "/personas/#{spec.person.id}/entradas/completa" },
+      authorized: ->(spec) { spec.expect(spec.response).to spec.have_http_status(:ok) },
+      unauthorized: ->(spec) { spec.expect(spec.response).to spec.have_http_status(:not_found) }
+    },
+    [ "POST", "/personas/:person_id/entradas/completa" ] => {
+      request: ->(spec) do
+        spec.post "/personas/#{spec.person.id}/entradas/completa",
+                  params: { feedback_entry: { occurred_on: "2026-11-12", context: "Formulario de cobertura", status: "draft" } }
+      end,
+      authorized: ->(spec) do
+        spec.expect(spec.response).to spec.redirect_to("/personas/#{spec.person.id}")
+        spec.expect(FeedbackEntry.where(context: "Formulario de cobertura").count).to spec.eq(1)
+      end,
+      unauthorized: ->(spec) do
+        spec.expect(spec.response).to spec.have_http_status(:not_found)
+        spec.expect(FeedbackEntry.where(context: "Formulario de cobertura")).to spec.be_empty
+      end
+    },
     [ "GET", "/entradas/:id" ] => {
       request: ->(spec) { spec.get "/entradas/#{spec.entry.id}" },
       authorized: ->(spec) do

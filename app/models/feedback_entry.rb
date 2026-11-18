@@ -24,7 +24,9 @@ class FeedbackEntry < ApplicationRecord
   belongs_to :author, class_name: "User"
   belongs_to :person
 
-  enum :status, { draft: "draft", ready: "ready" }, default: "draft", validate: true
+  # Un valor desconocido es un error de validación, no un borrador (GL-15).
+  enum :status, { draft: "draft", ready: "ready" }, default: "draft",
+                validate: { message: "Elegí cómo guardar la entrada: borrador o lista." }
 
   # «Sin indicar» llega como valor vacío y se guarda como ausencia de dato.
   normalizes :signal, :dimension, :evidence, :impact, with: ->(value) { value.presence }

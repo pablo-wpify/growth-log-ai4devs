@@ -276,6 +276,17 @@ body.app .container-wide { max-width: 72rem; }
 
 .primary-action { margin: 1rem 0 0; }
 
+/* GL-15: «Captura rápida» sigue como acción principal y «+ Feedback» la
+   acompaña como botón común. */
+.person-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin: 1rem 0 0; }
+
+.person-actions .primary-action, .person-actions .secondary-action { margin: 0; }
+
+/* GL-15: el formulario completo se abre en la ficha, antes de las columnas. */
+turbo-frame#feedback_form { display: block; }
+
+.entry-form-panel { margin: 0 0 1.5rem; }
+
 /* R-4: a dos columnas iguales desde 72 rem, con la cronología a la
    izquierda y el resumen a la derecha. Desde 72 rem la tabla del resumen
    entra entera en su columna; más angosto, una sola columna con el resumen
@@ -420,4 +431,9 @@ body.app .container-wide { max-width: 72rem; }
      sesión» abajo. Un nombre largo se ajusta dentro de su celda. */
   .site-nav { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.25rem 0.5rem; }
   .site-account { margin-left: 0; font-size: 0.875rem; line-height: 1.3; overflow-wrap: anywhere; }
+  /* GL-15: en el formulario completo, cada acción ocupa su fila con el mismo
+     ancho y 44 px de alto; «Cancelar» sigue siendo un enlace. */
+  .entry-form-panel .actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .entry-form-panel .actions > * { width: 100%; justify-content: center; }
+  .entry-form-panel .actions > a { display: flex; align-items: center; min-height: 44px; }
 }

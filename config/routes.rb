@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     # GL-06 (P-19): la captura rápida se abre desde la persona, en una página
     # propia (P-22).
     resources :feedback_entries, only: %i[ new create ], path: "entradas", path_names: { new: "nueva" }
+    # GL-15: formulario completo «+ Feedback», anidado bajo la persona como la
+    # captura (P-19), en una acción propia para no cambiar la captura (P-22).
+    get "entradas/completa", to: "feedback_entries#new_complete", as: :complete_feedback_entry
+    post "entradas/completa", to: "feedback_entries#create_complete"
   end
   # GL-06 (P-19): las acciones sobre una entrada no se anidan bajo la persona,
   # porque eso exigiría su alcance y rompería la lectura por autoría (PP-9).

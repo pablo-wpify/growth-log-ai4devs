@@ -1,0 +1,20 @@
+<%# Formulario completo «+ Feedback» (GL-15). Vive dentro del Turbo Frame "feedback_form" de la ficha. %>
+<%# El envío sale del frame (_top): al guardar, la ficha completa se recarga con el aviso; con errores, %>
+<%# se vuelve a mostrar la ficha con este formulario y los errores. «Cancelar» es un enlace común a la %>
+<%# ficha: dentro del frame lo cierra sin guardar; sin JavaScript, navega a la ficha. %>
+<section class="entry-form-panel" aria-labelledby="complete-form-title">
+  <h2 id="complete-form-title">Nueva entrada</h2>
+
+  <%= form_with model: entry, url: person_complete_feedback_entry_path(person), method: :post,
+        class: "entry-form", data: { turbo_frame: "_top" } do |form| %>
+    <%= entry_error_summary(entry) %>
+
+    <%= render "feedback_entries/entry_fields", form: form, entry: entry %>
+
+    <div class="actions">
+      <%= form.button "Guardar borrador", type: "submit", name: "feedback_entry[status]", value: "draft" %>
+      <%= form.button "Guardar como lista", type: "submit", name: "feedback_entry[status]", value: "ready" %>
+      <%= link_to "Cancelar", person_path(person) %>
+    </div>
+  <% end %>
+</section>

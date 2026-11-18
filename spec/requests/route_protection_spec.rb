@@ -34,6 +34,9 @@ RSpec.describe "Rutas protegidas por defecto", type: :request do
       # GL-06 (P-19): la captura bajo la persona; el resto, bajo /entradas.
       [ "GET", "/personas/1/entradas/nueva" ],
       [ "POST", "/personas/1/entradas" ],
+      # GL-15: el formulario completo, también bajo la persona.
+      [ "GET", "/personas/1/entradas/completa" ],
+      [ "POST", "/personas/1/entradas/completa" ],
       [ "GET", "/entradas/1" ],
       [ "GET", "/entradas/1/editar" ],
       [ "PATCH", "/entradas/1" ],

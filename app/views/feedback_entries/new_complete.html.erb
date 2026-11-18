@@ -1,0 +1,10 @@
+<% content_for :title, "+ Feedback sobre #{@person.name} · Growth Log" %>
+
+<%# GL-15: con Turbo, solo el frame de esta respuesta se inserta en la ficha. Sin JavaScript, es una página común. %>
+<p class="back-link"><%= link_to "← Volver a #{@person.name}", person_path(@person) %></p>
+
+<h1>+ Feedback sobre <%= @person.name %></h1>
+
+<%= turbo_frame_tag "feedback_form" do %>
+  <%= render "feedback_entries/complete_form", person: @person, entry: @entry %>
+<% end %>

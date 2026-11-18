@@ -8,6 +8,8 @@
 # personas y no detectaría una consulta sin alcance: la protección es esta
 # forma de consulta y sus pruebas (mutaciones M1 a M4 del diseño de GL-07).
 class PeopleController < ApplicationController
+  include PersonPage
+
   def index
     authorize Person
     @people = policy_scope(Person).order(:name, :id)
@@ -18,9 +20,6 @@ class PeopleController < ApplicationController
   def show
     @person = policy_scope(Person).find(params[:id])
     authorize @person
-    entries = policy_scope(FeedbackEntry).where(person: @person)
-    @summary = FeedbackSummary.new(entries.ready.group(:dimension, :signal).count)
-    # Cronología (P-10): fecha del hecho ascendente; en empate, creación e id.
-    @timeline = entries.order(occurred_on: :asc, created_at: :asc, id: :asc)
+    load_person_page(@person)
   end
 end

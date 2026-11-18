@@ -75,11 +75,11 @@ RSpec.describe "Navegación con sesión", type: :request do
     expect(page.text).not_to match(/feedback|captura r[aá]pida|administr|crear|editar|asignar|nueva persona/i)
   end
 
-  # Delta de people-browsing (GL-06): la ficha ofrece «Captura rápida» como
-  # único acceso para registrar feedback, antes de abrir la captura, que se
-  # abre en una página propia (P-22). Delta de GL-07: el resumen y la
+  # Delta de people-browsing (GL-06 y GL-15): la ficha ofrece «Captura
+  # rápida», que se abre en una página propia (P-22), y «+ Feedback», cuyo
+  # formulario se abre en la ficha. Delta de GL-07: el resumen y la
   # cronología existen; siguen sin existir compartir y los filtros (4.6, 4.7).
-  it "en la ficha el único formulario es «Cerrar sesión» y el único acceso para registrar feedback es «Captura rápida»" do
+  it "en la ficha el único formulario es «Cerrar sesión» y los accesos para registrar feedback son «Captura rápida» y «+ Feedback»" do
     sign_in_as(leader)
     get person_path(ada)
 
@@ -89,6 +89,12 @@ RSpec.describe "Navegación con sesión", type: :request do
     capture = page.css("main a").select { |link| link.text.strip == "Captura rápida" }
     expect(capture.size).to eq(1)
     expect(capture.first["href"]).to eq(new_person_feedback_entry_path(ada))
-    expect(page.text).not_to match(/\+ ?feedback|compartir|filtr|limpiar|administr|asignar|nueva persona/i)
+    expect(capture.first["class"].split).to include("button-primary")
+    complete = page.css("main a").select { |link| link.text.strip == "+ Feedback" }
+    expect(complete.size).to eq(1)
+    expect(complete.first["href"]).to eq("/personas/#{ada.id}/entradas/completa")
+    expect(complete.first["class"].split).to include("button")
+    expect(complete.first["class"].split).not_to include("button-primary")
+    expect(page.text).not_to match(/compartir|filtr|limpiar|administr|asignar|nueva persona/i)
   end
 end

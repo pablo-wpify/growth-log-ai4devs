@@ -30,7 +30,8 @@
       <header class="site-header">
         <nav aria-label="Principal" class="site-nav">
           <span class="site-name">Growth Log</span>
-          <%= link_to "Personas", people_path, "aria-current": (controller_name == "people" ? "page" : nil) %>
+          <%# GL-15: la ficha declara su sección, así también la ficha con errores del formulario completo, que responde otro controlador, marca «Personas». %>
+          <%= link_to "Personas", people_path, "aria-current": (controller_name == "people" || content_for(:nav_section) == "people" ? "page" : nil) %>
           <span class="site-account">Sesión iniciada como <%= Current.user.name %></span>
           <%= button_to "Cerrar sesión", session_path, method: :delete, form_class: "sign-out" %>
         </nav>

@@ -1,5 +1,7 @@
 <% content_for :title, "#{@person.name} · Growth Log" %>
 <% content_for :main_class, "container-wide" %>
+<%# GL-15: sección de la navegación, también cuando la ficha se muestra con errores del formulario completo. %>
+<% content_for :nav_section, "people" %>
 
 <p class="back-link"><%= link_to "← Volver a Personas", people_path %></p>
 
@@ -9,9 +11,20 @@
   <%# GL-13 (P-38): el mismo aviso breve que el listado, una sola vez y sin panel «Quién ve qué». %>
   <p class="privacy-note">Ves solo a quienes tenés asignados y las entradas que podés ver</p>
 
-  <%# GL-06: único acceso para registrar feedback; la captura se abre en una página propia (P-22). Acción principal de la ficha (GL-13). %>
-  <p class="primary-action"><%= link_to "Captura rápida", new_person_feedback_entry_path(@person), class: "button button-primary" %></p>
+  <div class="person-actions">
+    <%# GL-06: la captura se abre en una página propia (P-22). Acción principal de la ficha (GL-13). %>
+    <p class="primary-action"><%= link_to "Captura rápida", new_person_feedback_entry_path(@person), class: "button button-primary" %></p>
+    <%# GL-15: acción secundaria común; abre el formulario completo en el frame de la ficha, o como página sin JavaScript. %>
+    <p class="secondary-action"><%= link_to "+ Feedback", person_complete_feedback_entry_path(@person), class: "button", data: { turbo_frame: "feedback_form" } %></p>
+  </div>
 </div>
+
+<%# GL-15: el formulario completo se abre acá. Vacío salvo al volver con errores de validación. %>
+<%= turbo_frame_tag "feedback_form" do %>
+  <% if @complete_entry %>
+    <%= render "feedback_entries/complete_form", person: @person, entry: @complete_entry %>
+  <% end %>
+<% end %>
 
 <%# GL-13 (R-4): cronología y resumen en dos columnas desde 64 rem; más angosto, el resumen va primero. %>
 <div class="person-columns">
