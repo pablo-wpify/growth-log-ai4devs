@@ -12,13 +12,13 @@ El trabajo tiene dos fases:
   fallar antes de implementar (diseño, sección 8).
 - **Publicación y cierre (grupo 4):** la 4.1 y la 4.2 se completaron
   con el CI remoto en verde, la 4.3 con el archivo del cambio y la 4.4
-  con el ajuste del delta de GL-14. Queda abierta la 0.3.
+  con el ajuste del delta de GL-14. La 0.3 se completó el 19/11/2026.
 
 ## 0. Fase documental
 
 - [x] 0.1 Crear el ticket, la propuesta, el diseño, los deltas de `feedback-capture` y `people-browsing` y estas tareas, y asignar GL-15 en el plan de la entrega final. Evidencia: 17/11/2026, pedido sin numerar todavía
 - [x] 0.2 Ejecutar `openspec validate --all --strict` y registrar el resultado. Evidencia: 17/11/2026, 23 de 23 en verde, después de dividir dos requisitos que superaban el largo que admite el modo estricto
-- [ ] 0.3 Revisión de Pablo del borrador
+- [x] 0.3 Revisión de Pablo del borrador. Evidencia: 19/11/2026, conformidad de Pablo con la revisión final de la propuesta, después de corregir en `proposal.md` el estado, la frase sobre el modelo y la sección «Impact»; pedido sin numerar todavía
 - [x] 0.4 Acuerdo de Pablo sobre los criterios de diseño (sección 4.1 del diseño) y ajuste de la documentación. Evidencia: 18/11/2026, pedido sin numerar todavía
 - [x] 0.5 Decisión de Pablo sobre los puntos de la sección 4.2 (rutas, aviso al guardar como lista, «Cancelar») y ajuste de la documentación. Evidencia: 18/11/2026, pedido sin numerar todavía
 - [x] 0.6 Decisión de Pablo sobre el aviso al guardar como lista (diseño, sección 4.3): el aviso es exactamente «Feedback guardado como lista.». Es genérico y solo confirma que la operación se completó: no incluye el texto del feedback ni datos que revelen su contenido o a quién se refiere. La regla de privacidad no cambia: el delta modifica «Textos que separan "lista" de "compartida"» solo en el criterio del texto de los avisos (18/11/2026, corrección previa al commit). Evidencia: 18/11/2026, pedidos sin numerar todavía

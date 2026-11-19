@@ -74,7 +74,8 @@
   [`2026-11-19-gl-15-formulario-feedback`](../openspec/changes/archive/2026-11-19-gl-15-formulario-feedback/),
   con `openspec validate --all --strict` en 22 de 22; el delta de
   `people-browsing` de GL-14 quedó ajustado a la spec vigente (tarea 4.4).
-  Sigue abierta la revisión del borrador (tarea 0.3).
+  Todas sus tareas están completas, incluida la revisión del borrador por
+  Pablo (tarea 0.3, 19/11/2026).
 - **Demo:** sirve `cad6afe`, el código de la entrega 2, sin GL-13.
   **Pendiente:** decidir si se actualiza para la entrega final.
 - **Forma de entrega:** según lo observado por Pablo, el Typeform permite
@@ -243,8 +244,8 @@ decisiones anteriores no definían. Pablo las decidió en M258. Detalle en el
    (tarea 3.3) quedó cerrada con la conformidad de Pablo en M272.
 2. GL-15: integrado en `feature/entrega-final-pp` con el CI remoto en
    verde sobre `cebc659` y archivado el 19/11/2026; el delta de GL-14 ya
-   está ajustado (tarea 4.4). Queda abierta la revisión del borrador
-   (tarea 0.3).
+   está ajustado (tarea 4.4). Todas sus tareas están completas, incluida
+   la revisión del borrador (tarea 0.3).
 3. GL-14: revisión de Pablo y aprobación explícita para implementar.
 4. Demo: decidir si se actualiza para la entrega final. Hoy sirve
    `cad6afe`, sin GL-13.

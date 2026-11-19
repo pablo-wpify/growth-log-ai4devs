@@ -1,9 +1,13 @@
 # Proposal
 
-> **Estado (18/11/2026): implementado en local, sin commit.** Decisiones
-> de diseño cerradas; verificación local (specs y `bin/ci` en código 0) y
-> conformidad visual de Pablo registradas (diseño, sección 8). Sin
-> publicar, integrar ni archivar.
+> **Estado (19/11/2026): implementado, publicado en
+> `feature/entrega-final-pp` y archivado.** CI remoto en verde sobre
+> `0472210`
+> ([44515708825](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44515708825));
+> `openspec validate --all --strict` en 22 de 22. No hubo PR, merge ni
+> deploy. Decisiones de diseño, verificación local, conformidad visual de
+> Pablo y desvíos de implementación registrados (diseño, sección 8).
+> Revisión del borrador por Pablo completada (tarea 0.3).
 
 ## Why
 
@@ -38,7 +42,10 @@ Fuente: `docs/tickets/GL-15-formulario-feedback.md`.
   las de la captura rápida.
 - La ficha deja de prohibir «+ Feedback» entre sus acciones.
 
-No cambian la captura rápida, P-22, el modelo ni la base. La técnica es
+No cambian la captura rápida, P-22 ni la base. En el modelo no cambian
+el esquema ni la semántica de los estados (ausente, borrador;
+desconocido, error de validación, como ya validaba el `enum`); solo se
+ajusta el mensaje de validación del estado desconocido. La técnica es
 una decisión de implementación: Turbo Frames con las versiones de Rails y
 Turbo que ya tiene el proyecto, sin dependencias nuevas, sin JavaScript
 propio y sin Turbo Streams (diseño, sección 3).
@@ -77,9 +84,20 @@ Ninguna.
 
 ## Impact
 
-- **Código, cuando se autorice:** rutas de entradas bajo la persona, el
-  controlador de entradas, la vista de la ficha y una vista nueva del
-  formulario. Sin migraciones.
+- **Código:** rutas de entradas bajo la persona; el controlador de
+  entradas, con las acciones del formulario completo; la vista de la
+  ficha y las vistas nuevas del formulario (la página sin JavaScript y el
+  parcial del panel). Sin migraciones.
+- **Refactorizaciones:** los campos de la entrada pasan a un parcial
+  compartido entre el formulario completo y la edición, que cambia su
+  vista sin cambiar su comportamiento; la carga del resumen y la
+  cronología de la ficha pasa a un concern compartido entre la ficha y la
+  ficha con errores del formulario.
+- **Modelo:** solo el mensaje de validación del estado desconocido.
+- **Layout y estilos:** el layout marca «Personas» como sección activa
+  también en la ficha con errores del formulario; la hoja de estilos suma
+  las acciones de la ficha, el panel del formulario y su disposición en
+  pantallas angostas.
 - **Pruebas:** de peticiones y de sistema, con y sin JavaScript.
 - **Specs:** deltas de `feedback-capture` y `people-browsing`.
 - **Superposición con GL-14:** los dos cambios modifican el mismo

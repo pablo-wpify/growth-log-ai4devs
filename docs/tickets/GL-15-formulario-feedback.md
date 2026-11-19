@@ -10,8 +10,9 @@
 > El cambio de OpenSpec está archivado, con
 > `openspec validate --all --strict` en 22 de 22. No hubo PR, merge ni
 > deploy. Decisiones de diseño, verificación local y conformidad
-> visual de Pablo registradas (diseño, sección 8). Sigue abierta la
-> revisión del borrador por Pablo (tarea 0.3).
+> visual de Pablo registradas (diseño, sección 8). Todas las tareas de
+> GL-15 están completas, incluida la revisión del borrador por Pablo
+> (tarea 0.3, 19/11/2026).
 
 ## Origen
 
