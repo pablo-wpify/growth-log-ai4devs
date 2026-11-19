@@ -4,7 +4,8 @@ on:
   pull_request:
   push:
     # feature/entrega-2-pp: rama de entrega; corre el CI sin crear main ni abrir un PR (GL-01, D-GL01-2).
-    branches: [ main, feature/entrega-2-pp ]
+    # feature/entrega-final-pp: rama de la entrega final, con el mismo criterio (GL-15, tarea 4.1).
+    branches: [ main, feature/entrega-2-pp, feature/entrega-final-pp ]
 
 jobs:
   scan_ruby:
