@@ -394,6 +394,28 @@ sin CI remoto. No se cambió código.
 - **Pendiente:** el grupo 4: push y CI remoto, integración, archivo y el
   ajuste del delta de GL-14.
 
+### CI remoto (18/11/2026)
+
+Con autorización de Pablo, push normal, sin force, de
+`feature/entrega-final-pp`.
+
+- **Push:** `68f74cc..44d91b2`, con 6f70f1b, bb5db27 y 44d91b2. No
+  disparó el CI: el workflow corría en `push` solo para `main` y
+  `feature/entrega-2-pp`, y la rama no tenía un PR abierto.
+- **Habilitación del CI:** fda7c00 agrega `feature/entrega-final-pp` a
+  `push.branches` de `.github/workflows/ci.yml`, con el mismo criterio
+  que `feature/entrega-2-pp` (D-GL01-2), y conserva los demás
+  disparadores. Push `44d91b2..fda7c00`.
+- **Corrida:**
+  https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44426945336,
+  evento `push`, SHA fda7c0055bd25cd7e8cffa89db0a511396c11e86: en verde.
+  Los jobs `scan_ruby` (Brakeman sin advertencias, bundler-audit sin
+  vulnerabilidades), `scan_js`, `lint` y `test` (428 ejemplos, 0 fallos)
+  terminaron bien.
+- **Tareas cubiertas:** 4.1.
+- **Pendiente:** la integración (4.2), el archivo (4.3) y el ajuste del
+  delta de GL-14 (4.4), cada paso con autorización de Pablo.
+
 ### Documentación
 
 - 17/11/2026: borrador documental creado a pedido de Pablo. El pedido
