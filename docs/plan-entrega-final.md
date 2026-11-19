@@ -24,7 +24,7 @@
 > día, la tarea T2.1 del Anexo G recibió el ID GL-15 como borrador
 > documental, y el 18/11/2026 GL-15 se implementó en local, sin commit
 > (sección 2). Ese mismo día se publicó e integró en esta rama, con el CI
-> remoto en verde (sección 1).
+> remoto en verde, y el 19/11/2026 se archivó (sección 1).
 
 ## 1. Punto de partida
 
@@ -70,7 +70,11 @@
   en verde sobre `cebc659`
   ([44427603213](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44427603213)).
   Las decisiones de diseño, la verificación local y la conformidad visual
-  de Pablo están registradas en su diseño. No está archivada.
+  de Pablo están registradas en su diseño. Archivado el 19/11/2026 en
+  [`2026-11-19-gl-15-formulario-feedback`](../openspec/changes/archive/2026-11-19-gl-15-formulario-feedback/),
+  con `openspec validate --all --strict` en 22 de 22; el delta de
+  `people-browsing` de GL-14 quedó ajustado a la spec vigente (tarea 4.4).
+  Sigue abierta la revisión del borrador (tarea 0.3).
 - **Demo:** sirve `cad6afe`, el código de la entrega 2, sin GL-13.
   **Pendiente:** decidir si se actualiza para la entrega final.
 - **Forma de entrega:** según lo observado por Pablo, el Typeform permite
@@ -83,7 +87,7 @@
 | Orden | ID | Objetivo | Estado | Depende de | Decisiones que lo bloquean |
 |---|---|---|---|---|---|
 | 1 | [GL-13](tickets/GL-13-direccion-visual.md) | Dirección visual transversal: paleta, tipografía, navegación, componentes y mapa de pantallas | **implementado, verificado y archivado; archivo con commit en `68f74cc`** (cambio archivado en [`2026-11-16-gl-13-direccion-visual`](../openspec/changes/archive/2026-11-16-gl-13-direccion-visual/); borrador en M254; las mejoras funcionales del listado pasaron a GL-14 en M257); decisiones P-34 a P-40 **resueltas** (M257, M261 y M264); implementación autorizada en M264 e implementado en M264 a M266, con `bin/ci` en código 0 en M270; conformidad visual de Pablo (tarea 3.3, M272); publicado en el PR #8 (M278 y M281) y mergeado en `feature/entrega-2-pp` con `e6fce0b`, merge **revertido** en esa rama con `3dc4e90`; PR #9 cerrado sin merge, con CI en verde sobre `68f74cc` | GL-05, GL-06, GL-07, GL-11 | — |
-| 2 | [GL-15](tickets/GL-15-formulario-feedback.md) | Formulario completo «+ Feedback» en la ficha (T2.1 del Anexo G; criterios 2.1, 2.2 y 2.7, más 2.3 a 2.5 y 2.10 aplicados al formulario) | **implementado, verificado e integrado en esta rama** (cambio [`gl-15-formulario-feedback`](../openspec/changes/gl-15-formulario-feedback/proposal.md); borrador del 17/11/2026, implementación autorizada e implementada el 18/11/2026); decisiones de diseño cerradas; verificación local (`bin/ci` en código 0 con la base de avisos actualizada) y conformidad visual de Pablo registradas; publicado en `cebc659` con el CI remoto en verde; sin archivar | T1.6 (GL-06), cumplida; GL-13 para los tokens y componentes | — (falta el archivo, tarea 4.3, y el ajuste del delta de GL-14, tarea 4.4, cada paso con autorización) |
+| 2 | [GL-15](tickets/GL-15-formulario-feedback.md) | Formulario completo «+ Feedback» en la ficha (T2.1 del Anexo G; criterios 2.1, 2.2 y 2.7, más 2.3 a 2.5 y 2.10 aplicados al formulario) | **implementado, verificado, integrado en esta rama y archivado** (cambio archivado en [`2026-11-19-gl-15-formulario-feedback`](../openspec/changes/archive/2026-11-19-gl-15-formulario-feedback/); borrador del 17/11/2026, implementación autorizada e implementada el 18/11/2026); decisiones de diseño cerradas; verificación local (`bin/ci` en código 0 con la base de avisos actualizada) y conformidad visual de Pablo registradas; publicado en `cebc659` con el CI remoto en verde; archivado el 19/11/2026, con el delta de GL-14 ajustado (tarea 4.4) | T1.6 (GL-06), cumplida; GL-13 para los tokens y componentes | — |
 | 3 | [GL-14](tickets/GL-14-mejoras-listado-personas.md) | Mejoras funcionales del listado «Personas» | **borrador documental** (cambio [`gl-14-mejoras-listado-personas`](../openspec/changes/gl-14-mejoras-listado-personas/proposal.md), M257); decisiones P-41 a P-53 **aprobadas** (M257 y M258); sin implementar ni autorización para implementar | GL-05, GL-06, GL-07; GL-13 para los tokens y componentes | la aprobación para implementar |
 | — | GL-11, tarea 3.3 | Comprobación manual de Pablo y archivo | pendiente (M245) | GL-13, GL-15 y GL-14, si se implementan | — |
 
@@ -238,9 +242,9 @@ decisiones anteriores no definían. Pablo las decidió en M258. Detalle en el
    con `3dc4e90`, y el PR #9 se cerró sin merge. La comprobación manual
    (tarea 3.3) quedó cerrada con la conformidad de Pablo en M272.
 2. GL-15: integrado en `feature/entrega-final-pp` con el CI remoto en
-   verde sobre `cebc659`. Falta el archivo (tarea 4.3) y, al completarlo,
-   ajustar el delta de GL-14 (tarea 4.4), cada paso con autorización de
-   Pablo.
+   verde sobre `cebc659` y archivado el 19/11/2026; el delta de GL-14 ya
+   está ajustado (tarea 4.4). Queda abierta la revisión del borrador
+   (tarea 0.3).
 3. GL-14: revisión de Pablo y aprobación explícita para implementar.
 4. Demo: decidir si se actualiza para la entrega final. Hoy sirve
    `cad6afe`, sin GL-13.

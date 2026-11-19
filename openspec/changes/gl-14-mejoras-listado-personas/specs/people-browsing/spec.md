@@ -55,13 +55,12 @@ todavía».
 
 ### Requirement: Solo lectura y sin funciones inexistentes
 El listado «Personas» MUST NOT ofrecer formularios ni acciones salvo
-«Cerrar sesión», la búsqueda, el filtro y el orden del listado, «Limpiar
-filtros» y el acceso «Registrar la primera» según la spec
-`feedback-capture`. La
-ficha MUST NOT ofrecer más acciones que «Cerrar sesión», «Captura rápida»
-y los enlaces de la cronología a las entradas propias. Ninguna de las dos
-MUST mostrar enlaces o textos que anuncien funciones que todavía no
-existen: administración, «+ Feedback», compartir, filtros de entradas o
+«Cerrar sesión», la búsqueda, el filtro, el orden, «Limpiar filtros» y
+«Registrar la primera». La ficha MUST NOT ofrecer más acciones que
+«Cerrar sesión», «Captura rápida», «+ Feedback» con su formulario y los
+enlaces de la cronología a las entradas propias. Los accesos de registro
+siguen la spec `feedback-capture`. Ninguna de las dos MUST anunciar
+funciones inexistentes: administración, compartir, filtros de entradas o
 feed.
 
 #### Scenario: Acciones disponibles
@@ -70,7 +69,7 @@ feed.
 
 #### Scenario: Acciones disponibles en la ficha
 - **WHEN** un líder abre una ficha
-- **THEN** el único formulario es «Cerrar sesión», el único acceso para registrar feedback es «Captura rápida», y no hay «+ Feedback», compartir, filtros ni enlaces de administración
+- **THEN** el único formulario es «Cerrar sesión», los accesos para registrar feedback son «Captura rápida» y «+ Feedback», y no hay compartir, filtros ni enlaces de administración
 
 ## ADDED Requirements
 

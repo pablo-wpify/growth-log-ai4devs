@@ -3,11 +3,15 @@
 > Ticket de la entrega final de Growth Log. Lugar en la secuencia: [plan de
 > la entrega final](../plan-entrega-final.md), única fuente de la secuencia
 > de esta entrega. Cambio de OpenSpec:
-> [`gl-15-formulario-feedback`](../../openspec/changes/gl-15-formulario-feedback/proposal.md).
-> **Estado (18/11/2026): implementado en local, sin commit.** Decisiones
-> de diseño cerradas; verificación local (specs y `bin/ci` en código 0) y
-> conformidad visual de Pablo registradas (diseño, sección 8). Sin
-> publicar, integrar ni archivar.
+> [`gl-15-formulario-feedback`](../../openspec/changes/archive/2026-11-19-gl-15-formulario-feedback/proposal.md).
+> **Estado (19/11/2026): implementación publicada en
+> `feature/entrega-final-pp`, con el CI remoto en verde sobre `711ee6c`
+> ([44495270029](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44495270029)).**
+> El cambio de OpenSpec está archivado, con
+> `openspec validate --all --strict` en 22 de 22. No hubo PR, merge ni
+> deploy. Decisiones de diseño, verificación local y conformidad
+> visual de Pablo registradas (diseño, sección 8). Sigue abierta la
+> revisión del borrador por Pablo (tarea 0.3).
 
 ## Origen
 
@@ -111,7 +115,7 @@ autorización y la misma privacidad que ya tienen las entradas.
 
 ## Criterios de diseño
 
-Detalle en la [sección 4 del diseño](../../openspec/changes/gl-15-formulario-feedback/design.md#4-criterios-de-diseño).
+Detalle en la [sección 4 del diseño](../../openspec/changes/archive/2026-11-19-gl-15-formulario-feedback/design.md#4-criterios-de-diseño).
 
 **Acordados por Pablo (18/11/2026):**
 

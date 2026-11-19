@@ -416,6 +416,37 @@ Con autorización de Pablo, push normal, sin force, de
 - **Pendiente:** la integración (4.2), el archivo (4.3) y el ajuste del
   delta de GL-14 (4.4), cada paso con autorización de Pablo.
 
+### Integración, archivo y ajuste de GL-14 (18 y 19/11/2026)
+
+- **Integración (4.2):** Pablo decidió que `feature/entrega-final-pp` es
+  la rama de integración de la entrega final, y que un cambio queda
+  integrado cuando está incorporado y publicado en ella. Registro con
+  711ee6c; sin PR ni merge.
+- **Archivo (4.3), 19/11/2026:** `openspec archive` movió el cambio a
+  `openspec/changes/archive/2026-11-19-gl-15-formulario-feedback/` y
+  aplicó sus deltas: en `feedback-capture`, 6 requisitos agregados y 1
+  modificado; en `people-browsing`, 1 modificado. Avisó de tres tareas
+  abiertas (0.3, 4.3 y 4.4) y siguió con `--yes`.
+- **Desvío:** después del archivo, `openspec validate --all --strict` dio
+  21 de 22: en la spec `feedback-capture`, el texto de «Textos que
+  separan "lista" de "compartida"» superaba los 500 caracteres del modo
+  estricto. La validación del delta no lo había detectado. Pablo aprobó
+  un ajuste de redacción, sin cambio de sentido, a 487 caracteres e
+  idéntico en la spec y en el delta archivado. Después:
+  `openspec validate --all --strict`, 22 de 22 en verde.
+- **Ajuste del delta de GL-14 (4.4), 19/11/2026:** con el pedido de
+  Pablo, el delta de `people-browsing` de GL-14 reemplaza en «Solo
+  lectura y sin funciones inexistentes» la prohibición de «+ Feedback»
+  por el acceso de la spec vigente: la ficha admite «Captura rápida»,
+  «+ Feedback» con su formulario y los enlaces de la cronología, y el
+  escenario «Acciones disponibles en la ficha» queda igual al de la spec.
+  Conserva lo que GL-14 agrega al listado. El texto se condensó a 498
+  caracteres para el modo estricto. GL-14 no se archivó ni cambió en
+  otros archivos; su delta de `feedback-capture` ya era compatible.
+  `openspec validate --all --strict`: 22 de 22 en verde.
+- **Pendiente:** la revisión del borrador por Pablo (tarea 0.3), que
+  quedó abierta.
+
 ### Documentación
 
 - 17/11/2026: borrador documental creado a pedido de Pablo. El pedido
