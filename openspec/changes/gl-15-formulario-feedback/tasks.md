@@ -10,9 +10,9 @@ El trabajo tiene dos fases:
   del commit local bb5db27, con la base de avisos actualizada. Las
   pruebas de 1.1 a 1.4 se escribieron antes del código, pero no se vieron
   fallar antes de implementar (diseño, sección 8).
-- **Publicación y cierre (grupo 4):** la 4.1 se completó con el CI
-  remoto en verde; la 4.2 a la 4.4 siguen abiertas, cada paso con
-  autorización de Pablo.
+- **Publicación y cierre (grupo 4):** la 4.1 y la 4.2 se completaron
+  con el CI remoto en verde; la 4.3 y la 4.4 siguen abiertas, cada paso
+  con autorización de Pablo.
 
 ## 0. Fase documental
 
@@ -48,6 +48,6 @@ El trabajo tiene dos fases:
 ## 4. Publicación y cierre (cada paso con autorización de Pablo)
 
 - [x] 4.1 Commit, push y CI remoto con enlace y SHA. Evidencia: 18/11/2026, con autorización de Pablo: commits bb5db27 y 44d91b2 publicados en `feature/entrega-final-pp`; CI habilitado en la rama con fda7c00; corrida https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44426945336 sobre fda7c0055bd25cd7e8cffa89db0a511396c11e86, en verde, con 428 ejemplos y 0 fallos (diseño, sección 8, «CI remoto»)
-- [ ] 4.2 Integración según la rama que se defina para la entrega final
+- [x] 4.2 Integración según la rama que se defina para la entrega final. Decisión de Pablo (18/11/2026): la rama de integración de la entrega final es `feature/entrega-final-pp`, y la integración se cumple cuando el cambio queda incorporado y publicado en ella. Evidencia: 18/11/2026, commits bb5db27, 44d91b2, fda7c00 y cebc659 publicados en `feature/entrega-final-pp`; CI remoto en verde sobre cebc659dacd80ac88154084a5bf25d4938d27684 (https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44427603213)
 - [ ] 4.3 Archivo del cambio
 - [ ] 4.4 Con el pedido de Pablo, ajustar el delta de `people-browsing` de GL-14 sobre la spec que deje GL-15, para que los dos requisitos queden compatibles (diseño, sección 6)
