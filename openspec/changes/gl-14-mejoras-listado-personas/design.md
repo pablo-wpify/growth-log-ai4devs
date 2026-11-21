@@ -1,9 +1,12 @@
 # Design
 
-> **Borrador documental (M257, completado en M258, 15/11/2026), para
-> revisión de Pablo.** Sin implementar. Las mejoras 1 a 9 (P-41 a P-45)
-> las aprobó Pablo en M257, y P-46 a P-53 en M258 (sección 5). Solo falta
-> la aprobación del cambio para implementarlo.
+> **Borrador documental (M257 a M259, 15 y 16/11/2026), revisado por
+> Pablo el 21/11/2026.** Sin implementar. Las mejoras 1 a 9 (P-41 a
+> P-45) las aprobó Pablo en M257, y P-46 a P-53 en M258 (sección 5). El
+> delta de `people-browsing` se ajustó el 19/11/2026 a la spec que dejó
+> GL-15, y los requisitos de los deltas se reestructuraron el 20/11/2026
+> (sección 7). Pablo dio su conformidad al borrador el 21/11/2026
+> (tarea 0.4). Sigue abierta la aprobación para implementar (tarea 0.6).
 
 ## 1. Fuentes
 
@@ -12,10 +15,11 @@
 | Criterios 1.14, 1.15 y 1.16 (Anexo A); PP-2, PP-3 y PP-6 | alcance aprobado del listado y de lo que la cuenta puede ver |
 | Specs vigentes `people-browsing`, `feedback-capture` y `authorization` | textos y reglas que este cambio modifica con deltas explícitos |
 | P-15, P-17, P-20 y P-22 | «Personas» es el inicio; «rol · equipo» y sus faltantes; la escritura exige asignación y persona activas; la captura es una página propia que vuelve a la ficha |
-| Código en `eabac8e`: `PeopleController#index`, `people/index.html.erb` y `PeopleHelper` | lo implementado |
+| Código en `eade6a6`: `PeopleController#index`, `people/index.html.erb` y `PeopleHelper` | lo implementado. La vista y el helper no cambiaron desde `eabac8e`; el controlador solo sumó `include PersonPage` (GL-15, `bb5db27`), sin cambios en `index`. Los estilos de la fila son de GL-13 (`c7d4165`) |
 | Referencia `~/Descargas/Lista de personas@1x.png` (M256, confirmada en M257) | **referencia visual**, no requisito |
 | Pedidos M257 y M258 | las decisiones aprobadas y su reparto entre specs |
-| Cambio `gl-13-direccion-visual` | tokens, componentes y foco que usa el listado. No define su comportamiento |
+| Spec vigente `visual-language` (GL-13, archivado en `2026-11-16-gl-13-direccion-visual`): «Tokens visuales en un solo lugar», «Contraste y foco» y «Pantallas angostas» | tokens, componentes y foco que usa el listado. No define su comportamiento |
+| Spec vigente `people-browsing`, con el ajuste de GL-15 (archivado en `2026-11-19-gl-15-formulario-feedback`) | la ficha admite «Captura rápida» y «+ Feedback» con su formulario |
 
 ## 2. Ya aprobado antes de este cambio
 
@@ -32,11 +36,11 @@
 |---|---|---|---|
 | 1 | Enlaces de fila completa, con foco de teclado visible y sin enlaces ni botones anidados | — (era R-10 de GL-13) | `people-browsing`, «Fila del listado navegable con teclado» |
 | 2 | Nombre y, debajo, «rol · equipo» | — (era R-11 de GL-13) | `people-browsing`, «Listado de personas asignadas» |
-| 3 | Etiquetas neutrales: «Sin entradas todavía», «Sin entradas listas · N borradores» y «N entradas listas · M borradores». Las listas, limitadas a lo visible; los borradores, solo los propios | **P-41** | `people-browsing`, «Listado de personas asignadas»; registros, `authorization` |
+| 3 | Etiquetas neutrales: «Sin entradas todavía», «Sin entradas listas · N borradores» y «N entradas listas · M borradores». Las listas, limitadas a lo visible; los borradores, solo los propios | **P-41** | `people-browsing`, «Conteos de entradas en el listado» y «Conteos limitados a lo visible para la cuenta»; registros, `authorization` |
 | 4 | «Último hecho»: la fecha del hecho más reciente entre las entradas listas visibles. Es la misma fecha que usa «Hechos más recientes». Los borradores no cuentan | **P-42** | `people-browsing`, «Fecha del último hecho» |
 | 5 | Búsqueda por nombre y filtro por equipo, limitados a las personas activas asignadas | **P-43** | `people-browsing`, «Búsqueda y filtro del listado» |
 | 6 | Orden por nombre como predeterminado (1.14) y «Hechos más recientes» como opción, con desempate por nombre y después por ID | **P-44** | `people-browsing`, «Orden por hechos más recientes» |
-| 7 | «Registrar la primera» para una persona sin entradas: acción independiente de la fila, hacia la captura existente, con la misma autorización y la vuelta a la ficha al guardar | **P-45** | `feedback-capture`, «Acceso visible a la captura rápida» |
+| 7 | «Registrar la primera» para una persona sin entradas: acción independiente de la fila, hacia la captura existente, con la misma autorización y la vuelta a la ficha al guardar | **P-45** | `feedback-capture`, «Registrar la primera desde el listado» y «"Registrar la primera" decidido con el alcance de la cuenta» |
 | 8 | El vacío del listado se distingue de una persona sin entradas | — (era L8 de GL-13) | `people-browsing`, «Estado vacío» |
 | 9 | Sin resultados, limpieza de filtros y 375 px | — (era L9 de GL-13) | `people-browsing`, «Sin resultados…» y «Listado en pantalla angosta» |
 
@@ -61,7 +65,8 @@ primera» es la primera de esta cuenta.
 - **`people-browsing`:** los textos y el comportamiento del listado.
 - **`feedback-capture`:** el acceso directo a la captura.
 - **`authorization`:** qué registros entran en cada lectura agregada, sin
-  textos de pantalla. Su delta no cambia permisos (ver la propuesta).
+  definir los textos de los conteos. Su delta no cambia permisos (ver la
+  propuesta).
 
 ## 4. Diseño técnico propuesto
 
@@ -181,13 +186,13 @@ M258 Pablo las decidió así, y los deltas las reflejan:
 
 | # | Decisión | En el delta |
 |---|---|---|
-| P-46 | Con entradas listas y ningún borrador: «N entradas listas» | `people-browsing`, «Listado de personas asignadas» |
+| P-46 | Con entradas listas y ningún borrador: «N entradas listas» | `people-browsing`, «Conteos de entradas en el listado» |
 | P-47 | En «Hechos más recientes», las personas sin entradas listas visibles para la cuenta van al final. Los borradores no participan. Entre ellas rige el desempate de P-44 | `people-browsing`, «Orden por hechos más recientes» |
 | P-48 | «Limpiar filtros» borra la búsqueda y el filtro por equipo y conserva el orden elegido | `people-browsing`, «Sin resultados de búsqueda o filtro» |
 | P-49 | Coincidencias parciales en el nombre, sin distinguir mayúsculas ni acentos | `people-browsing`, «Búsqueda y filtro del listado» |
 | P-50 | «Sin equipo indicado» en el filtro solo si hay personas sin equipo. El modelo permite ese estado | `people-browsing`, «Búsqueda y filtro del listado» |
 | P-51 | Búsqueda, filtro por equipo y orden se procesan en el navegador, sobre las personas autorizadas. La selección se pierde al recargar y no se guarda en la URL (precisado en M259) | `people-browsing`, «Búsqueda, filtro y orden en el navegador» |
-| P-52 | La captura abierta desde el listado vuelve a la ficha, como hoy | `feedback-capture`, «Acceso visible a la captura rápida» |
+| P-52 | La captura abierta desde el listado vuelve a la ficha, como hoy | `feedback-capture`, «Registrar la primera desde el listado» |
 | P-53 | Total «N personas que acompañás», que cuenta las personas asignadas y no cambia al filtrar, y aviso breve de privacidad, una sola vez. Sin personas asignadas, el mensaje vacío reemplaza el total y el aviso (confirmado en M259) | `people-browsing`, «Total de personas y aviso de privacidad» |
 
 **Cómo se aplica «discretos y sin duplicar» (P-53, confirmado en
@@ -213,8 +218,10 @@ vacío de 1.16 reemplaza el total y el aviso.
 - **Sin JavaScript y recarga:** se prueba que el listado queda completo
   por nombre y que la URL no cambia al buscar o filtrar.
 - **Pruebas que cambian:** las de «0 entradas listas»
-  (`spec/requests/people_counts_spec.rb`) cambian junto con su escenario.
-  Se registra cuáles.
+  (`spec/requests/people_counts_spec.rb` y
+  `spec/requests/feedback_summary_privacy_spec.rb`, que comprueba el
+  escenario de la administradora de `authorization`) cambian junto con
+  sus escenarios. Se registra cuáles.
 - **Verificación prevista:** pruebas de peticiones y de sistema a 1280 y
   375 px, `bin/ci` y comprobación manual de Pablo.
 
@@ -241,3 +248,81 @@ vacío de 1.16 reemplaza el total y el aviso.
   cuenta las personas asignadas y no cambia al filtrar, el aviso aparece
   una vez y el mensaje vacío los reemplaza. Solo se ejecutó `openspec
   validate --all --strict`.
+- **19/11/2026 (tarea 4.4 de GL-15, M355):** al archivar GL-15, la spec
+  vigente de `people-browsing` pasó a admitir «+ Feedback» en la ficha.
+  Se ajustó «Solo lectura y sin funciones inexistentes» de este delta
+  para que no la contradiga: la ficha conserva «Captura rápida» y permite
+  «+ Feedback» con su formulario, y el escenario «Acciones disponibles en
+  la ficha» coincide con la spec vigente. El cambio quedó registrado en el
+  diseño de GL-15 (sección 8) y publicado en `0472210`. GL-14 siguió sin
+  archivar ni implementar.
+- **20/11/2026 (revisión de la tarea 0.4, pedido sin numerar todavía):**
+  tres requisitos de los deltas superaban los 500 caracteres que admite
+  el modo estricto al aplicarse sobre las specs vigentes, como pasó al
+  archivar GL-15. Se dividieron sin cambiar el alcance ni el
+  comportamiento aprobados:
+  - `people-browsing`: «Listado de personas asignadas» conserva el
+    alcance, el orden y las dos líneas; las reglas de los conteos pasan a
+    «Conteos de entradas en el listado» y «Conteos limitados a lo visible
+    para la cuenta»;
+  - `feedback-capture`: «Acceso visible a la captura rápida» vuelve a su
+    texto vigente y sale del delta; «Registrar la primera» pasa a
+    «Registrar la primera desde el listado» y a «"Registrar la primera"
+    decidido con el alcance de la cuenta»;
+  - `authorization`: «Lecturas agregadas con el alcance de entradas»
+    conserva la regla; la enumeración de lecturas pasa a «Lecturas
+    agregadas de la ficha y del listado».
+
+  Se alinearon la propuesta, el ticket, las tareas y el plan, y se
+  sumó `spec/requests/feedback_summary_privacy_spec.rb` a las pruebas
+  existentes que cambian.
+
+  **Validación.** La primera ejecución de `openspec validate --all
+  --strict` después de la división dio 21 de 22: los requisitos
+  `MODIFIED` habían perdido escenarios que la spec vigente todavía tiene
+  («Conteo de entradas listas» y «Conteo con otro líder de la misma
+  persona» en «Listado de personas asignadas», y «Autor» en «Lecturas
+  agregadas con el alcance de entradas»), y un `MODIFIED` no puede
+  quitarlos. Se corrigió así:
+  - esos tres escenarios volvieron a sus requisitos `MODIFIED`, con su
+    nombre y el texto de GL-14;
+  - cada requisito `ADDED` tiene un escenario propio que prueba su regla
+    sin repetirlos: «Conteos en singular y en plural», «Entradas de otro
+    líder sobre una persona con entradas propias» y «Orden y acceso del
+    listado desde el alcance». Este último compara dos personas: con una
+    entrada lista propia sobre B y solo un borrador propio sobre A, una
+    entrada lista posterior de otro líder sobre A no la pone antes que B
+    en «Hechos más recientes» ni le da «Último hecho», y el borrador
+    propio impide mostrar «Registrar la primera» en A;
+  - el texto de los requisitos no cambió. Medidos con el criterio del
+    validador, el más largo de los tres deltas es «Solo lectura y sin
+    funciones inexistentes», con 498 caracteres.
+
+  Con eso, `openspec validate --all --strict` dio 22 de 22. Sin ejecutar
+  pruebas.
+- **21/11/2026 (cierre de la revisión, tarea 0.4):** antes de la
+  conformidad se hicieron estos ajustes, sin cambiar el comportamiento
+  aprobado:
+  - Pablo decidió conservar en los escenarios restaurados los textos de
+    GL-14 y no los `THEN` de la spec vigente, que describen el
+    comportamiento anterior: al archivar, la spec principal tiene que
+    reflejar el estado final de GL-14;
+  - «Búsqueda y filtro del listado» dice que, con una búsqueda o un
+    filtro activos, se ofrece «Limpiar filtros», haya o no resultados.
+    Para no pasar los 500 caracteres, «SHALL encontrar coincidencias
+    parciales en el nombre» pasó a «SHALL admitir coincidencias
+    parciales»; la búsqueda sigue siendo por nombre. El requisito quedó
+    en 495 caracteres;
+  - el escenario «Acciones disponibles» nombra «Limpiar filtros» cuando
+    hay una búsqueda o un filtro activos. Siguen los escenarios «Sin
+    resultados» y «Limpiar filtros conserva el orden»;
+  - en la propuesta y en el ticket, el delta de `authorization` describe
+    los registros «sin definir los textos de los conteos».
+
+  Después de esos ajustes, `openspec validate --all --strict` dio 22 de
+  22. Pablo revisó el diff v4 respecto de `eade6a6` y dio su conformidad:
+  los escenarios originales se conservan y describen el comportamiento
+  previsto, los requisitos nuevos tienen escenarios propios, y la
+  redacción de «Limpiar filtros» y la propuesta son coherentes. La
+  conformidad no autoriza la implementación (tarea 0.6). Sin ejecutar
+  pruebas.

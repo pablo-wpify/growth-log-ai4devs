@@ -3,7 +3,14 @@
 El trabajo tiene dos fases:
 
 - **Fase documental (grupo 0):** ticket, propuesta, specs, diseño,
-  validación y revisión de Pablo. Pedida en M257.
+  validación y revisión de Pablo. Pedida en M257. El 19/11/2026, en la
+  tarea 4.4 de GL-15 (M355), se ajustó «Solo lectura y sin funciones
+  inexistentes» del delta de `people-browsing`: la ficha conserva
+  «Captura rápida» y permite «+ Feedback» con su formulario. El
+  20/11/2026, durante la revisión (0.4), se dividieron los requisitos que
+  superaban el largo del modo estricto (diseño, sección 7). El 21/11/2026
+  Pablo dio su conformidad al borrador y cerró la 0.4. Sigue abierta la
+  0.6.
 - **Implementación y verificación (grupos 1 a 4):** **sin autorizar.** Se
   empieza solo con la aprobación explícita de Pablo para implementar.
   P-46 a P-53 se resolvieron en M258. Las pruebas se escriben primero y se
@@ -14,7 +21,7 @@ El trabajo tiene dos fases:
 - [x] 0.1 Separar de GL-13 los requisitos funcionales del listado y crear este cambio con el ticket, la propuesta, el diseño, los deltas de `people-browsing`, `feedback-capture` y `authorization`, y estas tareas. Evidencia: 15/11/2026, M257
 - [x] 0.2 Registrar las decisiones 1 a 9 aprobadas por Pablo (P-41 a P-45) y las consecuencias abiertas P-46 a P-53 en el plan de la entrega final. Evidencia: 15/11/2026, M257
 - [x] 0.3 Ejecutar `openspec validate --all --strict` y registrar el resultado. Evidencia: 15/11/2026, M257 (ver su registro)
-- [ ] 0.4 Revisión de Pablo del borrador
+- [x] 0.4 Revisión de Pablo del borrador. Evidencia: 21/11/2026, conformidad de Pablo sobre el diff v4 respecto de `eade6a6`, después de `openspec validate --all --strict` en 22 de 22 (diseño, sección 7)
 - [x] 0.5 Decisiones de Pablo sobre P-46 a P-53 y ajuste de los deltas. Evidencia: 15/11/2026, M258
 - [x] 0.5b Volver a ejecutar `openspec validate --all --strict`. Evidencia: 15/11/2026, M258 (ver su registro)
 - [x] 0.5c Registrar la confirmación de las interpretaciones de P-51 y P-53 y validar de nuevo. Evidencia: 16/11/2026, M259 (ver su registro)
@@ -46,11 +53,11 @@ El trabajo tiene dos fases:
 - [ ] 2.2 Textos en `people_helper.rb`: conteos y «Último hecho»
 - [ ] 2.3 Fila con un enlace extendido y «Registrar la primera» como enlace independiente
 - [ ] 2.4 Total y aviso; búsqueda, filtro, orden, «Limpiar filtros» y sin resultados, con un controlador Stimulus (P-51)
-- [ ] 2.5 Estilos del listado con los tokens y componentes de GL-13, si ya están aprobados
+- [ ] 2.5 Estilos del listado con los tokens y componentes de la spec vigente `visual-language` (GL-13, archivado)
 
 ## 3. Verificación
 
-- [ ] 3.1 Pruebas nuevas en verde. Las existentes, en verde sin modificarlas, salvo las que comprueban «0 entradas listas» (`spec/requests/people_counts_spec.rb`), que cambian junto con su escenario y se registran
+- [ ] 3.1 Pruebas nuevas en verde. Las existentes, en verde sin modificarlas, salvo las que comprueban «0 entradas listas» (`spec/requests/people_counts_spec.rb` y `spec/requests/feedback_summary_privacy_spec.rb`), que cambian junto con sus escenarios y se registran
 - [ ] 3.2 `bin/bundler-audit update` y `bin/ci` con código 0
 - [ ] 3.3 Comprobación manual de Pablo del listado a 1280 y 375 px
 - [ ] 3.4 Registrar en el diseño lo ejecutado, los desvíos y lo pendiente

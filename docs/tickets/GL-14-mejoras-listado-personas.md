@@ -4,10 +4,14 @@
 > la entrega final](../plan-entrega-final.md), única fuente de la secuencia
 > de esta entrega. Cambio de OpenSpec, en borrador:
 > [`gl-14-mejoras-listado-personas`](../../openspec/changes/gl-14-mejoras-listado-personas/proposal.md).
-> **Estado (15/11/2026, M257 y M258): borrador documental para revisión
-> de Pablo.** Sin implementar. Las decisiones 1 a 9 (P-41 a P-45) las
-> aprobó Pablo en M257, y P-46 a P-53 en M258. Falta la aprobación para
-> implementar.
+> **Estado: borrador documental revisado por Pablo (tarea 0.4,
+> 21/11/2026).** Sin implementar. Las decisiones 1 a 9 (P-41 a P-45)
+> las aprobó Pablo en M257, y P-46 a P-53 en M258; M259 confirmó las
+> interpretaciones de P-51 y P-53. El delta de `people-browsing` se
+> ajustó el 19/11/2026 a la spec que dejó GL-15 (tarea 4.4 de GL-15), y
+> los requisitos de los deltas se reestructuraron el 20/11/2026 por el
+> largo que admite el modo estricto (diseño, sección 7). GL-13 y GL-15
+> están cerrados. Falta la aprobación para implementar (tarea 0.6).
 
 ## Origen
 
@@ -103,15 +107,20 @@ nadie las tuviera.
 - **`people-browsing`:** los textos y el comportamiento del listado: la
   fila, los conteos, «Último hecho», la búsqueda, el filtro, el orden, el
   vacío, sin resultados y 375 px.
-- **`feedback-capture`:** «Registrar la primera».
+- **`feedback-capture`:** «Registrar la primera», en dos requisitos
+  nuevos; «Acceso visible a la captura rápida» no cambia.
 - **`authorization`:** qué registros entran en las lecturas agregadas
-  nuevas, sin textos de pantalla ni cambios en el modelo de permisos.
+  nuevas, sin definir los textos de los conteos ni cambiar el modelo de
+  permisos.
 
 ## Exclusiones
 
 - La paleta, la tipografía, la navegación y los componentes: son de
   GL-13.
-- La ficha y el orden de su cronología (P-10).
+- La ficha y el orden de su cronología (P-10). El delta de
+  `people-browsing` repite, sin cambiarlo, lo que la spec vigente permite
+  en la ficha desde GL-15: «Captura rápida» y «+ Feedback» con su
+  formulario (ajuste del 19/11/2026, tarea 4.4 de GL-15).
 - Compartir, el feed, los filtros de entradas y la administración (I4, I6
   y GL-04).
 - Render, configuración, datos y servicios.
@@ -143,8 +152,12 @@ Son los escenarios de los deltas:
 
 - GL-05, GL-06 y GL-07: el listado, la captura y las lecturas por
   alcance.
-- **GL-13:** el listado usa sus tokens y componentes. La secuencia pone
-  GL-13 antes. GL-14 no depende de GL-13 en su comportamiento.
+- **GL-13 (archivado):** el listado usa sus tokens y componentes,
+  definidos en la spec vigente `visual-language`. GL-14 no depende de
+  GL-13 en su comportamiento.
+- **GL-15 (archivado):** la ficha admite «+ Feedback»; el delta de
+  `people-browsing` de GL-14 ya está ajustado a esa spec. La secuencia
+  pone GL-14 después de GL-13 y GL-15.
 - La aprobación de Pablo para implementar.
 
 ## Riesgos
@@ -154,5 +167,7 @@ Son los escenarios de los deltas:
   persona.
 - **Un atajo a la captura que no pase por la autorización.** Va a la misma
   ruta, que busca la persona en el alcance. Se prueba por URL directa.
-- **Pruebas existentes que fijan «0 entradas listas»:** cambian junto con
-  su escenario y se registran.
+- **Pruebas existentes que fijan «0 entradas listas»**
+  (`spec/requests/people_counts_spec.rb` y
+  `spec/requests/feedback_summary_privacy_spec.rb`): cambian junto con
+  sus escenarios y se registran.

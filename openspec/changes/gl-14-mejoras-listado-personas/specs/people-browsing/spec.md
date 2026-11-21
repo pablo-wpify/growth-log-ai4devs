@@ -5,17 +5,7 @@ El listado «Personas» SHALL mostrar exactamente las personas del alcance de
 la cuenta definido por la spec `authorization`: activas y con una
 asignación activa de esa cuenta (1.14). Por defecto MUST ordenarlas por
 nombre y, en empate, por identificador (1.14). Cada fila SHALL mostrar el
-nombre como texto principal y, en una segunda línea, «rol · equipo».
-Después SHALL mostrar las entradas de la cuenta sobre esa persona:
-- sin entradas listas visibles ni borradores propios: «Sin entradas
-  todavía»;
-- con borradores propios y sin entradas listas visibles: «Sin entradas
-  listas · 1 borrador» o «Sin entradas listas · N borradores»;
-- con entradas listas visibles: «1 entrada lista» o «N entradas listas»
-  y, si además hay borradores propios, «· 1 borrador» o «· N borradores».
-
-Las entradas listas MUST contarse solo dentro del alcance de entradas de
-la cuenta (1.15 parcial), y los borradores solo si son de esa cuenta. Ser
+nombre como texto principal y, en una segunda línea, «rol · equipo». Ser
 administrador MUST NOT agregar personas ni entradas.
 
 #### Scenario: Líder con varias personas
@@ -65,13 +55,39 @@ feed.
 
 #### Scenario: Acciones disponibles
 - **WHEN** un líder abre el listado «Personas»
-- **THEN** solo tiene «Cerrar sesión», la búsqueda, el filtro por equipo, el orden y, en las personas sin entradas, «Registrar la primera», y no hay enlaces para crear, editar o asignar personas
+- **THEN** solo tiene «Cerrar sesión», la búsqueda, el filtro por equipo y el orden; además, «Limpiar filtros» si hay una búsqueda o un filtro activos, y «Registrar la primera» en las personas sin entradas. No hay enlaces para crear, editar o asignar personas
 
 #### Scenario: Acciones disponibles en la ficha
 - **WHEN** un líder abre una ficha
 - **THEN** el único formulario es «Cerrar sesión», los accesos para registrar feedback son «Captura rápida» y «+ Feedback», y no hay compartir, filtros ni enlaces de administración
 
 ## ADDED Requirements
+
+### Requirement: Conteos de entradas en el listado
+Después de «rol · equipo», cada fila SHALL mostrar las entradas de la
+cuenta sobre esa persona:
+- sin entradas listas visibles ni borradores propios: «Sin entradas
+  todavía»;
+- con borradores propios y sin entradas listas visibles: «Sin entradas
+  listas · N borradores»;
+- con entradas listas visibles: «N entradas listas» y, si además hay
+  borradores propios, «· N borradores».
+
+Con una sola, en singular: «1 entrada lista», «1 borrador».
+
+#### Scenario: Conteos en singular y en plural
+- **WHEN** un líder tiene una entrada lista y un borrador sobre una persona, y tres entradas listas y dos borradores sobre otra, y abre «Personas»
+- **THEN** la primera muestra «1 entrada lista · 1 borrador» y la segunda «3 entradas listas · 2 borradores»
+
+### Requirement: Conteos limitados a lo visible para la cuenta
+En los conteos del listado, las entradas listas MUST ser solo las del
+alcance de entradas de la cuenta (1.15 parcial), y los borradores, solo
+los propios. Las entradas de otros líderes sobre la misma persona MUST
+NOT cambiar los conteos.
+
+#### Scenario: Entradas de otro líder sobre una persona con entradas propias
+- **WHEN** un líder tiene una entrada lista sobre una persona, otro líder asignado a la misma persona tiene sobre ella dos entradas listas y un borrador, y el primero abre «Personas»
+- **THEN** esa persona muestra «1 entrada lista», sin borradores
 
 ### Requirement: Fila del listado navegable con teclado
 Cada fila SHALL abrir la ficha de su persona con un único enlace de fila
@@ -112,9 +128,10 @@ entradas fuera del alcance MUST NOT influir en esa fecha.
 Con al menos una persona en el alcance, el listado SHALL ofrecer una
 búsqueda por nombre y un filtro por equipo. Los dos MUST actuar solo sobre
 las personas activas asignadas que ya muestra el listado. La búsqueda
-SHALL encontrar coincidencias parciales en el nombre, sin distinguir
-mayúsculas ni acentos. El filtro MUST ofrecer solo «Todos», los equipos de
-esas personas y, si alguna no tiene equipo, «Sin equipo indicado».
+SHALL admitir coincidencias parciales, sin distinguir mayúsculas ni
+acentos. El filtro MUST ofrecer solo «Todos», los equipos de esas personas
+y, si alguna no tiene equipo, «Sin equipo indicado». Con búsqueda o
+filtro activos, haya o no resultados, SHALL ofrecer «Limpiar filtros».
 
 #### Scenario: Búsqueda por nombre
 - **WHEN** un líder con «Ada Ejemplo» y «Carla Muestra» asignadas busca «Ada»

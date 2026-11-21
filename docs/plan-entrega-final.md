@@ -24,7 +24,10 @@
 > día, la tarea T2.1 del Anexo G recibió el ID GL-15 como borrador
 > documental, y el 18/11/2026 GL-15 se implementó en local, sin commit
 > (sección 2). Ese mismo día se publicó e integró en esta rama, con el CI
-> remoto en verde, y el 19/11/2026 se archivó (sección 1).
+> remoto en verde, y el 19/11/2026 se archivó (sección 1). El 20/11/2026
+> se actualizó con la revisión del borrador de GL-14 (secciones 1.1, 2 y
+> 4), y el 21/11/2026, con la conformidad de Pablo sobre ese borrador
+> (tarea 0.4).
 
 ## 1. Punto de partida
 
@@ -42,11 +45,10 @@
   - Lo diferido sigue pendiente: GL-04, I4, I5, I6, I7, I8 e I9 (plan de la
     entrega 2, sección 5, «Diferido»).
 
-### 1.1. Estado al 17/11/2026
+### 1.1. Estado al 21/11/2026
 
 - **GL-13:** implementado, verificado y archivado. El archivo del cambio
-  de OpenSpec tiene commit en `68f74cc`, en esta rama. Es el único ticket
-  de esta entrega que está implementado.
+  de OpenSpec tiene commit en `68f74cc`, en esta rama.
 - **GL-13 y la entrega 2:** el PR #8 se mergeó en `feature/entrega-2-pp`
   con `e6fce0b`. Después ese contenido se retiró de esa rama con el
   revert `3dc4e90`, para que la entrega 2 conserve su estado de cierre.
@@ -61,9 +63,12 @@
   como variables secretas de Render. P-30 quedó resuelta al publicar en
   el README las credenciales de las dos cuentas demo ficticias.
 - **GL-14:** borrador documental (ticket, registros de prompts y cambio
-  de OpenSpec), sin implementación ni autorización para implementar. La
-  aprobación de Pablo para implementar sigue pendiente (tarea 0.6 de su
-  cambio).
+  de OpenSpec), sin implementación ni autorización para implementar. Su
+  delta de `people-browsing` se ajustó el 19/11/2026 a la spec que dejó
+  GL-15, y el 20/11/2026 se dividieron los requisitos de sus deltas que
+  superaban el largo del modo estricto. El 21/11/2026 Pablo dio su
+  conformidad al borrador (tarea 0.4). Sigue pendiente la aprobación para
+  implementar (tarea 0.6).
 - **GL-15:** la tarea T2.1 («+ Feedback», criterios 2.1, 2.2 y 2.7) está
   implementada, verificada e integrada en esta rama (18/11/2026): commits
   `bb5db27`, `44d91b2`, `fda7c00` y `cebc659`, publicados, con el CI remoto
@@ -89,7 +94,7 @@
 |---|---|---|---|---|---|
 | 1 | [GL-13](tickets/GL-13-direccion-visual.md) | Dirección visual transversal: paleta, tipografía, navegación, componentes y mapa de pantallas | **implementado, verificado y archivado; archivo con commit en `68f74cc`** (cambio archivado en [`2026-11-16-gl-13-direccion-visual`](../openspec/changes/archive/2026-11-16-gl-13-direccion-visual/); borrador en M254; las mejoras funcionales del listado pasaron a GL-14 en M257); decisiones P-34 a P-40 **resueltas** (M257, M261 y M264); implementación autorizada en M264 e implementado en M264 a M266, con `bin/ci` en código 0 en M270; conformidad visual de Pablo (tarea 3.3, M272); publicado en el PR #8 (M278 y M281) y mergeado en `feature/entrega-2-pp` con `e6fce0b`, merge **revertido** en esa rama con `3dc4e90`; PR #9 cerrado sin merge, con CI en verde sobre `68f74cc` | GL-05, GL-06, GL-07, GL-11 | — |
 | 2 | [GL-15](tickets/GL-15-formulario-feedback.md) | Formulario completo «+ Feedback» en la ficha (T2.1 del Anexo G; criterios 2.1, 2.2 y 2.7, más 2.3 a 2.5 y 2.10 aplicados al formulario) | **implementado, verificado, integrado en esta rama y archivado** (cambio archivado en [`2026-11-19-gl-15-formulario-feedback`](../openspec/changes/archive/2026-11-19-gl-15-formulario-feedback/); borrador del 17/11/2026, implementación autorizada e implementada el 18/11/2026); decisiones de diseño cerradas; verificación local (`bin/ci` en código 0 con la base de avisos actualizada) y conformidad visual de Pablo registradas; publicado en `cebc659` con el CI remoto en verde; archivado el 19/11/2026, con el delta de GL-14 ajustado (tarea 4.4) | T1.6 (GL-06), cumplida; GL-13 para los tokens y componentes | — |
-| 3 | [GL-14](tickets/GL-14-mejoras-listado-personas.md) | Mejoras funcionales del listado «Personas» | **borrador documental** (cambio [`gl-14-mejoras-listado-personas`](../openspec/changes/gl-14-mejoras-listado-personas/proposal.md), M257); decisiones P-41 a P-53 **aprobadas** (M257 y M258); sin implementar ni autorización para implementar | GL-05, GL-06, GL-07; GL-13 para los tokens y componentes | la aprobación para implementar |
+| 3 | [GL-14](tickets/GL-14-mejoras-listado-personas.md) | Mejoras funcionales del listado «Personas» | **borrador documental** (cambio [`gl-14-mejoras-listado-personas`](../openspec/changes/gl-14-mejoras-listado-personas/proposal.md), M257); decisiones P-41 a P-53 **aprobadas** (M257 y M258); delta ajustado a GL-15 (19/11/2026) y requisitos reestructurados en la revisión (20/11/2026); revisión de Pablo (0.4) completada el 21/11/2026; sin implementar ni autorización para implementar | GL-05, GL-06, GL-07; GL-13 para los tokens y componentes | la aprobación para implementar |
 | — | GL-11, tarea 3.3 | Comprobación manual de Pablo y archivo | pendiente (M245) | GL-13, GL-15 y GL-14, si se implementan | — |
 
 **El orden de lo diferido lo decide Pablo:** GL-04, compartir y revocar
@@ -101,13 +106,11 @@ por P-11) recibió el ID GL-15 el 17/11/2026.
 
 **Por qué este orden.** GL-13 define los tokens y los componentes que usa
 el listado de GL-14. Así el listado se construye una sola vez con su forma
-final. GL-14 no depende de GL-13 en su comportamiento: si P-34 o P-35 se
-demoran, Pablo puede invertir el orden, y el listado se adapta después al
-lenguaje visual. GL-15 va antes que GL-14 porque completa criterios ya
-definidos de H2, depende solo de T1.6, ya cumplida, y GL-14 sigue sin
-autorización para implementar. El orden entre los dos no cambia el
-alcance de ninguno. La comprobación manual de GL-11 va al final, cuando la
-interfaz sea definitiva (M245).
+final. GL-14 no depende de GL-13 en su comportamiento. GL-15 va antes
+que GL-14 porque completa criterios ya definidos de H2, depende solo de
+T1.6, ya cumplida, y GL-14 sigue sin autorización para implementar. El
+orden entre los dos no cambia el alcance de ninguno. La comprobación
+manual de GL-11 va al final, cuando la interfaz sea definitiva (M245).
 
 **ID elegidos:** GL-13 era el siguiente libre, después de GL-12 del plan
 de la entrega 2. GL-14 es el siguiente después de GL-13 (M257): no hay
@@ -176,11 +179,13 @@ Implementado, verificado y archivado; el archivo tiene commit en
 - **Specs:**
   - `people-browsing`: textos y comportamiento del listado;
   - `feedback-capture`: el acceso directo a la captura;
-  - `authorization`: el alcance de las lecturas agregadas, sin textos de
-    pantalla ni cambios en el modelo de permisos.
+  - `authorization`: el alcance de las lecturas agregadas, sin definir los
+    textos de los conteos ni cambiar el modelo de permisos.
 
   Todo como deltas, sin editar la propuesta original.
-- **Abierto:** solo la aprobación para implementar.
+- **Revisado:** Pablo dio su conformidad al borrador el 21/11/2026
+  (tarea 0.4).
+- **Abierto:** la aprobación para implementar (tarea 0.6).
 - **Fuera:** la presentación (GL-13), la ficha, I4, I6, GL-04 y Render.
 
 ## 5. Decisiones de la entrega final
@@ -246,7 +251,8 @@ decisiones anteriores no definían. Pablo las decidió en M258. Detalle en el
    verde sobre `cebc659` y archivado el 19/11/2026; el delta de GL-14 ya
    está ajustado (tarea 4.4). Todas sus tareas están completas, incluida
    la revisión del borrador (tarea 0.3).
-3. GL-14: revisión de Pablo y aprobación explícita para implementar.
+3. GL-14: aprobación explícita para implementar; la revisión de Pablo
+   (tarea 0.4) se completó el 21/11/2026.
 4. Demo: decidir si se actualiza para la entrega final. Hoy sirve
    `cad6afe`, sin GL-13.
 5. Con Julio: confirmar la fecha de la entrega final y los criterios

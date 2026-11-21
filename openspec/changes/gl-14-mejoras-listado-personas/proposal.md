@@ -1,9 +1,15 @@
 # Proposal
 
-> **Borrador documental (M257, completado en M258, 15/11/2026), para
-> revisión de Pablo.** Sin implementar. Las mejoras 1 a 9 del listado
+> **Borrador documental (M257 a M259, 15 y 16/11/2026), revisado por
+> Pablo el 21/11/2026.** Sin implementar. Las mejoras 1 a 9 del listado
 > (P-41 a P-45) están **aprobadas por Pablo en M257**, y P-46 a P-53 en
-> M258. Falta la aprobación del cambio para implementarlo
+> M258; M259 confirmó las interpretaciones de P-51 y P-53. El delta de
+> `people-browsing` se ajustó el 19/11/2026 a la spec que dejó GL-15
+> (tarea 4.4 de GL-15, M355), y los requisitos de los deltas se
+> reestructuraron el 20/11/2026 en la revisión de Pablo (tarea 0.4), con
+> `openspec validate --all --strict` en 22 de 22 (diseño, sección 7).
+> Pablo dio su conformidad al borrador el 21/11/2026 (tarea 0.4). Sigue
+> abierta la aprobación para implementar (0.6)
 > (`docs/plan-entrega-final.md`).
 
 ## Why
@@ -85,23 +91,36 @@ Ninguna.
 
 - `people-browsing`, fuente de los textos y del comportamiento del
   listado:
-  - `MODIFIED` «Listado de personas asignadas»: dos líneas y conteos
-    neutrales. El orden por nombre sigue como predeterminado (1.14);
+  - `MODIFIED` «Listado de personas asignadas»: nombre arriba y «rol ·
+    equipo» debajo. El orden por nombre sigue como predeterminado (1.14).
+    Conserva sus escenarios, incluidos «Conteo de entradas listas» y
+    «Conteo con otro líder de la misma persona», con los textos de GL-14;
   - `MODIFIED` «Estado vacío»: se distingue de una persona sin entradas;
-  - `MODIFIED` «Solo lectura y sin funciones inexistentes»: admite la
-    búsqueda, el filtro, el orden, «Limpiar filtros» y «Registrar la
-    primera»;
-  - `ADDED`: «Fila del listado navegable con teclado», «Fecha del último
-    hecho», «Búsqueda y filtro del listado», «Orden por hechos más
-    recientes», «Sin resultados de búsqueda o filtro», «Búsqueda, filtro y
-    orden en el navegador», «Total de personas y aviso de privacidad» y
-    «Listado en pantalla angosta».
-- `feedback-capture`: `MODIFIED` «Acceso visible a la captura rápida»,
-  que agrega «Registrar la primera», decidido solo con el alcance de la
-  cuenta.
+  - `MODIFIED` «Solo lectura y sin funciones inexistentes»: admite en el
+    listado la búsqueda, el filtro, el orden, «Limpiar filtros» y
+    «Registrar la primera». En la ficha conserva lo que dejó GL-15:
+    «Captura rápida» y «+ Feedback» con su formulario (ajuste del
+    19/11/2026, tarea 4.4 de GL-15);
+  - `ADDED`: «Conteos de entradas en el listado» y «Conteos limitados a lo
+    visible para la cuenta», con escenarios propios («Conteos en singular
+    y en plural» y «Entradas de otro líder sobre una persona con entradas
+    propias»), y «Fila del listado navegable con teclado»,
+    «Fecha del último hecho», «Búsqueda y filtro del listado», «Orden por
+    hechos más recientes», «Sin resultados de búsqueda o filtro»,
+    «Búsqueda, filtro y orden en el navegador», «Total de personas y aviso
+    de privacidad» y «Listado en pantalla angosta».
+- `feedback-capture`: `ADDED` «Registrar la primera desde el listado» y
+  «"Registrar la primera" decidido con el alcance de la cuenta».
+  «Acceso visible a la captura rápida» no cambia.
 - `authorization`: `MODIFIED` «Lecturas agregadas con el alcance de
-  entradas». **No cambia el modelo de permisos.** Hace falta por dos
-  motivos:
+  entradas», que conserva sus tres escenarios, incluido «Autor», y
+  `ADDED` «Lecturas agregadas de la ficha y del listado», con el
+  escenario propio «Orden y acceso del listado desde el alcance»: con una
+  entrada lista propia sobre B y solo un borrador propio sobre A, una
+  entrada lista posterior de otro líder sobre A no la adelanta en
+  «Hechos más recientes» (B queda antes que A) ni le da «Último hecho», y
+  el borrador propio impide mostrar «Registrar la primera» en A.
+  **No cambia el modelo de permisos.** Hace falta por dos motivos:
   - el requisito vigente enumera tres lecturas: el resumen, la cronología
     y el conteo. Los conteos de borradores, la fecha, el orden y la
     decisión de mostrar «Registrar la primera» son lecturas agregadas
@@ -109,9 +128,10 @@ Ninguna.
   - su escenario de la administradora fija el texto de pantalla «0
     entradas listas», que GL-14 reemplaza en `people-browsing`.
 
-  El delta generaliza la regla a toda lectura agregada y describe qué
-  registros entran, sin textos de pantalla. El alcance, las políticas y
-  las reglas de lectura y escritura no cambian.
+  El delta generaliza la regla a toda lectura agregada, enumera en el
+  requisito nuevo las lecturas de la ficha y del listado y describe qué
+  registros entran, sin definir los textos de los conteos. El alcance,
+  las políticas y las reglas de lectura y escritura no cambian.
 
 ## Impact
 
@@ -121,12 +141,16 @@ Ninguna.
   - `app/views/people/index.html.erb` y `people_helper.rb`;
   - un controlador Stimulus para la búsqueda, el filtro y el orden en el
     navegador (P-51), sin dependencias nuevas;
-  - estilos del listado con los tokens de GL-13, si ya están aprobados.
+  - estilos del listado con los tokens y componentes de la spec vigente
+    `visual-language` (GL-13, archivado).
 
   Rutas de captura, políticas y modelos sin cambios.
 - **Pruebas, al implementar:** de peticiones y de sistema, incluidas las
   del actor que no debe influir y la URL directa. Cambian las pruebas
   existentes que comprueban «0 entradas listas»
-  (`spec/requests/people_counts_spec.rb`), junto con su escenario.
+  (`spec/requests/people_counts_spec.rb` y
+  `spec/requests/feedback_summary_privacy_spec.rb`), junto con sus
+  escenarios.
 - **Secuencia:** después de GL-13, cuyos tokens y componentes usa el
-  listado. Ver el plan de la entrega final.
+  listado, y de GL-15; los dos están cerrados. Ver el plan de la entrega
+  final.
