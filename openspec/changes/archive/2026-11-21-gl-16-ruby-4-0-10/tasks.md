@@ -1,8 +1,8 @@
 # Tasks
 
 GL-16 (ID propuesto en M399). Cambio independiente de GL-14, autorizado
-por Pablo en M398 (21/11/2026) para implementarse en local. Sin commit,
-publicación, deploy ni archivo.
+por Pablo en M398 (21/11/2026) para implementarse en local. Publicación y
+archivo autorizados en M401, sin deploy.
 
 ## 1. Actualización
 
@@ -18,5 +18,5 @@ publicación, deploy ni archivo.
 
 ## 3. Publicación y cierre (cada paso con su autorización)
 
-- [ ] 3.1 Commit y push; CI remoto con enlace y SHA
-- [ ] 3.2 Archivo del cambio
+- [x] 3.1 Commit y push; CI remoto con enlace y SHA. Evidencia (M401): commit `d2c6db4`, publicado con push fast-forward en `feature/entrega-final-pp` junto con GL-14 (`ca2d5da`), sin PR; CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) sobre `ca2d5da` en `success`, que instaló Ruby 4.0.10 desde `.ruby-version`; Brakeman 8.1.1 sin advertencias
+- [x] 3.2 Archivo del cambio. Evidencia (M401): archivado el 21/11/2026 en `openspec/changes/archive/2026-11-21-gl-16-ruby-4-0-10`, con los deltas aplicados a `runtime-toolchain` y `development-environment`, y `openspec validate --all --strict` en verde

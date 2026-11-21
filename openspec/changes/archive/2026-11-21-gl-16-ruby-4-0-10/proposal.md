@@ -1,8 +1,9 @@
 # Proposal
 
 > **GL-16, cambio independiente de GL-14, autorizado e implementado en
-> local en M398 (21/11/2026), sin commit.** ID propuesto en M399 y
-> registrado en el plan de la entrega final; ticket:
+> M398, publicado y archivado en M401 (21/11/2026).** Commit `d2c6db4`
+> en `feature/entrega-final-pp`, CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) en verde
+> sobre `ca2d5da`. ID propuesto en M399; ticket:
 > `docs/tickets/GL-16-ruby-4-0-10.md`.
 
 ## Why

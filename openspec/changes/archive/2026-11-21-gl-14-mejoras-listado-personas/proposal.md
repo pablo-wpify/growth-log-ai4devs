@@ -1,8 +1,8 @@
 # Proposal
 
 > **Borrador documental (M257 a M259, 15 y 16/11/2026), revisado por
-> Pablo el 21/11/2026.** Implementado en local el 21/11/2026, sin
-> commit (M395; diseño, sección 7). Las mejoras 1 a 9 del listado
+> Pablo el 21/11/2026.** Implementado el 21/11/2026 (M395; diseño,
+> sección 7). Las mejoras 1 a 9 del listado
 > (P-41 a P-45) están **aprobadas por Pablo en M257**, y P-46 a P-53 en
 > M258; M259 confirmó las interpretaciones de P-51 y P-53. El delta de
 > `people-browsing` se ajustó el 19/11/2026 a la spec que dejó GL-15
@@ -10,8 +10,10 @@
 > reestructuraron el 20/11/2026 en la revisión de Pablo (tarea 0.4), con
 > `openspec validate --all --strict` en 22 de 22 (diseño, sección 7).
 > Pablo dio su conformidad al borrador el 21/11/2026 (tarea 0.4) y
-> autorizó implementar los grupos 1 a 3 (tarea 0.6, M395). Quedan
-> abierto el grupo 4 (`docs/plan-entrega-final.md`).
+> autorizó implementar los grupos 1 a 3 (tarea 0.6, M395). **Publicado
+> y archivado el 21/11/2026 (M401):** commit `ca2d5da` en
+> `feature/entrega-final-pp`, CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) en verde y
+> archivo con los deltas aplicados (`docs/plan-entrega-final.md`).
 
 ## Why
 

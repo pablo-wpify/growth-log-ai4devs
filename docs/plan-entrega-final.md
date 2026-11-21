@@ -29,7 +29,8 @@
 > 4), y el 21/11/2026, con la conformidad de Pablo sobre ese borrador
 > (tarea 0.4) y la implementación local de GL-14, autorizada en M395
 > (secciones 1.1, 2 y 4). El mismo día se agregó GL-16, Ruby 4.0.10, que
-> desbloquea `bin/ci` (M398 y M399; secciones 1.1, 2 y 6).
+> desbloquea `bin/ci` (M398 y M399; secciones 1.1, 2 y 6), y GL-14 y
+> GL-16 se publicaron y archivaron (M401).
 
 ## 1. Punto de partida
 
@@ -64,20 +65,12 @@
 - **P-29 y P-30:** P-29 sigue vigente: las contraseñas demo se configuran
   como variables secretas de Render. P-30 quedó resuelta al publicar en
   el README las credenciales de las dos cuentas demo ficticias.
-- **GL-14:** implementado en local el 21/11/2026, sin commit, con la
-  autorización de Pablo para los grupos 1 a 3 (tarea 0.6, M395). Su
-  delta de `people-browsing` se ajustó el 19/11/2026 a la spec que dejó
-  GL-15, y el 20/11/2026 se dividieron los requisitos de sus deltas que
-  superaban el largo del modo estricto. El 21/11/2026 Pablo dio su
-  conformidad al borrador (tarea 0.4). Grupos 1 a 3 completos, con
-  `bin/ci` en código 0 después de pasar a Brakeman 8.1.1 y Ruby 4.0.10
-  (M396 y M398). Queda abierta la publicación (grupo 4).
-- **GL-16:** Ruby 4.0.10, implementado en local el 21/11/2026, sin
-  commit (M398). Brakeman 8.1.1 marca Ruby 4.0.9 por CVE-2026-132825, y
-  sin este cambio `bin/ci` falla. Es un cambio de OpenSpec independiente,
-  `gl-16-ruby-4-0-10`, con deltas de `runtime-toolchain` y
-  `development-environment`; `bin/ci` en código 0. Faltan la publicación
-  y el archivo.
+- **GL-14:** implementado, publicado y archivado el 21/11/2026 (M395 y
+  M401): commit `ca2d5da` en esta rama, con el CI remoto en verde
+  ([44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609)), y archivo con sus deltas aplicados.
+- **GL-16:** Ruby 4.0.10, publicado en `d2c6db4` y archivado el
+  21/11/2026 (M398 y M401). Brakeman 8.1.1 marcaba Ruby 4.0.9 por
+  CVE-2026-132825; el CI remoto de `ca2d5da` instaló 4.0.10 y pasó.
 - **GL-15:** la tarea T2.1 («+ Feedback», criterios 2.1, 2.2 y 2.7) está
   implementada, verificada e integrada en esta rama (18/11/2026): commits
   `bb5db27`, `44d91b2`, `fda7c00` y `cebc659`, publicados, con el CI remoto
@@ -103,8 +96,8 @@
 |---|---|---|---|---|---|
 | 1 | [GL-13](tickets/GL-13-direccion-visual.md) | Dirección visual transversal: paleta, tipografía, navegación, componentes y mapa de pantallas | **implementado, verificado y archivado; archivo con commit en `68f74cc`** (cambio archivado en [`2026-11-16-gl-13-direccion-visual`](../openspec/changes/archive/2026-11-16-gl-13-direccion-visual/); borrador en M254; las mejoras funcionales del listado pasaron a GL-14 en M257); decisiones P-34 a P-40 **resueltas** (M257, M261 y M264); implementación autorizada en M264 e implementado en M264 a M266, con `bin/ci` en código 0 en M270; conformidad visual de Pablo (tarea 3.3, M272); publicado en el PR #8 (M278 y M281) y mergeado en `feature/entrega-2-pp` con `e6fce0b`, merge **revertido** en esa rama con `3dc4e90`; PR #9 cerrado sin merge, con CI en verde sobre `68f74cc` | GL-05, GL-06, GL-07, GL-11 | — |
 | 2 | [GL-15](tickets/GL-15-formulario-feedback.md) | Formulario completo «+ Feedback» en la ficha (T2.1 del Anexo G; criterios 2.1, 2.2 y 2.7, más 2.3 a 2.5 y 2.10 aplicados al formulario) | **implementado, verificado, integrado en esta rama y archivado** (cambio archivado en [`2026-11-19-gl-15-formulario-feedback`](../openspec/changes/archive/2026-11-19-gl-15-formulario-feedback/); borrador del 17/11/2026, implementación autorizada e implementada el 18/11/2026); decisiones de diseño cerradas; verificación local (`bin/ci` en código 0 con la base de avisos actualizada) y conformidad visual de Pablo registradas; publicado en `cebc659` con el CI remoto en verde; archivado el 19/11/2026, con el delta de GL-14 ajustado (tarea 4.4) | T1.6 (GL-06), cumplida; GL-13 para los tokens y componentes | — |
-| 3 | [GL-16](tickets/GL-16-ruby-4-0-10.md) | Ruby 4.0.10, la versión que pide Brakeman 8.1.1 por CVE-2026-132825 | **implementado en local** el 21/11/2026, sin commit (cambio `gl-16-ruby-4-0-10`, M398); `bin/ci` en código 0 | — | — |
-| 4 | [GL-14](tickets/GL-14-mejoras-listado-personas.md) | Mejoras funcionales del listado «Personas» | **borrador documental** (cambio [`gl-14-mejoras-listado-personas`](../openspec/changes/gl-14-mejoras-listado-personas/proposal.md), M257); decisiones P-41 a P-53 **aprobadas** (M257 y M258); delta ajustado a GL-15 (19/11/2026) y requisitos reestructurados en la revisión (20/11/2026); revisión de Pablo (0.4) completada el 21/11/2026; **implementado en local** el 21/11/2026, sin commit (0.6, M395) | GL-05, GL-06, GL-07; GL-13 para los tokens y componentes; GL-16 para publicar (`bin/ci`) | — |
+| 3 | [GL-16](tickets/GL-16-ruby-4-0-10.md) | Ruby 4.0.10, la versión que pide Brakeman 8.1.1 por CVE-2026-132825 | **publicado y archivado** el 21/11/2026: commit `d2c6db4`, CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) en verde (M398 y M401) | — | — |
+| 4 | [GL-14](tickets/GL-14-mejoras-listado-personas.md) | Mejoras funcionales del listado «Personas» | **publicado y archivado** el 21/11/2026: commit `ca2d5da`, CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) en verde (M395 y M401); decisiones P-41 a P-53 aprobadas (M257 y M258) | GL-05, GL-06, GL-07; GL-13 para los tokens y componentes; GL-16 para publicar (`bin/ci`) | — |
 | — | GL-11, tarea 3.3 | Comprobación manual de Pablo y archivo | pendiente (M245) | GL-13, GL-15 y GL-14, si se implementan | — |
 
 **El orden de lo diferido lo decide Pablo:** GL-04, compartir y revocar
@@ -118,7 +111,7 @@ por P-11) recibió el ID GL-15 el 17/11/2026.
 el listado de GL-14. Así el listado se construye una sola vez con su forma
 final. GL-14 no depende de GL-13 en su comportamiento. GL-15 va antes
 que GL-14 porque completa criterios ya definidos de H2, depende solo de
-T1.6, ya cumplida, y GL-14 sigue sin autorización para implementar. El
+T1.6, ya cumplida, y GL-14 todavía no tenía autorización para implementar. El
 orden entre los dos no cambia el alcance de ninguno. GL-16 va antes de
 publicar GL-14, porque sin Ruby 4.0.10 `bin/ci` falla en Brakeman y no hay
 verificación válida para ningún cambio. La comprobación manual de GL-11
@@ -169,7 +162,7 @@ Implementado, verificado y archivado; el archivo tiene commit en
   funcionales del listado (GL-14); compartir, el feed, los filtros y la
   administración; mocks en imagen; Render.
 
-## 4. GL-14. Mejoras del listado «Personas» (borrador documental)
+## 4. GL-14. Mejoras del listado «Personas» (publicado y archivado)
 
 - **Origen:** propuestas en GL-13 (M255 y M256) y separadas en M257 a
   pedido de Pablo.
@@ -199,12 +192,11 @@ Implementado, verificado y archivado; el archivo tiene commit en
   Todo como deltas, sin editar la propuesta original.
 - **Revisado:** Pablo dio su conformidad al borrador el 21/11/2026
   (tarea 0.4).
-- **Implementación:** autorizada para los grupos 1 a 3 (tarea 0.6, M395)
-  y hecha en local el 21/11/2026, sin commit.
-- **Verificación:** grupos 1 a 3 completos; `bin/ci` en código 0 con
-  Brakeman 8.1.1 y Ruby 4.0.10, este último en un cambio de OpenSpec
-  independiente, `gl-16-ruby-4-0-10` (M398).
-- **Abierto:** el grupo 4.
+- **Implementación:** autorizada en M395 y hecha el 21/11/2026; grupos
+  1 a 3 completos, con `bin/ci` en código 0 sobre Ruby 4.0.10 y Brakeman
+  8.1.1 (GL-16).
+- **Cierre:** publicado en `ca2d5da` con el CI remoto en verde y
+  archivado el 21/11/2026 (M401).
 - **Fuera:** la presentación (GL-13), la ficha, I4, I6, GL-04 y Render.
 
 ## 5. Decisiones de la entrega final
@@ -247,7 +239,7 @@ L8 y L9) y están en el [ticket de GL-14](tickets/GL-14-mejoras-listado-personas
 
 En M257 quedaron abiertas como consecuencias funcionales que las
 decisiones anteriores no definían. Pablo las decidió en M258. Detalle en el
-[diseño de GL-14, sección 5](../openspec/changes/gl-14-mejoras-listado-personas/design.md).
+[diseño de GL-14, sección 5](../openspec/changes/archive/2026-11-21-gl-14-mejoras-listado-personas/design.md).
 
 | # | Decisión aprobada |
 |---|---|
@@ -270,9 +262,8 @@ decisiones anteriores no definían. Pablo las decidió en M258. Detalle en el
    verde sobre `cebc659` y archivado el 19/11/2026; el delta de GL-14 ya
    está ajustado (tarea 4.4). Todas sus tareas están completas, incluida
    la revisión del borrador (tarea 0.3).
-3. GL-16 y GL-14: implementados y verificados en local (M395, M396 y
-   M398). Falta publicarlos, GL-16 antes que GL-14 o junto con él, y
-   después archivarlos. Cada paso necesita su autorización.
+3. GL-16 y GL-14: cerrados. Publicados en `d2c6db4` y `ca2d5da`, con
+   el CI remoto en verde, y archivados el 21/11/2026 (M401).
 4. Demo: decidir si se actualiza para la entrega final. Hoy sirve
    `cad6afe`, sin GL-13.
 5. Con Julio: confirmar la fecha de la entrega final y los criterios

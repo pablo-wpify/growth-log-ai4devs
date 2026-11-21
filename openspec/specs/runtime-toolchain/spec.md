@@ -8,14 +8,15 @@ del repositorio que la expresan.
 ## Requirements
 
 ### Requirement: Versiones de Ruby y Rails del proyecto
-El proyecto SHALL ejecutarse con Ruby 4.0.9 y Rails 8.1.4.1: Ruby, la
-versión aprobada al adoptar la base del ensayo E1; Rails, la serie 8.1.4
-con la corrección de seguridad del 04/11/2026 (GL-01b). El `Gemfile`
+El proyecto SHALL ejecutarse con Ruby 4.0.10 y Rails 8.1.4.1: Ruby, la
+corrección de seguridad que pide Brakeman 8.1.1 sobre 4.0.9 (21/11/2026);
+Rails, la serie 8.1.4 con la corrección de seguridad del 04/11/2026
+(GL-01b). El `Gemfile`
 admite la serie con `~> 8.1.4` (P-18) y el lockfile MUST fijar 8.1.4.1.
 
 #### Scenario: Versiones informadas en el directorio del proyecto
 - **WHEN** quien desarrolla consulta, en el directorio del proyecto y sin variables que fuercen otra versión, la versión de Ruby y la versión de Rails
-- **THEN** se informan Ruby 4.0.9, declarada en `.tool-versions` y `.ruby-version`, y Rails 8.1.4.1
+- **THEN** se informan Ruby 4.0.10, declarada en `.tool-versions` y `.ruby-version`, y Rails 8.1.4.1
 
 #### Scenario: Ruby distinto del declarado
 - **WHEN** se instalan las dependencias o se arranca la aplicación con una versión de Ruby distinta de la declarada
@@ -30,7 +31,7 @@ registrarla automáticamente.
 
 #### Scenario: Archivos de versión coherentes
 - **WHEN** se comparan la versión de Ruby de `.tool-versions` y la de `.ruby-version`
-- **THEN** ambas indican `4.0.9`
+- **THEN** ambas indican `4.0.10`
 
 #### Scenario: Consumidores de la versión
 - **WHEN** se revisan el manifiesto de dependencias y cada preparación de Ruby del workflow de CI

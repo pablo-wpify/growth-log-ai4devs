@@ -12,7 +12,7 @@ El trabajo tiene dos fases:
   Pablo dio su conformidad al borrador y cerró la 0.4.
 - **Implementación y verificación (grupos 1 a 4):** autorizada por Pablo
   el 21/11/2026 (tarea 0.6, M395) para los grupos 1 a 3, en local. El
-  grupo 4 necesita una autorización para cada paso. P-46 a P-53 se
+  grupo 4 lo autorizó en M401: publicado y archivado el mismo día. P-46 a P-53 se
   resolvieron en M258. Las pruebas se escriben primero y se ven fallar por
   la razón esperada.
 
@@ -64,5 +64,5 @@ El trabajo tiene dos fases:
 
 ## 4. Publicación y cierre (cada paso con su autorización)
 
-- [ ] 4.1 Commit, push y PR; CI remoto con enlace y SHA
-- [ ] 4.2 Archivo del cambio
+- [x] 4.1 Commit, push y PR; CI remoto con enlace y SHA. Evidencia (M401): commits `0662e70` (revisión del borrador) y `ca2d5da` (implementación), sobre `d2c6db4` (GL-16), publicados con push fast-forward en `feature/entrega-final-pp`, sin PR porque M401 no lo autorizó; CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) sobre `ca2d5da` en `success`, con Ruby 4.0.10 y 463 ejemplos, 0 fallos
+- [x] 4.2 Archivo del cambio. Evidencia (M401): archivado el 21/11/2026 en `openspec/changes/archive/2026-11-21-gl-14-mejoras-listado-personas`, con los deltas aplicados a `people-browsing`, `feedback-capture` y `authorization`, y `openspec validate --all --strict` en verde

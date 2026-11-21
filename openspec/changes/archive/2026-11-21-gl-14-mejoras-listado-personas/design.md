@@ -1,14 +1,14 @@
 # Design
 
 > **Borrador documental (M257 a M259, 15 y 16/11/2026), revisado por
-> Pablo el 21/11/2026.** Implementado en local el 21/11/2026, sin
-> commit (sección 7). Las mejoras 1 a 9 (P-41 a
+> Pablo el 21/11/2026.** Implementado, publicado y archivado el
+> 21/11/2026 (sección 7). Las mejoras 1 a 9 (P-41 a
 > P-45) las aprobó Pablo en M257, y P-46 a P-53 en M258 (sección 5). El
 > delta de `people-browsing` se ajustó el 19/11/2026 a la spec que dejó
 > GL-15, y los requisitos de los deltas se reestructuraron el 20/11/2026
 > (sección 7). Pablo dio su conformidad al borrador el 21/11/2026
 > (tarea 0.4) y autorizó implementar los grupos 1 a 3 (tarea 0.6, M395).
-> Queda abierto el grupo 4.
+> Grupo 4 completo (M401): publicado en `ca2d5da` y archivado.
 
 ## 1. Fuentes
 
@@ -463,3 +463,28 @@ vacío de 1.16 reemplaza el total y el aviso.
     versión vigente `CLAUDE.md`, el estado del `README.md` (líneas 178 y
     272) y `openspec/config.yaml`, que no se edita sin autorización. Que
     el CI remoto ofrezca Ruby 4.0.10 solo se comprueba al publicar.
+- **21/11/2026 (publicación y archivo, M401):**
+  - **Commits locales, en este orden:**
+    - `d2c6db4`, GL-16: Ruby 4.0.10, el lockfile con Brakeman 8.1.1 y su
+      cambio de OpenSpec;
+    - `ca2d5da`, GL-14: código, pruebas y documentos, incluidos el plan y
+      los registros de prompts M395 a M401.
+
+    `Gemfile.lock` fue entero en el commit de GL-16: Ruby 4.0.10 responde
+    a la advertencia de Brakeman 8.1.1, y con 8.1.0 `bin/ci` falla.
+  - **Antes del push:** `bin/ci` con código 0 sobre el árbol limpio de
+    `ca2d5da`.
+  - **Publicación:** push fast-forward de `eade6a6` a `ca2d5da` en
+    `feature/entrega-final-pp`, con la cuenta `pablo-wpify`, junto con
+    `0662e70`; sin PR. CI 44938564609 sobre `ca2d5da`: `success` en
+    `scan_js`, `lint`, `scan_ruby` y `test`, con Ruby 4.0.10 instalado
+    desde `.ruby-version`, Brakeman sin advertencias y 463 ejemplos con 0
+    fallos.
+  - **Archivo:** este cambio, en
+    `openspec/changes/archive/2026-11-21-gl-14-mejoras-listado-personas`
+    (`authorization`: 1 agregado y 1 modificado; `feedback-capture`: 2
+    agregados; `people-browsing`: 10 agregados y 3 modificados), y GL-16
+    en `openspec/changes/archive/2026-11-21-gl-16-ruby-4-0-10`.
+    `openspec validate --all --strict`: 21 de 21.
+  - El CI del commit del archivo se informa en la respuesta a M401; no se
+    registra acá, porque registrarlo exigiría otro commit.

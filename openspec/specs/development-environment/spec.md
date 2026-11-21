@@ -15,7 +15,7 @@ la ruta de salud. Cada comando documentado MUST funcionar tal como está
 escrito desde el entorno preparado.
 
 #### Scenario: Recorrido desde un clon limpio
-- **WHEN** una persona con Ruby 4.0.9 y un PostgreSQL 18.6 accesible sigue la guía desde un clon limpio
+- **WHEN** una persona con Ruby 4.0.10 y un PostgreSQL 18.6 accesible sigue la guía desde un clon limpio
 - **THEN** cada comando documentado termina con éxito y la ruta de salud responde con estado HTTP 200
 
 #### Scenario: Sin valores secretos

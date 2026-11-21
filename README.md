@@ -9,9 +9,9 @@ Proyecto final de AI4Devs de Pablo Peuscovich.
 **Esta es la rama de trabajo de la entrega final,
 `feature/entrega-final-pp`.** La entrega 2 quedó en
 `feature/entrega-2-pp` (`13d6c5a`). Sobre esa base, la entrega final suma
-por ahora la dirección visual (GL-13), implementada, y el borrador
-documental de las mejoras del listado «Personas» (GL-14), sin
-implementar; el resto del alcance de la entrega final sigue en
+por ahora la dirección visual (GL-13), implementada, las mejoras del
+listado «Personas» (GL-14) y Ruby 4.0.10 (GL-16), publicadas y
+archivadas; el resto del alcance de la entrega final sigue en
 preparación ([plan](docs/plan-entrega-final.md)).
 
 **Recorrido núcleo (desde la entrega 2):**
@@ -175,7 +175,7 @@ indican en qué rama está cada cambio.
 
 | | Qué | Evidencia |
 |---|---|---|
-| **Implementado y verificado** | Base del producto: Rails 8.1.4 (8.1.4.1 desde GL-01b), Ruby 4.0.9 (4.0.10 desde GL-16, en local), PostgreSQL 18.6, RSpec, `bin/ci` y GitHub Actions; chequeo de salud `GET /up` (GL-01) | [ticket](docs/tickets/GL-01-base-producto.md) |
+| **Implementado y verificado** | Base del producto: Rails 8.1.4 (8.1.4.1 desde GL-01b), Ruby 4.0.9 (4.0.10 desde GL-16), PostgreSQL 18.6, RSpec, `bin/ci` y GitHub Actions; chequeo de salud `GET /up` (GL-01) | [ticket](docs/tickets/GL-01-base-producto.md) |
 | | Corrección de 15 avisos de seguridad de gemas (GL-01a) | [ticket](docs/tickets/GL-01a-avisos-seguridad.md) |
 | | Rails 8.1.4.1 por los 21 avisos de seguridad del 04/11/2026 (GL-01b) | [ticket](docs/tickets/GL-01b-rails-8-1-4-1.md); CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492) sobre `8ae8723` |
 | | Autenticación: cuentas individuales sin registro público, inicio y cierre de sesión, sesiones con vencimiento, límites de intentos, CSRF, rutas protegidas por defecto y administrador inicial por tarea (GL-02) | [ticket](docs/tickets/GL-02-autenticacion.md); CI [41557336838](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41557336838) sobre `94e40a1` |
@@ -189,8 +189,9 @@ indican en qué rama está cada cambio.
 | **Desplegado, sin archivar** | Presentación de la página de inicio de sesión (GL-11, P-32 y P-33): etiquetas sobre los campos, ancho máximo de 24 rem, foco visible y aviso genérico accesible, sin cambios en la autenticación. Publicado en `4e5c3ef` y desplegado; verificado en la demo a 1280 y 375 px. **Falta la comprobación manual de Pablo** (tarea 3.3), por eso no se archivó | [ticket](docs/tickets/GL-11-presentacion-inicio-sesion.md); CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe` |
 | **Integrado y desplegado** | `msgpack` 1.8.7 y Puma 8.0.3 por los avisos de seguridad de noviembre de 2026 (GL-12). Publicado en `cef5d80`, desplegado con Puma 8.0.3 y archivado como `2026-11-15-gl-12-avisos-msgpack-puma` | [ticket](docs/tickets/GL-12-avisos-msgpack-puma.md); CI [43730010839](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43730010839) sobre `cad6afe` |
 | **Implementado, verificado y archivado (entrega final)** | Dirección visual (GL-13): paleta, tipografía alojada en la aplicación, cabecera y aviso de privacidad en la ficha, sin cambiar el comportamiento. Implementado en `c7d4165` y archivado como `2026-11-16-gl-13-direccion-visual`, con el archivo en `68f74cc`. Se mergeó en `feature/entrega-2-pp` con el [PR #8](https://github.com/pablo-wpify/growth-log-ai4devs/pull/8) (`e6fce0b`) y se retiró de esa rama con el revert `3dc4e90`: está solo en `feature/entrega-final-pp`. No está en la demo | [ticket](docs/tickets/GL-13-direccion-visual.md); CI [43939186173](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43939186173) sobre `68f74cc` ([PR #9](https://github.com/pablo-wpify/growth-log-ai4devs/pull/9), cerrado sin merge) |
-| **Borrador documental (entrega final)** | Mejoras del listado «Personas» (GL-14): ticket, registros de prompts y cambio de OpenSpec, con P-41 a P-53 aprobadas; sin implementar y sin autorización para implementar | [ticket](docs/tickets/GL-14-mejoras-listado-personas.md); [plan de la entrega final](docs/plan-entrega-final.md) |
-| **Siguiente** | La entrega 2 se cerró con GL-09 a GL-12. En la entrega final quedan la aprobación para implementar GL-14, decidir si se actualiza la demo, confirmar con Julio la fecha y los criterios de revisión de la demo, la comprobación manual de GL-11 (y su archivo) y el alcance diferido (fila «Pendiente») | [plan de la entrega final](docs/plan-entrega-final.md) |
+| **Publicado y archivado (entrega final)** | Mejoras del listado «Personas» (GL-14): conteos neutrales, «Último hecho», «Registrar la primera», búsqueda, filtro y orden en el navegador, total y aviso de privacidad. Publicado en `ca2d5da` y archivado como `2026-11-21-gl-14-mejoras-listado-personas` | [ticket](docs/tickets/GL-14-mejoras-listado-personas.md); CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) sobre `ca2d5da` |
+| | Ruby 4.0.10 por la advertencia de Brakeman 8.1.1 (GL-16). Publicado en `d2c6db4` y archivado como `2026-11-21-gl-16-ruby-4-0-10` | [ticket](docs/tickets/GL-16-ruby-4-0-10.md); CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) sobre `ca2d5da` |
+| **Siguiente** | La entrega 2 se cerró con GL-09 a GL-12. En la entrega final quedan decidir si se actualiza la demo, confirmar con Julio la fecha y los criterios de revisión de la demo, la comprobación manual de GL-11 (y su archivo) y el alcance diferido (fila «Pendiente») | [plan de la entrega final](docs/plan-entrega-final.md) |
 | **Pendiente** | Todo el alcance diferido (invitaciones, administración, compartir, feed, despliegue productivo) | [plan de la entrega 2](docs/plan-entrega-2.md) |
 
 Lo pendiente sigue siendo requisito: diferirlo no lo elimina. GL-06 registra

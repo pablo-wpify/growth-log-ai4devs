@@ -46,4 +46,17 @@ Mantené Brakeman 8.1.1 y Ruby 4.0.10. Marcá cada tarea solo con su evidencia. 
 **Numeración:** M401, por posición en la transcripción (opción A, decidida
 por Pablo en M366). Es el mensaje siguiente a M400.
 
-Pendiente: se completa en el commit del archivo.
+- **Preflight:** rama `feature/entrega-final-pp` con `0662e70` local y el
+  remoto en `eade6a6`. Cambios clasificados sin archivos ajenos.
+- **Commits:** `d2c6db4` (GL-16: Ruby 4.0.10, el lockfile con Brakeman
+  8.1.1 y su cambio de OpenSpec) y `ca2d5da` (GL-14 y los documentos
+  transversales). `bin/ci` con código 0 antes del push.
+- **Publicación:** push fast-forward de `eade6a6` a `ca2d5da` con
+  `pablo-wpify`, sin PR. CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) en `success`, con
+  Ruby 4.0.10 y 463 ejemplos, 0 fallos.
+- **Archivo:** GL-14 y GL-16 archivados el 21/11/2026, con sus deltas
+  aplicados a las specs principales; tareas 4.1 y 4.2 de GL-14 y 3.1 y
+  3.2 de GL-16 marcadas con esta evidencia. `openspec validate --all
+  --strict`: 21 de 21.
+- **Commit y push del archivo:** en el commit siguiente; su CI se informa
+  en la respuesta a M401.
