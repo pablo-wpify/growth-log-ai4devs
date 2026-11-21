@@ -21,6 +21,7 @@
 | M399 | 2026-11-21 16:42:24 | documentación (GL-16) | [Conciliación de la documentación con Ruby 4.0.10 e ID de GL-16](M399-2026-11-21-conciliar-ruby-y-gl-16.md) |
 | M400 | 2026-11-21 16:46:12 | documentación (GL-16) | [Renombre del cambio de GL-16](M400-2026-11-21-renombrar-cambio-gl-16.md) |
 | M401 | 2026-11-21 16:51:24 | publicación y archivo (GL-14 y GL-16) | [Publicación y archivo de GL-14 y GL-16](M401-2026-11-21-publicar-y-archivar-gl-14-y-gl-16.md) |
+| M402 | 2026-11-21 19:13:55 | documentación | [Aclaración de la evidencia de la tarea 4.1 de GL-14](M402-2026-11-21-aclarar-evidencia-tarea-4-1.md) |
 
 M397 a M401 tratan también el cambio de Ruby, que pasó a ser GL-16 en
 M399. Se registran acá porque surgieron de la tarea 3.2 de GL-14.
