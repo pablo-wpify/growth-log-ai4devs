@@ -39,7 +39,7 @@ documentación: hay que clonar o cambiar a `feature/entrega-2-pp`.
 
 ## Prerrequisitos
 
-- Ruby 4.0.9. El repositorio declara la versión en `.tool-versions` (lo
+- Ruby 4.0.10. El repositorio declara la versión en `.tool-versions` (lo
   lee [asdf](https://asdf-vm.com/)) y en `.ruby-version` (lo leen el
   `Gemfile`, el CI y otros gestores de versiones); las dos deben coincidir.
   La guía se probó con asdf; con otro gestor que lea `.ruby-version`
@@ -58,7 +58,7 @@ Comprobá la versión de Ruby:
 ruby -v
 ```
 
-Debe mostrar `ruby 4.0.9`. Si muestra otra, revisá que asdf esté activo en
+Debe mostrar `ruby 4.0.10`. Si muestra otra, revisá que asdf esté activo en
 la terminal y que no haya variables como `ASDF_RUBY_VERSION`,
 `RBENV_VERSION` o `rvm_ruby_string` forzando otra versión.
 

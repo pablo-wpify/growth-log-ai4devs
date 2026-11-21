@@ -58,7 +58,7 @@ suite completa, incluidas las pruebas en navegador.
   [43939186173](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/43939186173),
   sobre `68f74cc` (PR #9), en verde.
 
-**2. Instalar en local, desde un clon limpio.** Hace falta Ruby 4.0.9
+**2. Instalar en local, desde un clon limpio.** Hace falta Ruby 4.0.10
 (declarada en `.ruby-version` y `.tool-versions`), Docker para PostgreSQL
 18.6 y Google Chrome para las pruebas en navegador; no hace falta Node.
 Cada paso está explicado en la [guía de desarrollo](docs/desarrollo.md).
@@ -175,7 +175,7 @@ indican en qué rama está cada cambio.
 
 | | Qué | Evidencia |
 |---|---|---|
-| **Implementado y verificado** | Base del producto: Rails 8.1.4 (8.1.4.1 desde GL-01b), Ruby 4.0.9, PostgreSQL 18.6, RSpec, `bin/ci` y GitHub Actions; chequeo de salud `GET /up` (GL-01) | [ticket](docs/tickets/GL-01-base-producto.md) |
+| **Implementado y verificado** | Base del producto: Rails 8.1.4 (8.1.4.1 desde GL-01b), Ruby 4.0.9 (4.0.10 desde GL-16, en local), PostgreSQL 18.6, RSpec, `bin/ci` y GitHub Actions; chequeo de salud `GET /up` (GL-01) | [ticket](docs/tickets/GL-01-base-producto.md) |
 | | Corrección de 15 avisos de seguridad de gemas (GL-01a) | [ticket](docs/tickets/GL-01a-avisos-seguridad.md) |
 | | Rails 8.1.4.1 por los 21 avisos de seguridad del 04/11/2026 (GL-01b) | [ticket](docs/tickets/GL-01b-rails-8-1-4-1.md); CI [42380986492](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/42380986492) sobre `8ae8723` |
 | | Autenticación: cuentas individuales sin registro público, inicio y cierre de sesión, sesiones con vencimiento, límites de intentos, CSRF, rutas protegidas por defecto y administrador inicial por tarea (GL-02) | [ticket](docs/tickets/GL-02-autenticacion.md); CI [41557336838](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/41557336838) sobre `94e40a1` |
@@ -269,7 +269,7 @@ GL-01. Diagrama, componentes y requisitos:
 
 ### 2.2. Componentes principales y stack
 
-Implementado: Ruby 4.0.9, Rails 8.1.4.1, PostgreSQL 18.6, Hotwire con
+Implementado: Ruby 4.0.10, Rails 8.1.4.1, PostgreSQL 18.6, Hotwire con
 importmap, Propshaft, Pundit para la autorización (ADR-3, GL-03), RSpec con
 Capybara y `selenium-webdriver` para las pruebas en navegador (ADR-6, GL-09),
 RuboCop, Brakeman y `bundler-audit`; `bcrypt` para contraseñas (ADR-2). Propuesta original:

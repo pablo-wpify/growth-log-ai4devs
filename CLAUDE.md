@@ -1,6 +1,6 @@
 # Growth Log
 
-Monolito Rails 8.1.4.1 con Ruby 4.0.9, PostgreSQL 18.6, Hotwire con importmap
+Monolito Rails 8.1.4.1 con Ruby 4.0.10, PostgreSQL 18.6, Hotwire con importmap
 (sin Node), RSpec y OpenSpec 1.15. Proyecto final de AI4Devs de Pablo
 Peuscovich. Todo se escribe en español rioplatense.
 
