@@ -3,17 +3,63 @@
 <h1>Personas</h1>
 
 <% if @people.any? %>
-  <ul class="people">
-    <% @people.each do |person| %>
-      <li>
-        <%= link_to person_path(person), class: "person-row" do %>
-          <span class="person-name" data-person-name><%= person.name %></span>
+  <%# GL-14 (P-53): el total y el aviso, una sola vez, bajo el título. %>
+  <p class="people-summary">
+    <span data-people-total><%= people_total(@people.size) %></span>
+    <span aria-hidden="true">·</span>
+    <span class="privacy-note">Ves solo a quienes tenés asignados y las entradas que podés ver</span>
+  </p>
+
+  <%# GL-14 (P-49 a P-51): búsqueda, filtro y orden en el navegador, sobre las filas que ya mostró el servidor. Sin formulario, sin URL y sin estado guardado; sin JavaScript los controles quedan ocultos. Sin la precarga de Turbo al pasar el puntero: con la fila completa como enlace, pediría fichas mientras se busca. %>
+  <div class="people-list" data-controller="people-list" data-turbo-prefetch="false">
+    <div class="people-controls" hidden data-people-list-target="controls">
+      <div class="people-control">
+        <label for="people-query">Buscar por nombre</label>
+        <input type="search" id="people-query" autocomplete="off" data-people-list-target="query" data-action="input->people-list#apply">
+      </div>
+      <div class="people-control">
+        <label for="people-team">Equipo</label>
+        <select id="people-team" autocomplete="off" data-people-list-target="team" data-action="change->people-list#apply" data-no-team="<%= PeopleHelper::NO_TEAM %>">
+          <%= options_for_select(people_team_options(@people), "") %>
+        </select>
+      </div>
+      <div class="people-control">
+        <label for="people-order">Orden</label>
+        <select id="people-order" autocomplete="off" data-people-list-target="order" data-action="change->people-list#apply">
+          <%= options_for_select([ [ "Nombre", "name" ], [ "Hechos más recientes", "recent" ] ], "name") %>
+        </select>
+      </div>
+      <button type="button" class="people-clear" hidden data-people-list-target="clear" data-action="people-list#clear">Limpiar filtros</button>
+    </div>
+
+    <ul class="people" data-people-list-target="list">
+      <% @people.each_with_index do |person, position| %>
+        <% stats = @entry_stats[person.id] %>
+        <%# GL-14 (decisión 1, P-45): un único enlace de fila completa y, sin entradas de la cuenta, «Registrar la primera» como enlace hermano. %>
+        <li class="person-row" data-person-row data-people-list-target="row"
+            data-position="<%= position %>" data-search-name="<%= person_search_name(person) %>"
+            data-team="<%= person_team_value(person) %>" data-last-fact="<%= stats.last_fact_on&.iso8601 %>">
+          <%= link_to person_path(person), class: "person-row-link", data: { person_link: "" } do %>
+            <span class="person-name" data-person-name><%= person.name %></span>
+          <% end %>
           <span class="person-meta"><%= person_role_and_team(person) %></span>
-          <span class="person-count" data-ready-count><%= ready_entries_count(@ready_counts.fetch(person.id, 0)) %></span>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+          <span class="person-details">
+            <% if stats.last_fact_on %>
+              <span class="person-last-fact" data-last-fact-text><%= person_last_fact(stats.last_fact_on) %></span>
+            <% end %>
+            <span class="person-count" data-entry-count><%= person_entries_summary(stats) %></span>
+            <% if stats.none? %>
+              <%= link_to "Registrar la primera", new_person_feedback_entry_path(person), class: "person-first-entry",
+                    "aria-label": "Registrar la primera entrada sobre #{person.name}", data: { first_entry: "" } %>
+            <% end %>
+          </span>
+          <span class="person-chevron" aria-hidden="true">›</span>
+        </li>
+      <% end %>
+    </ul>
+
+    <p class="people-no-results" hidden role="status" data-people-list-target="noResults">Ninguna persona coincide con la búsqueda o el filtro</p>
+  </div>
 <% else %>
   <p class="empty-state">Todavía no tenés personas asignadas. Cuando te asignen una, va a aparecer acá.</p>
 <% end %>

@@ -31,8 +31,8 @@ RSpec.describe "Lecturas agregadas con el alcance de entradas", type: :request d
   def summary_dimensions = summary_rows.map { |row| row.at_css("th").text.strip }
   def timeline_rows = page.css("[data-timeline] li")
   def count_for(name)
-    row = page.css("main li").find { |li| li.at_css("[data-person-name]")&.text&.strip == name }
-    row&.at_css("[data-ready-count]")&.text&.strip
+    row = page.css("main li[data-person-row]").find { |li| li.at_css("[data-person-name]")&.text&.strip == name }
+    row&.at_css("[data-entry-count]")&.text&.strip
   end
 
   describe "otro líder de la misma persona (L2)" do
@@ -48,10 +48,10 @@ RSpec.describe "Lecturas agregadas con el alcance de entradas", type: :request d
       expect(response.body).not_to include(draft_text)
     end
 
-    it "su conteo de P no incluye la entrada lista de L1" do
+    it "su conteo de P no incluye la entrada lista ni el borrador de L1" do
       get people_path
 
-      expect(count_for("Ada Ejemplo")).to eq("0 entradas listas")
+      expect(count_for("Ada Ejemplo")).to eq("Sin entradas todavía")
       expect(response.body).not_to include(ready_text)
     end
 
@@ -78,11 +78,11 @@ RSpec.describe "Lecturas agregadas con el alcance de entradas", type: :request d
       expect(response.body).to include(ready_text, draft_text)
     end
 
-    it "su conteo de P cuenta solo la entrada lista, y Q no tiene entradas" do
+    it "su conteo de P cuenta su entrada lista y su borrador por separado, y Q no tiene entradas" do
       get people_path
 
-      expect(count_for("Ada Ejemplo")).to eq("1 entrada lista")
-      expect(count_for("Bruno Ejemplo")).to eq("0 entradas listas")
+      expect(count_for("Ada Ejemplo")).to eq("1 entrada lista · 1 borrador")
+      expect(count_for("Bruno Ejemplo")).to eq("Sin entradas todavía")
     end
   end
 
@@ -97,7 +97,7 @@ RSpec.describe "Lecturas agregadas con el alcance de entradas", type: :request d
       expect(response.body).not_to include(ready_text)
 
       get people_path
-      expect(count_for("Ada Ejemplo")).to eq("0 entradas listas")
+      expect(count_for("Ada Ejemplo")).to eq("Sin entradas todavía")
     end
   end
 end

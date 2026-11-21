@@ -237,30 +237,90 @@ body.app .container-wide { max-width: 72rem; }
   border-radius: var(--radius-card);
 }
 
-/* Listado «Personas». */
+/* Listado «Personas». GL-14: total y aviso, controles en el navegador y
+   filas con un enlace extendido, «Registrar la primera» aparte y foco
+   visible en toda la fila (decisión 1, P-45, P-49 a P-53). */
+.people-summary { margin: -0.5rem 0 1rem; color: var(--muted); font-size: 0.875rem; }
+
+.people-summary .privacy-note { display: inline; margin: 0; }
+
+.people-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+}
+
+.people-controls[hidden], .people-clear[hidden], .people-no-results[hidden], .people[hidden], .person-row[hidden] { display: none; }
+
+.people-control { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+
+.people-control label { color: var(--muted); font-size: 0.875rem; }
+
+.people-control input, .people-control select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem;
+  border: 1px solid var(--field-border);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.people-clear { justify-self: start; }
+
+@media (min-width: 40rem) {
+  .people-controls { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
+  .people-clear { grid-column: 1 / -1; }
+}
+
+.people-no-results { margin: 1rem 0 0; color: var(--muted); }
+
 .people { list-style: none; margin: 0; padding: 0; overflow: hidden; }
 
 .people li + li { border-top: 1px solid var(--line); }
 
 .person-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "name chevron" "meta chevron" "details chevron";
+  column-gap: 0.75rem;
+  row-gap: 0.125rem;
   min-height: 44px;
   padding: 0.875rem 1rem;
   color: var(--text);
-  text-decoration: none;
 }
+
+/* El enlace de la persona se extiende a toda la fila con un pseudoelemento;
+   «Registrar la primera» queda por encima y fuera de ese enlace. */
+.person-row-link { grid-area: name; color: var(--text); text-decoration: none; }
+
+.person-row-link::after { content: ""; position: absolute; inset: 0; }
+
+.person-row-link:focus-visible { outline: none; }
+
+.person-row:has(.person-row-link:focus-visible) { outline: 3px solid var(--focus); outline-offset: -3px; }
 
 .person-row:hover .person-name { text-decoration: underline; }
 
 .person-name { font-size: 1.25rem; line-height: 1.3; overflow-wrap: anywhere; }
 
-.person-meta { color: var(--muted); margin: 0; }
+.person-meta { grid-area: meta; color: var(--muted); margin: 0; }
+
+.person-details {
+  grid-area: details;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.person-last-fact { color: var(--muted); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
 
 .person-count {
-  align-self: flex-start;
-  margin-top: 0.25rem;
   padding: 0 0.625rem;
   border-radius: var(--radius-pill);
   background: var(--neutral-bg);
@@ -268,6 +328,17 @@ body.app .container-wide { max-width: 72rem; }
   font-size: 0.875rem;
   font-variant-numeric: tabular-nums;
 }
+
+.person-first-entry {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--link);
+}
+
+.person-chevron { grid-area: chevron; align-self: center; color: var(--muted); font-size: 1.5rem; line-height: 1; }
 
 /* Ficha. */
 .person-header { margin-bottom: 1.5rem; }

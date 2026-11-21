@@ -26,8 +26,10 @@ RSpec.describe "Personas", type: :request do
     assign(l2, no_role)
   end
 
+  # GL-14: la fila puede tener además «Registrar la primera», fuera del
+  # enlace a la ficha; el nombre está solo en el enlace de la persona.
   def listed_names
-    Nokogiri::HTML(response.body).css("main li a").map { |a| a.at_css("[data-person-name]")&.text&.strip }
+    Nokogiri::HTML(response.body).css("main li a[data-person-link]").map { |a| a.at_css("[data-person-name]")&.text&.strip }
   end
 
   def missing_person_response
@@ -58,7 +60,7 @@ RSpec.describe "Personas", type: :request do
       sign_in_as(l1)
       get people_path
 
-      links = Nokogiri::HTML(response.body).css("main li a").map { |a| a["href"] }
+      links = Nokogiri::HTML(response.body).css("main li a[data-person-link]").map { |a| a["href"] }
       expect(links).to eq([ person_path(ada), person_path(bruno) ])
     end
 

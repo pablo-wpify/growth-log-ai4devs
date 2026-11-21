@@ -4,14 +4,14 @@
 > la entrega final](../plan-entrega-final.md), única fuente de la secuencia
 > de esta entrega. Cambio de OpenSpec, en borrador:
 > [`gl-14-mejoras-listado-personas`](../../openspec/changes/gl-14-mejoras-listado-personas/proposal.md).
-> **Estado: borrador documental revisado por Pablo (tarea 0.4,
-> 21/11/2026).** Sin implementar. Las decisiones 1 a 9 (P-41 a P-45)
+> **Estado: implementado en local el 21/11/2026, sin commit (tarea 0.6,
+> M395).** Revisado por Pablo (tarea 0.4). Las decisiones 1 a 9 (P-41 a P-45)
 > las aprobó Pablo en M257, y P-46 a P-53 en M258; M259 confirmó las
 > interpretaciones de P-51 y P-53. El delta de `people-browsing` se
 > ajustó el 19/11/2026 a la spec que dejó GL-15 (tarea 4.4 de GL-15), y
 > los requisitos de los deltas se reestructuraron el 20/11/2026 por el
 > largo que admite el modo estricto (diseño, sección 7). GL-13 y GL-15
-> están cerrados. Falta la aprobación para implementar (tarea 0.6).
+> están cerrados. Queda abierta la publicación (grupo 4).
 
 ## Origen
 

@@ -1,12 +1,14 @@
 # Design
 
 > **Borrador documental (M257 a M259, 15 y 16/11/2026), revisado por
-> Pablo el 21/11/2026.** Sin implementar. Las mejoras 1 a 9 (P-41 a
+> Pablo el 21/11/2026.** Implementado en local el 21/11/2026, sin
+> commit (sección 7). Las mejoras 1 a 9 (P-41 a
 > P-45) las aprobó Pablo en M257, y P-46 a P-53 en M258 (sección 5). El
 > delta de `people-browsing` se ajustó el 19/11/2026 a la spec que dejó
 > GL-15, y los requisitos de los deltas se reestructuraron el 20/11/2026
 > (sección 7). Pablo dio su conformidad al borrador el 21/11/2026
-> (tarea 0.4). Sigue abierta la aprobación para implementar (tarea 0.6).
+> (tarea 0.4) y autorizó implementar los grupos 1 a 3 (tarea 0.6, M395).
+> Queda abierto el grupo 4.
 
 ## 1. Fuentes
 
@@ -326,3 +328,138 @@ vacío de 1.16 reemplaza el total y el aviso.
   redacción de «Limpiar filtros» y la propuesta son coherentes. La
   conformidad no autoriza la implementación (tarea 0.6). Sin ejecutar
   pruebas.
+- **21/11/2026 (implementación local, M395):** Pablo aprobó la tarea 0.6
+  para los grupos 1 a 3, en local y sin commit. El grupo 4 necesita una
+  autorización para cada paso.
+
+  **Pruebas primero (1.1 a 1.3).**
+  - Nuevas: `spec/requests/people_listing_spec.rb` (conteos, «Último
+    hecho», otro líder de la misma persona, administradora asignada,
+    «Registrar la primera», captura por URL directa en `new` y `create`,
+    total y aviso, y controles servidos ocultos) y
+    `spec/system/people_listing_spec.rb` (a 1280 y 375 px: Tab y foco,
+    búsqueda, filtro, orden y desempate, «Limpiar filtros», vacío frente
+    a sin resultados, URL sin cambios y sin peticiones, recarga, 44 px y
+    sin JavaScript).
+  - Ajustadas junto con sus escenarios: `spec/requests/people_counts_spec.rb`
+    y `spec/requests/feedback_summary_privacy_spec.rb` («0 entradas
+    listas» pasa a los textos de GL-14, y el conteo del autor pasa a «1
+    entrada lista · 1 borrador»).
+  - Primera ejecución, antes de implementar: 62 ejemplos y 41 fallos, por
+    la razón esperada (faltaban las filas, los conteos, la fecha, los
+    controles, el total y «Registrar la primera»). Pasaban las pruebas de
+    comportamiento que ya existía: la captura por URL directa, la vuelta
+    a la ficha y el estado vacío. Un fallo era de la prueba: buscaba
+    `input` en toda la página y encontraba el campo oculto de «Cerrar
+    sesión»; se limitó a `main`.
+
+  **Implementación (2.1 a 2.5).**
+  - `PeopleController#index`: una consulta agregada sobre
+    `policy_scope(FeedbackEntry)` con los conteos de listas y borradores
+    y la fecha del último hecho; la prueba de una sola consulta sigue en
+    verde.
+  - `PeopleHelper`: textos de los conteos, «Último hecho», el total, el
+    nombre normalizado y las opciones del filtro.
+  - `app/views/people/index.html.erb`: total y aviso, controles ocultos
+    sin JavaScript y sin formulario, fila con un enlace extendido y
+    «Registrar la primera» aparte, con el nombre accesible del diseño.
+  - `app/javascript/controllers/people_list_controller.js`: búsqueda,
+    filtro, orden y «Limpiar filtros» en el navegador, sin dependencias
+    nuevas.
+  - `app/assets/stylesheets/application.css`: estilos del listado con los
+    tokens existentes de `visual-language`.
+
+  **Decisiones de implementación.**
+  - El listado desactiva la precarga de Turbo al pasar el puntero
+    (`data-turbo-prefetch="false"`). Con la fila completa como enlace, la
+    prueba de sistema a 1280 px detectó una petición a `/personas/:id`
+    mientras se buscaba, y el escenario «Búsqueda sin cambiar la URL»
+    pide que no haya peticiones. Abrir la ficha no cambia.
+  - Sin resultados, la lista vacía también se oculta, para que no quede su
+    borde sobre el mensaje (visto en las capturas de comprobación).
+
+  **Desvío.** `spec/requests/people_spec.rb` también cambió, aunque la
+  tarea 3.1 solo preveía las dos pruebas de «0 entradas listas». Sus
+  ayudas tomaban todos los enlaces de cada fila como enlaces a la ficha, y
+  con «Registrar la primera» la fila tiene dos. Ahora toman solo el enlace
+  de la persona (`a[data-person-link]`). Las expectativas no cambiaron.
+  Queda para que Pablo lo acepte; por eso la 3.1 sigue abierta.
+
+  **Verificación (3.1 y 3.2).**
+  - Las pruebas de GL-14 pasaron tres veces seguidas: 19 ejemplos de
+    sistema.
+  - `bin/bundler-audit update`: código 0.
+  - `bin/ci`, sobre el estado final: código 1. Pasaron el estilo
+    (127 archivos, sin ofensas), la auditoría de gemas, la de importmap y
+    RSpec (463 ejemplos, 0 fallos). Falló solo Brakeman, porque
+    `bin/brakeman` usa `--ensure-latest` y la 8.1.0 instalada ya no es la
+    última (8.1.1). Brakeman sin esa comprobación: 0 errores y 0
+    advertencias. El árbol no cambió con el CI. Actualizar Brakeman es
+    actualizar una dependencia y no está autorizado, así que la 3.2 sigue
+    abierta.
+  - No se ejecutó `openspec validate --all --strict`: los deltas no
+    cambiaron.
+
+  **Pendiente.** La aceptación del desvío (3.1), Brakeman o una decisión
+  sobre su versión (3.2), la comprobación manual de Pablo a 1280 y 375 px
+  (3.3) y el grupo 4. Sin commit.
+- **21/11/2026 (M396):**
+  - **Desvío de la 3.1 aceptado:** Pablo aceptó el cambio en
+    `spec/requests/people_spec.rb`: el selector `a[data-person-link]` es
+    el ajuste necesario para que sus ayudas identifiquen solo el enlace de
+    la ficha, con las mismas expectativas. Con eso y la suite de M395
+    (463 ejemplos, 0 fallos), la 3.1 queda completa.
+  - **Comprobación manual (3.3):** Pablo revisó las capturas del listado a
+    1280 y 375 px (listado, foco en la fila y sin resultados) y su
+    revisión es conforme. La 3.3 queda completa.
+  - **Brakeman (3.2):** Pablo autorizó actualizar solo Brakeman, de 8.1.0
+    a 8.1.1. `bundle update brakeman --conservative` cambió dos líneas de
+    `Gemfile.lock`: la versión y su checksum, sin otras gemas ni cambios
+    en el `Gemfile`. Después, `bin/ci` terminó con código 1: pasaron el
+    estilo, las auditorías y RSpec (463 ejemplos, 0 fallos), y Brakeman
+    8.1.1 informó una advertencia nueva de confianza alta en
+    `.ruby-version`: según su salida, Ruby 4.0.9 tiene una vulnerabilidad
+    crítica de ejecución remota de código (CVE-2026-132825) y hay que
+    pasar a 4.0.10 o posterior. No se verificó fuera de Brakeman.
+    Resolverla exige actualizar Ruby, que es más amplio que lo
+    autorizado, así que el trabajo se detuvo ahí: no se tocó Ruby ni se
+    agregó una excepción a Brakeman. La 3.2 sigue abierta. La
+    actualización de Brakeman queda en el árbol, sin commit.
+- **21/11/2026 (M397 y M398, cambio de runtime):** Brakeman 8.1.1 marcaba
+  Ruby 4.0.9. En M397 Pablo autorizó pasar a 4.0.10 solo con
+  `.ruby-version` y el lockfile. El trabajo se detuvo antes de aplicarlo,
+  porque hacía falta más alcance: `.tool-versions`, la spec vigente
+  `runtime-toolchain` (que fijaba 4.0.9) y el plugin de asdf, que no
+  ofrecía 4.0.10. En M398 Pablo autorizó ese alcance y pidió tratar la
+  spec y la guía como un cambio de OpenSpec independiente de GL-14.
+  - **Entorno local:** el plugin `ruby` de asdf actualizado; Ruby 4.0.10
+    instalado (`ruby 4.0.10 (2026-11-19 revision a704b7cd95)`).
+  - **Repositorio:**
+    - `.ruby-version` y `.tool-versions` pasan a 4.0.10;
+    - `bundle install` solo cambió `RUBY VERSION` en `Gemfile.lock`; las
+      dos líneas de Brakeman 8.1.1 vienen de M396;
+    - Bundler sigue en 4.0.20, y ninguna otra gema ni el `Gemfile`
+      cambiaron.
+  - **Cambio de OpenSpec independiente, `openspec/changes/gl-16-ruby-4-0-10`:**
+    `MODIFIED` «Versiones de Ruby y Rails del proyecto» y «Declaración
+    coherente de la versión de Ruby» de `runtime-toolchain`, y «Guía de
+    desarrollo reproducible» de `development-environment`, con todos sus
+    escenarios. La guía de desarrollo y el paso de instalación del
+    `README.md` piden Ruby 4.0.10. No tiene ID de ticket ni lugar en el
+    plan todavía.
+  - **Resultado:**
+    - `openspec validate --all --strict`: 23 de 23;
+    - `bin/bundler-audit update`: código 0;
+    - `bin/ci`: código 0, con el estilo sin ofensas, sin gemas ni paquetes
+      vulnerables, Brakeman 8.1.1 sin advertencias y RSpec con 463
+      ejemplos y 0 fallos. Se corrió dos veces, antes y después de
+      actualizar la base de avisos, con el mismo resultado;
+    - el árbol no cambió con el CI.
+
+    La 3.2 queda completa.
+  - **Desvío respecto de M397:** el alcance pasó de `.ruby-version` y el
+    lockfile a lo que se detalla arriba, con la autorización de M398.
+  - **Pendiente fuera de este cambio:** siguen nombrando 4.0.9 como
+    versión vigente `CLAUDE.md`, el estado del `README.md` (líneas 178 y
+    272) y `openspec/config.yaml`, que no se edita sin autorización. Que
+    el CI remoto ofrezca Ruby 4.0.10 solo se comprueba al publicar.

@@ -1,8 +1,9 @@
 require "rails_helper"
 
-# Conteo de entradas listas en «Personas» (GL-07; spec `people-browsing`,
-# «Listado de personas asignadas»: 1.15 parcial y 3.3). Datos ficticios
-# propios de cada prueba.
+# Conteos de entradas en «Personas» (GL-07, con los textos de GL-14; spec
+# `people-browsing`, «Listado de personas asignadas» y «Conteos de entradas
+# en el listado»: 1.15 parcial, 3.3 y P-41). Datos ficticios propios de cada
+# prueba.
 RSpec.describe "Conteo de entradas listas en «Personas»", type: :request do
   let!(:l1) { create_user(email_address: "luis.lider@example.test", name: "Luis Líder") }
   let!(:l2) { create_user(email_address: "lara.lider@example.test", name: "Lara Líder") }
@@ -16,14 +17,14 @@ RSpec.describe "Conteo de entradas listas en «Personas»", type: :request do
   end
 
   def page = Nokogiri::HTML(response.body)
-  def row_for(name) = page.css("main li").find { |li| li.at_css("[data-person-name]")&.text&.strip == name }
+  def row_for(name) = page.css("main li[data-person-row]").find { |li| li.at_css("[data-person-name]")&.text&.strip == name }
 
   def entry(person, author: l1, status: "ready")
     FeedbackEntry.create!(author:, person:, occurred_on: Date.new(2026, 11, 10), context: "Entrada de prueba",
                           status:, signal: "positive", dimension: "teamwork")
   end
 
-  it "muestra «2 entradas listas», «1 entrada lista» y «0 entradas listas» después de «rol · equipo»" do
+  it "muestra «2 entradas listas · 1 borrador», «1 entrada lista» y «Sin entradas todavía» después de «rol · equipo»" do
     2.times { entry(ada) }
     entry(ada, status: "draft")
     entry(bruno)
@@ -31,21 +32,22 @@ RSpec.describe "Conteo de entradas listas en «Personas»", type: :request do
     sign_in_as(l1)
     get people_path
 
-    { "Ada Ejemplo" => "2 entradas listas", "Bruno Ejemplo" => "1 entrada lista", "Carla Ejemplo" => "0 entradas listas" }.each do |name, count|
+    { "Ada Ejemplo" => "2 entradas listas · 1 borrador", "Bruno Ejemplo" => "1 entrada lista",
+      "Carla Ejemplo" => "Sin entradas todavía" }.each do |name, count|
       row = row_for(name)
-      parts = row.css("[data-person-name], .person-meta, [data-ready-count]").map { |part| part.text.strip }
+      parts = row.css("[data-person-name], .person-meta, [data-entry-count]").map { |part| part.text.strip }
       expect(parts).to eq([ name, row.at_css(".person-meta").text.strip, count ])
     end
   end
 
-  it "no cuenta los borradores ni las entradas de otro líder de la misma persona" do
-    entry(ada, status: "draft")
+  it "no cuenta las entradas ni los borradores de otro líder de la misma persona" do
     entry(ada, author: l2)
+    entry(ada, author: l2, status: "draft")
 
     sign_in_as(l1)
     get people_path
 
-    expect(row_for("Ada Ejemplo").at_css("[data-ready-count]").text.strip).to eq("0 entradas listas")
+    expect(row_for("Ada Ejemplo").at_css("[data-entry-count]").text.strip).to eq("Sin entradas todavía")
   end
 
   it "cuenta todas las personas con una sola consulta de entradas" do

@@ -14,9 +14,19 @@
 | M383 | 2026-11-21 12:28:54 | revisión de solo lectura (decisión) | [Decisión sobre los textos de GL-14 y revisión de los requisitos](M383-2026-11-21-decision-textos-gl-14-y-revision.md) |
 | M389 | 2026-11-21 14:24:34 | conformidad | [Conformidad de Pablo con el borrador de GL-14 (tarea 0.4)](M389-2026-11-21-conformidad-tarea-0-4.md) |
 | M391 | 2026-11-21 14:31:06 | revisión de solo lectura | [Revisión para decidir la aprobación de implementación (tarea 0.6)](M391-2026-11-21-preparacion-tarea-0-6.md) |
+| M395 | 2026-11-21 15:53:33 | implementación | [Autorización para implementar GL-14 (tarea 0.6)](M395-2026-11-21-autorizar-la-implementacion.md) |
+| M396 | 2026-11-21 16:10:49 | verificación (conformidad y autorización de dependencia) | [Desvío de la 3.1, conformidad visual y actualización de Brakeman](M396-2026-11-21-desvio-conformidad-y-brakeman.md) |
+| M397 | 2026-11-21 16:14:55 | verificación (autorización de dependencia) | [Autorización para actualizar Ruby a 4.0.10](M397-2026-11-21-actualizar-ruby.md) |
+| M398 | 2026-11-21 16:18:11 | verificación (dependencia y cambio de OpenSpec) | [Ruby 4.0.10, cambio de OpenSpec independiente y `bin/ci`](M398-2026-11-21-ruby-4-0-10-y-bin-ci.md) |
+| M399 | 2026-11-21 16:42:24 | documentación (GL-16) | [Conciliación de la documentación con Ruby 4.0.10 e ID de GL-16](M399-2026-11-21-conciliar-ruby-y-gl-16.md) |
+| M400 | 2026-11-21 16:46:12 | documentación (GL-16) | [Renombre del cambio de GL-16](M400-2026-11-21-renombrar-cambio-gl-16.md) |
+| M401 | 2026-11-21 16:51:24 | publicación y archivo (GL-14 y GL-16) | [Publicación y archivo de GL-14 y GL-16](M401-2026-11-21-publicar-y-archivar-gl-14-y-gl-16.md) |
 
-Los demás pedidos de la revisión de GL-14 (M372 a M382, M384 a M388 y
-M390) no tienen registro propio; ver «Mensajes sin registro» en
+M397 a M401 tratan también el cambio de Ruby, que pasó a ser GL-16 en
+M399. Se registran acá porque surgieron de la tarea 3.2 de GL-14.
+
+Los demás pedidos de GL-14 (M372 a M382, M384 a M388, M390 y M392 a
+M394) no tienen registro propio; ver «Mensajes sin registro» en
 [prompts.md](../../../prompts.md).
 
 ## Antecedentes
