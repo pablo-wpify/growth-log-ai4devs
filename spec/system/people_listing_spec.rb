@@ -193,6 +193,67 @@ RSpec.describe "Listado «Personas» en navegador (GL-14)", type: :system do
     end
   end
 
+  # GL-17 (P-54 y P-55): presentación del total y el aviso, de «Registrar la
+  # primera» y de los detalles de la fila, a ambos lados del corte de 40 rem.
+  describe "presentación (GL-17)", :aggregate_failures do
+    def rect(selector, within: nil)
+      scope = within ? "document.querySelector(#{within.to_json})" : "document"
+      js("(function(){ var b = #{scope}.querySelector(#{selector.to_json}).getBoundingClientRect(); return { left: b.left, right: b.right, top: b.top, bottom: b.bottom, width: b.width, height: b.height }; })()")
+        .transform_keys(&:to_sym)
+    end
+
+    def style(selector, property)
+      js("getComputedStyle(document.querySelector(#{selector.to_json}))[#{property.to_json}]")
+    end
+
+    # Bruno no tiene entradas: su fila tiene «Registrar la primera».
+    let(:bruno_row) { "li[data-person-row][data-search-name='bruno ejemplo']" }
+
+    { 1280 => :right, 640 => :right, 639 => :below, 375 => :below }.each do |width, details_position|
+      context "a #{width} px" do
+        before { resize(width) }
+
+        it "muestra el total y el aviso en líneas separadas, sin «·», y los detalles #{details_position == :right ? 'a la derecha' : 'debajo'} de «rol · equipo»" do
+          sign_in
+          expect(js("window.innerWidth")).to eq(width)
+          expect(no_horizontal_scroll?).to be(true)
+
+          # P-54: dos líneas, el total arriba, sin separador.
+          expect(all("[data-people-total]").size).to eq(1)
+          expect(find(".people-summary").text).not_to include("·")
+          total = rect("[data-people-total]")
+          note = rect(".privacy-note")
+          expect(note[:top]).to be >= total[:bottom] - 1
+
+          # P-55: ubicación de los detalles respecto de «rol · equipo».
+          meta = rect(".person-meta", within: bruno_row)
+          details = rect(".person-details", within: bruno_row)
+          if details_position == :right
+            expect(details[:left]).to be >= meta[:right] - 1
+            expect(details[:top]).to be < meta[:bottom]
+          else
+            expect(details[:top]).to be >= meta[:bottom] - 1
+          end
+        end
+
+        it "presenta «Registrar la primera» como acción secundaria con borde, de 44 px y más angosta que la fila" do
+          sign_in
+          link = "#{bruno_row} a[data-first-entry]"
+          expect(style(link, "borderTopStyle")).to eq("solid")
+          expect(style(link, "borderTopWidth").to_f).to be >= 1
+          expect(rect(link)[:height]).to be >= 44
+          # El escenario pide que sea más angosta que la fila (no que ocupe su ancho).
+          expect(rect(link)[:width]).to be < rect(".person-details", within: bruno_row)[:width]
+          # Ni el fondo de la píldora del conteo ni el de un botón principal.
+          background = style(link, "backgroundColor")
+          expect(background).not_to eq(style("#{bruno_row} [data-entry-count]", "backgroundColor"))
+          expect(background).not_to eq("rgb(166, 70, 42)") # --accent, el fondo de .button-primary
+          expect(find(link)[:"aria-label"]).to eq("Registrar la primera entrada sobre Bruno Ejemplo")
+        end
+      end
+    end
+  end
+
   context "sin JavaScript" do
     before { driven_by :rack_test }
 

@@ -3,12 +3,11 @@
 <h1>Personas</h1>
 
 <% if @people.any? %>
-  <%# GL-14 (P-53): el total y el aviso, una sola vez, bajo el título. %>
-  <p class="people-summary">
-    <span data-people-total><%= people_total(@people.size) %></span>
-    <span aria-hidden="true">·</span>
-    <span class="privacy-note">Ves solo a quienes tenés asignados y las entradas que podés ver</span>
-  </p>
+  <%# GL-14 (P-53) y GL-17 (P-54): el total y el aviso, una sola vez, bajo el título y en líneas separadas, sin separador. %>
+  <div class="people-summary">
+    <p data-people-total><%= people_total(@people.size) %></p>
+    <p class="privacy-note">Ves solo a quienes tenés asignados y las entradas que podés ver</p>
+  </div>
 
   <%# GL-14 (P-49 a P-51): búsqueda, filtro y orden en el navegador, sobre las filas que ya mostró el servidor. Sin formulario, sin URL y sin estado guardado; sin JavaScript los controles quedan ocultos. Sin la precarga de Turbo al pasar el puntero: con la fila completa como enlace, pediría fichas mientras se busca. %>
   <div class="people-list" data-controller="people-list" data-turbo-prefetch="false">
@@ -49,7 +48,8 @@
             <% end %>
             <span class="person-count" data-entry-count><%= person_entries_summary(stats) %></span>
             <% if stats.none? %>
-              <%= link_to "Registrar la primera", new_person_feedback_entry_path(person), class: "person-first-entry",
+              <%# GL-17 (P-55): acción secundaria con el botón común, en variante compacta. %>
+              <%= link_to "Registrar la primera", new_person_feedback_entry_path(person), class: "button person-first-entry",
                     "aria-label": "Registrar la primera entrada sobre #{person.name}", data: { first_entry: "" } %>
             <% end %>
           </span>

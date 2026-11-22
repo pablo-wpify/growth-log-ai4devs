@@ -242,7 +242,8 @@ body.app .container-wide { max-width: 72rem; }
    visible en toda la fila (decisión 1, P-45, P-49 a P-53). */
 .people-summary { margin: -0.5rem 0 1rem; color: var(--muted); font-size: 0.875rem; }
 
-.people-summary .privacy-note { display: inline; margin: 0; }
+/* GL-17 (P-54): el total y el aviso, cada uno en su línea. */
+.people-summary p, .people-summary .privacy-note { margin: 0; }
 
 .people-controls {
   display: grid;
@@ -329,16 +330,30 @@ body.app .container-wide { max-width: 72rem; }
   font-variant-numeric: tabular-nums;
 }
 
+/* GL-17 (P-55): botón común en variante compacta. Del botón conserva el
+   borde, el fondo, el radio, el foco y los 44 px; solo achica el texto y el
+   relleno. Sigue por encima del enlace extendido de la fila. */
 .person-first-entry {
   position: relative;
   z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--link);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
 }
 
 .person-chevron { grid-area: chevron; align-self: center; color: var(--muted); font-size: 1.5rem; line-height: 1; }
+
+/* GL-17 (P-55, D3): desde 40 rem, la fecha, el conteo y «Registrar la
+   primera» van a la derecha del nombre y de «rol · equipo». El orden del DOM
+   no cambia, así que el foco tampoco. Más angosto rige la grilla de arriba,
+   como pide «Listado en pantalla angosta». */
+@media (min-width: 40rem) {
+  .person-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    grid-template-areas: "name details chevron" "meta details chevron";
+  }
+
+  .person-details { align-self: center; justify-content: flex-end; margin-top: 0; }
+}
 
 /* Ficha. */
 .person-header { margin-bottom: 1.5rem; }

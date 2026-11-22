@@ -30,7 +30,11 @@
 > (tarea 0.4) y la implementación local de GL-14, autorizada en M395
 > (secciones 1.1, 2 y 4). El mismo día se agregó GL-16, Ruby 4.0.10, que
 > desbloquea `bin/ci` (M398 y M399; secciones 1.1, 2 y 6), y GL-14 y
-> GL-16 se publicaron y archivaron (M401).
+> GL-16 se publicaron y archivaron (M401). También el 21/11/2026 se
+> agregó GL-17, borrador documental de la presentación del listado
+> «Personas», con P-54 y P-55 propuestas (M408; secciones 2, 5.4 y 6),
+> corregido y validado en M410, revisado por Pablo, que aprobó P-54 y
+> P-55 (M415), e implementado en local (M417).
 
 ## 1. Punto de partida
 
@@ -98,7 +102,8 @@
 | 2 | [GL-15](tickets/GL-15-formulario-feedback.md) | Formulario completo «+ Feedback» en la ficha (T2.1 del Anexo G; criterios 2.1, 2.2 y 2.7, más 2.3 a 2.5 y 2.10 aplicados al formulario) | **implementado, verificado, integrado en esta rama y archivado** (cambio archivado en [`2026-11-19-gl-15-formulario-feedback`](../openspec/changes/archive/2026-11-19-gl-15-formulario-feedback/); borrador del 17/11/2026, implementación autorizada e implementada el 18/11/2026); decisiones de diseño cerradas; verificación local (`bin/ci` en código 0 con la base de avisos actualizada) y conformidad visual de Pablo registradas; publicado en `cebc659` con el CI remoto en verde; archivado el 19/11/2026, con el delta de GL-14 ajustado (tarea 4.4) | T1.6 (GL-06), cumplida; GL-13 para los tokens y componentes | — |
 | 3 | [GL-16](tickets/GL-16-ruby-4-0-10.md) | Ruby 4.0.10, la versión que pide Brakeman 8.1.1 por CVE-2026-132825 | **publicado y archivado** el 21/11/2026: commit `d2c6db4`, CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) en verde (M398 y M401) | — | — |
 | 4 | [GL-14](tickets/GL-14-mejoras-listado-personas.md) | Mejoras funcionales del listado «Personas» | **publicado y archivado** el 21/11/2026: commit `ca2d5da`, CI [44938564609](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/44938564609) en verde (M395 y M401); decisiones P-41 a P-53 aprobadas (M257 y M258) | GL-05, GL-06, GL-07; GL-13 para los tokens y componentes; GL-16 para publicar (`bin/ci`) | — |
-| — | GL-11, tarea 3.3 | Comprobación manual de Pablo y archivo | pendiente (M245) | GL-13, GL-15 y GL-14, si se implementan | — |
+| 5 | [GL-17](tickets/GL-17-presentacion-listado-personas.md) | Presentación del listado «Personas»: total y aviso en dos líneas, y «Registrar la primera» como acción secundaria (alternativa B de M405) | **borrador documental** (M408, 21/11/2026), surgido de la revisión de UI (M404 a M407) y corregido en M410; `openspec validate --all --strict` en 22 de 22 (tarea 0.2); revisión de Pablo completa, con P-54 y P-55 aprobadas (tarea 0.3, M415); **implementado en local** (M417, grupos 1 a 3 autorizados en la tarea 0.4): `bin/ci` en código 0 con 471 ejemplos, sin commit; conformidad visual de Pablo (tarea 3.2, M420); falta publicar y archivar | GL-14 y GL-13, archivados | — |
+| — | GL-11, tarea 3.3 | Comprobación manual de Pablo y archivo | pendiente (M245) | GL-13, GL-15, GL-14 y GL-17, si se implementan | — |
 
 **El orden de lo diferido lo decide Pablo:** GL-04, compartir y revocar
 (I4), el autor sin asignación (I5), el feed y los filtros (I6), y I7, I8 e
@@ -121,7 +126,9 @@ va al final, cuando la interfaz sea definitiva (M245).
 de la entrega 2. GL-14 es el siguiente después de GL-13 (M257): no hay
 otro GL-14 en el repositorio, los cambios de OpenSpec ni las ramas. GL-16
 es el siguiente después de GL-15 (M399): no aparece en el repositorio, y
-GL-04 sigue reservado para lo diferido.
+GL-04 sigue reservado para lo diferido. GL-17 es el siguiente después de
+GL-16 (M408): no hay otro GL-17 en el repositorio, los cambios de
+OpenSpec ni las ramas.
 
 ## 3. GL-13. Dirección visual (implementado y archivado)
 
@@ -252,6 +259,18 @@ decisiones anteriores no definían. Pablo las decidió en M258. Detalle en el
 | P-52 | La captura abierta desde el listado vuelve a la ficha, como hoy |
 | P-53 | Total «N personas que acompañás», que cuenta las personas asignadas y no cambia al filtrar, y aviso breve de privacidad, una sola vez. Sin personas asignadas, el mensaje vacío reemplaza el total y el aviso (confirmado en M259) |
 
+### 5.4. GL-17, aprobadas por Pablo (M415)
+
+Surgen de la auditoría de M407 y de la alternativa B de M405. Se
+propusieron en M408 y Pablo las aprobó en M415. Aprobarlas no autoriza
+implementar (tarea 0.4). Detalle en el
+[diseño de GL-17](../openspec/changes/gl-17-presentacion-listado-personas/design.md).
+
+| # | Decisión | Estado |
+|---|---|---|
+| P-54 | El total y el aviso de privacidad de P-53, en líneas apiladas: el total arriba y el aviso debajo, sin el separador «·». Los textos no cambian | aprobada (M415) |
+| P-55 | «Registrar la primera» como acción secundaria pequeña, con el borde del botón común de GL-13, distinta de la fila y de la píldora del conteo, y con 44 px de alto. Desde 40 rem, la fecha, el conteo y la acción van a la derecha del nombre y de «rol · equipo»; más angosto, debajo. Los selects siguen apilados a 375 px. Mejora la señal visual, pero no elimina que un toque fuera del botón pueda abrir la ficha | aprobada (M415) |
+
 ## 6. Próximo paso
 
 1. GL-13: cerrado. Implementado, verificado y archivado, con el archivo
@@ -269,6 +288,12 @@ decisiones anteriores no definían. Pablo las decidió en M258. Detalle en el
 5. Con Julio: confirmar la fecha de la entrega final y los criterios
    concretos de revisión de la demo.
 6. GL-11, tarea 3.3: al cierre de esta entrega (M245).
+7. GL-17: revisado por Pablo, con P-54 y P-55 aprobadas (tarea 0.3,
+   M415), e implementado en local (M417), con `bin/ci` en código 0 y sin
+   commit, y con la conformidad visual de Pablo (tarea 3.2, M420). Publicar
+   y archivar necesitan autorización. El
+   listado que empieza bajo en móvil y el quiebre de la cabecera entre
+   unos 600 y 767 px quedan como hallazgos separados, fuera de GL-17.
 
-GL-13 (M264), GL-15 (18/11/2026, pedido sin número) y GL-14 (M395)
-tienen autorización para implementar.
+GL-13 (M264), GL-15 (18/11/2026, pedido sin número), GL-14 (M395) y
+GL-17 (M417, grupos 1 a 3) tienen autorización para implementar.
