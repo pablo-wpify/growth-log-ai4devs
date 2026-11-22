@@ -6,8 +6,10 @@
 > `docs/plan-entrega-final.md`, sección 5.4). **Implementado en local el
 > 21/11/2026 (M417),** con la autorización de Pablo para los grupos 1 a 3
 > (tarea 0.4): `bin/ci` en código 0 con 471 ejemplos; sin commit.
-> **Conformidad visual de Pablo el 22/11/2026 (M420, tarea 3.2).** Falta
-> publicar y archivar, con autorización para cada paso.
+> **Conformidad visual de Pablo el 22/11/2026 (M420, tarea 3.2).**
+> **Publicado** en `1c2f513` con el CI [45026017961](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/45026017961) en verde
+> (M424, tarea 4.1) y **archivado** el 22/11/2026 (M425, tarea 4.2), con el
+> delta aplicado a `people-browsing`.
 
 ## Why
 

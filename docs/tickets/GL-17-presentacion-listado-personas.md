@@ -2,16 +2,18 @@
 
 > Ticket de la entrega final de Growth Log. Lugar en la secuencia: [plan de
 > la entrega final](../plan-entrega-final.md), única fuente de la secuencia
-> de esta entrega. Cambio de OpenSpec:
-> [`gl-17-presentacion-listado-personas`](../../openspec/changes/gl-17-presentacion-listado-personas/proposal.md).
-> **Estado: borrador documental (M408, 21/11/2026), corregido en M410 y
-> revisado por Pablo en M415.** `openspec validate --all --strict`: 22 de
-> 22 (M410, tarea 0.2). Pablo dio su conformidad con el borrador y aprobó
-> P-54 y P-55 (tarea 0.3, 21/11/2026, M415). **Implementado en local el
-> 21/11/2026 (M417)**, con la autorización de Pablo para los grupos 1 a 3
-> (tarea 0.4): `bin/ci` en código 0 con 471 ejemplos; sin commit.
-> **Conformidad visual de Pablo el 22/11/2026 (M420, tarea 3.2).** Falta
-> publicar y archivar, con autorización para cada paso.
+> de esta entrega. Cambio de OpenSpec, archivado:
+> [`gl-17-presentacion-listado-personas`](../../openspec/changes/archive/2026-11-22-gl-17-presentacion-listado-personas/proposal.md).
+> **Estado: cerrado. Publicado en `1c2f513` con el CI
+> [45026017961](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/45026017961)
+> en verde (M424) y archivado el 22/11/2026 (M425).** Historia: borrador
+> documental (M408, 21/11/2026), corregido en M410 y revisado por Pablo en
+> M415. `openspec validate --all --strict`: 22 de 22 (M410, tarea 0.2).
+> Pablo dio su conformidad con el borrador y aprobó P-54 y P-55 (tarea
+> 0.3, 21/11/2026, M415). Implementado en local el 21/11/2026 (M417), con
+> la autorización de Pablo para los grupos 1 a 3 (tarea 0.4): `bin/ci` en
+> código 0 con 471 ejemplos. Conformidad visual de Pablo el 22/11/2026
+> (M420, tarea 3.2). Todas las tareas están completas.
 
 ## Origen
 

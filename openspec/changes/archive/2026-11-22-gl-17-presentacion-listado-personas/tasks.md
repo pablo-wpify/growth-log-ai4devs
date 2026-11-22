@@ -33,6 +33,11 @@ El trabajo tiene dos fases:
 - [x] 3.2 Capturas a 1280 y 375 px con datos ficticios (listado, foco y sin resultados) y conformidad visual de Pablo. Evidencia: 22/11/2026, M420: conformidad visual de Pablo sobre las 14 capturas de M417 con datos ficticios (listado a 1280, 640, 639 y 375 px, también de página completa; foco a 1280 y 375; sin resultados a 1280 y 375; estado vacío a 1280 y 375), copiadas en `~/Descargas/gl-17-implementacion/capturas/`, fuera del repositorio
 - [x] 3.3 Registrar lo ejecutado, los desvíos y lo pendiente en el diseño. Evidencia: 21/11/2026, M417: diseño, «Registro», entrada M417 (ejecutado, desvíos, límites y lo pendiente)
 
-## Workflow follow-up
+## 4. Publicación y archivo
 
-- Publicación (commit, push y CI remoto) y archivo del cambio, cada paso con autorización explícita de Pablo.
+Cada paso necesita la autorización explícita de Pablo. Antes figuraban
+como viñetas sin casilla («Workflow follow-up»); pasaron a tareas en M425,
+con el mismo patrón que GL-14.
+
+- [x] 4.1 Commit, push y CI remoto, con enlace y SHA. Evidencia: 22/11/2026, M423 y M424: commit `1c2f513` (`1c2f51395570fa28b51984a5bb648a2890274158`), publicado con push fast-forward en `feature/entrega-final-pp` desde `63b86d0`; CI [45026017961](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/45026017961) en verde sobre ese SHA (scan_ruby, scan_js, lint y test, con 471 ejemplos y 0 fallas). PR: no aplica, porque `feature/entrega-final-pp` es la rama de integración de la entrega final (como en GL-14)
+- [x] 4.2 Archivo del cambio con los deltas aplicados a las specs principales y `openspec validate --all --strict`. Evidencia: 22/11/2026, M425: archivado con `openspec archive gl-17-presentacion-listado-personas -y` en `openspec/changes/archive/2026-11-22-gl-17-presentacion-listado-personas`, con el delta aplicado a `people-browsing` (2 requisitos agregados y 1 modificado); `openspec validate --all --strict` en 21 de 21. Archivo local, sin commit

@@ -21,6 +21,9 @@
 | M417 | 2026-11-21 23:00:38 | implementación (SDD), grupos 1 a 3 de GL-17 | [Implementación local de GL-17, grupos 1 a 3](M417-2026-11-21-implementar-gl-17-grupos-1-a-3.md) |
 | M420 | 2026-11-22 12:49:02 | decisión de Pablo (conformidad visual, tarea 3.2) | [Conformidad visual de Pablo con GL-17](M420-2026-11-22-conformidad-visual-gl-17.md) |
 | M423 | 2026-11-22 13:05:54 | publicación local (commit), sin push | [Commit local del paquete de GL-17](M423-2026-11-22-commit-local-gl-17.md) |
+| M424 | 2026-11-22 13:09:29 | publicación (push) y CI remoto | [Publicación de GL-17 con push](M424-2026-11-22-push-gl-17.md) |
+| M425 | 2026-11-22 13:14:34 | archivo de OpenSpec, local y sin commit | [Archivo local de GL-17](M425-2026-11-22-archivo-gl-17.md) |
+| M426 | 2026-11-22 13:26:27 | publicación local (commit), sin push | [Commit local del archivo de GL-17](M426-2026-11-22-commit-archivo-gl-17.md) |
 
 Evaluación de posibles mejoras de UI/UX de la pantalla «Personas». M404 a
 M407 no implementan cambios ni pertenecen a ningún ticket: GL-13 y GL-14
@@ -45,7 +48,10 @@ visual de Pablo (tarea 3.2). M418 (copia a Descargas) y M419 (pregunta
 por las imágenes) no tienen registro propio. En M420 Pablo dio su
 conformidad visual y la 3.2 quedó completa. M421 y M422 prepararon y
 ajustaron el stage, sin registro propio. M423 autorizó y creó el commit
-local de GL-17, sin push.
+local de GL-17, sin push. M424 lo publicó (`1c2f513`), con el CI
+[45026017961](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/45026017961) en verde. M425 archivó
+el cambio en local, con el delta aplicado a `people-browsing`, y M426
+creó el commit local de ese archivo, sin push.
 
 La numeración es por posición (opción A), confirmada por Pablo en M412
 y M413. «logut» y «logout», enviados después de M406, son intentos de

@@ -6,8 +6,10 @@
 > `docs/plan-entrega-final.md`, sección 5.4). **Implementado en local el
 > 21/11/2026 (M417),** con la autorización de Pablo para los grupos 1 a 3
 > (tarea 0.4): `bin/ci` en código 0 con 471 ejemplos; sin commit.
-> **Conformidad visual de Pablo el 22/11/2026 (M420, tarea 3.2).** Falta
-> publicar y archivar, con autorización para cada paso.
+> **Conformidad visual de Pablo el 22/11/2026 (M420, tarea 3.2).**
+> **Publicado** en `1c2f513` con el CI [45026017961](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/45026017961) en verde
+> (M424, tarea 4.1) y **archivado** el 22/11/2026 (M425, tarea 4.2), con el
+> delta aplicado a `people-browsing`.
 
 ## Context
 
@@ -229,4 +231,18 @@ Sin datos ni configuración. Se publica con el procedimiento habitual
   `~/Descargas/gl-17-implementacion/capturas/`, fuera del repositorio.
   Todas las tareas de los grupos 0 a 3 están completas. Falta publicar y
   archivar, con autorización para cada paso.
+- **M423 y M424 (22/11/2026):** commit `1c2f513` (25 archivos, sin la
+  entrada de M403 en `prompts.md` ni las herramientas de Impeccable) y push
+  fast-forward en `feature/entrega-final-pp`, con la cuenta `pablo-wpify`.
+  CI [45026017961](https://github.com/pablo-wpify/growth-log-ai4devs/actions/runs/45026017961) en verde: scan_ruby, scan_js, lint y test,
+  con 471 ejemplos y 0 fallas (tarea 4.1).
+- **M425 (22/11/2026):** archivado con `openspec archive
+  gl-17-presentacion-listado-personas -y` en
+  `openspec/changes/archive/2026-11-22-gl-17-presentacion-listado-personas`.
+  El delta se aplicó a `people-browsing`: «Total de personas y aviso de
+  privacidad» modificado, y «"Registrar la primera" como acción secundaria» y
+  «Detalles de la fila en pantalla ancha» agregados. `openspec validate
+  --all --strict` en 21 de 21 (tarea 4.2). La publicación y el archivo
+  pasaron de viñetas sin casilla a las tareas 4.1 y 4.2. Archivo local, sin
+  commit; sin pruebas ni `bin/ci`.
 
